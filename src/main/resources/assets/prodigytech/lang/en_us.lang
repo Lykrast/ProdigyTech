@@ -21,9 +21,10 @@ item.prodigytech.ferramic_nugget.name=Ferramic Nugget
 container.prodigytech.explosion_furnace=Explosion Furnace
 
 #JEI
+container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
+container.prodigytech.jei.ptexplosionfurnace.required=EP/item : 
 container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
-container.prodigytech.jei.power.generated=EP generated : 
-container.prodigytech.jei.power.required=EP required : 
+container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : 
 
 #----------------------------
 #Advancements

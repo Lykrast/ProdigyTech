@@ -14,22 +14,33 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
-public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
-	private ItemStack explosive, reactant;
-	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace_exp.generated";
+public class ExplosionFurnaceWrapper implements IRecipeWrapper {
+	private ItemStack in, out, reag;
+	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.required";
+	private static final String CRAFT_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.craft";
 	private int power;
 	
-	public ExplosionFurnaceExplosiveWrapper(ExplosionFurnaceManager.ExplosionFurnaceExplosive recipe)
+	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe)
 	{
-		explosive = recipe.getExplosive();
-		reactant = recipe.getReactant();
-		power = recipe.getOptimalPower();
+		in = recipe.getInput();
+		out = recipe.getOutput();
+		power = recipe.getRequiredPower();
+		
+		if (recipe.needReagent())
+		{
+			reag = recipe.getReagent();
+			
+			int craftPerReagent = recipe.getCraftPerReagent();
+			in.setCount(in.getCount() * craftPerReagent);
+			out.setCount(out.getCount() * craftPerReagent);
+		}
 	}
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		List<ItemStack> list = ImmutableList.of(explosive, reactant);
+		List<ItemStack> list = ImmutableList.of(in, reag);
 		ingredients.setInputs(ItemStack.class, list);
+		ingredients.setOutput(ItemStack.class, out);
 	}
 	
 	@Override
@@ -43,14 +54,14 @@ public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
 
 	public static void registerRecipes(IModRegistry registry)
 	{
-		List<ExplosionFurnaceExplosiveWrapper> list = new ArrayList<>();
+		List<ExplosionFurnaceWrapper> list = new ArrayList<>();
 		
-		for (ExplosionFurnaceManager.ExplosionFurnaceExplosive recipe : ExplosionFurnaceManager.EXPLOSIVES)
+		for (ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe : ExplosionFurnaceManager.RECIPES)
 		{
-			list.add(new ExplosionFurnaceExplosiveWrapper(recipe));
+			list.add(new ExplosionFurnaceWrapper(recipe));
 		}
 		
-		registry.addRecipes(list, ExplosionFurnaceExplosiveCategory.UID);
+		registry.addRecipes(list, ExplosionFurnaceCategory.UID);
 	}
 
 }

@@ -45,24 +45,27 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 		ItemStack react = getStackInSlot(1);
 		if (!exp.isEmpty() && !react.isEmpty())
 		{
+			//Find explosive
 			ExplosionFurnaceExplosive explosive = ExplosionFurnaceManager.findExplosive(exp, react);
 			if (explosive != null)
 			{
+				//Get EP and efficiency, remove explosives
 				int power = explosive.getPower(exp);
 				float efficiency = explosive.getEfficiency(exp, react);
-				System.out.println("Power : " + power);
-				System.out.println("Efficiency : " + efficiency);
 				removeStackFromSlot(0);
 				removeStackFromSlot(1);
 				
+				//Make explosion
 				BlockPos origin = pos.offset(facing);
 				world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, 2.0F, false);
 				
+				//For each input slot
 				for (int slot = 2; slot <= 4; slot++)
 				{
 					ItemStack stack = getStackInSlot(slot);
 					if (!stack.isEmpty())
 					{
+						//Check if possible recipe
 						ExplosionFurnaceRecipe recipe = ExplosionFurnaceManager.findRecipe(stack);
 						if (recipe != null && recipe.getRequiredPower() <= power)
 						{
@@ -72,11 +75,34 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 							int cost = recipe.getRequiredPower();
 							output.setCount(0);
 							
+							boolean flag = recipe.needReagent();
+							int craftLeft = 0;
+							
+							//Convert stack
 							while (stack.getCount() >= inCount && power >= cost)
 							{
 								stack.shrink(inCount);
-								output.grow(outCount);
 								power -= cost;
+								
+								//Reagent check
+								if (flag)
+								{
+									if (craftLeft <= 0)
+									{
+										//Decrement reagent, waste output if no reagent left
+										ItemStack reagent = getStackInSlot(5);
+										if (recipe.isValidReagent(reagent) && reagent.getCount() > 0)
+										{
+											reagent.shrink(1);
+											craftLeft += recipe.getCraftPerReagent() - 1;
+											if (reagent.getCount() <= 0) removeStackFromSlot(5);
+										}
+										else continue;
+									}
+									else craftLeft--;
+								}
+								
+								output.grow(outCount);
 							}
 							if (stack.getCount() <= 0) removeStackFromSlot(slot);
 							

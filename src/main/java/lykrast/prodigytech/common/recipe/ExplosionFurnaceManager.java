@@ -16,8 +16,16 @@ public class ExplosionFurnaceManager {
 	
 	public static ExplosionFurnaceRecipe addRecipe(ItemStack in, ItemStack out, int power)
 	{
-		ExplosionFurnaceRecipe recipe = new ExplosionFurnaceRecipe(in, out, power);
-		
+		return addRecipe(new ExplosionFurnaceRecipe(in, out, power));
+	}
+	
+	public static ExplosionFurnaceRecipe addRecipe(ItemStack in, ItemStack out, int power, ItemStack reagent, int craftPerReagent)
+	{
+		return addRecipe(new ExplosionFurnaceRecipe(in, out, power, reagent, craftPerReagent));
+	}
+	
+	private static ExplosionFurnaceRecipe addRecipe(ExplosionFurnaceRecipe recipe)
+	{
 		RECIPES.add(recipe);
 		return recipe;
 	}
@@ -52,20 +60,30 @@ public class ExplosionFurnaceManager {
 	
 	public static void init()
 	{
-		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90);
+		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
 		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4), 1440);
 	}
 	
 	public static class ExplosionFurnaceRecipe {
 		private final ItemStack input;
 		private final ItemStack output;
+		private final ItemStack reagent;
 		private final int power;
+		private final int craftPerReagent;
 		
 		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power)
+		{
+			this(input, output, power, ItemStack.EMPTY, 0);
+		}
+		
+		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power, ItemStack reagent, int craftPerReagent)
 		{
 			this.input = input;
 			this.output = output;
 			this.power = power;
+			this.reagent = reagent;
+			this.reagent.setCount(1);
+			this.craftPerReagent = craftPerReagent;
 		}
 		
 		public ItemStack getInput()
@@ -86,6 +104,27 @@ public class ExplosionFurnaceManager {
 		public boolean isValidInput(ItemStack in)
 		{
 			return (!in.isEmpty() && in.isItemEqual(input) && in.getCount() >= input.getCount());
+		}
+		
+		public ItemStack getReagent()
+		{
+			if (reagent.isEmpty()) return ItemStack.EMPTY;
+			return reagent.copy();
+		}
+		
+		public int getCraftPerReagent()
+		{
+			return craftPerReagent;
+		}
+		
+		public boolean needReagent()
+		{
+			return (!reagent.isEmpty() && craftPerReagent > 0);
+		}
+		
+		public boolean isValidReagent(ItemStack reag)
+		{
+			return reag.isItemEqual(reagent);
 		}
 	}
 	

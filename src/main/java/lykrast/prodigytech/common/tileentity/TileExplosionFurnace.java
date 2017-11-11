@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.init.ModBlocks;
-import lykrast.prodigytech.common.recipe.ExplosionFurnaceRecipe;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceExplosive;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceRecipe;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -38,35 +40,54 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 	 */
 	public void process(EnumFacing facing)
 	{
-		BlockPos origin = pos.offset(facing);
-		world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, 2.0F, false);
-		
-		for (int slot = 2; slot <= 4; slot++)
+		ItemStack exp = getStackInSlot(0);
+		ItemStack react = getStackInSlot(1);
+		if (!exp.isEmpty() && !react.isEmpty())
 		{
-			ItemStack stack = getStackInSlot(slot);
-			if (!stack.isEmpty())
+			ExplosionFurnaceExplosive explosive = ExplosionFurnaceManager.findExplosive(exp, react);
+			if (explosive != null)
 			{
-				ExplosionFurnaceRecipe recipe = ExplosionFurnaceRecipe.findRecipe(stack);
-				if (recipe != null)
+				int power = explosive.getPower(exp);
+				float efficiency = explosive.getEfficiency(exp, react);
+				System.out.println("Power : " + power);
+				System.out.println("Efficiency : " + efficiency);
+				removeStackFromSlot(0);
+				removeStackFromSlot(1);
+				
+				BlockPos origin = pos.offset(facing);
+				world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, 2.0F, false);
+				
+				for (int slot = 2; slot <= 4; slot++)
 				{
-					ItemStack output = recipe.getOutput();
-					int inCount = recipe.getInput().getCount();
-					int outCount = output.getCount();
-					output.setCount(0);
-					
-					while (stack.getCount() >= inCount)
+					ItemStack stack = getStackInSlot(slot);
+					if (!stack.isEmpty())
 					{
-						stack.shrink(inCount);
-						output.grow(outCount);
+						ExplosionFurnaceRecipe recipe = ExplosionFurnaceManager.findRecipe(stack);
+						if (recipe != null && recipe.getRequiredPower() <= power)
+						{
+							ItemStack output = recipe.getOutput();
+							int inCount = recipe.getInput().getCount();
+							int outCount = output.getCount();
+							int cost = recipe.getRequiredPower();
+							output.setCount(0);
+							
+							while (stack.getCount() >= inCount && power >= cost)
+							{
+								stack.shrink(inCount);
+								output.grow(outCount);
+								power -= cost;
+							}
+							if (stack.getCount() <= 0) removeStackFromSlot(slot);
+							
+							output.setCount((int)(output.getCount() * efficiency));
+							if (output.getCount() > 0) fillOutput(output);
+						}
 					}
-					if (stack.getCount() <= 0) removeStackFromSlot(slot);
-					
-					fillOutput(output);
 				}
+				
+				markDirty();
 			}
 		}
-		
-		markDirty();
 	}
 	
 	private void fillOutput(ItemStack stack)

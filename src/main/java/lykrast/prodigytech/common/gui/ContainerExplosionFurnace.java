@@ -18,7 +18,7 @@ public class ContainerExplosionFurnace extends Container {
 		//Tile - Explosives - Reactant 1	: 1
 		//Tile - Input 2-4					: 2-4
 		//Tile - Reagent 5					: 5
-		//Tile - Input 6-8					: 6-8
+		//Tile - Output 6-8					: 6-8
 		//Player - Inventory 9-35			: 9-35
 		//Player - Hotbar 0-8				: 36-44
 		

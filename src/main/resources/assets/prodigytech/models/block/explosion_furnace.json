@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "prodigytech:blocks/explosion_furnace_top",
+        "front": "prodigytech:blocks/explosion_furnace_front",
+        "side": "prodigytech:blocks/explosion_furnace_side"
+    }
+}

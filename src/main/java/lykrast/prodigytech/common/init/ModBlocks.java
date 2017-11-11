@@ -3,6 +3,7 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
@@ -21,11 +22,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks {
-	public static Block ferramicBlock;
+	public static Block explosionFurnace,
+		ferramicBlock;
 	private static List<Block> blockList = new ArrayList<>();
 	
 	public static void init()
 	{
+		//Machines
+		explosionFurnace = registerBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
+		
 		//Materials
 		ferramicBlock = registerBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 5.0F, 30.0F, "pickaxe", 1), "ferramic_block");
 	}

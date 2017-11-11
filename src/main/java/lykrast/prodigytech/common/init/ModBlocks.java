@@ -7,6 +7,7 @@ import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
+import lykrast.prodigytech.common.block.ICustomStateMapper;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -84,6 +85,8 @@ public class ModBlocks {
 	{
 		if (b instanceof ICustomModel) ((ICustomModel) b).initModel();
 		else ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(b), 0, new ModelResourceLocation(b.getRegistryName(), "inventory"));
+		
+		if (b instanceof ICustomStateMapper) ((ICustomStateMapper) b).setCustomStateMapper();
 	}
 
 }

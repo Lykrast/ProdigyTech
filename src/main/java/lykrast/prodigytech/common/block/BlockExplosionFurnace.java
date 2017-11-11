@@ -1,15 +1,20 @@
 package lykrast.prodigytech.common.block;
 
+import java.util.Random;
+
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.core.ProdigyTech;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.stats.StatList;
@@ -22,11 +27,15 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 
-public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntityProvider {
+public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntityProvider, ICustomStateMapper {
 
+    public static final PropertyBool TRIGGERED = PropertyBool.create("triggered");
+    
 	public BlockExplosionFurnace(float hardness, float resistance, int harvestLevel) {
 		super(Material.ROCK);
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.valueOf(false)));
 		setSoundType(SoundType.STONE);
 		setHardness(hardness);
 		setResistance(resistance);
@@ -55,6 +64,36 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
             return true;
         }
     }
+
+    /**
+     * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
+     * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
+     * block, etc.
+     */
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    {
+        boolean flag = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(pos.up());
+        boolean flag1 = ((Boolean)state.getValue(TRIGGERED)).booleanValue();
+
+        if (flag && !flag1)
+        {
+            worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+            worldIn.setBlockState(pos, state.withProperty(TRIGGERED, Boolean.valueOf(true)), 4);
+        }
+        else if (!flag && flag1)
+        {
+            worldIn.setBlockState(pos, state.withProperty(TRIGGERED, Boolean.valueOf(false)), 4);
+        }
+    }
+
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    {
+        if (!worldIn.isRemote)
+        {
+            TileExplosionFurnace tile = getTileEntity(worldIn, pos);
+            if (tile != null) tile.process(state.getValue(FACING));
+        }
+    }
 	
 	/**
      * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
@@ -80,7 +119,7 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
      */
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(TRIGGERED, Boolean.valueOf(false));
     }
 
     /**
@@ -88,7 +127,7 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+    	return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 7)).withProperty(TRIGGERED, Boolean.valueOf((meta & 8) > 0));
     }
 
     /**
@@ -96,12 +135,20 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
      */
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+        int i = 0;
+        i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
+
+        if (((Boolean)state.getValue(TRIGGERED)).booleanValue())
+        {
+            i |= 8;
+        }
+
+        return i;
     }
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, new IProperty[] {FACING, TRIGGERED});
     }
 
 	@Override
@@ -114,5 +161,19 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
 		if (tile instanceof TileExplosionFurnace) return (TileExplosionFurnace)tile;
 		else return null;
     }
+
+    /**
+     * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
+     */
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    {
+        super.breakBlock(worldIn, pos, state);
+        worldIn.removeTileEntity(pos);
+    }
+
+	@Override
+	public void setCustomStateMapper() {
+		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(TRIGGERED).build());
+	}
 
 }

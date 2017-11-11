@@ -4,9 +4,7 @@ import lykrast.prodigytech.common.gui.ContainerExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
@@ -15,7 +13,7 @@ public class GuiExplosionFurnace extends GuiContainer {
     private final IInventory playerInventory;
     private final TileExplosionFurnace tile;
 
-	public GuiExplosionFurnace(IInventory playerInv, TileExplosionFurnace tile) {
+	public GuiExplosionFurnace(InventoryPlayer playerInv, TileExplosionFurnace tile) {
 		super(new ContainerExplosionFurnace(playerInv, tile));
 		
 		playerInventory = playerInv;

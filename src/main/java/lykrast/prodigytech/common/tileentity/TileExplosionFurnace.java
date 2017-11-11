@@ -12,6 +12,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -80,7 +81,7 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 							if (stack.getCount() <= 0) removeStackFromSlot(slot);
 							
 							output.setCount((int)(output.getCount() * efficiency));
-							if (output.getCount() > 0) fillOutput(output);
+							if (output.getCount() > 0) fillOutput(output, origin);
 						}
 					}
 				}
@@ -90,7 +91,7 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 		}
 	}
 	
-	private void fillOutput(ItemStack stack)
+	private void fillOutput(ItemStack stack, BlockPos dump)
 	{
 		for (int slot = 6; slot <= 8; slot++)
 		{
@@ -104,7 +105,7 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 					stack = stack.copy();
 					stack.setCount(old - stack.getCount());
 				}
-				else break;
+				else return;
 			}
 			else if (slotStack.getItem() == stack.getItem())
 			{
@@ -113,9 +114,10 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 				if (slotStack.getCount() > getInventoryStackLimit()) slotStack.setCount(getInventoryStackLimit());
 				
 				stack.shrink(slotStack.getCount() - old);
-				if (stack.getCount() <= 0) break;
+				if (stack.getCount() <= 0) return;
 			}
 		}
+		InventoryHelper.spawnItemStack(world, dump.getX(), dump.getY(), dump.getZ(), stack);
 	}
 	
 	@Override

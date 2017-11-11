@@ -7,6 +7,7 @@ import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
+import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
@@ -18,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -30,6 +32,7 @@ public class ModBlocks {
 	{
 		//Machines
 		explosionFurnace = registerBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
+		GameRegistry.registerTileEntity(TileExplosionFurnace.class, ProdigyTech.MODID + "." + "explosion_furnace");
 		
 		//Materials
 		ferramicBlock = registerBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 5.0F, 30.0F, "pickaxe", 1), "ferramic_block");

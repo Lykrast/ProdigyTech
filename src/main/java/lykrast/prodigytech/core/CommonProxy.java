@@ -2,6 +2,7 @@ package lykrast.prodigytech.core;
 
 import java.io.File;
 
+import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.init.ModRecipes;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class CommonProxy {
 	public static Configuration config;
@@ -28,6 +30,8 @@ public class CommonProxy {
         ModBlocks.init();
         ModItems.init();
         ModRecipes.init();
+        
+        NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
 	}
 
 	@EventHandler

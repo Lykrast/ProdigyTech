@@ -66,6 +66,14 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
     }
 
     /**
+     * How many world ticks before ticking
+     */
+    public int tickRate(World worldIn)
+    {
+        return 4;
+    }
+
+    /**
      * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
      * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
      * block, etc.

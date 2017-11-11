@@ -1,5 +1,6 @@
 package lykrast.prodigytech.common.init;
 
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ModRecipes {
@@ -7,6 +8,7 @@ public class ModRecipes {
 	{
 		initOreDict();
 		initSmelting();
+		ExplosionFurnaceRecipe.init();
 	}
 	
 	private static void initOreDict()

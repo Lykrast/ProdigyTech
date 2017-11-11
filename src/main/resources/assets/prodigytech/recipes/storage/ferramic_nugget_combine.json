@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"group": "ferramic_ingot",
+	"pattern": [
+		"NNN",
+		"NNN",
+		"NNN"
+	],
+	"key": {
+		"N": { "type": "forge:ore_dict", "ore": "nuggetFerramic" }
+	},
+	"result": { "item": "prodigytech:ferramic_ingot" }
+}

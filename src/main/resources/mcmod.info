@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "prodigytech",
+  "name": "Prodigy Tech",
+  "description": "A tech mod that goes through various concepts.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Lykrast"],
+  "credits": "RotaryCraft, IndustrialCraft 2 and Avartia for inspiration.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

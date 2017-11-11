@@ -1,0 +1,23 @@
+#----------------------------
+#Creative Tabs
+#----------------------------
+itemGroup.prodigytech=Prodigy Tech
+
+#----------------------------
+#Blocks
+#----------------------------
+tile.prodigytech.ferramic_block.name=Block of Ferramic
+
+#----------------------------
+#Items
+#----------------------------
+item.prodigytech.ferramic_ingot.name=Ferramic Ingot
+item.prodigytech.ferramic_nugget.name=Ferramic Nugget
+
+#----------------------------
+#UI
+#----------------------------
+
+#----------------------------
+#Advancements
+#----------------------------

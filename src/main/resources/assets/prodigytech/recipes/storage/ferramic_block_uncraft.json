@@ -1,0 +1,8 @@
+{
+	"type": "forge:ore_shapeless",
+	"group": "ferramic_ingot",
+	"ingredients": [
+		{ "type": "forge:ore_dict", "ore": "blockFerramic" }
+	],
+	"result": { "item": "prodigytech:ferramic_ingot", "count": 9 }
+}

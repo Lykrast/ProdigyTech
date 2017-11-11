@@ -2,6 +2,9 @@ package lykrast.prodigytech.core;
 
 import java.io.File;
 
+import lykrast.prodigytech.common.init.ModBlocks;
+import lykrast.prodigytech.common.init.ModItems;
+import lykrast.prodigytech.common.init.ModRecipes;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -21,6 +24,10 @@ public class CommonProxy {
 		File directory = e.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "defiled_lands.cfg"));
         Config.readConfig();
+        
+        ModBlocks.init();
+        ModItems.init();
+        ModRecipes.init();
 	}
 
 	@EventHandler

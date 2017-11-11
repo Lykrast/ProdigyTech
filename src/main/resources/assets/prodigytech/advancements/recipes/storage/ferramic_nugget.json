@@ -1,0 +1,21 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:storage/ferramic_nugget",
+      "prodigytech:storage/ferramic_nugget_combine"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:ferramic_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiExplosionFurnace extends GuiContainer {
-	private static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/explosion_furnace.png");
+	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/explosion_furnace.png");
     private final IInventory playerInventory;
     private final TileExplosionFurnace tile;
 

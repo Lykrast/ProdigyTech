@@ -85,7 +85,7 @@ public class ExplosionFurnaceManager {
 		
 		public boolean isValidInput(ItemStack in)
 		{
-			return (!in.isEmpty() && in.getItem() == input.getItem() && in.getCount() >= input.getCount());
+			return (!in.isEmpty() && in.isItemEqual(input) && in.getCount() >= input.getCount());
 		}
 	}
 	
@@ -118,12 +118,12 @@ public class ExplosionFurnaceManager {
 		
 		public boolean isValidExplosive(ItemStack in)
 		{
-			return (!in.isEmpty() && in.getItem() == explosive.getItem());
+			return (!in.isEmpty() && in.isItemEqual(explosive));
 		}
 		
 		public boolean isValidReactant(ItemStack in)
 		{
-			return (!in.isEmpty() && in.getItem() == reactant.getItem());
+			return (!in.isEmpty() && in.isItemEqual(reactant));
 		}
 		
 		public float getEfficiency(ItemStack exp, ItemStack react)

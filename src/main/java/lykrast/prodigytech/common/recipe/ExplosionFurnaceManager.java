@@ -60,14 +60,30 @@ public class ExplosionFurnaceManager {
 	
 	public static void init()
 	{
+		//---------------------
 		//Recipes
+		//---------------------
+		//Ferramic
 		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
 		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
 		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
 		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
 		
+		//Stone
+		//Those were tested by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed
+		addRecipe(new ItemStack(Blocks.STONE), new ItemStack(Blocks.COBBLESTONE), 45);
+		addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Blocks.GRAVEL), 45);
+		addRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND), 10);
+
+		//---------------------
 		//Explosives
+		//---------------------
+		//TNT
 		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4), 1440);
+		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4, 1), 1440);
+		
+		//End Crystal
+		addExplosive(new ItemStack(Items.ENDER_EYE, 1), new ItemStack(Items.GHAST_TEAR), 2160);
 	}
 	
 	public static class ExplosionFurnaceRecipe {

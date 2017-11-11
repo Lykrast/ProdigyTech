@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"SSS",
+		"SFS",
+		"SSS"
+	],
+	"key": {
+		"S": { "item": "minecraft:stonebrick", "data": 0 },
+		"F": { "item": "minecraft:flint_and_steel" }
+	},
+	"result": { "item": "prodigytech:explosion_furnace" }
+}

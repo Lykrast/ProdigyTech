@@ -17,9 +17,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.stats.StatList;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
@@ -175,8 +174,14 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
      */
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
+        TileExplosionFurnace tile = getTileEntity(worldIn, pos);
+
+        if (tile != null)
+        {
+            InventoryHelper.dropInventoryItems(worldIn, pos, tile);
+        }
+        
         super.breakBlock(worldIn, pos, state);
-        worldIn.removeTileEntity(pos);
     }
 
 	@Override

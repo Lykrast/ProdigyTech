@@ -123,7 +123,7 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 	@Override
     public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
     {
-        return oldState.withProperty(BlockExplosionFurnace.TRIGGERED, Boolean.valueOf(false)) != newState.withProperty(BlockExplosionFurnace.TRIGGERED, Boolean.valueOf(false));
+        return (oldState.getBlock() != newState.getBlock());
     }
 	
 	@Override

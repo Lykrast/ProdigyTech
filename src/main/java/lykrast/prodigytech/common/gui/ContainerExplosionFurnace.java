@@ -25,18 +25,17 @@ public class ContainerExplosionFurnace extends Container {
 		//Player - Hotbar 0-8				: 36-44
 		
 		//Explosion Furnace slots
-		//Explosives
-        for (int i = 0; i < 2; ++i)
-        {
-        	this.addSlotToContainer(new Slot(tile, i, 17, 26 + i * 18));
-        }
+		//Explosive
+    	this.addSlotToContainer(new SlotExplosionFurnaceExplosive(tile, 0, 17, 26));
+    	//Reactant
+    	this.addSlotToContainer(new SlotExplosionFurnaceReactant(tile, 1, 17, 44));
 		//Input
         for (int i = 0; i < 3; ++i)
         {
-        	this.addSlotToContainer(new Slot(tile, i + 2, 53, 17 + i * 18));
+        	this.addSlotToContainer(new SlotExplosionFurnaceInput(tile, i + 2, 53, 17 + i * 18));
         }
         //Reagent
-        this.addSlotToContainer(new Slot(tile, 5, 89, 17));
+        this.addSlotToContainer(new SlotExplosionFurnaceReagent(tile, 5, 89, 17));
 		//Output
         for (int i = 0; i < 3; ++i)
         {

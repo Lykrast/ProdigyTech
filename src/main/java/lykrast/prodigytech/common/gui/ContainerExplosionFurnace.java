@@ -1,11 +1,13 @@
 package lykrast.prodigytech.common.gui;
 
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 
 public class ContainerExplosionFurnace extends Container {
 	private TileExplosionFurnace tile;
@@ -86,9 +88,52 @@ public class ContainerExplosionFurnace extends Container {
                 slot.onSlotChange(itemstack1, itemstack);
             }
             //Inventory slots
-            else if (!this.mergeItemStack(itemstack1, 0, 6, false))
+            else
             {
-                return ItemStack.EMPTY;
+            	//Explosive
+            	if (ExplosionFurnaceManager.isValidExplosive(itemstack1))
+                {
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            	//Explosive reactant
+            	else if (ExplosionFurnaceManager.isValidReactant(itemstack1))
+                {
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            	//Input
+            	else if (ExplosionFurnaceManager.isValidInput(itemstack1))
+                {
+                    if (!this.mergeItemStack(itemstack1, 2, 5, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            	//Reagent
+            	else if (ExplosionFurnaceManager.isValidReagent(itemstack1))
+                {
+                    if (!this.mergeItemStack(itemstack1, 5, 6, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            	//Player inventory
+                else if (index >= 9 && index < 36)
+                {
+                    if (!this.mergeItemStack(itemstack1, 36, 45, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (index >= 36 && index < 45 && !this.mergeItemStack(itemstack1, 9, 36, false))
+                {
+                    return ItemStack.EMPTY;
+                }
             }
 
             if (itemstack1.isEmpty())

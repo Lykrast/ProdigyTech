@@ -33,9 +33,7 @@ public class ExplosionFurnaceManager {
 	public static ExplosionFurnaceRecipe findRecipe(ItemStack in)
 	{
 		for (ExplosionFurnaceRecipe recipe : RECIPES)
-		{
-			if (recipe != null && recipe.isValidInput(in)) return recipe;
-		}
+			if (recipe.isValidInput(in)) return recipe;
 		
 		return null;
 	}
@@ -51,11 +49,41 @@ public class ExplosionFurnaceManager {
 	public static ExplosionFurnaceExplosive findExplosive(ItemStack explosive, ItemStack reactant)
 	{
 		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
-		{
-			if (recipe != null && recipe.isValidExplosive(explosive) && recipe.isValidReactant(reactant)) return recipe;
-		}
+			if (recipe.isValidExplosive(explosive) && recipe.isValidReactant(reactant)) return recipe;
 		
 		return null;
+	}
+	
+	public static boolean isValidInput(ItemStack check)
+	{
+		for (ExplosionFurnaceRecipe recipe : RECIPES)
+			if (recipe.isValidInput(check)) return true;
+		
+		return false;
+	}
+	
+	public static boolean isValidReagent(ItemStack check)
+	{
+		for (ExplosionFurnaceRecipe recipe : RECIPES)
+			if (recipe.isValidReagent(check)) return true;
+		
+		return false;
+	}
+	
+	public static boolean isValidExplosive(ItemStack check)
+	{
+		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
+			if (recipe.isValidExplosive(check)) return true;
+		
+		return false;
+	}
+	
+	public static boolean isValidReactant(ItemStack check)
+	{
+		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
+			if (recipe.isValidReactant(check)) return true;
+		
+		return false;
 	}
 	
 	public static void init()
@@ -65,9 +93,9 @@ public class ExplosionFurnaceManager {
 		//---------------------
 		//Ferramic
 		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
-		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
+		//addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
 		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
-		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
+		//addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
 		
 		//Stone
 		//Those were tested by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed

@@ -60,7 +60,13 @@ public class ExplosionFurnaceManager {
 	
 	public static void init()
 	{
+		//Recipes
 		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
+		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
+		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
+		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
+		
+		//Explosives
 		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4), 1440);
 	}
 	

@@ -15,13 +15,6 @@ public interface IProdigyInventory extends IInventory {
 	 */
 	NonNullList<ItemStack> getInventory();
 	/**
-	 * Say if the stack can be inserted into the given slot.
-	 * @param stack ItemStack to insert
-	 * @param slot slot to insert into
-	 * @return if it can be inserted
-	 */
-	boolean isStackValid(ItemStack stack, int slot);
-	/**
 	 * Mostly a call to markDirty().
 	 */
 	void updateGraphics(int slot);

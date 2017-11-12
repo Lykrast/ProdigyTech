@@ -40,6 +40,11 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
 		setHarvestLevel("pickaxe", harvestLevel);
 	}
 
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TileExplosionFurnace();
+	}
+
     /**
      * Called when the block is right clicked by a player.
      */
@@ -51,7 +56,7 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
         }
         else
         {
-            TileMachineInventory tile = getTileEntity(worldIn,pos);
+            TileExplosionFurnace tile = getTileEntity(worldIn,pos);
 
             if (tile != null)
             {
@@ -138,11 +143,6 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     {
         return new BlockStateContainer(this, new IProperty[] {FACING, TRIGGERED});
     }
-
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileExplosionFurnace();
-	}
 	
 	/**
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated

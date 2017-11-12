@@ -143,9 +143,11 @@ public class TileExplosionFurnace extends TileMachineInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		//Output slots
-		if (index >= 6) return false;
-		return true;
+		if (index == 0) return ExplosionFurnaceManager.isValidExplosive(stack);
+		else if (index == 1) return ExplosionFurnaceManager.isValidReactant(stack);
+		else if (index == 5) return ExplosionFurnaceManager.isValidReagent(stack);
+		else if (index >= 2 && index <= 4) return ExplosionFurnaceManager.isValidInput(stack);
+		else return false;
 	}
 	
 	@Override
@@ -166,15 +168,6 @@ public class TileExplosionFurnace extends TileMachineInventory {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return (T)invHandler;
 		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	public boolean isStackValid(ItemStack stack, int slot) {
-		if (slot == 0) return ExplosionFurnaceManager.isValidExplosive(stack);
-		else if (slot == 1) return ExplosionFurnaceManager.isValidReactant(stack);
-		else if (slot == 5) return ExplosionFurnaceManager.isValidReagent(stack);
-		else if (slot >= 2 && slot <= 4) return ExplosionFurnaceManager.isValidInput(stack);
-		else return false;
 	}
 
 }

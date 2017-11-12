@@ -3,11 +3,13 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
 import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
 import lykrast.prodigytech.common.block.ICustomStateMapper;
+import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -25,18 +27,21 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks {
-	public static Block explosionFurnace,
+	public static Block explosionFurnace, aeroheaterSolid,
 		ferramicBlock;
 	private static List<Block> blockList = new ArrayList<>();
+	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
 	public static void init()
 	{
 		//Machines
 		explosionFurnace = registerBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
-		GameRegistry.registerTileEntity(TileExplosionFurnace.class, ProdigyTech.MODID + "." + "explosion_furnace");
+		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
+		aeroheaterSolid = registerBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		
 		//Materials
-		ferramicBlock = registerBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 5.0F, 30.0F, "pickaxe", 1), "ferramic_block");
+		ferramicBlock = registerBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
 	}
 	
 	public static Block registerBlock(Block block, String name)

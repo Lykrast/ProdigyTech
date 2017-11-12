@@ -7,6 +7,8 @@ itemGroup.prodigytech=Prodigy Tech
 #Blocks
 #----------------------------
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
+tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
+
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 
 #----------------------------
@@ -19,6 +21,9 @@ item.prodigytech.ferramic_nugget.name=Ferramic Nugget
 #UI
 #----------------------------
 container.prodigytech.explosion_furnace=Explosion Furnace
+container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
+container.prodigytech.temperature.prefix=Temperature : 
+container.prodigytech.temperature.suffix=°C
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace

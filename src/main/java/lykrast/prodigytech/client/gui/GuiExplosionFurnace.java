@@ -3,12 +3,11 @@ package lykrast.prodigytech.client.gui;
 import lykrast.prodigytech.common.gui.ContainerExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.core.ProdigyTech;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiExplosionFurnace extends GuiContainer {
+public class GuiExplosionFurnace extends GuiInventory {
 	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/explosion_furnace.png");
     private final IInventory playerInventory;
     private final TileExplosionFurnace tile;
@@ -38,13 +37,5 @@ public class GuiExplosionFurnace extends GuiContainer {
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
     }
-    
-    @Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks)
-	{
-		this.drawDefaultBackground();
-		super.drawScreen(mouseX, mouseY, partialTicks);
-		this.renderHoveredToolTip(mouseX, mouseY);
-	}
 
 }

@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:storage/ferramic_nugget"
+      "prodigytech:storage/ferramic_block_uncraft"
     ]
   },
   "criteria": {
@@ -11,7 +11,10 @@
       "conditions": {
         "items": [
           {
-            "item": "prodigytech:ferramic_ingot"
+            "item": "prodigytech:ferramic_ingot",
+            "count": {
+              "min": 9
+            }
           }
         ]
       }
@@ -19,7 +22,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "prodigytech:storage/ferramic_nugget"
+        "recipe": "prodigytech:storage/ferramic_block_uncraft"
       }
     }
   },

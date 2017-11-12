@@ -2,8 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:storage/ferramic_block",
-      "prodigytech:storage/ferramic_block_uncraft"
+      "prodigytech:storage/ferramic_block"
     ]
   },
   "criteria": {
@@ -19,6 +18,18 @@
           }
         ]
       }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "prodigytech:storage/ferramic_block"
+      }
     }
-  }
+  },
+  "requirements": [
+    [
+      "has_material",
+      "has_the_recipe"
+    ]
+  ]
 }

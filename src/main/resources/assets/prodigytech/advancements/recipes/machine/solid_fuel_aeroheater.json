@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:storage/ferramic_nugget"
+      "prodigytech:machine/solid_fuel_aeroheater"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "prodigytech:storage/ferramic_nugget"
+        "recipe": "prodigytech:machine/solid_fuel_aeroheater"
       }
     }
   },

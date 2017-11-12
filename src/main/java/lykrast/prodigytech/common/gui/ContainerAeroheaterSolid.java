@@ -103,7 +103,7 @@ public class ContainerAeroheaterSolid extends ContainerMachine<TileAeroheaterSol
             //Fuel slot
             if (index == 0)
             {
-                if (!this.mergeItemStack(itemstack1, 9, 45, true))
+                if (!this.mergeItemStack(itemstack1, 1, 37, true))
                 {
                     return ItemStack.EMPTY;
                 }
@@ -122,14 +122,14 @@ public class ContainerAeroheaterSolid extends ContainerMachine<TileAeroheaterSol
                     }
                 }
             	//Player inventory
-                else if (index >= 9 && index < 36)
+                else if (index >= 1 && index < 28)
                 {
-                    if (!this.mergeItemStack(itemstack1, 36, 45, false))
+                    if (!this.mergeItemStack(itemstack1, 28, 37, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (index >= 36 && index < 45 && !this.mergeItemStack(itemstack1, 9, 36, false))
+                else if (index >= 28 && index < 37 && !this.mergeItemStack(itemstack1, 1, 28, false))
                 {
                     return ItemStack.EMPTY;
                 }

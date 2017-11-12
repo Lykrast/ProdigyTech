@@ -4,16 +4,13 @@ import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 
-public class ContainerExplosionFurnace extends Container {
-	private TileExplosionFurnace tile;
-	
+public class ContainerExplosionFurnace extends ContainerMachine<TileExplosionFurnace> {
 	public ContainerExplosionFurnace(InventoryPlayer userInv, TileExplosionFurnace tile) {
-		this.tile = tile;
+		super(tile);
 		
 		//Slot IDs
 		//Tile - Explosives - Explosives 0	: 0
@@ -57,12 +54,7 @@ public class ContainerExplosionFurnace extends Container {
         }
 	}
 
-	@Override
-	public boolean canInteractWith(EntityPlayer playerIn) {
-		return tile.isUsableByPlayer(playerIn);
-	}
-	
-    /**
+	/**
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */

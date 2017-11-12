@@ -13,26 +13,24 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileExplosionFurnace extends TileEntity implements IProdigyInventory {
+public class TileExplosionFurnace extends TileMachineInventory {
 
-	//Slot IDs
-	//Explosives - Explosives	: 0
-	//Explosives - Reactant		: 1
-	//Input						: 2-4
-	//Reagent					: 5
-	//Output					: 6-8
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
-	
+	public TileExplosionFurnace() {
+		super(9);
+	}
+
+	@Override
+	public String getName() {
+		return super.getName() + "explosion_furnace";
+	}
+
 	/**
 	 * Starts the reaction process
 	 */
@@ -142,130 +140,12 @@ public class TileExplosionFurnace extends TileEntity implements IProdigyInventor
 		}
 		InventoryHelper.spawnItemStack(world, dump.getX(), dump.getY(), dump.getZ(), stack);
 	}
-	
-	@Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState)
-    {
-        return (oldState.getBlock() != newState.getBlock());
-    }
-	
-	@Override
-	public ITextComponent getDisplayName()
-	{
-		return new TextComponentTranslation(this.getName(), new Object[0]);
-	}
-
-	@Override
-	public String getName() {
-		return "container." + ProdigyTech.MODID + ".explosion_furnace";
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return false;
-	}
-
-	@Override
-	public int getSizeInventory() {
-		return inventory.size();
-	}
-
-	@Override
-	public boolean isEmpty() {
-        for (ItemStack itemstack : inventory)
-        {
-            if (!itemstack.isEmpty())
-            {
-                return false;
-            }
-        }
-
-        return true;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int index) {
-		return inventory.get(index);
-	}
-
-	@Override
-	public ItemStack decrStackSize(int index, int count) {
-		return ItemStackHelper.getAndSplit(inventory, index, count);
-	}
-
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		return ItemStackHelper.getAndRemove(inventory, index);
-	}
-
-	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
-        ItemStack itemstack = inventory.get(index);
-        inventory.set(index, stack);
-
-        if (stack.getCount() > this.getInventoryStackLimit())
-        {
-            stack.setCount(this.getInventoryStackLimit());
-        }
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-    public void readFromNBT(NBTTagCompound compound)
-    {
-        super.readFromNBT(compound);
-        inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        ItemStackHelper.loadAllItems(compound, inventory);
-    }
-
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
-        super.writeToNBT(compound);
-        ItemStackHelper.saveAllItems(compound, inventory);
-
-        return compound;
-    }
-
-	@Override
-	public boolean isUsableByPlayer(EntityPlayer player) {
-		return true;
-	}
-
-	@Override
-	public void openInventory(EntityPlayer player) {
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		//Output slots
 		if (index >= 6) return false;
 		return true;
-	}
-
-	@Override
-	public int getField(int id) {
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-	}
-
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		inventory.clear();
 	}
 	
 	@Override
@@ -289,22 +169,12 @@ public class TileExplosionFurnace extends TileEntity implements IProdigyInventor
 	}
 
 	@Override
-	public NonNullList<ItemStack> getInventory() {
-		return inventory;
-	}
-
-	@Override
 	public boolean isStackValid(ItemStack stack, int slot) {
 		if (slot == 0) return ExplosionFurnaceManager.isValidExplosive(stack);
 		else if (slot == 1) return ExplosionFurnaceManager.isValidReactant(stack);
 		else if (slot == 5) return ExplosionFurnaceManager.isValidReagent(stack);
 		else if (slot >= 2 && slot <= 4) return ExplosionFurnaceManager.isValidInput(stack);
 		else return false;
-	}
-
-	@Override
-	public void updateGraphics(int slot) {
-		markDirty();
 	}
 
 }

@@ -4,9 +4,9 @@ import java.util.Random;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
+import lykrast.prodigytech.common.tileentity.TileMachineInventory;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -24,16 +24,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 
-public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntityProvider, ICustomStateMapper {
+public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> implements ICustomStateMapper {
 
     public static final PropertyBool TRIGGERED = PropertyBool.create("triggered");
     
 	public BlockExplosionFurnace(float hardness, float resistance, int harvestLevel) {
-		super(Material.ROCK);
+		super(Material.ROCK, TileExplosionFurnace.class);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(TRIGGERED, Boolean.valueOf(false)));
 		setSoundType(SoundType.STONE);
 		setHardness(hardness);
@@ -52,7 +51,7 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
         }
         else
         {
-            TileExplosionFurnace tile = getTileEntity(worldIn,pos);
+            TileMachineInventory tile = getTileEntity(worldIn,pos);
 
             if (tile != null)
             {
@@ -101,24 +100,6 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
             if (tile != null) tile.process(state.getValue(FACING));
         }
     }
-	
-	/**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
-    public IBlockState withRotation(IBlockState state, Rotation rot)
-    {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
-    }
-
-    /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-    {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
-    }
 
     /**
      * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
@@ -163,13 +144,7 @@ public class BlockExplosionFurnace extends BlockHorizontal implements ITileEntit
 		return new TileExplosionFurnace();
 	}
 	
-	private TileExplosionFurnace getTileEntity(IBlockAccess world, BlockPos pos) {
-		TileEntity tile = world.getTileEntity(pos);
-		if (tile instanceof TileExplosionFurnace) return (TileExplosionFurnace)tile;
-		else return null;
-    }
-
-    /**
+	/**
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
      */
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)

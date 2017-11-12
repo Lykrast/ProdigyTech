@@ -17,15 +17,14 @@ import net.minecraft.item.ItemStack;
 public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	private ItemStack in, out, reag;
 	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.required";
-	private static final String CRAFT_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.craft";
-	private int power;
+	private final String power;
 	
 	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe)
 	{
 		in = recipe.getInput();
 		out = recipe.getOutput();
 		reag = recipe.getReagent();
-		power = recipe.getRequiredPower();
+		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower());
 		
 		if (recipe.needReagent())
 		{
@@ -44,11 +43,10 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		String localized = I18n.format(POWER_DISPLAY) + power;
-		int width = minecraft.fontRenderer.getStringWidth(localized);
+		int width = minecraft.fontRenderer.getStringWidth(power);
 		int x = (recipeWidth - 4 - width)/2;
 		int y = 45;
-		minecraft.fontRenderer.drawString(localized, x, y, Color.gray.getRGB());
+		minecraft.fontRenderer.drawString(power, x, y, Color.gray.getRGB());
 	}
 
 	public static void registerRecipes(IModRegistry registry)

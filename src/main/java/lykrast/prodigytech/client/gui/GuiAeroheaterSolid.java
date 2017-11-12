@@ -22,9 +22,8 @@ public class GuiAeroheaterSolid extends GuiContainer {
 	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/solid_fuel_aeroheater.png");
     private final IInventory playerInventory;
     private final TileAeroheaterSolid tile;
-    private static final String TEMPERATURE_PREFIX = "container.prodigytech.temperature.prefix";
-    private static final String TEMPERATURE_SUFFIX = "container.prodigytech.temperature.suffix";
-    private final String prefix, suffix;
+    private static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
+    private final String temperature;
 
 	public GuiAeroheaterSolid(InventoryPlayer playerInv, TileAeroheaterSolid tile) {
 		super(new ContainerAeroheaterSolid(playerInv, tile));
@@ -34,8 +33,7 @@ public class GuiAeroheaterSolid extends GuiContainer {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		prefix = I18n.format(TEMPERATURE_PREFIX);
-		suffix = I18n.format(TEMPERATURE_SUFFIX);
+		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -93,7 +91,7 @@ public class GuiAeroheaterSolid extends GuiContainer {
     {
         if (x >= guiLeft + 79 && x <= guiLeft + 97 && y >= guiTop + 16 && y <= guiTop + 34)
         {
-        	String tooltip = prefix + tile.getField(2) + suffix;
+        	String tooltip = String.format(temperature, tile.getField(2));
             this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
         }
     }

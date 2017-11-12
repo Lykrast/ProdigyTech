@@ -22,14 +22,13 @@ item.prodigytech.ferramic_nugget.name=Ferramic Nugget
 #----------------------------
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
-container.prodigytech.temperature.prefix=Temperature : 
-container.prodigytech.temperature.suffix=°C
+container.prodigytech.temperature=Temperature : %s°C
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
-container.prodigytech.jei.ptexplosionfurnace.required=EP/item : 
+container.prodigytech.jei.ptexplosionfurnace.required=EP/item : %d
 container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
-container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : 
+container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 
 #----------------------------
 #Advancements

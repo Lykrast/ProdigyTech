@@ -23,7 +23,7 @@ public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
 	{
 		explosive = recipe.getExplosive();
 		reactant = recipe.getReactant();
-		power = I18n.format(POWER_DISPLAY) + recipe.getOptimalPower();
+		power = I18n.format(POWER_DISPLAY, recipe.getOptimalPower());
 	}
 
 	@Override

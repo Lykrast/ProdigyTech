@@ -6,9 +6,7 @@ import java.util.List;
 import lykrast.prodigytech.common.init.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class ExplosionFurnaceManager {
 	public static final List<ExplosionFurnaceRecipe> RECIPES = new ArrayList<>();

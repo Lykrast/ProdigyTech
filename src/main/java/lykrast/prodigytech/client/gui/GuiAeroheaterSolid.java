@@ -1,20 +1,14 @@
 package lykrast.prodigytech.client.gui;
 
-import java.util.List;
-
 import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.gui.ContainerAeroheaterSolid;
-import lykrast.prodigytech.common.gui.ContainerExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
-import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.core.ProdigyTech;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 

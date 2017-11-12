@@ -1,6 +1,5 @@
 package lykrast.prodigytech.common.block;
 
-import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.MapColor;

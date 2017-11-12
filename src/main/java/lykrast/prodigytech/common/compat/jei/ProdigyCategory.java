@@ -1,14 +1,11 @@
 package lykrast.prodigytech.common.compat.jei;
 
-import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.ResourceLocation;
 import lykrast.prodigytech.core.ProdigyTech;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
-import mezz.jei.api.gui.IRecipeLayout;
-import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import mezz.jei.api.recipe.IRecipeWrapper;
+import net.minecraft.client.resources.I18n;
 
 public abstract class ProdigyCategory<T extends IRecipeWrapper> implements IRecipeCategory<T> {
 	private final IDrawable background;

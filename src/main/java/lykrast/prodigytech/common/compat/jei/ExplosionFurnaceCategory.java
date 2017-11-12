@@ -1,11 +1,9 @@
 package lykrast.prodigytech.common.compat.jei;
 
-import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import net.minecraft.util.ResourceLocation;
 
 public class ExplosionFurnaceCategory extends ProdigyCategory<ExplosionFurnaceWrapper> {
 	public static final String UID = "ptexplosionfurnace";

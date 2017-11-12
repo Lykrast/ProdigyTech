@@ -2,7 +2,6 @@ package lykrast.prodigytech.core;
 
 import java.util.logging.Logger;
 
-import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;

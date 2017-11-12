@@ -54,6 +54,7 @@ public class ExplosionFurnaceManager {
 		return null;
 	}
 	
+	//Probably REALLY need to optimise those one day
 	public static boolean isValidInput(ItemStack check)
 	{
 		for (ExplosionFurnaceRecipe recipe : RECIPES)

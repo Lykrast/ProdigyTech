@@ -1,15 +1,12 @@
 package lykrast.prodigytech.common.tileentity;
 
-import java.util.Arrays;
-
-import lykrast.prodigytech.common.block.BlockExplosionFurnace;
-import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceExplosive;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceRecipe;
+import lykrast.prodigytech.common.util.IProdigyInventory;
+import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
@@ -18,15 +15,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileExplosionFurnace extends TileEntity implements IInventory {
+public class TileExplosionFurnace extends TileEntity implements IProdigyInventory {
 
 	//Slot IDs
 	//Explosives - Explosives	: 0
@@ -269,6 +266,45 @@ public class TileExplosionFurnace extends TileEntity implements IInventory {
 	@Override
 	public void clear() {
 		inventory.clear();
+	}
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
+	{
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			return true;
+		return super.hasCapability(capability, facing);
+	}
+	
+	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandler(this, 9, 0, 
+			new boolean[]{true,true,true,true,true,true,false,false,false}, 
+			new boolean[]{false,false,false,false,false,false,true,true,true});
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
+	{
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			return (T)invHandler;
+		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	public NonNullList<ItemStack> getInventory() {
+		return inventory;
+	}
+
+	@Override
+	public boolean isStackValid(ItemStack stack, int slot) {
+		if (slot == 0) return ExplosionFurnaceManager.isValidExplosive(stack);
+		else if (slot == 1) return ExplosionFurnaceManager.isValidReactant(stack);
+		else if (slot == 5) return ExplosionFurnaceManager.isValidReagent(stack);
+		else if (slot >= 2 && slot <= 4) return ExplosionFurnaceManager.isValidInput(stack);
+		else return false;
+	}
+
+	@Override
+	public void updateGraphics(int slot) {
+		markDirty();
 	}
 
 }

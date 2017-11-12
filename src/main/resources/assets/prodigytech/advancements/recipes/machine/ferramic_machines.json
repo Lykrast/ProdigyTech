@@ -1,0 +1,20 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:machine/solid_fuel_aeroheater"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:ferramic_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

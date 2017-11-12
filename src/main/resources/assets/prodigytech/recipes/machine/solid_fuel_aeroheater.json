@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"IFI",
+		"III"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"F": { "item": "minecraft:furnace" }
+	},
+	"result": { "item": "prodigytech:solid_fuel_aeroheater" }
+}

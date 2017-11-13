@@ -21,7 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class ModItems {
 	public static Item ferramicIngot, ferramicNugget;
-	static List<Item> itemList = new ArrayList<>();
+	private static List<Item> itemList = new ArrayList<>();
+	static List<Item> itemBlockList = new ArrayList<>();
 	
 	static
 	{
@@ -33,6 +34,8 @@ public class ModItems {
 	@SubscribeEvent
 	public static void registerItems(RegistryEvent.Register<Item> event)
 	{
+		//Just making sure item blocks get registered before items
+		for (Item i : itemBlockList) event.getRegistry().register(i);
 		for (Item i : itemList) event.getRegistry().register(i);
 		ModRecipes.initOreDict();
 	}
@@ -41,6 +44,7 @@ public class ModItems {
 	@SideOnly(Side.CLIENT)
 	public static void registerModels(ModelRegistryEvent evt)
 	{
+		for (Item i : itemBlockList) initModel(i);
 		for (Item i : itemList) initModel(i);
 	}
 	

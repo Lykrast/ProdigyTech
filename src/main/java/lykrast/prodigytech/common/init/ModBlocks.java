@@ -87,7 +87,7 @@ public class ModBlocks {
 		if (item != null)
 		{
 			item.setRegistryName(block.getRegistryName());
-			ModItems.itemList.add(item);
+			ModItems.itemBlockList.add(item);
 		}
 		
 		return block;

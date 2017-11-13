@@ -20,42 +20,58 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+@Mod.EventBusSubscriber
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterSolid,
 		ferramicBlock;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
-	public static void init()
+	static
 	{
 		//Machines
-		explosionFurnace = registerBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
+		explosionFurnace = initBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
 		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
-		aeroheaterSolid = registerBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
+		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		
 		//Materials
-		ferramicBlock = registerBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
+		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
 	}
 	
-	public static Block registerBlock(Block block, String name)
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event)
 	{
-		return registerBlock(block, name, CreativeTabsProdigyTech.instance);
+		for (Block b : blockList) event.getRegistry().register(b);
 	}
 	
-	public static Block registerBlock(Block block, String name, CreativeTabs tab)
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void registerModels(ModelRegistryEvent evt)
+	{
+		for (Block b : blockList) initModel(b);
+	}
+	
+	public static Block initBlock(Block block, String name)
+	{
+		return initBlock(block, name, CreativeTabsProdigyTech.instance);
+	}
+	
+	public static Block initBlock(Block block, String name, CreativeTabs tab)
 	{
 		block.setRegistryName(name);
 		block.setUnlocalizedName(ProdigyTech.MODID + "." + name);
 		if (tab != null) block.setCreativeTab(tab);
 		
-		ForgeRegistries.BLOCKS.register(block);
 		blockList.add(block);
 		
 		ItemBlock item;
@@ -71,18 +87,10 @@ public class ModBlocks {
 		if (item != null)
 		{
 			item.setRegistryName(block.getRegistryName());
-			ForgeRegistries.ITEMS.register(item);
+			ModItems.itemList.add(item);
 		}
 		
 		return block;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public static void initModels()
-	{
-		for (Block b : blockList) initModel(b);
-		//Freeing up memory since it's no longer used after that
-		blockList = null;
 	}
 
 	@SideOnly(Side.CLIENT)

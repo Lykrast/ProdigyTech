@@ -23,10 +23,6 @@ public class CommonProxy {
         config = new Configuration(new File(directory.getPath(), "defiled_lands.cfg"));
         Config.readConfig();
         
-        ModBlocks.init();
-        ModItems.init();
-        ModRecipes.init();
-        
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
 	}
 

@@ -1,17 +1,23 @@
 package lykrast.prodigytech.common.init;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+@Mod.EventBusSubscriber
 public class ModRecipes {
-	public static void init()
+	
+	@SubscribeEvent
+	public static void registerRecipes(RegistryEvent.Register<IRecipe> event)
 	{
-		initOreDict();
 		initSmelting();
 		ExplosionFurnaceManager.init();
 	}
 	
-	private static void initOreDict()
+	public static void initOreDict()
 	{
 		//Ferramic
 		OreDictionary.registerOre("blockFerramic", ModBlocks.ferramicBlock);
@@ -19,7 +25,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("nuggetFerramic", ModItems.ferramicNugget);
 	}
 	
-	private static void initSmelting()
+	public static void initSmelting()
 	{
 		
 	}

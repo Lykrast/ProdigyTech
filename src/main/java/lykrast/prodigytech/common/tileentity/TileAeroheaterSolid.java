@@ -1,14 +1,18 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
+import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileAeroheaterSolid extends TileMachineInventory implements ITickable {
     /** The number of ticks that the furnace will keep burning */
@@ -205,5 +209,24 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
     {
         return 4;
     }
+	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
+	{
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
+			return true;
+		return super.hasCapability(capability, facing);
+	}
+	
+	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandler(this, 1, 0, true, false);
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
+	{
+		System.out.println(facing);
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
+			return (T)invHandler;
+		return super.getCapability(capability, facing);
+	}
 
 }

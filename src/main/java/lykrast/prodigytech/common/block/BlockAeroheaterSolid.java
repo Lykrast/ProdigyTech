@@ -61,7 +61,7 @@ public class BlockAeroheaterSolid extends BlockMachine<TileAeroheaterSolid> {
 
     public static void setState(boolean active, World worldIn, BlockPos pos)
     {
-    	worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, Boolean.valueOf(active)), 4);
+    	worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, Boolean.valueOf(active)), 3);
     }
 
     /**

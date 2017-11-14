@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
+import lykrast.prodigytech.common.util.TemperatureHelper;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -9,6 +10,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -115,6 +117,16 @@ public class BlockAeroheaterSolid extends BlockMachine<TileAeroheaterSolid> {
         }
         
         super.breakBlock(worldIn, pos, state);
+    }
+
+    /**
+     * Called when the given entity walks on this Block
+     */
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    {
+        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getField(2));
+
+        super.onEntityWalk(worldIn, pos, entityIn);
     }
 
 }

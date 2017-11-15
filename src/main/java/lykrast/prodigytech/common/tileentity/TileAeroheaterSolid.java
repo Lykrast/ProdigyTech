@@ -1,6 +1,8 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
+import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -14,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAeroheaterSolid extends TileMachineInventory implements ITickable {
+public class TileAeroheaterSolid extends TileMachineInventory implements ITickable, IHotAir {
     /** The number of ticks that the furnace will keep burning */
     private int furnaceBurnTime;
     /** The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for */
@@ -180,8 +182,6 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
                 return this.currentItemBurnTime;
             case 2:
                 return this.temperature;
-            case 3:
-                return this.temperatureClock;
             default:
                 return 0;
         }
@@ -200,20 +200,20 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
             case 2:
                 this.temperature = value;
                 break;
-            case 3:
-                this.temperatureClock = value;
         }
     }
 
     public int getFieldCount()
     {
-        return 4;
+        return 3;
     }
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
+			return true;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -226,7 +226,14 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 		System.out.println(facing);
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return (T)invHandler;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+			return (T)this;
 		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	public int getAirTemperature() {
+		return temperature;
 	}
 
 }

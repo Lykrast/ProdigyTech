@@ -2,10 +2,8 @@ package lykrast.prodigytech.core;
 
 import java.io.File;
 
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
-import lykrast.prodigytech.common.init.ModBlocks;
-import lykrast.prodigytech.common.init.ModItems;
-import lykrast.prodigytech.common.init.ModRecipes;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -24,6 +22,7 @@ public class CommonProxy {
         Config.readConfig();
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
+        CapabilityHotAir.register();
 	}
 
 	@EventHandler

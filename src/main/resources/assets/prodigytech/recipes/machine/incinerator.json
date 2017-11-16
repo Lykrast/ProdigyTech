@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"IDI",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"D": { "item": "minecraft:dirt", "data": 0 }
+	},
+	"result": { "item": "prodigytech:incinerator" }
+}

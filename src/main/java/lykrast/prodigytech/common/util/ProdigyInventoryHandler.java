@@ -48,7 +48,7 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 
 	@Override
 	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (!insert[slot] || stack.isEmpty()) return ItemStack.EMPTY;
+        if (!insert[slot] || stack.isEmpty()) return stack;
 		stack = stack.copy();
 
 		if(!inventory.isItemValidForSlot(slot+offset, stack)) return stack;

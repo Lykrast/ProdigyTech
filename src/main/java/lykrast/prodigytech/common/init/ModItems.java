@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModItems {
-	public static Item ferramicIngot, ferramicNugget;
+	public static Item ferramicIngot, ferramicNugget, ash;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -29,6 +29,7 @@ public class ModItems {
 		//Materials
 		ferramicIngot = initItem(new Item(), "ferramic_ingot");
 		ferramicNugget = initItem(new Item(), "ferramic_nugget");
+		ash = initItem(new Item(), "ash");
 	}
 	
 	@SubscribeEvent

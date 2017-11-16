@@ -1,13 +1,9 @@
 package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
-import lykrast.prodigytech.common.util.TemperatureHelper;
+import lykrast.prodigytech.common.tileentity.TileIncinerator;
 import lykrast.prodigytech.core.ProdigyTech;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
@@ -16,15 +12,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid> {
+public class BlockIncinerator extends BlockHotAirMachine<TileIncinerator> {
 
-    public BlockAeroheaterSolid(float hardness, float resistance, int harvestLevel) {
-		super(hardness, resistance, harvestLevel, TileAeroheaterSolid.class);
+    public BlockIncinerator(float hardness, float resistance, int harvestLevel) {
+		super(hardness, resistance, harvestLevel, TileIncinerator.class);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileAeroheaterSolid();
+		return new TileIncinerator();
 	}
 
     /**
@@ -38,11 +34,11 @@ public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid
         }
         else
         {
-            TileAeroheaterSolid tile = getTileEntity(worldIn,pos);
+        	TileIncinerator tile = getTileEntity(worldIn,pos);
 
             if (tile != null)
             {
-                playerIn.openGui(ProdigyTech.instance, ProdigyTechGuiHandler.AEROHEATER_SOLID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                playerIn.openGui(ProdigyTech.instance, ProdigyTechGuiHandler.INCINERATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
                 playerIn.openContainer.detectAndSendChanges();
             }
 
@@ -55,7 +51,7 @@ public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid
      */
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-    	TileAeroheaterSolid tile = getTileEntity(worldIn, pos);
+    	TileIncinerator tile = getTileEntity(worldIn, pos);
 
         if (tile != null)
         {

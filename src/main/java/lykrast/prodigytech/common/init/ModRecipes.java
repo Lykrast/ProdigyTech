@@ -23,6 +23,9 @@ public class ModRecipes {
 		OreDictionary.registerOre("blockFerramic", ModBlocks.ferramicBlock);
 		OreDictionary.registerOre("ingotFerramic", ModItems.ferramicIngot);
 		OreDictionary.registerOre("nuggetFerramic", ModItems.ferramicNugget);
+		
+		//Other
+		OreDictionary.registerOre("dustAsh", ModItems.ash);
 	}
 	
 	public static void initSmelting()

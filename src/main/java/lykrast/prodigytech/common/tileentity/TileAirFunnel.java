@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -30,17 +31,7 @@ public class TileAirFunnel extends TileEntity implements IHotAir {
 
 	@Override
 	public int getOutAirTemperature() {
-		TileEntity tile = world.getTileEntity(pos.down());
-		if (tile != null)
-		{
-			IHotAir capability = tile.getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP);
-			if (capability != null)
-			{
-				return capability.getOutAirTemperature();
-			}
-		}
-		
-		return 30;
+		return TemperatureHelper.getBlockTemp(world, pos.down());
 	}
 
 }

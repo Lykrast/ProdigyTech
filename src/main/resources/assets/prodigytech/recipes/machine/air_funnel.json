@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"I I",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" }
+	},
+	"result": { "item": "prodigytech:air_funnel", "count": 4 }
+}

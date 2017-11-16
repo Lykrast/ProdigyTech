@@ -124,7 +124,7 @@ public class BlockAeroheaterSolid extends BlockMachine<TileAeroheaterSolid> {
      */
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getField(2));
+        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getOutAirTemperature());
 
         super.onEntityWalk(worldIn, pos, entityIn);
     }

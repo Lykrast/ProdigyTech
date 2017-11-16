@@ -9,6 +9,8 @@ itemGroup.prodigytech=Prodigy Tech
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 
+tile.prodigytech.air_funnel.name=Air Funnel
+
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 
 #----------------------------

@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 public class HotAirNull implements IHotAir {
 
 	@Override
-	public int getAirTemperature() {
+	public int getOutAirTemperature() {
 		return 0;
 	}
 

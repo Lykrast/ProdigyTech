@@ -216,7 +216,6 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		System.out.println(facing);
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return (T)invHandler;
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
@@ -225,7 +224,7 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 	}
 
 	@Override
-	public int getAirTemperature() {
+	public int getOutAirTemperature() {
 		return temperature;
 	}
 

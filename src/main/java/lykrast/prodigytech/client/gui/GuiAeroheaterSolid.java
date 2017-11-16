@@ -12,11 +12,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class GuiAeroheaterSolid extends GuiContainer {
+public class GuiAeroheaterSolid extends GuiInventory {
 	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/solid_fuel_aeroheater.png");
     private final IInventory playerInventory;
     private final TileAeroheaterSolid tile;
-    private static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
+    private static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
     private final String temperature;
 
 	public GuiAeroheaterSolid(InventoryPlayer playerInv, TileAeroheaterSolid tile) {
@@ -27,7 +27,7 @@ public class GuiAeroheaterSolid extends GuiContainer {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
+		temperature = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -77,7 +77,6 @@ public class GuiAeroheaterSolid extends GuiContainer {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		super.drawScreen(mouseX, mouseY, partialTicks);
-		this.renderHoveredToolTip(mouseX, mouseY);
 		renderTemperatureToolTip(mouseX, mouseY);
 	}
 

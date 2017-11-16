@@ -9,6 +9,7 @@ itemGroup.prodigytech=Prodigy Tech
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.incinerator.name=Incinerator
+tile.prodigytech.blower_furnace.name=Blower Furnace
 
 tile.prodigytech.air_funnel.name=Air Funnel
 
@@ -27,8 +28,10 @@ item.prodigytech.ash.name=Ash
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.incinerator=Incinerator
+container.prodigytech.blower_furnace=Blower Furnace
 
 container.prodigytech.temperature=Air Temperature : %s°C
+container.prodigytech.temperature.output=Output Air Temperature : %s°C
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace

@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:blower_furnace" },
+        "active=false,facing=south": { "model": "prodigytech:blower_furnace", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:blower_furnace", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:blower_furnace", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:blower_furnace_active" },
+        "active=true,facing=south": { "model": "prodigytech:blower_furnace_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:blower_furnace_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:blower_furnace_active", "y": 90 }
+    }
+}

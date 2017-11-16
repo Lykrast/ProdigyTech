@@ -1,6 +1,6 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
+import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
@@ -86,7 +86,7 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
             if (flag != this.isBurning())
             {
                 flag1 = true;
-                BlockAeroheaterSolid.setState(this.isBurning(), this.world, this.pos);
+                BlockHotAirMachine.setState(this.isBurning(), this.world, this.pos);
             }
         }
 

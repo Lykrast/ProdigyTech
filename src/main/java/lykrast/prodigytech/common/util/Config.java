@@ -16,6 +16,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime;
 	public static float incineratorChance;
+	public static int blowerFurnaceProcessTime;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -47,6 +48,8 @@ public class Config {
 				"The base amount of time (in ticks) that the Incinerator takes to process 1 item");
 		incineratorChance = cfg.getFloat("incineratorChance", CATEGORY_MACHINES, 1.0F, 0, 1.0F, 
 				"The chance that an item burned in the Incinerator gives Ash");
+		blowerFurnaceProcessTime = cfg.getInt("blowerFurnaceProcessTime", CATEGORY_MACHINES, 300, 0, Short.MAX_VALUE / 10, 
+				"The base amount of time (in ticks) that the Blower Furnace takes to process 1 item");
 	}
 
 }

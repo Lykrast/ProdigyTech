@@ -5,6 +5,7 @@ import java.util.List;
 
 import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
 import lykrast.prodigytech.common.block.BlockAirFunnel;
+import lykrast.prodigytech.common.block.BlockBlowerFurnace;
 import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.BlockIncinerator;
@@ -12,6 +13,8 @@ import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
 import lykrast.prodigytech.common.block.ICustomStateMapper;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
+import lykrast.prodigytech.common.tileentity.TileAirFunnel;
+import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
@@ -34,7 +37,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterSolid, incinerator, airFunnel,
+	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, airFunnel,
 		ferramicBlock;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
@@ -47,9 +50,12 @@ public class ModBlocks {
 		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
-		
 		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");
+		blowerFurnace = initBlock(new BlockBlowerFurnace(6.0F, 45.0F, 1), "blower_furnace");
+		GameRegistry.registerTileEntity(TileBlowerFurnace.class, PREFIX + "blower_furnace");
+		
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
+		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");

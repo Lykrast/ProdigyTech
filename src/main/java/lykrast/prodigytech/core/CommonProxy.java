@@ -18,7 +18,7 @@ public class CommonProxy {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
 		File directory = e.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "defiled_lands.cfg"));
+        config = new Configuration(new File(directory.getPath(), "prodigy_tech.cfg"));
         Config.readConfig();
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());

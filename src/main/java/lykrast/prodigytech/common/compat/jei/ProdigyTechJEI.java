@@ -1,6 +1,7 @@
 package lykrast.prodigytech.common.compat.jei;
 
 import lykrast.prodigytech.common.init.ModBlocks;
+import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.core.ProdigyTech;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -21,9 +22,11 @@ public class ProdigyTechJEI implements IModPlugin {
 	{
 		ExplosionFurnaceWrapper.registerRecipes(registry);
 		ExplosionFurnaceExplosiveWrapper.registerRecipes(registry);
+		if (Config.incineratorChance > 0) IncineratorWrapper.registerRecipes(registry);
 
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceExplosiveCategory.UID);
+		if (Config.incineratorChance > 0) registry.addRecipeCatalyst(new ItemStack(ModBlocks.incinerator), IncineratorCategory.UID);
 		
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterSolid), VanillaRecipeCategoryUid.FUEL);
 	}
@@ -35,5 +38,6 @@ public class ProdigyTechJEI implements IModPlugin {
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 		registry.addRecipeCategories(new ExplosionFurnaceCategory(guiHelper));
 		registry.addRecipeCategories(new ExplosionFurnaceExplosiveCategory(guiHelper));
+		if (Config.incineratorChance > 0) registry.addRecipeCategories(new IncineratorCategory(guiHelper));
 	}
 }

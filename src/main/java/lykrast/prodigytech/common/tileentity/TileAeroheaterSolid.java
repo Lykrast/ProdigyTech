@@ -61,31 +61,24 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
         {
         	ItemStack fuel = getStackInSlot(0);
         	
-        	if (this.isBurning() || !fuel.isEmpty())
-            {
-        		if (!this.isBurning())
-                {
-                    this.furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
-                    this.currentItemBurnTime = this.furnaceBurnTime;
+			if (!this.isBurning() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
+				this.furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
+				this.currentItemBurnTime = this.furnaceBurnTime;
 
-                    if (this.isBurning())
-                    {
-                        flag1 = true;
+				if (this.isBurning()) {
+					flag1 = true;
 
-                        if (!fuel.isEmpty())
-                        {
-                            Item item = fuel.getItem();
-                            fuel.shrink(1);
+					if (!fuel.isEmpty()) {
+						Item item = fuel.getItem();
+						fuel.shrink(1);
 
-                            if (fuel.isEmpty())
-                            {
-                                ItemStack item1 = item.getContainerItem(fuel);
-                                this.setInventorySlotContents(0, item1);
-                            }
-                        }
-                    }
-                }
-            }
+						if (fuel.isEmpty()) {
+							ItemStack item1 = item.getContainerItem(fuel);
+							this.setInventorySlotContents(0, item1);
+						}
+					}
+				}
+			}
 
             if (this.isBurning()) raiseTemperature();
             else lowerTemperature();

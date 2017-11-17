@@ -6,6 +6,7 @@ import java.util.List;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class RotaryGrinderManager {
 	public static final List<RotaryGrinderRecipe> RECIPES = new ArrayList<>();
@@ -16,6 +17,16 @@ public class RotaryGrinderManager {
 	}
 	
 	public static RotaryGrinderRecipe addRecipe(ItemStack in, ItemStack out, int time)
+	{
+		return addRecipe(new RotaryGrinderRecipe(in, out, time));
+	}
+	
+	public static RotaryGrinderRecipe addRecipe(String in, ItemStack out)
+	{
+		return addRecipe(new RotaryGrinderRecipe(in, out));
+	}
+	
+	public static RotaryGrinderRecipe addRecipe(String in, ItemStack out, int time)
 	{
 		return addRecipe(new RotaryGrinderRecipe(in, out, time));
 	}
@@ -53,7 +64,7 @@ public class RotaryGrinderManager {
 	public static class RotaryGrinderRecipe {
 		private final ItemStack input;
 		private final ItemStack output;
-		private final int time;
+		private final int time, oreInput;
 		
 		public RotaryGrinderRecipe(ItemStack input, ItemStack output)
 		{
@@ -63,6 +74,22 @@ public class RotaryGrinderManager {
 		public RotaryGrinderRecipe(ItemStack input, ItemStack output, int time)
 		{
 			this.input = input;
+			//No support for recipes requiring multiple items for now
+			input.setCount(1);
+			this.output = output;
+			this.time = time;
+			oreInput = -1;
+		}
+		
+		public RotaryGrinderRecipe(String input, ItemStack output)
+		{
+			this(input, output, Config.rotaryGrinderProcessTime);
+		}
+		
+		public RotaryGrinderRecipe(String input, ItemStack output, int time)
+		{
+			oreInput = OreDictionary.getOreID(input);
+			this.input = ItemStack.EMPTY;
 			this.output = output;
 			this.time = time;
 		}
@@ -70,6 +97,11 @@ public class RotaryGrinderManager {
 		public ItemStack getInput()
 		{
 			return input.copy();
+		}
+		
+		public int getOreID()
+		{
+			return oreInput;
 		}
 		
 		public ItemStack getOutput()
@@ -89,7 +121,18 @@ public class RotaryGrinderManager {
 		
 		public boolean isValidInput(ItemStack in)
 		{
-			return (!in.isEmpty() && in.isItemEqual(input) && in.getCount() >= input.getCount());
+			if (in.isEmpty()) return false;
+			if (oreInput != -1)
+			{
+				int[] oreIDs = OreDictionary.getOreIDs(in);
+				for (int i : oreIDs)
+				{
+					if (i == oreInput) return true;
+				}
+				return false;
+			}
+			
+			return (in.isItemEqual(input) && in.getCount() >= input.getCount());
 		}
 	}
 

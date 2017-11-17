@@ -1,0 +1,32 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:materials/ferramic_gear"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:ferramic_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "prodigytech:materials/ferramic_gear"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_material",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,7 +1,10 @@
 package lykrast.prodigytech.common.compat.jei;
 
-import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
 
+import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
+import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
 import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
@@ -13,15 +16,15 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.config.Constants;
 import net.minecraft.client.Minecraft;
 
-public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
-	public static final String UID = "ptincinerator";
+public class RotaryGrinderCategory extends ProdigyCategory<RotaryGrinderWrapper> {
+	public static final String UID = "ptgrinder";
 	private final IDrawableAnimated arrow;
 
-	public IncineratorCategory(IGuiHelper guiHelper) {
-		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 36, 82, 26, 0, 20, 0, 0), UID);
+	public RotaryGrinderCategory(IGuiHelper guiHelper) {
+		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 36, 82, 26), UID);
 		
 		IDrawableStatic arrowDrawable = guiHelper.createDrawable(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17);
-		this.arrow = guiHelper.createAnimatedDrawable(arrowDrawable, Config.incineratorProcessTime, IDrawableAnimated.StartDirection.LEFT, false);
+		this.arrow = guiHelper.createAnimatedDrawable(arrowDrawable, Config.rotaryGrinderProcessTime, IDrawableAnimated.StartDirection.LEFT, false);
 	}
 	
 	@Override
@@ -31,7 +34,7 @@ public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, IncineratorWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, RotaryGrinderWrapper recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
 		guiItemStacks.init(0, true, 0, 4);
@@ -42,7 +45,14 @@ public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
 
 	public static void registerRecipes(IModRegistry registry)
 	{
-		registry.addRecipes(ImmutableList.of(new IncineratorWrapper()), UID);
+		List<RotaryGrinderWrapper> list = new ArrayList<>();
+		
+		for (RotaryGrinderRecipe recipe : RotaryGrinderManager.RECIPES)
+		{
+			list.add(new RotaryGrinderWrapper(recipe));
+		}
+		
+		registry.addRecipes(list, UID);
 	}
 
 }

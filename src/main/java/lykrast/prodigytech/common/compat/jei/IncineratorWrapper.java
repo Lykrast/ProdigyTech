@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.google.common.collect.ImmutableList;
-
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
-import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -50,11 +47,6 @@ public class IncineratorWrapper implements IRecipeWrapper {
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 		int width = minecraft.fontRenderer.getStringWidth(chance);
 		minecraft.fontRenderer.drawString(chance, 69 - width/2, 28, Color.gray.getRGB());
-	}
-
-	public static void registerRecipes(IModRegistry registry)
-	{
-		registry.addRecipes(ImmutableList.of(new IncineratorWrapper()), IncineratorCategory.UID);
 	}
 
 }

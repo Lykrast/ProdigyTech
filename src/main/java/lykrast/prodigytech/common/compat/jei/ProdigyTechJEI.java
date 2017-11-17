@@ -4,6 +4,7 @@ import lykrast.prodigytech.client.gui.GuiAeroheaterSolid;
 import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
 import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
 import lykrast.prodigytech.client.gui.GuiIncinerator;
+import lykrast.prodigytech.client.gui.GuiRotaryGrinder;
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -25,14 +26,16 @@ public class ProdigyTechJEI implements IModPlugin {
 	public void register(IModRegistry registry)
 	{
 		//Recipes
-		ExplosionFurnaceWrapper.registerRecipes(registry);
-		ExplosionFurnaceExplosiveWrapper.registerRecipes(registry);
-		if (Config.incineratorChance > 0) IncineratorWrapper.registerRecipes(registry);
+		ExplosionFurnaceCategory.registerRecipes(registry);
+		ExplosionFurnaceExplosiveCategory.registerRecipes(registry);
+		if (Config.incineratorChance > 0) IncineratorCategory.registerRecipes(registry);
+		RotaryGrinderCategory.registerRecipes(registry);
 
 		//Catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceExplosiveCategory.UID);
 		if (Config.incineratorChance > 0) registry.addRecipeCatalyst(new ItemStack(ModBlocks.incinerator), IncineratorCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.rotaryGrinder), RotaryGrinderCategory.UID);
 
 		//Vanilla catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.blowerFurnace), VanillaRecipeCategoryUid.SMELTING);
@@ -41,6 +44,8 @@ public class ProdigyTechJEI implements IModPlugin {
 		//Clickable areas
 		registry.addRecipeClickArea(GuiExplosionFurnace.class, 79, 34, 42, 17, ExplosionFurnaceCategory.UID, ExplosionFurnaceExplosiveCategory.UID);
 		if (Config.incineratorChance > 0) registry.addRecipeClickArea(GuiIncinerator.class, 79, 35, 24, 17, IncineratorCategory.UID);
+		registry.addRecipeClickArea(GuiRotaryGrinder.class, 79, 35, 24, 17, RotaryGrinderCategory.UID);
+		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeClickArea(GuiAeroheaterSolid.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
 	}
@@ -53,5 +58,6 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new ExplosionFurnaceCategory(guiHelper));
 		registry.addRecipeCategories(new ExplosionFurnaceExplosiveCategory(guiHelper));
 		if (Config.incineratorChance > 0) registry.addRecipeCategories(new IncineratorCategory(guiHelper));
+		registry.addRecipeCategories(new RotaryGrinderCategory(guiHelper));
 	}
 }

@@ -10,6 +10,7 @@ tile.prodigytech.explosion_furnace.name=Explosion Furnace
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.incinerator.name=Incinerator
 tile.prodigytech.blower_furnace.name=Blower Furnace
+tile.prodigytech.rotary_grinder.name=Rotary Grinder
 
 tile.prodigytech.air_funnel.name=Air Funnel
 
@@ -20,6 +21,7 @@ tile.prodigytech.ferramic_block.name=Block of Ferramic
 #----------------------------
 item.prodigytech.ferramic_ingot.name=Ferramic Ingot
 item.prodigytech.ferramic_nugget.name=Ferramic Nugget
+item.prodigytech.ferramic_gear.name=Ferramic Gear
 item.prodigytech.ash.name=Ash
 
 #----------------------------
@@ -29,6 +31,7 @@ container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
+container.prodigytech.rotary_grinder=Rotary Grinder
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C
@@ -39,6 +42,7 @@ container.prodigytech.jei.ptexplosionfurnace.required=EP/item : %d
 container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
 container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 container.prodigytech.jei.ptincinerator=Incinerator
+container.prodigytech.jei.ptgrinder=Rotary Grinder
 
 #----------------------------
 #Advancements

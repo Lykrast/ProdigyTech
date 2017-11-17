@@ -1,13 +1,11 @@
 package lykrast.prodigytech.common.compat.jei;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
-import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -35,18 +33,6 @@ public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 		minecraft.fontRenderer.drawString(power, 24, 13, Color.gray.getRGB());
-	}
-
-	public static void registerRecipes(IModRegistry registry)
-	{
-		List<ExplosionFurnaceExplosiveWrapper> list = new ArrayList<>();
-		
-		for (ExplosionFurnaceManager.ExplosionFurnaceExplosive recipe : ExplosionFurnaceManager.EXPLOSIVES)
-		{
-			list.add(new ExplosionFurnaceExplosiveWrapper(recipe));
-		}
-		
-		registry.addRecipes(list, ExplosionFurnaceExplosiveCategory.UID);
 	}
 
 }

@@ -1,7 +1,12 @@
 package lykrast.prodigytech.common.compat.jei;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
@@ -21,6 +26,18 @@ public class ExplosionFurnaceExplosiveCategory extends ProdigyCategory<Explosion
 		guiItemStacks.init(1, true, 0, 18);
 
 		guiItemStacks.set(ingredients);
+	}
+
+	public static void registerRecipes(IModRegistry registry)
+	{
+		List<ExplosionFurnaceExplosiveWrapper> list = new ArrayList<>();
+		
+		for (ExplosionFurnaceManager.ExplosionFurnaceExplosive recipe : ExplosionFurnaceManager.EXPLOSIVES)
+		{
+			list.add(new ExplosionFurnaceExplosiveWrapper(recipe));
+		}
+		
+		registry.addRecipes(list, UID);
 	}
 
 }

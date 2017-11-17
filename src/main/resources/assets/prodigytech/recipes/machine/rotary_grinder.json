@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"GGG",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" }
+	},
+	"result": { "item": "prodigytech:rotary_grinder" }
+}

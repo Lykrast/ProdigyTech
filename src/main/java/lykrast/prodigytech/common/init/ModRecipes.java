@@ -1,6 +1,7 @@
 package lykrast.prodigytech.common.init;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
+import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +16,7 @@ public class ModRecipes {
 	{
 		initSmelting();
 		ExplosionFurnaceManager.init();
+		RotaryGrinderManager.init();
 	}
 	
 	public static void initOreDict()
@@ -23,6 +25,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("blockFerramic", ModBlocks.ferramicBlock);
 		OreDictionary.registerOre("ingotFerramic", ModItems.ferramicIngot);
 		OreDictionary.registerOre("nuggetFerramic", ModItems.ferramicNugget);
+		OreDictionary.registerOre("gearFerramic", ModItems.ferramicGear);
 		
 		//Other
 		OreDictionary.registerOre("dustAsh", ModItems.ash);

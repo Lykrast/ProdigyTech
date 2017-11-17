@@ -4,17 +4,20 @@ import lykrast.prodigytech.client.gui.GuiAeroheaterSolid;
 import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
 import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
 import lykrast.prodigytech.client.gui.GuiIncinerator;
+import lykrast.prodigytech.client.gui.GuiRotaryGrinder;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
+import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class ProdigyTechGuiHandler implements IGuiHandler {
-	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3;
+	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
+			ROTARY_GRINDER = 4;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -27,6 +30,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerIncinerator(player.inventory, (TileIncinerator)world.getTileEntity(new BlockPos(x, y, z)));
 			case BLOWER_FURNACE:
 				return new ContainerBlowerFurnace(player.inventory, (TileBlowerFurnace)world.getTileEntity(new BlockPos(x, y, z)));
+			case ROTARY_GRINDER:
+				return new ContainerRotaryGrinder(player.inventory, (TileRotaryGrinder)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -42,6 +47,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiIncinerator(player.inventory, (TileIncinerator)world.getTileEntity(new BlockPos(x, y, z)));
 			case BLOWER_FURNACE:
 				return new GuiBlowerFurnace(player.inventory, (TileBlowerFurnace)world.getTileEntity(new BlockPos(x, y, z)));
+			case ROTARY_GRINDER:
+				return new GuiRotaryGrinder(player.inventory, (TileRotaryGrinder)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

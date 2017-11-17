@@ -150,7 +150,7 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
     {
         super.readFromNBT(compound);
         this.furnaceBurnTime = compound.getInteger("BurnTime");
-        this.currentItemBurnTime = TileEntityFurnace.getItemBurnTime(getStackInSlot(0));
+        this.currentItemBurnTime = compound.getInteger("MaxBurnTime");
         this.temperature = compound.getInteger("Temperature");
         this.temperatureClock = compound.getInteger("TemperatureClock");
     }
@@ -159,6 +159,7 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
     {
         super.writeToNBT(compound);
         compound.setInteger("BurnTime", (short)this.furnaceBurnTime);
+        compound.setInteger("MaxBurnTime", (short)this.currentItemBurnTime);
         compound.setInteger("Temperature", (short)this.temperature);
         compound.setInteger("TemperatureClock", (short)this.temperatureClock);
 

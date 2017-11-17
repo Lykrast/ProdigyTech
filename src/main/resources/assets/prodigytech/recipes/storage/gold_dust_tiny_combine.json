@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"DDD",
+		"DDD",
+		"DDD"
+	],
+	"key": {
+		"D": { "type": "forge:ore_dict", "ore": "dustTinyGold" }
+	},
+	"result": { "item": "prodigytech:gold_dust" }
+}

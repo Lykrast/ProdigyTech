@@ -3,24 +3,29 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import lykrast.prodigytech.common.item.ItemFuel;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModItems {
-	public static Item ferramicIngot, ferramicNugget, ferramicGear, ash;
+	public static Item ferramicIngot, ferramicNugget, ferramicGear,
+		ash, flour, sawdust, meatGround, meatPatty,
+		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny,
+		carbonPlate;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -31,6 +36,19 @@ public class ModItems {
 		ferramicNugget = initItem(new Item(), "ferramic_nugget");
 		ferramicGear = initItem(new Item(), "ferramic_gear");
 		ash = initItem(new Item(), "ash");
+
+		flour = initItem(new Item(), "flour");
+		sawdust = initItem(new Item(), "sawdust");
+		meatGround = initItem(new ItemFood(2, 0.3F, true).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "meat_ground");
+		meatPatty = initItem(new ItemFood(8, 1.0F, true), "meat_patty");
+		coalDust = initItem(new ItemFuel(1600), "coal_dust");
+		ferramicDust = initItem(new Item(), "ferramic_dust");
+		ferramicDustTiny = initItem(new Item(), "ferramic_dust_tiny");
+		ironDust = initItem(new Item(), "iron_dust");
+		ironDustTiny = initItem(new Item(), "iron_dust_tiny");
+		goldDust = initItem(new Item(), "gold_dust");
+		goldDustTiny = initItem(new Item(), "gold_dust_tiny");
+		carbonPlate = initItem(new Item(), "carbon_plate");
 	}
 	
 	@SubscribeEvent

@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"DDD",
+		"DDD",
+		"DDD"
+	],
+	"key": {
+		"D": { "type": "forge:ore_dict", "ore": "dustTinyFerramic" }
+	},
+	"result": { "item": "prodigytech:ferramic_dust" }
+}

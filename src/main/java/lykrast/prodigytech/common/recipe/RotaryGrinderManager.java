@@ -3,8 +3,10 @@ package lykrast.prodigytech.common.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -56,9 +58,38 @@ public class RotaryGrinderManager {
 	
 	public static void init()
 	{
+		addRecipe("logWood", new ItemStack(ModItems.sawdust, 4));
+		addRecipe("plankWood", new ItemStack(ModItems.sawdust));
+		
 		addRecipe(new ItemStack(Blocks.STONE), new ItemStack(Blocks.COBBLESTONE));
 		addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Blocks.GRAVEL));
 		addRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND));
+		
+		addRecipe(new ItemStack(Items.WHEAT), new ItemStack(ModItems.flour));
+		addRecipe(new ItemStack(Items.PORKCHOP), new ItemStack(ModItems.meatGround, 2));
+		addRecipe(new ItemStack(Items.BEEF), new ItemStack(ModItems.meatGround, 2));
+		addRecipe(new ItemStack(Items.CHICKEN), new ItemStack(ModItems.meatGround, 2));
+		addRecipe(new ItemStack(Items.RABBIT), new ItemStack(ModItems.meatGround));
+		addRecipe(new ItemStack(Items.MUTTON), new ItemStack(ModItems.meatGround, 2));
+		
+		addRecipe(new ItemStack(Items.COAL), new ItemStack(ModItems.coalDust));
+		addRecipe(new ItemStack(Blocks.COAL_BLOCK), new ItemStack(ModItems.coalDust, 9), Config.rotaryGrinderProcessTime * 9);
+		addRecipe(new ItemStack(ModItems.carbonPlate), new ItemStack(ModItems.coalDust, 8));
+		
+		addRecipe("ingotFerramic", new ItemStack(ModItems.ferramicDust));
+		addRecipe("blockFerramic", new ItemStack(ModItems.ferramicDust, 9), Config.rotaryGrinderProcessTime * 9);
+		addRecipe("nuggetFerramic", new ItemStack(ModItems.ferramicDustTiny), Config.rotaryGrinderProcessTime / 9);
+		addRecipe("gearFerramic", new ItemStack(ModItems.ferramicDustTiny, 15));
+
+		addRecipe("oreIron", new ItemStack(ModItems.ironDust, 2));
+		addRecipe("ingotIron", new ItemStack(ModItems.ironDust));
+		addRecipe("blockIron", new ItemStack(ModItems.ironDust, 9), Config.rotaryGrinderProcessTime * 9);
+		addRecipe("nuggetIron", new ItemStack(ModItems.ironDustTiny), Config.rotaryGrinderProcessTime / 9);
+
+		addRecipe("oreGold", new ItemStack(ModItems.goldDust), 2);
+		addRecipe("ingotGold", new ItemStack(ModItems.goldDust));
+		addRecipe("blockGold", new ItemStack(ModItems.goldDust, 9), Config.rotaryGrinderProcessTime * 9);
+		addRecipe("nuggetGold", new ItemStack(ModItems.goldDustTiny), Config.rotaryGrinderProcessTime / 9);
 	}
 	
 	public static class RotaryGrinderRecipe {

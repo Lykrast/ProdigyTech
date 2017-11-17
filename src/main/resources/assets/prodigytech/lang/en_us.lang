@@ -23,6 +23,19 @@ item.prodigytech.ferramic_ingot.name=Ferramic Ingot
 item.prodigytech.ferramic_nugget.name=Ferramic Nugget
 item.prodigytech.ferramic_gear.name=Ferramic Gear
 item.prodigytech.ash.name=Ash
+item.prodigytech.coal_dust.name=Coal Dust
+item.prodigytech.ferramic_dust.name=Ferramic Dust
+item.prodigytech.ferramic_dust_tiny.name=Tiny Pile of Ferramic Dust
+item.prodigytech.iron_dust.name=Iron Dust
+item.prodigytech.iron_dust_tiny.name=Tiny Pile of Iron Dust
+item.prodigytech.gold_dust.name=Gold Dust
+item.prodigytech.gold_dust_tiny.name=Tiny Pile of Gold Dust
+item.prodigytech.flour.name=Flour
+item.prodigytech.meat_ground.name=Ground Meat
+item.prodigytech.meat_patty.name=Meat Patty
+item.prodigytech.sawdust.name=Sawdust
+
+item.prodigytech.carbon_plate.name=Carbon Plate
 
 #----------------------------
 #UI

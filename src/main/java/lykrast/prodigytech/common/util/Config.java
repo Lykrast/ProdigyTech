@@ -51,7 +51,8 @@ public class Config {
 				"The base amount of time (in ticks) that the Blower Furnace takes to process 1 item");
 		rotaryGrinderProcessTime = cfg.getInt("rotaryGrinderProcessTime", CATEGORY_MACHINES, 300, 0, 30000, 
 				"The base amount of time (in ticks) that the Rotary Grinder takes to process 1 item\n"
-				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
+				+ "Several recipes have shorter or longer processing time, which are all derived from this value\n"
+				+ "High values may result in weird behavior for slow recipes");
 	}
 
 }

@@ -16,6 +16,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime;
 	public static float incineratorChance;
+	public static int rotaryGrinderOreMultiplier;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -43,16 +44,18 @@ public class Config {
 		//-----------
 		//Machines
 		//-----------
-		incineratorProcessTime = cfg.getInt("incineratorProcessTime", CATEGORY_MACHINES, 200, 0, 30000, 
+		incineratorProcessTime = cfg.getInt("incineratorProcessTime", CATEGORY_MACHINES, 200, 1, 30000, 
 				"The base amount of time (in ticks) that the Incinerator takes to process 1 item");
 		incineratorChance = cfg.getFloat("incineratorChance", CATEGORY_MACHINES, 1.0F, 0, 1.0F, 
 				"The chance that an item burned in the Incinerator gives Ash");
-		blowerFurnaceProcessTime = cfg.getInt("blowerFurnaceProcessTime", CATEGORY_MACHINES, 300, 0, 30000, 
+		blowerFurnaceProcessTime = cfg.getInt("blowerFurnaceProcessTime", CATEGORY_MACHINES, 300, 1, 30000, 
 				"The base amount of time (in ticks) that the Blower Furnace takes to process 1 item");
-		rotaryGrinderProcessTime = cfg.getInt("rotaryGrinderProcessTime", CATEGORY_MACHINES, 300, 0, 30000, 
+		rotaryGrinderProcessTime = cfg.getInt("rotaryGrinderProcessTime", CATEGORY_MACHINES, 300, 1, 30000, 
 				"The base amount of time (in ticks) that the Rotary Grinder takes to process 1 item\n"
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value\n"
 				+ "High values may result in weird behavior for slow recipes");
+		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
+				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
 	}
 
 }

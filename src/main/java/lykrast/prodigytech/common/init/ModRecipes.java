@@ -57,5 +57,7 @@ public class ModRecipes {
 		GameRegistry.addSmelting(ModItems.ironDustTiny, new ItemStack(Items.IRON_NUGGET), 0);
 		GameRegistry.addSmelting(ModItems.goldDust, new ItemStack(Items.GOLD_INGOT), 0.1F);
 		GameRegistry.addSmelting(ModItems.goldDustTiny, new ItemStack(Items.GOLD_NUGGET), 0);
+		
+		GameRegistry.addSmelting(ModItems.circuitPlateUnfired, new ItemStack(ModItems.circuitPlate), 0.1F);
 	}
 }

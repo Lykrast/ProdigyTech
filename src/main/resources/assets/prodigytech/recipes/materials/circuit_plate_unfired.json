@@ -1,0 +1,11 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "type": "forge:ore_dict", "ore": "dyeGreen" },
+		{ "item": "minecraft:clay_ball" },
+		{ "type": "forge:ore_dict", "ore": "paper" },
+		{ "type": "forge:ore_dict", "ore": "paper" },
+		{ "type": "forge:ore_dict", "ore": "paper" }
+	],
+	"result": { "item": "prodigytech:circuit_plate_unfired", "count": 3 }
+}

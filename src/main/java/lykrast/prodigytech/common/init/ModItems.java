@@ -3,6 +3,8 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import lykrast.prodigytech.common.item.IItemCustomModel;
+import lykrast.prodigytech.common.item.ItemCircuit;
 import lykrast.prodigytech.common.item.ItemFuel;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -24,8 +26,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
-		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny,
-		carbonPlate;
+		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, carbonPlate,
+		circuitPlate, circuitPlateUnfired, circuit, patternCircuit;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -49,6 +51,11 @@ public class ModItems {
 		goldDust = initItem(new Item(), "gold_dust");
 		goldDustTiny = initItem(new Item(), "gold_dust_tiny");
 		carbonPlate = initItem(new Item(), "carbon_plate");
+		
+		circuitPlate = initItem(new Item(), "circuit_plate");
+		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
+		circuit = initItem(new ItemCircuit(), "circuit");
+		patternCircuit = initItem(new ItemCircuit(), "pattern_circuit");
 	}
 	
 	@SubscribeEvent
@@ -87,6 +94,7 @@ public class ModItems {
 	@SideOnly(Side.CLIENT)
 	private static void initModel(Item i)
 	{
-		ModelLoader.setCustomModelResourceLocation(i, 0, new ModelResourceLocation(i.getRegistryName(), "inventory"));
+		if (i instanceof IItemCustomModel) ((IItemCustomModel)i).initModel();
+		else ModelLoader.setCustomModelResourceLocation(i, 0, new ModelResourceLocation(i.getRegistryName(), "inventory"));
 	}
 }

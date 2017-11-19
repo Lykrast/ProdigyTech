@@ -10,6 +10,7 @@ import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.BlockIncinerator;
 import lykrast.prodigytech.common.block.BlockRotaryGrinder;
+import lykrast.prodigytech.common.block.BlockSolderer;
 import lykrast.prodigytech.common.block.ICustomItemBlock;
 import lykrast.prodigytech.common.block.ICustomModel;
 import lykrast.prodigytech.common.block.ICustomStateMapper;
@@ -19,6 +20,7 @@ import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
 import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
+import lykrast.prodigytech.common.tileentity.TileSolderer;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
@@ -39,7 +41,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, airFunnel,
+	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer,
+		airFunnel,
 		ferramicBlock;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
@@ -57,6 +60,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileBlowerFurnace.class, PREFIX + "blower_furnace");
 		rotaryGrinder = initBlock(new BlockRotaryGrinder(6.0F, 45.0F, 1), "rotary_grinder");
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
+		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
+		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
 		
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");

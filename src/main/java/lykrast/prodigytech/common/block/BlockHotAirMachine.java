@@ -33,14 +33,6 @@ public abstract class BlockHotAirMachine<T extends TileEntity> extends BlockMach
 		worldIn.setBlockState(pos, worldIn.getBlockState(pos).withProperty(ACTIVE, Boolean.valueOf(active)), 3);
 	}
 
-	public BlockHotAirMachine(Material materialIn, Class tile) {
-		super(materialIn, tile);
-	}
-
-	public BlockHotAirMachine(Material materialIn, MapColor colorIn) {
-		super(materialIn, colorIn);
-	}
-
 	/**
 	 * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
 	 * IBlockstate

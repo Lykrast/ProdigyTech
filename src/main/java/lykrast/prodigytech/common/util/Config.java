@@ -14,9 +14,10 @@ public class Config {
 	public static boolean test;
 	
 	//Machines
-	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime;
+	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, soldererProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
+	public static int soldererMaxGold;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -56,6 +57,12 @@ public class Config {
 				+ "High values may result in weird behavior for slow recipes");
 		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
+		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 30000, 
+				"The base amount of time (in ticks) that the Solderer takes to make 1 Crude Circuit\n"
+				+ "The time of all other recipes are derived from this value\n"
+				+ "High values may result in weird behavior for slow recipes");
+		soldererMaxGold = cfg.getInt("soldererMaxGold", CATEGORY_MACHINES, 81, 9, 20736, 
+				"How much gold (in nuggets) can the Solderer hold in its internal buffer");
 	}
 
 }

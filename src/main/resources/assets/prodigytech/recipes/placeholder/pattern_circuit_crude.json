@@ -1,0 +1,8 @@
+{
+	"type": "forge:ore_shapeless",
+	"group": "pattern_circuit_crude",
+	"ingredients": [
+		{ "item": "prodigytech:pattern_circuit", "data": 2 }
+	],
+	"result": { "item": "prodigytech:pattern_circuit", "data": 0 }
+}

@@ -55,7 +55,7 @@ public class ModItems {
 		circuitPlate = initItem(new Item(), "circuit_plate");
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
 		circuit = initItem(new ItemCircuit(), "circuit");
-		patternCircuit = initItem(new ItemCircuit(), "pattern_circuit");
+		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
 	}
 	
 	@SubscribeEvent

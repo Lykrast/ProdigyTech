@@ -11,6 +11,7 @@ tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.incinerator.name=Incinerator
 tile.prodigytech.blower_furnace.name=Blower Furnace
 tile.prodigytech.rotary_grinder.name=Rotary Grinder
+tile.prodigytech.solderer.name=Solderer
 
 tile.prodigytech.air_funnel.name=Air Funnel
 
@@ -54,9 +55,14 @@ container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder
+container.prodigytech.solderer=Solderer
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C
+container.prodigytech.solderer.gold.blocks=%s Blocks
+container.prodigytech.solderer.gold.ingots=%s Ingots
+container.prodigytech.solderer.gold.nuggets=%s Nuggets
+container.prodigytech.solderer.gold.empty=Empty
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
@@ -65,6 +71,7 @@ container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
 container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
+container.prodigytech.jei.ptsolderer=Solderer
 
 #----------------------------
 #Advancements

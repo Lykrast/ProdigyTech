@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.init;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
+import lykrast.prodigytech.common.recipe.SoldererManager;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -20,6 +21,7 @@ public class ModRecipes {
 		initSmelting();
 		ExplosionFurnaceManager.init();
 		RotaryGrinderManager.init();
+		SoldererManager.init();
 	}
 	
 	public static void initOreDict()

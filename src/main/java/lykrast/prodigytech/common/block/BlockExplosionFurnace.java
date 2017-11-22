@@ -22,6 +22,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> implements ICustomStateMapper {
 
@@ -156,6 +158,7 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     }
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void setCustomStateMapper() {
 		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(TRIGGERED).build());
 	}

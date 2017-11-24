@@ -111,6 +111,9 @@ public class ExplosionFurnaceManager {
 		
 		//End Crystal
 		addExplosive(new ItemStack(Items.ENDER_EYE, 1), new ItemStack(Items.GHAST_TEAR), 2160);
+		
+		//Dust
+		addExplosive(new ItemStack(ModItems.sawdust, 1), new ItemStack(ModItems.ash, 1), 15);
 	}
 	
 	public static class ExplosionFurnaceRecipe {

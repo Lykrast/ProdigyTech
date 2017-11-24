@@ -43,7 +43,7 @@ public class TileExplosionFurnace extends TileMachineInventory {
 				
 				//Make explosion
 				BlockPos origin = pos.offset(facing);
-				world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, 2.0F, false);
+				world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, Math.min(power / 720F, 2.0F), false);
 				
 				//For each input slot
 				for (int slot = 2; slot <= 4; slot++)

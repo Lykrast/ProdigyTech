@@ -1,22 +1,20 @@
 package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.item.ItemBlockAeroheater;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
-import lykrast.prodigytech.common.util.TemperatureHelper;
 import lykrast.prodigytech.core.ProdigyTech;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid> {
+public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid> implements ICustomItemBlock {
 
     public BlockAeroheaterSolid(float hardness, float resistance, int harvestLevel) {
 		super(hardness, resistance, harvestLevel, TileAeroheaterSolid.class);
@@ -64,5 +62,10 @@ public class BlockAeroheaterSolid extends BlockHotAirMachine<TileAeroheaterSolid
         
         super.breakBlock(worldIn, pos, state);
     }
+
+	@Override
+	public ItemBlock getItemBlock() {
+		return new ItemBlockAeroheater(this, 200);
+	}
 
 }

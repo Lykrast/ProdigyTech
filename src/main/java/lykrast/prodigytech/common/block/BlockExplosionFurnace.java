@@ -3,6 +3,7 @@ package lykrast.prodigytech.common.block;
 import java.util.Random;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.item.ItemBlockInfoShift;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
@@ -16,6 +17,7 @@ import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -25,7 +27,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> implements ICustomStateMapper {
+public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> implements ICustomStateMapper, ICustomItemBlock {
 
     public static final PropertyBool TRIGGERED = PropertyBool.create("triggered");
     
@@ -161,6 +163,11 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
 	@SideOnly(Side.CLIENT)
 	public void setCustomStateMapper() {
 		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(TRIGGERED).build());
+	}
+
+	@Override
+	public ItemBlock getItemBlock() {
+		return new ItemBlockInfoShift(this);
 	}
 
 }

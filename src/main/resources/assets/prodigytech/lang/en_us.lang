@@ -7,13 +7,20 @@ itemGroup.prodigytech=Prodigy Tech
 #Blocks
 #----------------------------
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
+tile.prodigytech.explosion_furnace.tooltip=Uses an explosive reaction\nto process items
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
+tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuels\nTurn off with redstone signal
 tile.prodigytech.incinerator.name=Incinerator
+tile.prodigytech.incinerator.tooltip=Burns any item into Ash
 tile.prodigytech.blower_furnace.name=Blower Furnace
+tile.prodigytech.blower_furnace.tooltip=Smelts things like a Furnace
 tile.prodigytech.rotary_grinder.name=Rotary Grinder
+tile.prodigytech.rotary_grinder.tooltip=Crushes things
 tile.prodigytech.solderer.name=Solderer
+tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
 
 tile.prodigytech.air_funnel.name=Air Funnel
+tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 
@@ -50,6 +57,11 @@ item.prodigytech.pattern_circuit.perfected.name=Perfected Circuit Pattern
 #----------------------------
 #UI
 #----------------------------
+tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
+tooltip.prodigytech.temperature.max=§aMaximum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.min=§aMinimum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.transfer=§aHeat transmitted:§f %d%%§r
+
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.incinerator=Incinerator

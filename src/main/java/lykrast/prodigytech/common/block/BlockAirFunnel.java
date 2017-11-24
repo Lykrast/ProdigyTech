@@ -1,14 +1,15 @@
 package lykrast.prodigytech.common.block;
 
+import lykrast.prodigytech.common.item.ItemBlockInfoShift;
 import lykrast.prodigytech.common.tileentity.TileAirFunnel;
 import lykrast.prodigytech.common.util.TemperatureHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -16,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider {
+public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider, ICustomItemBlock {
     protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 1.0D, 0.9375D);
 
 	public BlockAirFunnel(float hardness, float resistance, int harvestLevel) {
@@ -77,5 +78,10 @@ public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider 
     	if (face == EnumFacing.DOWN || face == EnumFacing.UP) return BlockFaceShape.SOLID;
     	else return BlockFaceShape.UNDEFINED;
     }
+
+	@Override
+	public ItemBlock getItemBlock() {
+		return new ItemBlockInfoShift(this);
+	}
 
 }

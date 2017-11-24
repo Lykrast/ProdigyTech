@@ -1,18 +1,20 @@
 package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.item.ItemBlockMachineHotAir;
 import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockRotaryGrinder extends BlockHotAirMachine<TileRotaryGrinder> {
+public class BlockRotaryGrinder extends BlockHotAirMachine<TileRotaryGrinder> implements ICustomItemBlock {
 
     public BlockRotaryGrinder(float hardness, float resistance, int harvestLevel) {
 		super(hardness, resistance, harvestLevel, TileRotaryGrinder.class);
@@ -60,5 +62,10 @@ public class BlockRotaryGrinder extends BlockHotAirMachine<TileRotaryGrinder> {
         
         super.breakBlock(worldIn, pos, state);
     }
+
+	@Override
+	public ItemBlock getItemBlock() {
+		return new ItemBlockMachineHotAir(this, 80, 80);
+	}
 
 }

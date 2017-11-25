@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:solid_fuel_aeroheater"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.root.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.root.description"
+        },
+        "background": "prodigytech:textures/blocks/ash_bricks.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "crafting_table": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "minecraft:iron_ingot"
+                    }
+                ]
+            }
+        }
+    }
+}

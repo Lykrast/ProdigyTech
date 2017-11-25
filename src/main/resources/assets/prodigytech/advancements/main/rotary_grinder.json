@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:rotary_grinder"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.rotary_grinder.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.rotary_grinder.description"
+        }
+    },
+    "parent": "prodigytech:main/explosion_furnace",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:rotary_grinder"
+                    }
+                ]
+            }
+        }
+    }
+}

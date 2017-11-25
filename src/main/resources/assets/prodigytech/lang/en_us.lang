@@ -89,3 +89,14 @@ container.prodigytech.jei.ptsolderer=Solderer
 #----------------------------
 #Advancements
 #----------------------------
+advancements.prodigytech.main.root.title=Prodigy Tech
+advancements.prodigytech.main.root.description=Wonders await you
+advancements.prodigytech.main.explosion_furnace.title=A Real Blast Furnace
+advancements.prodigytech.main.explosion_furnace.description=Make an Explosion Furnace
+advancements.prodigytech.main.rotary_grinder.title=Nothing But Shreds
+advancements.prodigytech.main.rotary_grinder.description=Make a Rotary Grinder
+advancements.prodigytech.main.solderer.title=Precision Work
+advancements.prodigytech.main.solderer.description=Make a Solderer
+
+advancements.prodigytech.main.meat_patty.title=I'm Lovin' It
+advancements.prodigytech.main.meat_patty.description=Make a delicious Meat Patty

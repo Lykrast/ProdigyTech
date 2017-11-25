@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:solderer"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.solderer.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.solderer.description"
+        }
+    },
+    "parent": "prodigytech:main/rotary_grinder",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:solderer"
+                    }
+                ]
+            }
+        }
+    }
+}

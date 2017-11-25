@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:meat_patty"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.meat_patty.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.meat_patty.description"
+        }
+    },
+    "parent": "prodigytech:main/rotary_grinder",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:meat_patty"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:explosion_furnace"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.explosion_furnace.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.explosion_furnace.description"
+        }
+    },
+    "parent": "prodigytech:main/root",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:explosion_furnace"
+                    }
+                ]
+            }
+        }
+    }
+}

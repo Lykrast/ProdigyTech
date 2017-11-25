@@ -23,6 +23,7 @@ tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
+tile.prodigytech.ash_bricks.name=Ash Bricks
 
 #----------------------------
 #Items

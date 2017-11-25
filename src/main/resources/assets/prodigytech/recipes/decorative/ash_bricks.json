@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"BBB",
+		"BAB",
+		"BBB"
+	],
+	"key": {
+		"B": { "item": "minecraft:brick_block" },
+		"A": { "type": "forge:ore_dict", "ore": "dustAsh" }
+	},
+	"result": { "item": "prodigytech:ash_bricks", "count": 8 }
+}

@@ -18,6 +18,8 @@ tile.prodigytech.rotary_grinder.name=Rotary Grinder
 tile.prodigytech.rotary_grinder.tooltip=Crushes things
 tile.prodigytech.solderer.name=Solderer
 tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
+tile.prodigytech.crystal_growth_chamber.name=Crystal Growth Chamber
+tile.prodigytech.crystal_growth_chamber.tooltip=Grows Energion crystals from\nsynchronized thermionic oscillations
 
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
@@ -69,6 +71,7 @@ container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder
 container.prodigytech.solderer=Solderer
+container.prodigytech.crystal_growth_chamber=Crystal Growth Chamber
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C
@@ -76,6 +79,12 @@ container.prodigytech.solderer.gold.blocks=%s Blocks
 container.prodigytech.solderer.gold.ingots=%s Ingots
 container.prodigytech.solderer.gold.nuggets=%s Nuggets
 container.prodigytech.solderer.gold.empty=Empty
+container.prodigytech.crystal_growth_chamber.north=North oscillation
+container.prodigytech.crystal_growth_chamber.south=South oscillation
+container.prodigytech.crystal_growth_chamber.east=East oscillation
+container.prodigytech.crystal_growth_chamber.west=West oscillation
+container.prodigytech.crystal_growth_chamber.danger.yellow=§6Warning:§r oscillations aren't fully synchronized
+container.prodigytech.crystal_growth_chamber.danger.red=§cWarning:§r oscillation desynchronization level critical
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
@@ -85,6 +94,7 @@ container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
 container.prodigytech.jei.ptsolderer=Solderer
+container.prodigytech.jei.ptcrystalchamber=Crystal Growth Chamber
 
 #----------------------------
 #Advancements

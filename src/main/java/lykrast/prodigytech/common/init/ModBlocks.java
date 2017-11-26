@@ -6,6 +6,7 @@ import java.util.List;
 import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
 import lykrast.prodigytech.common.block.BlockAirFunnel;
 import lykrast.prodigytech.common.block.BlockBlowerFurnace;
+import lykrast.prodigytech.common.block.BlockCrystalGrowthChamber;
 import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
 import lykrast.prodigytech.common.block.BlockIncinerator;
@@ -17,6 +18,7 @@ import lykrast.prodigytech.common.block.ICustomStateMapper;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileAirFunnel;
 import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
+import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
 import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
@@ -41,7 +43,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer,
+	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer, crystalGrowthChamber,
 		airFunnel,
 		ferramicBlock,
 		ashBricks;
@@ -53,8 +55,10 @@ public class ModBlocks {
 		//Machines
 		explosionFurnace = initBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
 		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
+		//Aeroheaters
 		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
+		//Hot air machines
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
 		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");
 		blowerFurnace = initBlock(new BlockBlowerFurnace(6.0F, 45.0F, 1), "blower_furnace");
@@ -63,7 +67,9 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
-		
+		crystalGrowthChamber = initBlock(new BlockCrystalGrowthChamber(6.0F, 45.0F, 1), "crystal_growth_chamber");
+		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
+		//Hot air misc
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		

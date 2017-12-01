@@ -1,10 +1,5 @@
 package lykrast.prodigytech.client.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-
 import lykrast.prodigytech.common.gui.ContainerCrystalGrowthChamber;
 import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
 import lykrast.prodigytech.common.util.Config;
@@ -36,7 +31,7 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 		this.tile = tile;
 		
 		this.xSize = 176;
-		this.ySize = 166;
+		this.ySize = 187;
 		north = I18n.format(NORTH_UNLOCALIZED);
 		south = I18n.format(SOUTH_UNLOCALIZED);
 		east = I18n.format(EAST_UNLOCALIZED);

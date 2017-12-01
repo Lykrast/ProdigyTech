@@ -1,6 +1,5 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -25,22 +24,22 @@ public class ContainerCrystalGrowthChamber extends ContainerMachine<TileCrystalG
 		//Player - Hotbar 0-8				: 29-37
 		
 		//Input
-    	this.addSlotToContainer(new SlotCrystalGrowthChamberInput(tile, 0, 80, 26));
+    	this.addSlotToContainer(new SlotCrystalGrowthChamberInput(tile, 0, 80, 35));
     	//Output
-    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 80, 26));
+    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 80, 35));
 
 		//Player slots
         for (int i = 0; i < 3; ++i)
         {
             for (int j = 0; j < 9; ++j)
             {
-                this.addSlotToContainer(new Slot(userInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlotToContainer(new Slot(userInv, j + i * 9 + 9, 8 + j * 18, 105 + i * 18));
             }
         }
 
         for (int k = 0; k < 9; ++k)
         {
-            this.addSlotToContainer(new Slot(userInv, k, 8 + k * 18, 142));
+            this.addSlotToContainer(new Slot(userInv, k, 8 + k * 18, 163));
         }
 	}
 

@@ -1,10 +1,8 @@
 package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.capability.IHotAir;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;

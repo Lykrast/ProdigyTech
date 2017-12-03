@@ -4,12 +4,8 @@ import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileIncinerator extends TileHotAirMachineSimple implements ITickable, IHotAir {
     public TileIncinerator() {

@@ -1,8 +1,6 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockHotAirMachine;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
 import lykrast.prodigytech.common.recipe.SoldererManager;
 import lykrast.prodigytech.common.recipe.SoldererManager.SoldererRecipe;
 import lykrast.prodigytech.common.util.Config;

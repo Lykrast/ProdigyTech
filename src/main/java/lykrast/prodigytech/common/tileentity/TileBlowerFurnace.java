@@ -2,18 +2,10 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.IHotAir;
-import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileBlowerFurnace extends TileHotAirMachineSimple implements ITickable, IHotAir {
     public TileBlowerFurnace() {

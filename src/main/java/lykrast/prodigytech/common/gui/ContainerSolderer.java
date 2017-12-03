@@ -1,6 +1,5 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SoldererManager;
 import lykrast.prodigytech.common.tileentity.TileSolderer;
 import net.minecraft.entity.player.EntityPlayer;

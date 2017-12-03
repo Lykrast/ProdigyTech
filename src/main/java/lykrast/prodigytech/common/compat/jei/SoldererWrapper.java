@@ -106,7 +106,7 @@ public class SoldererWrapper implements IRecipeWrapper {
 			
 			return list;
 		}
-		else return Collections.EMPTY_LIST;
+		else return Collections.emptyList();
 	}
 
 }

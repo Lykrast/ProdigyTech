@@ -1,21 +1,11 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockHotAirMachine;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
-import lykrast.prodigytech.common.recipe.SoldererManager;
-import lykrast.prodigytech.common.recipe.SoldererManager.SoldererRecipe;
-import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
-import lykrast.prodigytech.common.util.TemperatureHelper;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileCrystalGrowthChamber extends TileMachineInventory implements ITickable {

@@ -27,7 +27,9 @@ public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, carbonPlate,
-		circuitPlate, circuitPlateUnfired, circuit, patternCircuit;
+		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
+		energionCrystal, energionCrystalSeed, energionDust, 
+		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -56,6 +58,14 @@ public class ModItems {
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
 		circuit = initItem(new ItemCircuit(), "circuit");
 		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
+		
+		energionCrystal = initItem(new Item(), "energion_crystal");
+		energionCrystalSeed = initItem(new Item(), "energion_crystal_seed");
+		energionDust = initItem(new Item(), "energion_dust");
+		energionBatteryEmpty = initItem(new Item(), "energion_battery_empty");
+		energionBattery = initItem(new Item(), "energion_battery");
+		energionBatteryDoubleEmpty = initItem(new Item(), "energion_battery_double_empty");
+		energionBatteryDouble = initItem(new Item(), "energion_battery_double");
 	}
 	
 	@SubscribeEvent

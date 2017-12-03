@@ -103,6 +103,11 @@ public class RotaryGrinderManager {
 		addRecipe("blockFerramic", new ItemStack(ModItems.ferramicDust, 9), Config.rotaryGrinderProcessTime * 9);
 		addRecipe("nuggetFerramic", new ItemStack(ModItems.ferramicDustTiny), Config.rotaryGrinderProcessTime / 9);
 		addRecipe("gearFerramic", new ItemStack(ModItems.ferramicDustTiny, 15));
+		addRecipe(new ItemStack(ModItems.energionBatteryEmpty), new ItemStack(ModItems.ferramicDustTiny, 16));
+		addRecipe(new ItemStack(ModItems.energionBatteryDoubleEmpty), new ItemStack(ModItems.ferramicDustTiny, 33));
+		
+		addRecipe("gemEnergion", new ItemStack(ModItems.energionDust));
+		addRecipe("gemBigEnergion", new ItemStack(ModItems.energionDust, 6), Config.rotaryGrinderProcessTime * 6);
 	}
 	
 	public static class RotaryGrinderRecipe {

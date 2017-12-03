@@ -57,6 +57,14 @@ item.prodigytech.pattern_circuit.crude.name=Crude Circuit Pattern
 item.prodigytech.pattern_circuit.refined.name=Refined Circuit Pattern
 item.prodigytech.pattern_circuit.perfected.name=Perfected Circuit Pattern
 
+item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
+item.prodigytech.energion_crystal.name=Energion Crystal Cluster
+item.prodigytech.energion_dust.name=Energion Dust
+item.prodigytech.energion_battery_empty.name=Energion Battery (Empty)
+item.prodigytech.energion_battery.name=Energion Battery
+item.prodigytech.energion_battery_double_empty.name=Double Energion Battery (Empty)
+item.prodigytech.energion_battery_double.name=Double Energion Battery
+
 #----------------------------
 #UI
 #----------------------------

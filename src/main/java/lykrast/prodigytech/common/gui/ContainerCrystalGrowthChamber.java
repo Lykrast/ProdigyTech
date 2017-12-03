@@ -26,7 +26,7 @@ public class ContainerCrystalGrowthChamber extends ContainerMachine<TileCrystalG
 		//Input
     	this.addSlotToContainer(new SlotCrystalGrowthChamberInput(tile, 0, 80, 35));
     	//Output
-    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 80, 35));
+    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 129, 35));
 
 		//Player slots
         for (int i = 0; i < 3; ++i)

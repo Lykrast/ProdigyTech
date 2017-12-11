@@ -4,6 +4,7 @@ import lykrast.prodigytech.common.item.ItemBlockMachineHotAir;
 import lykrast.prodigytech.common.tileentity.TileThermionicOscillator;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class BlockThermionicOscillator extends BlockHotAirMachine<TileThermionicOscillator> implements ICustomItemBlock {
@@ -14,7 +15,9 @@ public class BlockThermionicOscillator extends BlockHotAirMachine<TileThermionic
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileThermionicOscillator();
+		TileThermionicOscillator tile = new TileThermionicOscillator();
+		tile.setFacing(EnumFacing.getHorizontal(meta & 7));
+		return tile;
 	}
 
 	@Override

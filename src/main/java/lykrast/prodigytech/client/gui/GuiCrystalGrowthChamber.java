@@ -58,6 +58,20 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		this.mc.getTextureManager().bindTexture(GUI);
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		
+		//Oscillations
+	    //North
+	    int l = getFieldScaled(2, 18, 0, 20);
+	    this.drawTexturedModalRect(guiLeft + 79, guiTop + 16, 176, 0, 18, l);
+	    //South
+	    l = getFieldScaled(3, 18, 0, 20);
+	    this.drawTexturedModalRect(guiLeft + 79, guiTop + 52 + (18 - l), 194, (18 - l), 18, l);
+	    //East
+	    l = getFieldScaled(4, 18, 0, 20);
+	    this.drawTexturedModalRect(guiLeft + 97 + (18 - l), guiTop + 34, 194 + (18 - l), 18, l, 18);
+	    //West
+	    l = getFieldScaled(5, 18, 0, 20);
+	    this.drawTexturedModalRect(guiLeft + 61, guiTop + 34, 176, 18, l, 18);
 	
 //	    if (TileCrystalGrowthChamber.isProcessing(tile))
 //	    {
@@ -65,9 +79,6 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 //	        this.drawTexturedModalRect(guiLeft + 79, guiTop + 35, 176, 0, k, 17);
 //	    }
 //	
-//	    //Heat
-//	    int l = getFieldScaled(2, 17, 30, 125);
-//	    this.drawTexturedModalRect(guiLeft + 82, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 //	
 //	    //Gold
 //	    int m = getFieldScaled(3, 52, 0, Config.soldererMaxGold);

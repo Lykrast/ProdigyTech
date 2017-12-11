@@ -53,7 +53,7 @@ public class TileThermionicOscillator extends TileEntity implements IHotAir, ITh
 	public void update() {
 		int temperature = TemperatureHelper.getBlockTemp(world, pos.down());
 		boolean previous = power > 0;
-		boolean next = !world.isBlockPowered(pos) && temperature > 125;
+		boolean next = !world.isBlockPowered(pos) && temperature >= 125;
 		if (next)
 		{
 			temperatureOut = (int) (temperature * 0.75F);

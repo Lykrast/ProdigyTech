@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ContainerCrystalGrowthChamber extends ContainerMachine<TileCrystalGrowthChamber> {
 	private int processTime;
 	private int danger;
-	private int expectedN, expectedS, expectedE, expectedW;
+	private int progressN, progressS, progressE, progressW;
 	
 	public ContainerCrystalGrowthChamber(InventoryPlayer userInv, TileCrystalGrowthChamber tile) {
 		super(tile);
@@ -70,22 +70,22 @@ public class ContainerCrystalGrowthChamber extends ContainerMachine<TileCrystalG
                 icontainerlistener.sendWindowProperty(this, 1, tile.getField(1));
             }
 
-            if (expectedN != tile.getField(2))
+            if (progressN != tile.getField(2))
             {
                 icontainerlistener.sendWindowProperty(this, 2, tile.getField(2));
             }
 
-            if (expectedS != tile.getField(3))
+            if (progressS != tile.getField(3))
             {
                 icontainerlistener.sendWindowProperty(this, 3, tile.getField(3));
             }
 
-            if (expectedE != tile.getField(4))
+            if (progressE != tile.getField(4))
             {
                 icontainerlistener.sendWindowProperty(this, 4, tile.getField(4));
             }
 
-            if (expectedW != tile.getField(5))
+            if (progressW != tile.getField(5))
             {
                 icontainerlistener.sendWindowProperty(this, 5, tile.getField(5));
             }
@@ -93,10 +93,10 @@ public class ContainerCrystalGrowthChamber extends ContainerMachine<TileCrystalG
         
         processTime = tile.getField(0);
         danger = tile.getField(1);
-        expectedN = tile.getField(2);
-        expectedS = tile.getField(3);
-        expectedE = tile.getField(4);
-        expectedW = tile.getField(5);
+        progressN = tile.getField(2);
+        progressS = tile.getField(3);
+        progressE = tile.getField(4);
+        progressW = tile.getField(5);
     }
 
     @SideOnly(Side.CLIENT)

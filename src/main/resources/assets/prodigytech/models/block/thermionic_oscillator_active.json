@@ -1,0 +1,9 @@
+{
+    "parent": "prodigytech:block/thermionic_oscillator",
+    "textures": {
+        "particle": "prodigytech:blocks/thermionic_oscillator_front_active",
+        "north": "prodigytech:blocks/thermionic_oscillator_front_active",
+        "east": "prodigytech:blocks/thermionic_oscillator_side_active",
+        "west": "prodigytech:blocks/thermionic_oscillator_side_active"
+    }
+}

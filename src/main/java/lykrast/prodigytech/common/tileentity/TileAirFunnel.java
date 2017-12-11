@@ -8,10 +8,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
 public class TileAirFunnel extends TileEntity implements IHotAir {
-	/** Internal check to prevent infinite checking loops (for whatever reason they could appear). */
-	private boolean checked = false;
-    /** The current temperature of the funnel */
-    private int temperature;
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)

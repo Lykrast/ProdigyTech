@@ -3,6 +3,7 @@ package lykrast.prodigytech.core;
 import java.io.File;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
+import lykrast.prodigytech.common.capability.CapabilityThermionicOscillation;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
@@ -23,6 +24,7 @@ public class CommonProxy {
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
         CapabilityHotAir.register();
+        CapabilityThermionicOscillation.register();
 	}
 
 	@EventHandler

@@ -25,7 +25,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer, crystalGrowthChamber,
+	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer,
+		crystalGrowthChamber, thermionicOscillator,
 		airFunnel,
 		ferramicBlock,
 		ashBricks;
@@ -49,8 +50,11 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
+		//Crystal
 		crystalGrowthChamber = initBlock(new BlockCrystalGrowthChamber(6.0F, 45.0F, 1), "crystal_growth_chamber");
 		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
+		thermionicOscillator = initBlock(new BlockThermionicOscillator(6.0F, 45.0F, 1), "thermionic_oscillator");
+		GameRegistry.registerTileEntity(TileThermionicOscillator.class, PREFIX + "thermionic_oscillator");
 		//Hot air misc
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");

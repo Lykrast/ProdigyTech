@@ -19,7 +19,9 @@ tile.prodigytech.rotary_grinder.tooltip=Crushes things
 tile.prodigytech.solderer.name=Solderer
 tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
 tile.prodigytech.crystal_growth_chamber.name=Crystal Growth Chamber
-tile.prodigytech.crystal_growth_chamber.tooltip=Grows Energion crystals from\nsynchronized thermionic oscillations
+tile.prodigytech.crystal_growth_chamber.tooltip=Grows Energion Crystals from\nthermionic oscillations on opposite sides
+tile.prodigytech.thermionic_oscillator.name=Thermionic Oscillator
+tile.prodigytech.thermionic_oscillator.tooltip=Emits thermionic oscillations\nTurn off with redstone signal
 
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
@@ -91,7 +93,7 @@ container.prodigytech.crystal_growth_chamber.north=North oscillation
 container.prodigytech.crystal_growth_chamber.south=South oscillation
 container.prodigytech.crystal_growth_chamber.east=East oscillation
 container.prodigytech.crystal_growth_chamber.west=West oscillation
-container.prodigytech.crystal_growth_chamber.danger.yellow=§6Warning:§r oscillations aren't fully synchronized
+container.prodigytech.crystal_growth_chamber.danger.yellow=§6Warning:§r oscillation desynchronization detected
 container.prodigytech.crystal_growth_chamber.danger.red=§cWarning:§r oscillation desynchronization level critical
 
 #JEI

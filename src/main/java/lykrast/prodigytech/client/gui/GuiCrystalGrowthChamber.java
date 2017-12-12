@@ -1,5 +1,7 @@
 package lykrast.prodigytech.client.gui;
 
+import com.google.common.collect.ImmutableList;
+
 import lykrast.prodigytech.common.gui.ContainerCrystalGrowthChamber;
 import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
 import lykrast.prodigytech.common.util.Config;
@@ -72,6 +74,18 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 	    //West
 	    l = getFieldScaled(5, 18, 0, 20);
 	    this.drawTexturedModalRect(guiLeft + 61, guiTop + 34, 176, 18, l, 18);
+	    
+	    //Danger
+	    //Gauge
+	    l = getFieldScaled(1, 52, 0, Config.crystalGrowthChamberMaxDesync);
+	    this.drawTexturedModalRect(guiLeft + 49, guiTop + 17 + (52 - l), 176, 36 + (52 - l), 4, l);
+	    //Warning
+	    if (tile.getField(1) > 0)
+	    {
+	    	int ty = 36;
+	    	if (tile.getField(1) >= Config.crystalGrowthChamberMaxDesync/2) ty = 54;
+		    this.drawTexturedModalRect(guiLeft + 31, guiTop + 16, 180, ty, 18, 18);
+	    }
 	
 //	    if (TileCrystalGrowthChamber.isProcessing(tile))
 //	    {
@@ -107,15 +121,35 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 	}
 
 	private void renderToolTips(int x, int y) {
-//		if (x >= guiLeft + 82 && x <= guiLeft + 100 && y >= guiTop + 52 && y <= guiTop + 70)
-//		{
-//        	String tooltip = String.format(temperature, tile.getField(2));
-//            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
-//		}
-//        else if (x >= guiLeft + 49 && x <= guiLeft + 53 && y >= guiTop + 19 && y <= guiTop + 70)
-//        {
-//            this.drawHoveringText(getGoldString(tile.getField(3)), x, y, fontRenderer);
-//        }
+		//Oscillations
+		//North
+		if (x >= guiLeft + 79 && x <= guiLeft + 97 && y >= guiTop + 16 && y <= guiTop + 34)
+		{
+            this.drawHoveringText(ImmutableList.of(north), x, y, fontRenderer);
+		}
+		//South
+		else if (x >= guiLeft + 79 && x <= guiLeft + 97 && y >= guiTop + 52 && y <= guiTop + 70)
+		{
+            this.drawHoveringText(ImmutableList.of(south), x, y, fontRenderer);
+		}
+		//East
+		else if (x >= guiLeft + 97 && x <= guiLeft + 115 && y >= guiTop + 34 && y <= guiTop + 52)
+		{
+            this.drawHoveringText(ImmutableList.of(east), x, y, fontRenderer);
+		}
+		//West
+		else if (x >= guiLeft + 61 && x <= guiLeft + 79 && y >= guiTop + 34 && y <= guiTop + 52)
+		{
+            this.drawHoveringText(ImmutableList.of(west), x, y, fontRenderer);
+		}
+		//Danger
+		else if (tile.getField(1) > 0 && x >= guiLeft + 31 && x <= guiLeft + 49 && y >= guiTop + 16 && y <= guiTop + 34)
+		{
+			String tooltip;
+			if (tile.getField(1) >= Config.crystalGrowthChamberMaxDesync/2) tooltip = dangerRed;
+			else tooltip = dangerYellow;
+            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+		}
 	}
 
 }

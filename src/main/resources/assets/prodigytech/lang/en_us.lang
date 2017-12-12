@@ -93,8 +93,8 @@ container.prodigytech.crystal_growth_chamber.north=North oscillation
 container.prodigytech.crystal_growth_chamber.south=South oscillation
 container.prodigytech.crystal_growth_chamber.east=East oscillation
 container.prodigytech.crystal_growth_chamber.west=West oscillation
-container.prodigytech.crystal_growth_chamber.danger.yellow=§6Warning:§r oscillation desynchronization detected
-container.prodigytech.crystal_growth_chamber.danger.red=§cWarning:§r oscillation desynchronization level critical
+container.prodigytech.crystal_growth_chamber.danger.yellow=§6§lWARNING:§r Oscillation desynchronization detected
+container.prodigytech.crystal_growth_chamber.danger.red=§c§lWARNING:§r Oscillation desynchronization level critical
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace

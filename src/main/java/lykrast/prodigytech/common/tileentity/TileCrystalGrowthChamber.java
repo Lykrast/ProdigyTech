@@ -1,9 +1,8 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.CapabilityThermionicOscillation;
-import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.capability.IThermionicOscillation;
+import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,6 +47,9 @@ public class TileCrystalGrowthChamber extends TileMachineInventory implements IT
 	public void update() {
 		if (!world.isRemote)
 		{
+			//---------------
+			//Oscillations
+			//---------------
 			int north = getOscillation(EnumFacing.NORTH);
 			int south = getOscillation(EnumFacing.SOUTH);
 			int east = getOscillation(EnumFacing.EAST);
@@ -82,6 +84,16 @@ public class TileCrystalGrowthChamber extends TileMachineInventory implements IT
 			}
 			else if (progressE >= 20) danger += east;
 			else if (progressW >= 20) danger += west;
+
+			//---------------
+			//Danger
+			//---------------
+			if (danger >= Config.crystalGrowthChamberMaxDesync)
+			{
+				world.setBlockToAir(pos);
+				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 4.0F, true);
+			}
+			else if (danger > 0) danger--;
 		}
 	}
 	

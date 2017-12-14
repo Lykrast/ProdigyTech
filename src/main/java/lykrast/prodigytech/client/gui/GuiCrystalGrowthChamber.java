@@ -86,17 +86,10 @@ public class GuiCrystalGrowthChamber extends GuiInventory {
 	    	if (tile.getField(1) >= Config.crystalGrowthChamberMaxDesync/2) ty = 54;
 		    this.drawTexturedModalRect(guiLeft + 31, guiTop + 16, 180, ty, 18, 18);
 	    }
-	
-//	    if (TileCrystalGrowthChamber.isProcessing(tile))
-//	    {
-//	        int k = getProcessLeftScaled(24);
-//	        this.drawTexturedModalRect(guiLeft + 79, guiTop + 35, 176, 0, k, 17);
-//	    }
-//	
-//	
-//	    //Gold
-//	    int m = getFieldScaled(3, 52, 0, Config.soldererMaxGold);
-//	    this.drawTexturedModalRect(guiLeft + 49, guiTop + 17 + (52 - m), 176, 35 + (52 - m), 4, m);
+	    
+	    //Process
+	    l = getFieldScaled(0, 160, 0, Config.crystalGrowthChamberProcessTime * 10);
+	    this.drawTexturedModalRect(guiLeft + 8, guiTop + 75, 0, 187, l, 14);
 	}
 
 	/**

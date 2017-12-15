@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"ICD",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"C": { "item": "prodigytech:circuit", "data": 0 },
+		"D": { "type": "forge:ore_dict", "ore": "gemDiamond" }
+	},
+	"result": { "item": "prodigytech:thermionic_oscillator" }
+}

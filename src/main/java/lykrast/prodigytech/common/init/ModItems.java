@@ -5,7 +5,9 @@ import java.util.List;
 
 import lykrast.prodigytech.common.item.IItemCustomModel;
 import lykrast.prodigytech.common.item.ItemCircuit;
+import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemFuel;
+import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -58,14 +60,14 @@ public class ModItems {
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
 		circuit = initItem(new ItemCircuit(), "circuit");
 		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
-		
-		energionCrystal = initItem(new Item(), "energion_crystal");
+
 		energionCrystalSeed = initItem(new Item(), "energion_crystal_seed");
+		energionCrystal = initItem(new Item(), "energion_crystal");
 		energionDust = initItem(new Item(), "energion_dust");
 		energionBatteryEmpty = initItem(new Item(), "energion_battery_empty");
-		energionBattery = initItem(new Item(), "energion_battery");
+		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");
 		energionBatteryDoubleEmpty = initItem(new Item(), "energion_battery_double_empty");
-		energionBatteryDouble = initItem(new Item(), "energion_battery_double");
+		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
 	}
 	
 	@SubscribeEvent

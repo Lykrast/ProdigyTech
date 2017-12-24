@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 public class Config {
 	private static final String CATEGORY_GENERAL = "General";
 	private static final String CATEGORY_MACHINES = "Machines";
+	private static final String CATEGORY_ENERGION = "Energion";
 	
 	//General
 	
@@ -19,6 +20,9 @@ public class Config {
 	public static int rotaryGrinderOreMultiplier;
 	public static int soldererMaxGold;
 	public static int crystalGrowthChamberMaxDesync;
+	
+	//Energion
+	public static int energionBatteryDuration;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -76,6 +80,12 @@ public class Config {
 				"How much desynchronization can the Crystal Growth Chamber handle before exploding\n"
 				+ "At base processing speed, this is in about 1/10 of a tick (or 1/200 of a second)\n"
 				+ "Values below ~30 are highly discouraged since they basically mean no margin of error");
+		
+		//-----------
+		//Energion
+		//-----------
+		energionBatteryDuration = cfg.getInt("energionBatteryDuration", CATEGORY_ENERGION, 12000, 20, 1728000, 
+				"The time (in ticks) a simple Energion Battery will last, other values are derived from this one");
 	}
 
 }

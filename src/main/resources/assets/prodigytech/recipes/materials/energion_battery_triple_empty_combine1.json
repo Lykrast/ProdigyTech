@@ -1,0 +1,11 @@
+{
+	"type": "forge:ore_shaped",
+	"group": "energion_battery_triple_empty",
+	"pattern": [
+		"BBB"
+	],
+	"key": {
+		"B": { "item": "prodigytech:energion_battery_empty" }
+	},
+	"result": { "item": "prodigytech:energion_battery_triple_empty" }
+}

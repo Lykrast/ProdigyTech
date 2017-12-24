@@ -66,6 +66,8 @@ item.prodigytech.energion_battery_empty.name=Energion Battery (Empty)
 item.prodigytech.energion_battery.name=Energion Battery
 item.prodigytech.energion_battery_double_empty.name=Double Energion Battery (Empty)
 item.prodigytech.energion_battery_double.name=Double Energion Battery
+item.prodigytech.energion_battery_triple_empty.name=Triple Energion Battery (Empty)
+item.prodigytech.energion_battery_triple.name=Triple Energion Battery
 
 #----------------------------
 #UI

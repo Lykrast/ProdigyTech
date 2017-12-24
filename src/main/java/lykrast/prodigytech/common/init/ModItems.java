@@ -31,7 +31,7 @@ public class ModItems {
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, carbonPlate,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystal, energionCrystalSeed, energionDust, 
-		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble;
+		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -68,6 +68,8 @@ public class ModItems {
 		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");
 		energionBatteryDoubleEmpty = initItem(new Item(), "energion_battery_double_empty");
 		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
+		energionBatteryTripleEmpty = initItem(new Item(), "energion_battery_triple_empty");
+		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
 	}
 	
 	@SubscribeEvent

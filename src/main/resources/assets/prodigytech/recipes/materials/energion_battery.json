@@ -1,0 +1,8 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:energion_battery_empty" },
+		{ "type": "forge:ore_dict", "ore": "dustEnergion" }
+	],
+	"result": { "item": "prodigytech:energion_battery" }
+}

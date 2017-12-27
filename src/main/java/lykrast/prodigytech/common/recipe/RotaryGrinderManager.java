@@ -5,6 +5,7 @@ import java.util.List;
 
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
+import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -67,7 +68,6 @@ public class RotaryGrinderManager {
 		addRecipe(new ItemStack(Blocks.SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2));
 		addRecipe(new ItemStack(Blocks.RED_SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2, 1));
 		addRecipe(new ItemStack(Blocks.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST, 4));
-		addRecipe(new ItemStack(Blocks.QUARTZ_BLOCK, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Items.QUARTZ, 4));
 
 		addRecipe(new ItemStack(Items.BLAZE_ROD), new ItemStack(Items.BLAZE_POWDER, 4));
 		addRecipe(new ItemStack(Items.BONE), new ItemStack(Items.DYE, 6, 15));
@@ -78,14 +78,14 @@ public class RotaryGrinderManager {
 		addRecipe(new ItemStack(Items.RABBIT), new ItemStack(ModItems.meatGround));
 		addRecipe(new ItemStack(Items.MUTTON), new ItemStack(ModItems.meatGround, 2));
 
-		addRecipe("oreCoal", new ItemStack(Items.COAL, Config.rotaryGrinderOreMultiplier));
+		addRecipe("oreCoal", new ItemStack(ModItems.coalDust, Config.rotaryGrinderOreMultiplier));
 		addRecipe("oreIron", new ItemStack(ModItems.ironDust, Config.rotaryGrinderOreMultiplier));
 		addRecipe("oreGold", new ItemStack(ModItems.goldDust, Config.rotaryGrinderOreMultiplier));
 		addRecipe("oreLapis", new ItemStack(Items.DYE, 6 * Config.rotaryGrinderOreMultiplier, 4));
 		addRecipe("oreRedstone", new ItemStack(Items.REDSTONE, (int)(4.5 * Config.rotaryGrinderOreMultiplier)));
-		addRecipe("oreDiamond", new ItemStack(Items.DIAMOND, Config.rotaryGrinderOreMultiplier));
-		addRecipe("oreEmerald", new ItemStack(Items.EMERALD, Config.rotaryGrinderOreMultiplier));
-		addRecipe("oreQuartz", new ItemStack(Items.QUARTZ, Config.rotaryGrinderOreMultiplier));
+		addRecipe("oreDiamond", new ItemStack(ModItems.diamondDust, Config.rotaryGrinderOreMultiplier));
+		addRecipe("oreEmerald", new ItemStack(ModItems.emeraldDust, Config.rotaryGrinderOreMultiplier));
+		addRecipe("oreQuartz", new ItemStack(ModItems.quartzDust, Config.rotaryGrinderOreMultiplier));
 		
 		addRecipe(new ItemStack(Items.COAL), new ItemStack(ModItems.coalDust));
 		addRecipe("blockCoal", new ItemStack(ModItems.coalDust, 9), Config.rotaryGrinderProcessTime * 9);
@@ -98,6 +98,19 @@ public class RotaryGrinderManager {
 		addRecipe("ingotGold", new ItemStack(ModItems.goldDust));
 		addRecipe("blockGold", new ItemStack(ModItems.goldDust, 9), Config.rotaryGrinderProcessTime * 9);
 		addRecipe("nuggetGold", new ItemStack(ModItems.goldDustTiny), Config.rotaryGrinderProcessTime / 9);
+		
+		addRecipe("gemDiamond", new ItemStack(ModItems.diamondDust));
+		addRecipe("blockDiamond", new ItemStack(ModItems.diamondDust, 9), Config.rotaryGrinderProcessTime * 9);
+		
+		addRecipe("gemEmerald", new ItemStack(ModItems.emeraldDust));
+		addRecipe("blockEmerald", new ItemStack(ModItems.emeraldDust, 9), Config.rotaryGrinderProcessTime * 9);
+		
+		addRecipe("gemQuartz", new ItemStack(ModItems.quartzDust));
+		addRecipe("blockQuartz", new ItemStack(ModItems.quartzDust, 4), Config.rotaryGrinderProcessTime * 4);
+		addRecipe(new ItemStack(Blocks.QUARTZ_STAIRS), new ItemStack(ModItems.quartzDust, 6), (int) (Config.rotaryGrinderProcessTime * 6));
+		//I hate this
+		addRecipe(new ItemStack(Blocks.STONE_SLAB, 1, Blocks.STONE_SLAB.getMetaFromState(Blocks.STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.QUARTZ))), 
+				new ItemStack(ModItems.quartzDust, 2), Config.rotaryGrinderProcessTime * 2);
 		
 		addRecipe("ingotFerramic", new ItemStack(ModItems.ferramicDust));
 		addRecipe("blockFerramic", new ItemStack(ModItems.ferramicDust, 9), Config.rotaryGrinderProcessTime * 9);

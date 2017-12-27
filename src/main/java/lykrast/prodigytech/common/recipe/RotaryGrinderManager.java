@@ -109,6 +109,7 @@ public class RotaryGrinderManager {
 		
 		addRecipe("gemEnergion", new ItemStack(ModItems.energionDust));
 		addRecipe("gemBigEnergion", new ItemStack(ModItems.energionDust, 6), Config.rotaryGrinderProcessTime * 6);
+		addRecipe("blockEnergion", new ItemStack(ModItems.energionDust, 54), Config.rotaryGrinderProcessTime * 54);
 	}
 	
 	public static class RotaryGrinderRecipe {

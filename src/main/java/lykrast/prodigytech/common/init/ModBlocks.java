@@ -28,7 +28,7 @@ public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterSolid, incinerator, blowerFurnace, rotaryGrinder, solderer,
 		crystalGrowthChamber, thermionicOscillator,
 		airFunnel,
-		ferramicBlock,
+		ferramicBlock, energionCrystalBlock,
 		ashBricks;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
@@ -61,6 +61,7 @@ public class ModBlocks {
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
+		energionCrystalBlock = initBlock(new BlockEnergionCrystal(2.5F, 20.0F, 2), "energion_crystal_block");
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 10.0F, "pickaxe", 0), "ash_bricks");

@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
-		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, carbonPlate,
+		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, carbonPlate, infernoFuel,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystal, energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple;
@@ -55,6 +55,7 @@ public class ModItems {
 		goldDust = initItem(new Item(), "gold_dust");
 		goldDustTiny = initItem(new Item(), "gold_dust_tiny");
 		carbonPlate = initItem(new Item(), "carbon_plate");
+		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
 		
 		circuitPlate = initItem(new Item(), "circuit_plate");
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");

@@ -1,0 +1,9 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "minecraft:blaze_powder" },
+		{ "type": "forge:ore_dict", "ore": "dustCoal" },
+		{ "type": "forge:ore_dict", "ore": "dustAsh" }
+	],
+	"result": { "item": "prodigytech:inferno_fuel" }
+}

@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:energion_aeroheater" },
+        "active=false,facing=south": { "model": "prodigytech:energion_aeroheater", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:energion_aeroheater", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:energion_aeroheater", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:energion_aeroheater_active" },
+        "active=true,facing=south": { "model": "prodigytech:energion_aeroheater_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:energion_aeroheater_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:energion_aeroheater_active", "y": 90 }
+    }
+}

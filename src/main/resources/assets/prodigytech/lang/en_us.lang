@@ -8,8 +8,12 @@ itemGroup.prodigytech=Prodigy Tech
 #----------------------------
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
 tile.prodigytech.explosion_furnace.tooltip=Uses an explosive reaction\nto process items
+
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuels\nTurn off with redstone signal
+tile.prodigytech.energion_aeroheater.name=Energion Aeroheater (WIP)
+tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
+
 tile.prodigytech.incinerator.name=Incinerator
 tile.prodigytech.incinerator.tooltip=Burns any item into Ash
 tile.prodigytech.blower_furnace.name=Blower Furnace

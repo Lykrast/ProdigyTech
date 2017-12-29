@@ -1,0 +1,15 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"IRI",
+		"GCG",
+		"IRI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "ingotGold" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"C": { "item": "prodigytech:circuit", "data": 1 }
+	},
+	"result": { "item": "prodigytech:magnetic_reassembler" }
+}

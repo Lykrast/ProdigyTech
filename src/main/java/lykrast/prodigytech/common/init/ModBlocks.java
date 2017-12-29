@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
-		crystalGrowthChamber, thermionicOscillator,
+		crystalGrowthChamber, thermionicOscillator, magneticReassembler,
 		airFunnel,
 		ferramicBlock, energionCrystalBlock,
 		ashBricks;
@@ -44,7 +44,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		aeroheaterEnergion = initBlock(new BlockAeroheaterEnergion(6.0F, 45.0F, 1), "energion_aeroheater");
 		//GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, PREFIX + "energion_aeroheater");
-		//Hot air machines
+		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
 		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");
 		blowerFurnace = initBlock(new BlockBlowerFurnace(6.0F, 45.0F, 1), "blower_furnace");
@@ -53,11 +53,13 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
-		//Crystal
+		//Hot air machines post-Solderer
 		crystalGrowthChamber = initBlock(new BlockCrystalGrowthChamber(6.0F, 45.0F, 1), "crystal_growth_chamber");
 		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
 		thermionicOscillator = initBlock(new BlockThermionicOscillator(6.0F, 45.0F, 1), "thermionic_oscillator");
 		GameRegistry.registerTileEntity(TileThermionicOscillator.class, PREFIX + "thermionic_oscillator");
+		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
+		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
 		//Hot air misc
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");

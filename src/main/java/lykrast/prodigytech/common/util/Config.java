@@ -15,7 +15,7 @@ public class Config {
 	
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, soldererProcessTime, 
-		crystalGrowthChamberProcessTime;
+		crystalGrowthChamberProcessTime, magneticReassemblerProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
 	public static int soldererMaxGold;
@@ -80,6 +80,11 @@ public class Config {
 				"How much desynchronization can the Crystal Growth Chamber handle before exploding\n"
 				+ "At base processing speed, this is in about 1/10 of a tick (or 1/200 of a second)\n"
 				+ "Values below ~30 are highly discouraged since they basically mean no margin of error");
+		//Magnetic Reassembler
+		magneticReassemblerProcessTime = cfg.getInt("magneticReassemblerProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
+				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
+				+ "Several recipes have shorter or longer processing time, which are all derived from this value\n"
+				+ "High values may result in weird behavior for slow recipes");
 		
 		//-----------
 		//Energion

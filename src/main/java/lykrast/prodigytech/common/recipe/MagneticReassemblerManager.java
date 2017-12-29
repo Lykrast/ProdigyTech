@@ -76,6 +76,7 @@ public class MagneticReassemblerManager {
 		addRecipe("dustEnergion", new ItemStack(ModItems.energionCrystalSeed));
 		
 		addRecipe(new ItemStack(ModItems.infernoFuel), new ItemStack(ModItems.infernoCrystal), Config.magneticReassemblerProcessTime * 2);
+		addRecipe(new ItemStack(Items.SUGAR), new ItemStack(ModItems.sugarCube));
 	}
 	
 	public static class MagneticReassemblerRecipe {

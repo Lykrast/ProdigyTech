@@ -7,6 +7,7 @@ import lykrast.prodigytech.common.item.IItemCustomModel;
 import lykrast.prodigytech.common.item.ItemCircuit;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemFuel;
+import lykrast.prodigytech.common.item.ItemSugarCube;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -29,7 +30,7 @@ public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
-		carbonPlate, infernoFuel, infernoCrystal,
+		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystal, energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple;
@@ -62,6 +63,7 @@ public class ModItems {
 		carbonPlate = initItem(new Item(), "carbon_plate");
 		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
 		infernoCrystal = initItem(new ItemFuel(4800), "inferno_crystal");
+		sugarCube = initItem(new ItemSugarCube(1, 0.2F), "sugar_cube");
 		
 		circuitPlate = initItem(new Item(), "circuit_plate");
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");

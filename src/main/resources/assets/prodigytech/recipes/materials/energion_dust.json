@@ -1,6 +1,5 @@
 {
 	"type": "forge:ore_shapeless",
-	"group": "energion_crystal_seed",
 	"ingredients": [
 		{ "type": "forge:ore_dict", "ore": "dustDiamond" },
 		{ "type": "forge:ore_dict", "ore": "dustEmerald" },
@@ -10,5 +9,5 @@
 		{ "type": "forge:ore_dict", "ore": "dustQuartz" },
 		{ "type": "forge:ore_dict", "ore": "sand" }
 	],
-	"result": { "item": "prodigytech:energion_crystal_seed" }
+	"result": { "item": "prodigytech:energion_dust" }
 }

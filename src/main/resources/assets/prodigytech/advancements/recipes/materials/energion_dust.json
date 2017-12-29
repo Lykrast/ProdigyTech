@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:materials/energion_crystal_seed"
+      "prodigytech:materials/energion_dust"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "prodigytech:materials/energion_crystal_seed"
+        "recipe": "prodigytech:materials/energion_dust"
       }
     }
   },

@@ -74,6 +74,8 @@ public class MagneticReassemblerManager {
 		addRecipe("dustFerramic", new ItemStack(ModItems.ferramicIngot));
 		addRecipe("dustTinyFerramic", new ItemStack(ModItems.ferramicNugget), Config.magneticReassemblerProcessTime / 9);
 		addRecipe("dustEnergion", new ItemStack(ModItems.energionCrystalSeed));
+		
+		addRecipe(new ItemStack(ModItems.infernoFuel), new ItemStack(ModItems.infernoCrystal), Config.magneticReassemblerProcessTime * 2);
 	}
 	
 	public static class MagneticReassemblerRecipe {

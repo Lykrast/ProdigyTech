@@ -29,7 +29,7 @@ public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
-		carbonPlate, infernoFuel,
+		carbonPlate, infernoFuel, infernoCrystal,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystal, energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple;
@@ -61,6 +61,7 @@ public class ModItems {
 		
 		carbonPlate = initItem(new Item(), "carbon_plate");
 		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
+		infernoCrystal = initItem(new ItemFuel(4800), "inferno_crystal");
 		
 		circuitPlate = initItem(new Item(), "circuit_plate");
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");

@@ -47,6 +47,31 @@ public class MagneticReassemblerManager {
 		return null;
 	}
 	
+	public static MagneticReassemblerRecipe findOreRecipe(String in)
+	{
+		int id = OreDictionary.getOreID(in);
+		for (MagneticReassemblerRecipe recipe : RECIPES)
+			if (recipe.getOreID() == id) return recipe;
+		
+		return null;
+	}
+	
+	public static MagneticReassemblerRecipe removeRecipe(ItemStack in)
+	{
+		MagneticReassemblerRecipe recipe = findRecipe(in);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
+	public static MagneticReassemblerRecipe removeOreRecipe(String in)
+	{
+		MagneticReassemblerRecipe recipe = findOreRecipe(in);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
 	//Probably REALLY need to optimise those one day
 	public static boolean isValidInput(ItemStack check)
 	{

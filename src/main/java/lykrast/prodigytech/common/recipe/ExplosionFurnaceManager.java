@@ -28,6 +28,14 @@ public class ExplosionFurnaceManager {
 		return recipe;
 	}
 	
+	public static ExplosionFurnaceRecipe removeRecipe(ItemStack in)
+	{
+		ExplosionFurnaceRecipe recipe = findRecipe(in);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
 	public static ExplosionFurnaceRecipe findRecipe(ItemStack in)
 	{
 		for (ExplosionFurnaceRecipe recipe : RECIPES)
@@ -50,6 +58,14 @@ public class ExplosionFurnaceManager {
 			if (recipe.isValidExplosive(explosive) && recipe.isValidReactant(reactant)) return recipe;
 		
 		return null;
+	}
+	
+	public static ExplosionFurnaceExplosive removeExplosive(ItemStack explosive, ItemStack reactant)
+	{
+		ExplosionFurnaceExplosive recipe = findExplosive(explosive, reactant);
+		if (recipe != null) EXPLOSIVES.remove(recipe);
+		
+		return recipe;
 	}
 	
 	//Probably REALLY need to optimise those one day

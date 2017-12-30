@@ -48,6 +48,31 @@ public class RotaryGrinderManager {
 		return null;
 	}
 	
+	public static RotaryGrinderRecipe findOreRecipe(String in)
+	{
+		int id = OreDictionary.getOreID(in);
+		for (RotaryGrinderRecipe recipe : RECIPES)
+			if (recipe.getOreID() == id) return recipe;
+		
+		return null;
+	}
+	
+	public static RotaryGrinderRecipe removeRecipe(ItemStack in)
+	{
+		RotaryGrinderRecipe recipe = findRecipe(in);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
+	public static RotaryGrinderRecipe removeOreRecipe(String in)
+	{
+		RotaryGrinderRecipe recipe = findOreRecipe(in);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
 	//Probably REALLY need to optimise those one day
 	public static boolean isValidInput(ItemStack check)
 	{

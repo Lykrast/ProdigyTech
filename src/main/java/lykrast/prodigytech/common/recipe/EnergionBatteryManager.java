@@ -8,18 +8,24 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class EnergionBatteryManager {
-	private static List<ItemEnergionBattery> batteries = new ArrayList<>();
-	private static List<Item> batteriesEmpty = new ArrayList<>();
+	public static final List<ItemEnergionBattery> BATTERIES = new ArrayList<>();
+	public static final List<Item> BATTERIES_EMPTY = new ArrayList<>();
 	
 	public static void register(ItemEnergionBattery battery)
 	{
-		batteries.add(battery);
-		batteriesEmpty.add(battery.getEmptyForm());
+		BATTERIES.add(battery);
+		BATTERIES_EMPTY.add(battery.getEmptyForm());
+	}
+	
+	public static void unregister(ItemEnergionBattery battery)
+	{
+		BATTERIES.remove(battery);
+		BATTERIES_EMPTY.remove(battery.getEmptyForm());
 	}
 	
 	public static boolean isBattery(Item i)
 	{
-		return batteries.contains(i);
+		return BATTERIES.contains(i);
 	}
 	
 	public static boolean isBattery(ItemStack stack)
@@ -29,7 +35,7 @@ public class EnergionBatteryManager {
 	
 	public static boolean isEmptyBattery(Item i)
 	{
-		return batteriesEmpty.contains(i);
+		return BATTERIES_EMPTY.contains(i);
 	}
 	
 	public static boolean isEmptyBattery(ItemStack stack)
@@ -39,7 +45,7 @@ public class EnergionBatteryManager {
 	
 	public static List<ItemEnergionBattery> getBatteryList()
 	{
-		return batteries;
+		return BATTERIES;
 	}
 	
 	/**

@@ -40,6 +40,14 @@ public class SoldererManager {
 		return null;
 	}
 	
+	public static SoldererRecipe removeRecipe(ItemStack pattern, ItemStack additive, int gold)
+	{
+		SoldererRecipe recipe = findRecipe(pattern, additive, gold);
+		if (recipe != null) RECIPES.remove(recipe);
+		
+		return recipe;
+	}
+	
 	public static boolean isValidPattern(ItemStack pattern)
 	{
 		for (SoldererRecipe recipe : RECIPES)

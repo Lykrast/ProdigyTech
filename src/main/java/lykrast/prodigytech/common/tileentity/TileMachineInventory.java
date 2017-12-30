@@ -79,7 +79,6 @@ public abstract class TileMachineInventory extends TileEntity implements IProdig
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-        ItemStack itemstack = inventory.get(index);
         inventory.set(index, stack);
 
         if (stack.getCount() > this.getInventoryStackLimit())

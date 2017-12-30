@@ -154,6 +154,7 @@ public class TileExplosionFurnace extends TileMachineInventory {
 			new boolean[]{false,false,false,false,false,false,true,true,true});
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)

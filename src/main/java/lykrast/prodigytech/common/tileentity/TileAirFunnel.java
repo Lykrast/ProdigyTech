@@ -18,6 +18,7 @@ public class TileAirFunnel extends TileEntity implements IHotAir {
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !world.isBlockPowered(pos))

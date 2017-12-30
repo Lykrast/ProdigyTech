@@ -115,6 +115,7 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable, IHo
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)

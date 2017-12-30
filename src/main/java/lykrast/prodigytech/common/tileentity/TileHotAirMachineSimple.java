@@ -118,6 +118,7 @@ public abstract class TileHotAirMachineSimple extends TileMachineInventory imple
 			new boolean[]{false,true});
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return (T)invHandler;

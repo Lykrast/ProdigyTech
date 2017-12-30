@@ -3,7 +3,6 @@ package lykrast.prodigytech.common.tileentity;
 import lykrast.prodigytech.common.capability.CapabilityThermionicOscillation;
 import lykrast.prodigytech.common.capability.IThermionicOscillation;
 import lykrast.prodigytech.common.init.ModItems;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.item.ItemStack;
@@ -214,6 +213,7 @@ public class TileCrystalGrowthChamber extends TileMachineInventory implements IT
 			new boolean[]{false,true});
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			return (T)invHandler;

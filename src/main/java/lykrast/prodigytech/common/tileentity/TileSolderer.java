@@ -248,6 +248,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 			new boolean[]{false,false,false,false,true});
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.DOWN)
 			return (T)invHandler;

@@ -30,6 +30,7 @@ public class TileThermionicOscillator extends TileEntity implements IHotAir, ITh
 	}
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)

@@ -34,8 +34,9 @@ public class ProdigyTechJEI implements IModPlugin {
 		if (Config.incineratorChance > 0) IncineratorCategory.registerRecipes(registry);
 		RotaryGrinderCategory.registerRecipes(registry);
 		SoldererCategory.registerRecipes(registry);
-		CrystalGrowthChamberCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
+		CrystalGrowthChamberCategory.registerRecipes(registry);
+		EnergionBatteryCategory.registerRecipes(registry);
 
 		//Catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceCategory.UID);
@@ -43,8 +44,10 @@ public class ProdigyTechJEI implements IModPlugin {
 		if (Config.incineratorChance > 0) registry.addRecipeCatalyst(new ItemStack(ModBlocks.incinerator), IncineratorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.rotaryGrinder), RotaryGrinderCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.crystalGrowthChamber), CrystalGrowthChamberCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.crystalGrowthChamber), CrystalGrowthChamberCategory.UID);
+		
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterEnergion), EnergionBatteryCategory.UID);
 
 		//Vanilla catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.blowerFurnace), VanillaRecipeCategoryUid.SMELTING);
@@ -55,8 +58,8 @@ public class ProdigyTechJEI implements IModPlugin {
 		if (Config.incineratorChance > 0) registry.addRecipeClickArea(GuiIncinerator.class, 79, 35, 24, 17, IncineratorCategory.UID);
 		registry.addRecipeClickArea(GuiRotaryGrinder.class, 79, 35, 24, 17, RotaryGrinderCategory.UID);
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
-		registry.addRecipeClickArea(GuiCrystalGrowthChamber.class, 7, 75, 162, 14, CrystalGrowthChamberCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
+		registry.addRecipeClickArea(GuiCrystalGrowthChamber.class, 7, 75, 162, 14, CrystalGrowthChamberCategory.UID);
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeClickArea(GuiAeroheaterSolid.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
@@ -72,7 +75,8 @@ public class ProdigyTechJEI implements IModPlugin {
 		if (Config.incineratorChance > 0) registry.addRecipeCategories(new IncineratorCategory(guiHelper));
 		registry.addRecipeCategories(new RotaryGrinderCategory(guiHelper));
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
-		registry.addRecipeCategories(new CrystalGrowthChamberCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
+		registry.addRecipeCategories(new CrystalGrowthChamberCategory(guiHelper));
+		registry.addRecipeCategories(new EnergionBatteryCategory(guiHelper));
 	}
 }

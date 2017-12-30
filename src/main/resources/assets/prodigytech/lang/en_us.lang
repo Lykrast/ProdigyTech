@@ -125,8 +125,10 @@ container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
 container.prodigytech.jei.ptsolderer=Solderer
-container.prodigytech.jei.ptcrystalgrowthchamber=Crystal Growth Chamber
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
+container.prodigytech.jei.ptcrystalgrowthchamber=Crystal Growth Chamber
+container.prodigytech.jei.ptbattery=Energion Battery Usage
+container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 
 #----------------------------
 #Advancements

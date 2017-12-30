@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
-		crystalGrowthChamber, thermionicOscillator, magneticReassembler,
+		magneticReassembler, crystalGrowthChamber, thermionicOscillator,
 		airFunnel,
 		ferramicBlock, energionCrystalBlock,
 		ashBricks;
@@ -56,12 +56,12 @@ public class ModBlocks {
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
 		//Hot air machines post-Solderer
+		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
+		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
 		crystalGrowthChamber = initBlock(new BlockCrystalGrowthChamber(6.0F, 45.0F, 1), "crystal_growth_chamber");
 		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
 		thermionicOscillator = initBlock(new BlockThermionicOscillator(6.0F, 45.0F, 1), "thermionic_oscillator");
 		GameRegistry.registerTileEntity(TileThermionicOscillator.class, PREFIX + "thermionic_oscillator");
-		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
-		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
 		//Hot air misc
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");

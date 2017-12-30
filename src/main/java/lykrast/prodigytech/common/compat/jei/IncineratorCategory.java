@@ -18,7 +18,7 @@ public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
 	private final IDrawableAnimated arrow;
 
 	public IncineratorCategory(IGuiHelper guiHelper) {
-		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 36, 82, 26, 0, 20, 0, 0), UID);
+		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 36, 82, 26, 0, 10, 0, 0), UID);
 		
 		IDrawableStatic arrowDrawable = guiHelper.createDrawable(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17);
 		this.arrow = guiHelper.createAnimatedDrawable(arrowDrawable, Config.incineratorProcessTime, IDrawableAnimated.StartDirection.LEFT, false);

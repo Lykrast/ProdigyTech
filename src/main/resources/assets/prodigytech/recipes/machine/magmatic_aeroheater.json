@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"RRR",
+		"RRR"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"R": { "type": "forge:ore_dict", "ore": "ingotIron" }
+	},
+	"result": { "item": "prodigytech:magmatic_aeroheater" }
+}

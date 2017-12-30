@@ -1,0 +1,9 @@
+{
+    "parent": "prodigytech:block/orientable_down",
+    "textures": {
+        "top": "prodigytech:blocks/machine_air_hatch",
+        "front": "prodigytech:blocks/magmatic_aeroheater_side_active",
+        "side": "prodigytech:blocks/magmatic_aeroheater_side_active",
+        "down": "prodigytech:blocks/magmatic_aeroheater_bottom_active"
+    }
+}

@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterSolid, aeroheaterEnergion,
+	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
 		crystalGrowthChamber, thermionicOscillator, magneticReassembler,
 		airFunnel,
@@ -40,6 +40,8 @@ public class ModBlocks {
 		explosionFurnace = initBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
 		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
 		//Aeroheaters
+		aeroheaterMagmatic = initBlock(new BlockAeroheaterMagmatic(6.0F, 45.0F, 1), "magmatic_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterMagmatic.class, PREFIX + "magmatic_aeroheater");
 		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		aeroheaterEnergion = initBlock(new BlockAeroheaterEnergion(6.0F, 45.0F, 1), "energion_aeroheater");

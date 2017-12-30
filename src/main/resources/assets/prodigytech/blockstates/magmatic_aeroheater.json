@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "active=false": { "model": "prodigytech:magmatic_aeroheater" },
+        "active=true": { "model": "prodigytech:magmatic_aeroheater_active" }
+    }
+}

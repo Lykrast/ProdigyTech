@@ -1,0 +1,15 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"RCR",
+		"IFI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"F": { "item": "minecraft:furnace" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"C": { "item": "prodigytech:circuit", "data": 0 }
+	},
+	"result": { "item": "prodigytech:energion_aeroheater" }
+}

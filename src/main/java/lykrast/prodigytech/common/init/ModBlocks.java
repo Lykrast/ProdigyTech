@@ -45,7 +45,7 @@ public class ModBlocks {
 		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		aeroheaterEnergion = initBlock(new BlockAeroheaterEnergion(6.0F, 45.0F, 1), "energion_aeroheater");
-		//GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, PREFIX + "energion_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, PREFIX + "energion_aeroheater");
 		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
 		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");

@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:machine/thermionic_oscillator"
+      "prodigytech:machine/energion_aeroheater"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "prodigytech:machine/thermionic_oscillator"
+        "recipe": "prodigytech:machine/energion_aeroheater"
       }
     }
   },

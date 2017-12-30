@@ -13,7 +13,7 @@ tile.prodigytech.magmatic_aeroheater.name=Magmatic Aeroheater
 tile.prodigytech.magmatic_aeroheater.tooltip=Makes constant hot air when above Lava
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuels\nTurn off with redstone signal
-tile.prodigytech.energion_aeroheater.name=Energion Aeroheater (WIP)
+tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
 tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
 
 tile.prodigytech.incinerator.name=Incinerator
@@ -95,6 +95,8 @@ tooltip.prodigytech.temperature.transfer=§aHeat transmitted:§f %d%%§r
 
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
+container.prodigytech.energion_aeroheater=Energion Aeroheater
+
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder

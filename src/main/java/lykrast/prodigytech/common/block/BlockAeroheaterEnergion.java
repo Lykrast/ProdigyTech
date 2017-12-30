@@ -2,7 +2,7 @@ package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemBlockAeroheater;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
+import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,15 +14,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockAeroheaterEnergion extends BlockHotAirMachine<TileAeroheaterSolid> implements ICustomItemBlock {
+public class BlockAeroheaterEnergion extends BlockHotAirMachine<TileAeroheaterEnergion> implements ICustomItemBlock {
 
     public BlockAeroheaterEnergion(float hardness, float resistance, int harvestLevel) {
-		super(hardness, resistance, harvestLevel, TileAeroheaterSolid.class);
+		super(hardness, resistance, harvestLevel, TileAeroheaterEnergion.class);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileAeroheaterSolid();
+		return new TileAeroheaterEnergion();
 	}
 
     /**
@@ -36,11 +36,11 @@ public class BlockAeroheaterEnergion extends BlockHotAirMachine<TileAeroheaterSo
         }
         else
         {
-            TileAeroheaterSolid tile = getTileEntity(worldIn,pos);
+            TileAeroheaterEnergion tile = getTileEntity(worldIn,pos);
 
             if (tile != null)
             {
-                playerIn.openGui(ProdigyTech.instance, ProdigyTechGuiHandler.AEROHEATER_SOLID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                playerIn.openGui(ProdigyTech.instance, ProdigyTechGuiHandler.AEROHEATER_ENERGION, worldIn, pos.getX(), pos.getY(), pos.getZ());
                 playerIn.openContainer.detectAndSendChanges();
             }
 
@@ -53,7 +53,7 @@ public class BlockAeroheaterEnergion extends BlockHotAirMachine<TileAeroheaterSo
      */
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-    	TileAeroheaterSolid tile = getTileEntity(worldIn, pos);
+    	TileAeroheaterEnergion tile = getTileEntity(worldIn, pos);
 
         if (tile != null)
         {

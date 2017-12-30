@@ -1,5 +1,6 @@
 package lykrast.prodigytech.common.gui;
 
+import lykrast.prodigytech.client.gui.GuiAeroheaterEnergion;
 import lykrast.prodigytech.client.gui.GuiAeroheaterSolid;
 import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
 import lykrast.prodigytech.client.gui.GuiCrystalGrowthChamber;
@@ -8,6 +9,7 @@ import lykrast.prodigytech.client.gui.GuiIncinerator;
 import lykrast.prodigytech.client.gui.GuiMagneticReassembler;
 import lykrast.prodigytech.client.gui.GuiRotaryGrinder;
 import lykrast.prodigytech.client.gui.GuiSolderer;
+import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
@@ -23,7 +25,8 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class ProdigyTechGuiHandler implements IGuiHandler {
 	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
-			ROTARY_GRINDER = 4, SOLDERER = 5, CRYSTAL_GROWTH_CHAMBER = 6, MAGNETIC_REASSEMBLER = 7;
+			ROTARY_GRINDER = 4, SOLDERER = 5, CRYSTAL_GROWTH_CHAMBER = 6, MAGNETIC_REASSEMBLER = 7, 
+			AEROHEATER_ENERGION = 8;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -44,6 +47,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerCrystalGrowthChamber(player.inventory, (TileCrystalGrowthChamber)world.getTileEntity(new BlockPos(x, y, z)));
 			case MAGNETIC_REASSEMBLER:
 				return new ContainerMagneticReassembler(player.inventory, (TileMagneticReassembler)world.getTileEntity(new BlockPos(x, y, z)));
+			case AEROHEATER_ENERGION:
+				return new ContainerAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -67,6 +72,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiCrystalGrowthChamber(player.inventory, (TileCrystalGrowthChamber)world.getTileEntity(new BlockPos(x, y, z)));
 			case MAGNETIC_REASSEMBLER:
 				return new GuiMagneticReassembler(player.inventory, (TileMagneticReassembler)world.getTileEntity(new BlockPos(x, y, z)));
+			case AEROHEATER_ENERGION:
+				return new GuiAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

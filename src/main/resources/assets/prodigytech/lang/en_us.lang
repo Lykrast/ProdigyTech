@@ -33,6 +33,8 @@ tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
 
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
+tile.prodigytech.linear_extractor.name=Linear Extractor
+tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone signal
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.energion_crystal_block.name=Block of Energion Crystal
@@ -116,6 +118,8 @@ container.prodigytech.crystal_growth_chamber.east=East oscillation
 container.prodigytech.crystal_growth_chamber.west=West oscillation
 container.prodigytech.crystal_growth_chamber.danger.yellow=§6§lWARNING:§r Oscillation desynchronization detected
 container.prodigytech.crystal_growth_chamber.danger.red=§c§lWARNING:§r Oscillation desynchronization level critical
+
+container.prodigytech.linear_extractor=Linear Extractor
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace

@@ -10,6 +10,7 @@ public class Config {
 	private static final String CATEGORY_GENERAL = "General";
 	private static final String CATEGORY_MACHINES = "Machines";
 	private static final String CATEGORY_ENERGION = "Energion";
+	private static final String CATEGORY_AUTOMATION = "Automation";
 	
 	//General
 	
@@ -23,6 +24,9 @@ public class Config {
 	
 	//Energion
 	public static int energionBatteryDuration;
+	
+	//Automation
+	public static int linearExtractorDelay, linearExtractorMaxStack;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -42,6 +46,7 @@ public class Config {
 		cfg.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
 		cfg.addCustomCategoryComment(CATEGORY_MACHINES, "Machines configuration");
 		cfg.addCustomCategoryComment(CATEGORY_ENERGION, "Energion configuration");
+		cfg.addCustomCategoryComment(CATEGORY_AUTOMATION, "Automation configuration");
 
 		//-----------
 		// General
@@ -92,6 +97,15 @@ public class Config {
 		//-----------
 		energionBatteryDuration = cfg.getInt("energionBatteryDuration", CATEGORY_ENERGION, 12000, 20, 1728000, 
 				"The time (in ticks) a simple Energion Battery will last, other values are derived from this one");
+		
+		//-----------
+		//Automation
+		//-----------
+		linearExtractorDelay = cfg.getInt("linearExtractorDelay", CATEGORY_AUTOMATION, 10, 1, 200, 
+				"The time (in ticks) between 2 push/pulls of a Linear Extractor\n"
+				+ "1 means every tick, 20 means once every second and so on");
+		linearExtractorMaxStack = cfg.getInt("linearExtractorMaxStack", CATEGORY_AUTOMATION, 64, 1, 64, 
+				"How many items from a stack a Linear Extractor can push/pull at once");
 	}
 
 }

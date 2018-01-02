@@ -6,6 +6,7 @@ import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
 import lykrast.prodigytech.client.gui.GuiCrystalGrowthChamber;
 import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
 import lykrast.prodigytech.client.gui.GuiIncinerator;
+import lykrast.prodigytech.client.gui.GuiLinearExtractor;
 import lykrast.prodigytech.client.gui.GuiMagneticReassembler;
 import lykrast.prodigytech.client.gui.GuiRotaryGrinder;
 import lykrast.prodigytech.client.gui.GuiSolderer;
@@ -15,6 +16,7 @@ import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
+import lykrast.prodigytech.common.tileentity.TileLinearExtractor;
 import lykrast.prodigytech.common.tileentity.TileMagneticReassembler;
 import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
 import lykrast.prodigytech.common.tileentity.TileSolderer;
@@ -26,7 +28,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class ProdigyTechGuiHandler implements IGuiHandler {
 	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
 			ROTARY_GRINDER = 4, SOLDERER = 5, CRYSTAL_GROWTH_CHAMBER = 6, MAGNETIC_REASSEMBLER = 7, 
-			AEROHEATER_ENERGION = 8;
+			AEROHEATER_ENERGION = 8, LINEAR_EXTRACTOR = 9;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -49,6 +51,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerMagneticReassembler(player.inventory, (TileMagneticReassembler)world.getTileEntity(new BlockPos(x, y, z)));
 			case AEROHEATER_ENERGION:
 				return new ContainerAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
+			case LINEAR_EXTRACTOR:
+				return new ContainerLinearExtractor(player.inventory, (TileLinearExtractor)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -74,6 +78,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiMagneticReassembler(player.inventory, (TileMagneticReassembler)world.getTileEntity(new BlockPos(x, y, z)));
 			case AEROHEATER_ENERGION:
 				return new GuiAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
+			case LINEAR_EXTRACTOR:
+				return new GuiLinearExtractor(player.inventory, (TileLinearExtractor)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

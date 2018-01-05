@@ -1,6 +1,6 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockHotAirMachine;
+import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.item.ItemStack;
@@ -97,7 +97,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple implements ITicka
             if (flag != this.isProcessing())
             {
                 flag1 = true;
-                BlockHotAirMachine.setState(this.isProcessing(), this.world, this.pos);
+                BlockMachineActiveable.setState(this.isProcessing(), this.world, this.pos);
             }
         }
 

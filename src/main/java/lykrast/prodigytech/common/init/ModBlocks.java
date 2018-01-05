@@ -3,38 +3,8 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import lykrast.prodigytech.common.block.BlockAeroheaterEnergion;
-import lykrast.prodigytech.common.block.BlockAeroheaterMagmatic;
-import lykrast.prodigytech.common.block.BlockAeroheaterSolid;
-import lykrast.prodigytech.common.block.BlockAirFunnel;
-import lykrast.prodigytech.common.block.BlockBlowerFurnace;
-import lykrast.prodigytech.common.block.BlockCrystalGrowthChamber;
-import lykrast.prodigytech.common.block.BlockEnergionCrystal;
-import lykrast.prodigytech.common.block.BlockExplosionFurnace;
-import lykrast.prodigytech.common.block.BlockGeneric;
-import lykrast.prodigytech.common.block.BlockHologram;
-import lykrast.prodigytech.common.block.BlockIncinerator;
-import lykrast.prodigytech.common.block.BlockLinearExtractor;
-import lykrast.prodigytech.common.block.BlockMagneticReassembler;
-import lykrast.prodigytech.common.block.BlockRotaryGrinder;
-import lykrast.prodigytech.common.block.BlockSolderer;
-import lykrast.prodigytech.common.block.BlockThermionicOscillator;
-import lykrast.prodigytech.common.block.ICustomItemBlock;
-import lykrast.prodigytech.common.block.ICustomModel;
-import lykrast.prodigytech.common.block.ICustomStateMapper;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterMagmatic;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
-import lykrast.prodigytech.common.tileentity.TileAirFunnel;
-import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
-import lykrast.prodigytech.common.tileentity.TileCrystalGrowthChamber;
-import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
-import lykrast.prodigytech.common.tileentity.TileIncinerator;
-import lykrast.prodigytech.common.tileentity.TileLinearExtractor;
-import lykrast.prodigytech.common.tileentity.TileMagneticReassembler;
-import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
-import lykrast.prodigytech.common.tileentity.TileSolderer;
-import lykrast.prodigytech.common.tileentity.TileThermionicOscillator;
+import lykrast.prodigytech.common.block.*;
+import lykrast.prodigytech.common.tileentity.*;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
@@ -59,6 +29,7 @@ public class ModBlocks {
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
 		magneticReassembler, crystalGrowthChamber, thermionicOscillator,
 		airFunnel, linearExtractor,
+		holoFactory,
 		ferramicBlock, carbonPlateBlock, energionCrystalBlock,
 		ashBricks, hologram;
 	private static List<Block> blockList = new ArrayList<>();
@@ -92,15 +63,19 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
 		thermionicOscillator = initBlock(new BlockThermionicOscillator(6.0F, 45.0F, 1), "thermionic_oscillator");
 		GameRegistry.registerTileEntity(TileThermionicOscillator.class, PREFIX + "thermionic_oscillator");
-		//Misc
+		//Misc Ferramic tier
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
 		
+		//Energion machines
+		holoFactory = initBlock(new BlockHoloFactory(3.0F, 30.0F, 1), "holo_factory");
+		GameRegistry.registerTileEntity(TileHoloFactory.class, PREFIX + "holo_factory");
+		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
-		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 25.0F, "pickaxe", 1), "carbon_plate_block");
+		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 30.0F, "pickaxe", 1), "carbon_plate_block");
 		energionCrystalBlock = initBlock(new BlockEnergionCrystal(2.5F, 5.0F, 2), "energion_crystal_block");
 		
 		//Decoration

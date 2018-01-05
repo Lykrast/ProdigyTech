@@ -34,7 +34,10 @@ tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 tile.prodigytech.linear_extractor.name=Linear Extractor
-tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone signal
+tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone 
+
+tile.prodigytech.holo_factory.name=Holo-Factory
+tile.prodigytech.holo_factory.tooltip=Makes Hologram blocks at a fast pace\nTurn off with redstone signal
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
@@ -128,6 +131,8 @@ container.prodigytech.crystal_growth_chamber.danger.red=§c§lWARNING:§r Oscill
 
 container.prodigytech.linear_extractor=Linear Extractor
 
+container.prodigytech.holo_factory=Holo-Factory
+
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
 container.prodigytech.jei.ptexplosionfurnace.required=EP/item : %d
@@ -141,6 +146,7 @@ container.prodigytech.jei.ptcrystalgrowthchamber=Crystal Growth Chamber
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
+container.prodigytech.jei.ptholofactory=Holo-Factory
 
 #----------------------------
 #Advancements

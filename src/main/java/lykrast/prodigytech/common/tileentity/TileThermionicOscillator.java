@@ -1,6 +1,6 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockHotAirMachine;
+import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.CapabilityThermionicOscillation;
 import lykrast.prodigytech.common.capability.IHotAir;
@@ -68,7 +68,7 @@ public class TileThermionicOscillator extends TileEntity implements IHotAir, ITh
 		
 		if (next != previous)
 		{
-            BlockHotAirMachine.setState(next, this.world, this.pos);
+			BlockMachineActiveable.setState(next, this.world, this.pos);
 		}
 	}
 	

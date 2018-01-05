@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:holo_factory" },
+        "active=false,facing=south": { "model": "prodigytech:holo_factory", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:holo_factory", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:holo_factory", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:holo_factory_active" },
+        "active=true,facing=south": { "model": "prodigytech:holo_factory_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:holo_factory_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:holo_factory_active", "y": 90 }
+    }
+}

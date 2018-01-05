@@ -1,6 +1,6 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockHotAirMachine;
+import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
@@ -33,7 +33,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 
 	@Override
 	public void update() {
-        boolean flag = world.getBlockState(pos).getValue(BlockHotAirMachine.ACTIVE);
+        boolean flag = world.getBlockState(pos).getValue(BlockMachineActiveable.ACTIVE);
         boolean flag1 = false;
         
         if (!this.world.isRemote)
@@ -61,7 +61,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
             if (flag != active)
             {
                 flag1 = true;
-                BlockHotAirMachine.setState(active, this.world, this.pos);
+                BlockMachineActiveable.setState(active, this.world, this.pos);
             }
         }
 
@@ -182,7 +182,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 		return super.hasCapability(capability, facing);
 	}
 	
-	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandlerEnergion(this, 6, 0);
+	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandlerEnergion(this, 6, 0, 6);
 	
 	@Override
 	@SuppressWarnings("unchecked")

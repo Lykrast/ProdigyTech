@@ -9,8 +9,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockMachineHotAir extends ItemBlockInfoShift {
-	protected static final String HEAT_MINIMUM = "tooltip.prodigytech.temperature.min";
-	protected static final String HEAT_TRANSFER = "tooltip.prodigytech.temperature.transfer";
+	public static final String HEAT_MINIMUM = "tooltip.prodigytech.temperature.min";
+	public static final String HEAT_TRANSFER = "tooltip.prodigytech.temperature.transfer";
 	private final int min, transfer;
 	
 	public ItemBlockMachineHotAir(Block block, int heatMin, int heatTransfer) {

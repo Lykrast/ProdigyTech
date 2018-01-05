@@ -96,6 +96,9 @@ tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
 tooltip.prodigytech.temperature.max=§6Maximum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.min=§6Minimum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.transfer=§6Heat transmitted:§f %d%%§r
+tooltip.prodigytech.energion.required.single=§bBatteries required:§f %d§r
+tooltip.prodigytech.energion.required.interval=§bBatteries required:§f %d-%d§r
+tooltip.prodigytech.energion.consumption=§bEnergy consumption:§f %dx§r
 
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater

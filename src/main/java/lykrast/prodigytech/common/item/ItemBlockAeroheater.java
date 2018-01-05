@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockAeroheater extends ItemBlockInfoShift {
-	protected static final String HEAT_MAXIMUM = "tooltip.prodigytech.temperature.max";
+	public static final String HEAT_MAXIMUM = "tooltip.prodigytech.temperature.max";
 	private final int max;
 	
 	public ItemBlockAeroheater(Block block, int heatMax) {

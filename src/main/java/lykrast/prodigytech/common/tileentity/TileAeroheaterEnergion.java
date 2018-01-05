@@ -87,14 +87,14 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 			
 			//2.5 seconds to reach 80 °C
 			if (temperature < 80) temperatureClock = 1;
-			//5 more seconds to reach 100 °C
-			else if (temperature < 100) temperatureClock = 5;
-			//10 more seconds to reach 125 °C
-			else if (temperature < 125) temperatureClock = 8;
-			//21 more seconds to reach 160 °C
-			else if (temperature < 160) temperatureClock = 12;
-			//32 more seconds to reach 200 °C
-			else if (temperature < 200) temperatureClock = 16;
+			//5 more seconds to reach 100 °C with exactly 2 batteries
+			else if (temperature < 100) temperatureClock = 10 / energy;
+			//10 more seconds to reach 125 °C with exactly 3 batteries
+			else if (temperature < 125) temperatureClock = 24 / energy;
+			//21 more seconds to reach 160 °C with exactly 4 batteries
+			else if (temperature < 160) temperatureClock = 48 / energy;
+			//32 more seconds to reach 200 °C with exactly 5 batteries
+			else if (temperature < 200) temperatureClock = 80 / energy;
 			//60 more seconds to reach 250 °C
 			else temperatureClock = 24;
 		}

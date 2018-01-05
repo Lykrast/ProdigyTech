@@ -41,6 +41,8 @@ tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
 tile.prodigytech.energion_crystal_block.name=Block of Energion Crystal
 tile.prodigytech.energion_crystal_block.tooltip=Violently reacts to explosions
 tile.prodigytech.ash_bricks.name=Ash Bricks
+tile.prodigytech.hologram.name=Hologram
+tile.prodigytech.hologram.tooltip=Vanishes after some time
 
 #----------------------------
 #Items

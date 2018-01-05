@@ -12,6 +12,7 @@ import lykrast.prodigytech.common.block.BlockCrystalGrowthChamber;
 import lykrast.prodigytech.common.block.BlockEnergionCrystal;
 import lykrast.prodigytech.common.block.BlockExplosionFurnace;
 import lykrast.prodigytech.common.block.BlockGeneric;
+import lykrast.prodigytech.common.block.BlockHologram;
 import lykrast.prodigytech.common.block.BlockIncinerator;
 import lykrast.prodigytech.common.block.BlockLinearExtractor;
 import lykrast.prodigytech.common.block.BlockMagneticReassembler;
@@ -59,7 +60,7 @@ public class ModBlocks {
 		magneticReassembler, crystalGrowthChamber, thermionicOscillator,
 		airFunnel, linearExtractor,
 		ferramicBlock, carbonPlateBlock, energionCrystalBlock,
-		ashBricks;
+		ashBricks, hologram;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
@@ -104,6 +105,7 @@ public class ModBlocks {
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 10.0F, "pickaxe", 0), "ash_bricks");
+		hologram = initBlock(new BlockHologram(0.0F, 0.0F), "hologram");
 	}
 	
 	@SubscribeEvent

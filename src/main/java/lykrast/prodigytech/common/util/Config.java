@@ -23,7 +23,7 @@ public class Config {
 	public static int crystalGrowthChamberMaxDesync;
 	
 	//Energion
-	public static int energionBatteryDuration;
+	public static int energionBatteryDuration, hologramDuration;
 	
 	//Automation
 	public static int linearExtractorDelay, linearExtractorMaxStack;
@@ -97,6 +97,8 @@ public class Config {
 		//-----------
 		energionBatteryDuration = cfg.getInt("energionBatteryDuration", CATEGORY_ENERGION, 12000, 20, 1728000, 
 				"The time (in ticks) a simple Energion Battery will last, other values are derived from this one");
+		hologramDuration = cfg.getInt("hologramDuration", CATEGORY_ENERGION, 1200, 20, 72000, 
+				"The time (in ticks) that an Hologram block will last before vanishing");
 		
 		//-----------
 		//Automation

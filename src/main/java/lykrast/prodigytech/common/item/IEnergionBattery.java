@@ -31,5 +31,15 @@ public interface IEnergionBattery {
 	 * @return ItemStack form of the depleted battery
 	 */
 	public ItemStack getEmptyStack();
+	
+	/**
+	 * Gives the expected lifetime of the battery in ticks if 
+	 * 1 energy is extracted per tick
+	 * @return expected lifetime in ticks, or a negative number if it can vary or is not defined
+	 */
+	default public int getLifetime()
+	{
+		return -1;
+	}
 
 }

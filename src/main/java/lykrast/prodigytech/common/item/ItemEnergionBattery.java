@@ -42,5 +42,12 @@ public class ItemEnergionBattery extends Item implements IEnergionBattery {
 	{
 		return stack.getItemDamage() >= stack.getMaxDamage();
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public int getLifetime()
+	{
+		return getMaxDamage();
+	}
 
 }

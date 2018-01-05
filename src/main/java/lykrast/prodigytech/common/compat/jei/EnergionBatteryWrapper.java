@@ -22,7 +22,9 @@ public class EnergionBatteryWrapper implements IRecipeWrapper {
 		in = new ItemStack(item);
 		out = battery.getEmptyStack();
 		
-		duration = I18n.format("container.prodigytech.jei.ptbattery.lifetime", in.getMaxDamage());
+		int lifetime = battery.getLifetime();
+		if (lifetime < 0) duration = I18n.format("container.prodigytech.jei.ptbattery.undefined");
+		else duration = I18n.format("container.prodigytech.jei.ptbattery.lifetime", lifetime);
 	}
 
 	@Override

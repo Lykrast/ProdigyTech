@@ -86,6 +86,7 @@ item.prodigytech.energion_battery_double_empty.name=Double Energion Battery (Emp
 item.prodigytech.energion_battery_double.name=Double Energion Battery
 item.prodigytech.energion_battery_triple_empty.name=Triple Energion Battery (Empty)
 item.prodigytech.energion_battery_triple.name=Triple Energion Battery
+item.prodigytech.energion_battery_creative.name=Creative Energion Battery
 
 #----------------------------
 #UI
@@ -133,6 +134,7 @@ container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptcrystalgrowthchamber=Crystal Growth Chamber
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
+container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
 
 #----------------------------
 #Advancements

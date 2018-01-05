@@ -6,6 +6,7 @@ import java.util.List;
 import lykrast.prodigytech.common.item.IItemCustomModel;
 import lykrast.prodigytech.common.item.ItemCircuit;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
+import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
 import lykrast.prodigytech.common.item.ItemFuel;
 import lykrast.prodigytech.common.item.ItemSugarCube;
 import lykrast.prodigytech.common.util.Config;
@@ -33,7 +34,8 @@ public class ModItems {
 		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystal, energionCrystalSeed, energionDust, 
-		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple;
+		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
+		energionBatteryCreative;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -79,6 +81,7 @@ public class ModItems {
 		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
 		energionBatteryTripleEmpty = initItem(new Item(), "energion_battery_triple_empty");
 		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
+		energionBatteryCreative = initItem(new ItemEnergionBatteryCreative(), "energion_battery_creative");
 	}
 	
 	@SubscribeEvent

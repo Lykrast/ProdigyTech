@@ -93,9 +93,9 @@ item.prodigytech.energion_battery_creative.name=Creative Energion Battery
 #UI
 #----------------------------
 tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
-tooltip.prodigytech.temperature.max=§aMaximum temperature:§f %d°C§r
-tooltip.prodigytech.temperature.min=§aMinimum temperature:§f %d°C§r
-tooltip.prodigytech.temperature.transfer=§aHeat transmitted:§f %d%%§r
+tooltip.prodigytech.temperature.max=§6Maximum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.min=§6Minimum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.transfer=§6Heat transmitted:§f %d%%§r
 
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater

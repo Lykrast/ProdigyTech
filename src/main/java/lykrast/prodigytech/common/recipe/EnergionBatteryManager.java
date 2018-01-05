@@ -3,24 +3,26 @@ package lykrast.prodigytech.common.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import lykrast.prodigytech.common.item.ItemEnergionBattery;
+import lykrast.prodigytech.common.item.IEnergionBattery;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class EnergionBatteryManager {
-	public static final List<ItemEnergionBattery> BATTERIES = new ArrayList<>();
+	public static final List<Item> BATTERIES = new ArrayList<>();
 	public static final List<Item> BATTERIES_EMPTY = new ArrayList<>();
 	
-	public static void register(ItemEnergionBattery battery)
+	public static void register(Item battery)
 	{
+		if (!(battery instanceof IEnergionBattery)) return;
 		BATTERIES.add(battery);
-		BATTERIES_EMPTY.add(battery.getEmptyForm());
+		BATTERIES_EMPTY.add(((IEnergionBattery)battery).getEmptyForm());
 	}
 	
-	public static void unregister(ItemEnergionBattery battery)
+	public static void unregister(Item battery)
 	{
+		if (!(battery instanceof IEnergionBattery)) return;
 		BATTERIES.remove(battery);
-		BATTERIES_EMPTY.remove(battery.getEmptyForm());
+		BATTERIES_EMPTY.remove(((IEnergionBattery)battery).getEmptyForm());
 	}
 	
 	public static boolean isBattery(Item i)
@@ -43,7 +45,7 @@ public class EnergionBatteryManager {
 		return isEmptyBattery(stack.getItem());
 	}
 	
-	public static List<ItemEnergionBattery> getBatteryList()
+	public static List<Item> getBatteryList()
 	{
 		return BATTERIES;
 	}
@@ -57,12 +59,9 @@ public class EnergionBatteryManager {
 	public static int extract(ItemStack battery, int amount)
 	{
 		Item item = battery.getItem();
-		if (!isBattery(item) || !(item instanceof ItemEnergionBattery)) return 0;
+		if (!isBattery(item) || !(item instanceof IEnergionBattery)) return 0;
 		
-		int extracted = Math.min(amount, battery.getMaxDamage() - battery.getItemDamage());
-		battery.setItemDamage(battery.getItemDamage() + extracted);
-		
-		return extracted;
+		return ((IEnergionBattery)item).extract(battery, amount);
 	}
 	
 	/**
@@ -73,9 +72,10 @@ public class EnergionBatteryManager {
 	public static ItemStack checkDepleted(ItemStack battery)
 	{
 		Item item = battery.getItem();
-		if (!isBattery(item) || !(item instanceof ItemEnergionBattery)) return battery;
-		if (battery.getItemDamage() < battery.getMaxDamage()) return battery;
+		if (!isBattery(item) || !(item instanceof IEnergionBattery)) return battery;
+		IEnergionBattery casted = (IEnergionBattery)item;
+		if (!casted.isDepleted(battery)) return battery;
 		
-		return ((ItemEnergionBattery)item).getEmptyStack();
+		return casted.getEmptyStack();
 	}
 }

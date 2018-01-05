@@ -2,12 +2,13 @@ package lykrast.prodigytech.common.compat.jei;
 
 import java.awt.Color;
 
-import lykrast.prodigytech.common.item.ItemEnergionBattery;
+import lykrast.prodigytech.common.item.IEnergionBattery;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class EnergionBatteryWrapper implements IRecipeWrapper {
@@ -15,9 +16,10 @@ public class EnergionBatteryWrapper implements IRecipeWrapper {
 	private ItemStack in;
 	private final String duration;
 	
-	public EnergionBatteryWrapper(ItemEnergionBattery battery, IGuiHelper guiHelper)
+	public EnergionBatteryWrapper(Item item, IGuiHelper guiHelper)
 	{
-		in = new ItemStack(battery);
+		IEnergionBattery battery = (IEnergionBattery)item;
+		in = new ItemStack(item);
 		out = battery.getEmptyStack();
 		
 		duration = I18n.format("container.prodigytech.jei.ptbattery.lifetime", in.getMaxDamage());

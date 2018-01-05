@@ -4,8 +4,8 @@ import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
-import lykrast.prodigytech.common.util.IProdigyInventory;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
+import lykrast.prodigytech.common.util.ProdigyInventoryHandlerEnergion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -182,7 +182,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 		return super.hasCapability(capability, facing);
 	}
 	
-	private ProdigyInventoryHandler invHandler = new InventoryHandlerAeroheaterEnergion(this, 6, 0);
+	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandlerEnergion(this, 6, 0);
 	
 	@Override
 	@SuppressWarnings("unchecked")
@@ -198,22 +198,6 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 	@Override
 	public int getOutAirTemperature() {
 		return temperature;
-	}
-	
-	private static class InventoryHandlerAeroheaterEnergion extends ProdigyInventoryHandler {
-		
-		public InventoryHandlerAeroheaterEnergion(IProdigyInventory inventory, int slots, int offsets)
-		{
-			super(inventory, slots, offsets, true, true);
-		}
-
-		@Override
-		public ItemStack extractItem(int slot, int amount, boolean simulate) {
-			//Can't extract batteries
-			if (EnergionBatteryManager.isBattery(getStackInSlot(slot))) return ItemStack.EMPTY;
-			else return super.extractItem(slot, amount, simulate);
-		}
-
 	}
 
 }

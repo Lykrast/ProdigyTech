@@ -3,13 +3,13 @@ package lykrast.prodigytech.common.compat.jei;
 import java.util.ArrayList;
 import java.util.List;
 
-import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import net.minecraft.item.Item;
 
 public class EnergionBatteryCategory extends ProdigyCategory<EnergionBatteryWrapper> {
 	public static final String UID = "ptbattery";
@@ -33,7 +33,7 @@ public class EnergionBatteryCategory extends ProdigyCategory<EnergionBatteryWrap
 		IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 		List<EnergionBatteryWrapper> list = new ArrayList<>();
 		
-		for (ItemEnergionBattery i : EnergionBatteryManager.getBatteryList())
+		for (Item i : EnergionBatteryManager.getBatteryList())
 		{
 			list.add(new EnergionBatteryWrapper(i, guiHelper));
 		}

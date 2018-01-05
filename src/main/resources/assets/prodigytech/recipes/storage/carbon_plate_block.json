@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"PPP",
+		"PPP",
+		"PPP"
+	],
+	"key": {
+		"P": { "type": "forge:ore_dict", "ore": "plateCarbon" }
+	},
+	"result": { "item": "prodigytech:carbon_plate_block" }
+}

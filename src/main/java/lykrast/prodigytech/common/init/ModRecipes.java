@@ -57,6 +57,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("dustWood", ModItems.sawdust);
 		OreDictionary.registerOre("foodFlour", ModItems.flour);
 		OreDictionary.registerOre("plateCarbon", ModItems.carbonPlate);
+		OreDictionary.registerOre("blockPlateCarbon", ModBlocks.carbonPlateBlock);
 	}
 	
 	public static void initSmelting()

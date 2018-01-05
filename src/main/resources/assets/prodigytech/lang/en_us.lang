@@ -37,6 +37,7 @@ tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone signal
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
+tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
 tile.prodigytech.energion_crystal_block.name=Block of Energion Crystal
 tile.prodigytech.energion_crystal_block.tooltip=Violently reacts to explosions
 tile.prodigytech.ash_bricks.name=Ash Bricks

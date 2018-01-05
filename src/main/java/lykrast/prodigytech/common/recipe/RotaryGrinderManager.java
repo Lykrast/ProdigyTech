@@ -114,7 +114,7 @@ public class RotaryGrinderManager {
 		
 		addRecipe(new ItemStack(Items.COAL), new ItemStack(ModItems.coalDust));
 		addRecipe("blockCoal", new ItemStack(ModItems.coalDust, 9), Config.rotaryGrinderProcessTime * 9);
-		addRecipe(new ItemStack(ModItems.carbonPlate), new ItemStack(ModItems.coalDust, 8));
+		addRecipe("plateCarbon", new ItemStack(ModItems.coalDust, 8));
 
 		addRecipe("ingotIron", new ItemStack(ModItems.ironDust));
 		addRecipe("blockIron", new ItemStack(ModItems.ironDust, 9), Config.rotaryGrinderProcessTime * 9);

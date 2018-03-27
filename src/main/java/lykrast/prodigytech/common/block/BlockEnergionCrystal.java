@@ -4,30 +4,42 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import lykrast.prodigytech.common.item.ItemBlockInfoShift;
+import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.AABBUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlock {
+public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMapper, ICustomItemBlock {
     public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 5);
+    //Used as a cheap workaround to make the crystal cutter not cause an explosion
+    //Because onBlockDestroyedByPlayer does not allow me to see if it was the correct tool
+    public static final PropertyBool DEFUSED = PropertyBool.create("defused");
     private static final AxisAlignedBB[] AABB = new AxisAlignedBB[] {
     		AABBUtil.getCenteredDownSquareFromPixels(6, 4), 
     		AABBUtil.getCenteredDownSquareFromPixels(8, 6), 
@@ -38,8 +50,8 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlo
     	};
     
 	public BlockEnergionCrystal(float hardness, float resistance, int harvestLevel) {
-		super(Material.GLASS, SoundType.GLASS, hardness, resistance, "pickaxe", harvestLevel);
-		setDefaultState(blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
+		super(Material.ROCK, SoundType.GLASS, hardness, resistance, "crystalcutter", harvestLevel);
+		setDefaultState(blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)).withProperty(DEFUSED, false));
 		setLightLevel(0.6F);
         setTickRandomly(true);
 	}
@@ -66,6 +78,41 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlo
     {
     	//TODO: something more sophisticated
     	return 1.0f;
+    }
+    
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return ModItems.energionCrystalSeed;
+    }
+    
+    @Override
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
+    {
+        return new ItemStack(ModItems.energionCrystalSeed);
+    }
+
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        int age = getAge(state);
+        Random rand = world instanceof World ? ((World)world).rand : new Random();
+
+        //No fortune on the guaranteed drop
+        drops.add(new ItemStack(ModItems.energionCrystalSeed, 1, 0));
+        
+        if (age > 0) for (int i = 0; i < age; i++)
+        {
+        	drops.add(new ItemStack(ModItems.energionCrystalSeed, 1, 0));
+
+        	if (fortune > 0) for (int j = 0; j < fortune; j++)
+        	{
+        		if (rand.nextInt(2) == 0)
+        		{
+        			drops.add(new ItemStack(ModItems.energionCrystalSeed, 1, 0));
+        		}
+        	}
+        }
     }
 
 	@Override
@@ -124,15 +171,34 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlo
     }
 	
 	@Override
-    public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos, Explosion explosionIn)
+    public void onBlockExploded(World worldIn, BlockPos pos, Explosion explosionIn)
     {
-        if (!worldIn.isRemote)
-        {
-            EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(worldIn, (double)((float)pos.getX() + 0.5F), (double)pos.getY(), (double)((float)pos.getZ() + 0.5F), explosionIn.getExplosivePlacedBy());
-            entitytntprimed.setFuse(5);
-            worldIn.spawnEntity(entitytntprimed);
-        }
+		explode(worldIn, pos, worldIn.getBlockState(pos), explosionIn.getExplosivePlacedBy());        
+        super.onBlockExploded(worldIn, pos, explosionIn);
     }
+
+    public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state)
+    {
+        explode(worldIn, pos, state, (EntityLivingBase)null);
+    }
+    
+	private void explode(World world, BlockPos pos, IBlockState state, EntityLivingBase igniter)
+	{
+        if (!world.isRemote)
+        {
+	    	int age = getAge(state);
+	    	
+	    	if (!isDefused(state) && age > 0)
+	    	{
+	    		for (int i=0; i<age; i++)
+	    		{
+	                EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(world, (double)((float)pos.getX() + 0.5F), (double)pos.getY(), (double)((float)pos.getZ() + 0.5F), igniter);
+	                entitytntprimed.setFuse(5 + 4*i);
+	                world.spawnEntity(entitytntprimed);
+	    		}
+	    	}
+        }
+	}
 
 	@Override
     public boolean canDropFromExplosion(Explosion explosionIn)
@@ -142,18 +208,27 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlo
 
 	@Override
 	public ItemBlock getItemBlock() {
-		return new ItemBlockInfoShift(this);
+		return null;
 	}
 
 	//Copied from crops
     public IBlockState withAge(int age)
     {
-        return this.getDefaultState().withProperty(AGE, Integer.valueOf(age));
+        return this.getDefaultState().withProperty(AGE, Integer.valueOf(age)).withProperty(DEFUSED, false);
     }
 
-    protected int getAge(IBlockState state)
+    public int getAge(IBlockState state)
     {
         return ((Integer)state.getValue(AGE)).intValue();
+    }
+    
+    private boolean isDefused(IBlockState state)
+    {
+    	return state.getValue(DEFUSED);
+    }
+    
+    public static void defuse(World world, BlockPos pos) {
+    	world.setBlockState(pos, world.getBlockState(pos).withProperty(DEFUSED, Boolean.TRUE));
     }
 
 	@Override
@@ -171,6 +246,11 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomItemBlo
 	@Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {AGE});
+        return new BlockStateContainer(this, new IProperty[] {AGE, DEFUSED});
     }
+
+	@Override
+	public void setCustomStateMapper() {
+		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(DEFUSED).build());
+	}
 }

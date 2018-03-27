@@ -5,8 +5,10 @@ import java.util.List;
 
 import lykrast.prodigytech.common.item.IItemCustomModel;
 import lykrast.prodigytech.common.item.ItemCircuit;
+import lykrast.prodigytech.common.item.ItemCrystalCutter;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
+import lykrast.prodigytech.common.item.ItemEnergionCrystalSeed;
 import lykrast.prodigytech.common.item.ItemFuel;
 import lykrast.prodigytech.common.item.ItemSugarCube;
 import lykrast.prodigytech.common.util.Config;
@@ -35,7 +37,8 @@ public class ModItems {
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
-		energionBatteryCreative;
+		energionBatteryCreative,
+		crystalCutter;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -47,6 +50,7 @@ public class ModItems {
 		ferramicGear = initItem(new Item(), "ferramic_gear");
 		ash = initItem(new Item(), "ash");
 
+		//Grinder
 		flour = initItem(new Item(), "flour");
 		sawdust = initItem(new Item(), "sawdust");
 		meatGround = initItem(new ItemFood(2, 0.3F, true).setPotionEffect(new PotionEffect(MobEffects.HUNGER, 600, 0), 0.3F), "meat_ground");
@@ -64,15 +68,19 @@ public class ModItems {
 		
 		carbonPlate = initItem(new Item(), "carbon_plate");
 		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
+		
+		//Magnetic Reassembler
 		infernoCrystal = initItem(new ItemFuel(4800), "inferno_crystal");
 		sugarCube = initItem(new ItemSugarCube(1, 0.2F), "sugar_cube");
 		
+		//Solderer
 		circuitPlate = initItem(new Item(), "circuit_plate");
 		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
 		circuit = initItem(new ItemCircuit(), "circuit");
 		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
 
-		energionCrystalSeed = initItem(new Item(), "energion_crystal_seed");
+		//Energion
+		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");
 		energionDust = initItem(new Item(), "energion_dust");
 		energionBatteryEmpty = initItem(new Item(), "energion_battery_empty");
 		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");
@@ -81,6 +89,9 @@ public class ModItems {
 		energionBatteryTripleEmpty = initItem(new Item(), "energion_battery_triple_empty");
 		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
 		energionBatteryCreative = initItem(new ItemEnergionBatteryCreative(), "energion_battery_creative");
+		
+		//Tools
+		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
 	}
 	
 	@SubscribeEvent

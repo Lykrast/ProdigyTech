@@ -22,6 +22,6 @@ public class CapabilityHotAir {
 
 			@Override
 			public void readNBT(Capability<IHotAir> capability, IHotAir instance, EnumFacing side, NBTBase nbt) {}
-		}, HotAirNull.class);
+		}, HotAirNull::new);
 	}
 }

@@ -27,11 +27,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
-		magneticReassembler, crystalGrowthChamber, thermionicOscillator,
+		magneticReassembler,
 		airFunnel, linearExtractor,
-		holoFactory,
-		ferramicBlock, carbonPlateBlock, energionCrystalBlock,
-		ashBricks, hologram;
+		ferramicBlock, carbonPlateBlock,
+		ashBricks;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
@@ -59,28 +58,18 @@ public class ModBlocks {
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
-		crystalGrowthChamber = initBlock(new BlockCrystalGrowthChamber(6.0F, 45.0F, 1), "crystal_growth_chamber");
-		GameRegistry.registerTileEntity(TileCrystalGrowthChamber.class, PREFIX + "crystal_growth_chamber");
-		thermionicOscillator = initBlock(new BlockThermionicOscillator(6.0F, 45.0F, 1), "thermionic_oscillator");
-		GameRegistry.registerTileEntity(TileThermionicOscillator.class, PREFIX + "thermionic_oscillator");
 		//Misc Ferramic tier
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
 		
-		//Energion machines
-		holoFactory = initBlock(new BlockHoloFactory(3.0F, 30.0F, 1), "holo_factory");
-		GameRegistry.registerTileEntity(TileHoloFactory.class, PREFIX + "holo_factory");
-		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
 		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 30.0F, "pickaxe", 1), "carbon_plate_block");
-		energionCrystalBlock = initBlock(new BlockEnergionCrystal(2.5F, 5.0F, 2), "energion_crystal_block");
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 10.0F, "pickaxe", 0), "ash_bricks");
-		hologram = initBlock(new BlockHologram(0.0F, 0.0F), "hologram");
 	}
 	
 	@SubscribeEvent

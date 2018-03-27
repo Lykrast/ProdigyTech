@@ -48,8 +48,6 @@ public class ModRecipes {
 		
 		//Energion
 		OreDictionary.registerOre("gemEnergion", ModItems.energionCrystalSeed);
-		OreDictionary.registerOre("gemBigEnergion", ModItems.energionCrystal);
-		OreDictionary.registerOre("blockEnergion", ModBlocks.energionCrystalBlock);
 		OreDictionary.registerOre("dustEnergion", ModItems.energionDust);
 		
 		//Other

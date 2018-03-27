@@ -33,7 +33,7 @@ public class ModItems {
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
 		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
-		energionCrystal, energionCrystalSeed, energionDust, 
+		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative;
 	private static List<Item> itemList = new ArrayList<>();
@@ -73,7 +73,6 @@ public class ModItems {
 		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
 
 		energionCrystalSeed = initItem(new Item(), "energion_crystal_seed");
-		energionCrystal = initItem(new Item(), "energion_crystal");
 		energionDust = initItem(new Item(), "energion_dust");
 		energionBatteryEmpty = initItem(new Item(), "energion_battery_empty");
 		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");

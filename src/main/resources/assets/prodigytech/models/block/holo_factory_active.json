@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "prodigytech:blocks/carbon_plate_block",
-        "front": "prodigytech:blocks/holo_factory_front_active",
-        "side": "prodigytech:blocks/carbon_plate_block"
-    }
-}

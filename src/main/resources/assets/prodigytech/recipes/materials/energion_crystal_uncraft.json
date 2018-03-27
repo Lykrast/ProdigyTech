@@ -1,8 +1,0 @@
-{
-	"type": "forge:ore_shapeless",
-	"group": "energion_crystal_seed",
-	"ingredients": [
-		{ "item": "prodigytech:energion_crystal" }
-	],
-	"result": { "item": "prodigytech:energion_crystal_seed", "count": 6 }
-}

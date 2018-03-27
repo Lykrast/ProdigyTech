@@ -24,28 +24,17 @@ tile.prodigytech.rotary_grinder.name=Rotary Grinder
 tile.prodigytech.rotary_grinder.tooltip=Crushes things
 tile.prodigytech.solderer.name=Solderer
 tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
-tile.prodigytech.crystal_growth_chamber.name=Crystal Growth Chamber
-tile.prodigytech.crystal_growth_chamber.tooltip=Grows Energion Crystals from\nthermionic oscillations on opposite sides
-tile.prodigytech.thermionic_oscillator.name=Thermionic Oscillator
-tile.prodigytech.thermionic_oscillator.tooltip=Emits thermionic oscillations\nTurn off with redstone signal
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
 
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 tile.prodigytech.linear_extractor.name=Linear Extractor
-tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone 
-
-tile.prodigytech.holo_factory.name=Holo-Factory
-tile.prodigytech.holo_factory.tooltip=Makes Hologram blocks at a fast pace\nTurn off with redstone signal
+tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
 
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
-tile.prodigytech.energion_crystal_block.name=Block of Energion Crystal
-tile.prodigytech.energion_crystal_block.tooltip=Violently reacts to explosions
 tile.prodigytech.ash_bricks.name=Ash Bricks
-tile.prodigytech.hologram.name=Hologram
-tile.prodigytech.hologram.tooltip=Vanishes after some time
 
 #----------------------------
 #Items
@@ -84,7 +73,6 @@ item.prodigytech.pattern_circuit.refined.name=Refined Circuit Pattern
 item.prodigytech.pattern_circuit.perfected.name=Perfected Circuit Pattern
 
 item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
-item.prodigytech.energion_crystal.name=Energion Crystal Cluster
 item.prodigytech.energion_dust.name=Energion Dust
 item.prodigytech.energion_battery_empty.name=Energion Battery (Empty)
 item.prodigytech.energion_battery.name=Energion Battery
@@ -113,7 +101,6 @@ container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder
 container.prodigytech.solderer=Solderer
-container.prodigytech.crystal_growth_chamber=Crystal Growth Chamber
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 
 container.prodigytech.temperature=Air Temperature : %s°C
@@ -122,16 +109,8 @@ container.prodigytech.solderer.gold.blocks=%s Blocks
 container.prodigytech.solderer.gold.ingots=%s Ingots
 container.prodigytech.solderer.gold.nuggets=%s Nuggets
 container.prodigytech.solderer.gold.empty=Empty
-container.prodigytech.crystal_growth_chamber.north=North oscillation
-container.prodigytech.crystal_growth_chamber.south=South oscillation
-container.prodigytech.crystal_growth_chamber.east=East oscillation
-container.prodigytech.crystal_growth_chamber.west=West oscillation
-container.prodigytech.crystal_growth_chamber.danger.yellow=§6§lWARNING:§r Oscillation desynchronization detected
-container.prodigytech.crystal_growth_chamber.danger.red=§c§lWARNING:§r Oscillation desynchronization level critical
 
 container.prodigytech.linear_extractor=Linear Extractor
-
-container.prodigytech.holo_factory=Holo-Factory
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
@@ -142,11 +121,9 @@ container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
 container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
-container.prodigytech.jei.ptcrystalgrowthchamber=Crystal Growth Chamber
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
-container.prodigytech.jei.ptholofactory=Holo-Factory
 
 #----------------------------
 #Advancements

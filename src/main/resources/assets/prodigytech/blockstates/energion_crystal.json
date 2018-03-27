@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "age=0": { "model": "prodigytech:energion_crystal_0" },
+        "age=1": { "model": "prodigytech:energion_crystal_1" },
+        "age=2": { "model": "prodigytech:energion_crystal_2" },
+        "age=3": { "model": "prodigytech:energion_crystal_3" },
+        "age=4": { "model": "prodigytech:energion_crystal_4" },
+        "age=5": { "model": "prodigytech:energion_crystal_5" }
+    }
+}

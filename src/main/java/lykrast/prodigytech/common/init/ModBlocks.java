@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, solderer,
-		magneticReassembler,
+		magneticReassembler, energionCrystal,
 		airFunnel, linearExtractor,
 		ferramicBlock, carbonPlateBlock,
 		ashBricks;
@@ -63,6 +63,9 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
+		
+		//Energion
+		energionCrystal = initBlock(new BlockEnergionCrystal(1.0F, 1.0F, 0), "energion_crystal");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");

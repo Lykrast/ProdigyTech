@@ -4,11 +4,10 @@ import java.util.List;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemBlockAeroheater;
-import lykrast.prodigytech.common.item.ItemBlockMachineEnergion;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemBlock;
@@ -78,8 +77,7 @@ public class BlockAeroheaterEnergion extends BlockHotAirMachine<TileAeroheaterEn
 			protected void addInfo(ItemStack stack, List<String> tooltip)
 			{
 				super.addInfo(stack, tooltip);
-				tooltip.add(I18n.format(ItemBlockMachineEnergion.BATTERIES_REQUIRED_INTERVAL, 1, 6));
-				tooltip.add(I18n.format(ItemBlockMachineEnergion.ENERGY_CONSUMPTION, 1));
+				TooltipUtil.addEnergionInfo(stack, tooltip, 1, 6, 1);
 			}
 		};
 	}

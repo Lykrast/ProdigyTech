@@ -4,14 +4,11 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.lwjgl.input.Keyboard;
-
+import lykrast.prodigytech.common.util.TooltipUtil;
 import net.minecraft.block.Block;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -27,22 +24,13 @@ public class ItemBlockInfoShift extends ItemBlock {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
-		{
-			addInfo(stack, tooltip);
-		}
-		else
-		{
-			tooltip.add(I18n.format(SHIFT));
-		}
+		if (TooltipUtil.addShiftTooltip(tooltip)) addInfo(stack, tooltip);
 	}
 
 	@SideOnly(Side.CLIENT)
 	protected void addInfo(ItemStack stack, List<String> tooltip)
 	{
-		String tip = I18n.format(stack.getUnlocalizedName() + ".tooltip");
-		String[] lines = tip.split("\\\\n");
-		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
+		TooltipUtil.addTooltip(stack, tooltip);
 	}
 
 }

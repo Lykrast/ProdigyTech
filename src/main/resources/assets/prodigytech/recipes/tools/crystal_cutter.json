@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"G",
+		"I",
+		"S"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" },
+		"S": { "type": "forge:ore_dict", "ore": "stickWood" }
+	},
+	"result": { "item": "prodigytech:crystal_cutter" }
+}

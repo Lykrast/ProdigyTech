@@ -22,7 +22,7 @@ public class ItemEnergionCrystalSeed extends Item {
     {
         ItemStack itemstack = player.getHeldItem(hand);
         IBlockState state = worldIn.getBlockState(pos);
-        if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, itemstack) && state.isFullBlock() && worldIn.isAirBlock(pos.up()))
+        if (facing == EnumFacing.UP && player.canPlayerEdit(pos.offset(facing), facing, itemstack) && state.isSideSolid(worldIn, pos, EnumFacing.UP) && worldIn.isAirBlock(pos.up()))
         {
             worldIn.setBlockState(pos.up(), ((BlockEnergionCrystal)ModBlocks.energionCrystal).withAge(0));
 

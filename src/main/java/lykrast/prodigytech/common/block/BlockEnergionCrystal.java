@@ -221,7 +221,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
         return this.getDefaultState().withProperty(AGE, Integer.valueOf(age)).withProperty(DEFUSED, false);
     }
 
-    public int getAge(IBlockState state)
+    public static int getAge(IBlockState state)
     {
         return ((Integer)state.getValue(AGE)).intValue();
     }
@@ -238,13 +238,13 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
 	@Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.withAge(meta);
+        return withAge(meta);
     }
 
 	@Override
     public int getMetaFromState(IBlockState state)
     {
-        return this.getAge(state);
+        return getAge(state);
     }
 
 	@Override

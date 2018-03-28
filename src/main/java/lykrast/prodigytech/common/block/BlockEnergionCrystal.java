@@ -56,6 +56,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
         setTickRandomly(true);
 	}
 
+	//Just like wheat
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         super.updateTick(worldIn, pos, state, rand);
@@ -134,7 +135,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
 	@Override
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.down()).isFullBlock();
+        return worldIn.getBlockState(pos.down()).isSideSolid(worldIn, pos.down(), EnumFacing.UP);
     }
 
 	@Override
@@ -166,7 +167,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
     {
         if (!this.canPlaceBlockAt(worldIn, pos))
         {
-            worldIn.destroyBlock(pos, true);
+            worldIn.destroyBlock(pos, false);
         }
     }
 	
@@ -176,10 +177,13 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
 		explode(worldIn, pos, worldIn.getBlockState(pos), explosionIn.getExplosivePlacedBy());        
         super.onBlockExploded(worldIn, pos, explosionIn);
     }
-
-    public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state)
+    
+    @Override
+    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest)
     {
-        explode(worldIn, pos, state, (EntityLivingBase)null);
+    	boolean destroyed = super.removedByPlayer(state, world, pos, player, willHarvest);
+    	if (destroyed && !player.isCreative()) explode(world, pos, state, player);
+    	return destroyed;
     }
     
 	private void explode(World world, BlockPos pos, IBlockState state, EntityLivingBase igniter)

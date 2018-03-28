@@ -65,7 +65,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
 		
 		//Energion
-		energionCrystal = initBlock(new BlockEnergionCrystal(1.0F, 1.0F, 0), "energion_crystal");
+		energionCrystal = initBlock(new BlockEnergionCrystal(0.35F, 0.5F, 0), "energion_crystal");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");

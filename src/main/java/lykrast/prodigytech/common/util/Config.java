@@ -16,14 +16,13 @@ public class Config {
 	
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, soldererProcessTime, 
-		crystalGrowthChamberProcessTime, magneticReassemblerProcessTime;
+		magneticReassemblerProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
 	public static int soldererMaxGold;
-	public static int crystalGrowthChamberMaxDesync;
 	
 	//Energion
-	public static int energionBatteryDuration, hologramDuration;
+	public static int energionBatteryDuration;
 	
 	//Automation
 	public static int linearExtractorDelay, linearExtractorMaxStack;
@@ -67,38 +66,25 @@ public class Config {
 		//Rotary Grinder
 		rotaryGrinderProcessTime = cfg.getInt("rotaryGrinderProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
 				"The base amount of time (in ticks) that the Rotary Grinder takes to process 1 item\n"
-				+ "Several recipes have shorter or longer processing time, which are all derived from this value\n"
-				+ "High values may result in weird behavior for slow recipes");
+				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
 		//Solderer
 		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 3000, 
 				"The base amount of time (in ticks) that the Solderer takes to make 1 Crude Circuit\n"
-				+ "The time of all other recipes are derived from this value\n"
-				+ "High values may result in weird behavior for slow recipes");
+				+ "The time of all other recipes are derived from this value");
 		soldererMaxGold = cfg.getInt("soldererMaxGold", CATEGORY_MACHINES, 81, 9, 20736, 
 				"How much gold (in nuggets) can the Solderer hold in its internal buffer");
 		//Magnetic Reassembler
 		magneticReassemblerProcessTime = cfg.getInt("magneticReassemblerProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
 				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
-				+ "Several recipes have shorter or longer processing time, which are all derived from this value\n"
-				+ "High values may result in weird behavior for slow recipes");
-		//Crystal Growth Chamber
-		crystalGrowthChamberProcessTime = cfg.getInt("crystalGrowthChamberProcessTime", CATEGORY_MACHINES, 180, 1, 3000, 
-				"The base amount of time (in SECONDS) that the Crystal Growth Chamber takes to grow a Cluster\n"
-				+ "Base speed is with a single set of Thermionic Oscillators");
-		crystalGrowthChamberMaxDesync = cfg.getInt("crystalGrowthChamberMaxDesync", CATEGORY_MACHINES, 2000, 1, 30000, 
-				"How much desynchronization can the Crystal Growth Chamber handle before exploding\n"
-				+ "At base processing speed, this is in about 1/10 of a tick (or 1/200 of a second)\n"
-				+ "Values below ~500 are highly discouraged due to chunk loading sometimes generating desync");
+				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		
 		//-----------
 		//Energion
 		//-----------
 		energionBatteryDuration = cfg.getInt("energionBatteryDuration", CATEGORY_ENERGION, 12000, 20, 1728000, 
 				"The time (in ticks) a simple Energion Battery will last, other values are derived from this one");
-		hologramDuration = cfg.getInt("hologramDuration", CATEGORY_ENERGION, 1200, 20, 72000, 
-				"The time (in ticks) that an Hologram block will last before vanishing");
 		
 		//-----------
 		//Automation

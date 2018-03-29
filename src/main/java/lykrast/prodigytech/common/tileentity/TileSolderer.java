@@ -267,10 +267,10 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("ProcessTime", (short)this.processTime);
-        compound.setInteger("ProcessTimeMax", (short)this.processTimeMax);
-        compound.setInteger("Temperature", (short)this.temperature);
-        compound.setInteger("Gold", (short)this.gold);
+        compound.setInteger("ProcessTime", processTime);
+        compound.setInteger("ProcessTimeMax", processTimeMax);
+        compound.setInteger("Temperature", temperature);
+        compound.setInteger("Gold", gold);
 
         return compound;
     }

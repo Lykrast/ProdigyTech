@@ -140,8 +140,8 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("Temperature", (short)this.temperature);
-        compound.setInteger("TemperatureClock", (short)this.temperatureClock);
+        compound.setInteger("Temperature", temperature);
+        compound.setInteger("TemperatureClock", temperatureClock);
 
         return compound;
     }

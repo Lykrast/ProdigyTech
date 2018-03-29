@@ -158,10 +158,10 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("BurnTime", (short)this.furnaceBurnTime);
-        compound.setInteger("MaxBurnTime", (short)this.currentItemBurnTime);
-        compound.setInteger("Temperature", (short)this.temperature);
-        compound.setInteger("TemperatureClock", (short)this.temperatureClock);
+        compound.setInteger("BurnTime", furnaceBurnTime);
+        compound.setInteger("MaxBurnTime", currentItemBurnTime);
+        compound.setInteger("Temperature", temperature);
+        compound.setInteger("TemperatureClock", temperatureClock);
 
         return compound;
     }

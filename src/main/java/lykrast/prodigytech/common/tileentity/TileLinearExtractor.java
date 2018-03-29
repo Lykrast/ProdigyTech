@@ -14,7 +14,7 @@ import net.minecraftforge.items.IItemHandler;
 
 public class TileLinearExtractor extends TileMachineInventory implements ITickable {
 	/** The number of ticks that the machine needs to process */
-	private int clockTime;
+	private short clockTime;
 
 	public TileLinearExtractor() {
 		super(1);
@@ -38,7 +38,7 @@ public class TileLinearExtractor extends TileMachineInventory implements ITickab
 			{
 				if (!world.isBlockPowered(pos))
 				{
-					clockTime = Config.linearExtractorDelay;
+					clockTime = (short)Config.linearExtractorDelay;
 					EnumFacing facing = BlockLinearExtractor.getFacing(getBlockMetadata());
 					push(facing.getOpposite());
 					pull(facing);
@@ -111,7 +111,7 @@ public class TileLinearExtractor extends TileMachineInventory implements ITickab
 	    switch (id)
 	    {
 	        case 0:
-	            this.clockTime = value;
+	            this.clockTime = (short)value;
 	            break;
 	    }
 	}
@@ -140,13 +140,13 @@ public class TileLinearExtractor extends TileMachineInventory implements ITickab
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.clockTime = compound.getInteger("ClockTime");
+        this.clockTime = compound.getShort("ClockTime");
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("ClockTime", (short)this.clockTime);
+        compound.setShort("ClockTime", clockTime);
 
         return compound;
     }

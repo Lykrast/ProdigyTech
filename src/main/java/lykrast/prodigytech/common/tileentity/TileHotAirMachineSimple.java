@@ -144,10 +144,10 @@ public abstract class TileHotAirMachineSimple extends TileMachineInventory imple
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("ProcessTime", (short)this.processTime);
-        compound.setInteger("ProcessTimeMax", (short)this.processTimeMax);
-        compound.setInteger("Temperature", (short)this.temperature);
-        compound.setInteger("TemperatureOut", (short)this.temperatureOut);
+        compound.setInteger("ProcessTime", processTime);
+        compound.setInteger("ProcessTimeMax", processTimeMax);
+        compound.setInteger("Temperature", temperature);
+        compound.setInteger("TemperatureOut", temperatureOut);
 
         return compound;
     }

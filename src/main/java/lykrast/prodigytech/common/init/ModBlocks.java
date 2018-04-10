@@ -86,6 +86,9 @@ public class ModBlocks {
 	public static void registerModels(ModelRegistryEvent evt)
 	{
 		for (Block b : blockList) initModel(b);
+		
+		//We no longer use it afterwards
+		blockList = null;
 	}
 	
 	public static Block initBlock(Block block, String name)

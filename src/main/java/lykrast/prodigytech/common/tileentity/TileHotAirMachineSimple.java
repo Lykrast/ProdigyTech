@@ -7,16 +7,17 @@ import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 /**
- * A hot air powered machine that does simple recipes (1 input to 1 output)
+ * A hot air powered machine that does simple recipes (1 input to 1 output).
  * @author Lykrast
  */
-public abstract class TileHotAirMachineSimple extends TileMachineInventory implements IHotAir {
+public abstract class TileHotAirMachineSimple extends TileMachineInventory  implements ITickable, IHotAir {
 	/** The number of ticks that the machine needs to process */
 	protected int processTime;
 	/** The number of ticks that the current recipes needs in total */

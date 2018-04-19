@@ -1,27 +1,34 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
-import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
+import lykrast.prodigytech.common.recipe.SimpleRecipeManager;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 
-public class TileBlowerFurnace extends TileHotAirMachineSimple {
-    public TileBlowerFurnace() {
+/**
+ * A hot air powered machine that uses a SimpleRecipeManager.
+ * @author Lykrast
+ */
+public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSimple {
+	protected final SimpleRecipeManager manager;
+	
+    public TileHotAirMachineSimpleManaged(SimpleRecipeManager manager) {
 		super();
+		this.manager = manager;
 	}
-
-	@Override
-	public String getName() {
-		return super.getName() + "blower_furnace";
-	}
+    
+    protected boolean isTooCool() {
+    	return temperature < 80;
+    }
     
     @Override
 	protected boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || temperature < 80) return false;
+    	if (getStackInSlot(0).isEmpty() || isTooCool()) return false;
     	
-    	ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(0));
-    	if (itemstack.isEmpty()) return false;
+    	SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
+    	if (recipe == null) return false;
+    	ItemStack itemstack = recipe.getOutput();
     	
 	    ItemStack itemstack1 = getStackInSlot(1);
 		
@@ -42,12 +49,6 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
             return itemstack1.getCount() + itemstack.getCount() <= itemstack.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
         }
     }
-	
-	@Override
-	protected int getProcessSpeed()
-	{
-		return temperature / 10;
-	}
 
 	@Override
 	public void update() {
@@ -64,7 +65,8 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
         	{
             	if (processTimeMax <= 0)
             	{
-            		processTimeMax = Config.blowerFurnaceProcessTime * 10;
+            		SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
+            		processTimeMax = recipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
             	else if (processTime <= 0)
@@ -74,7 +76,8 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
             		
             		if (canProcess())
             		{
-            			processTimeMax = Config.blowerFurnaceProcessTime * 10;
+            			SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
+            			processTimeMax = recipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
             		else
@@ -105,15 +108,15 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
         }
 	}
 	
-	private void smelt()
+	protected void smelt()
 	{
 		ItemStack itemstack = getStackInSlot(0);
-        ItemStack itemstack1 = FurnaceRecipes.instance().getSmeltingResult(itemstack);
+        ItemStack itemstack1 = manager.findRecipe(itemstack).getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
         if (itemstack2.isEmpty())
         {
-        	setInventorySlotContents(1, itemstack1.copy());
+        	setInventorySlotContents(1, itemstack1);
         }
         else if (itemstack2.getItem() == itemstack1.getItem())
         {
@@ -125,7 +128,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index == 0) return !FurnaceRecipes.instance().getSmeltingResult(stack).isEmpty();
+		if (index == 0) return manager.isValidInput(stack);
 		else return false;
 	}
 

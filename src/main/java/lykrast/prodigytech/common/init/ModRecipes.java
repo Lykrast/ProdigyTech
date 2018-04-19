@@ -21,9 +21,9 @@ public class ModRecipes {
 	{
 		initSmelting();
 		ExplosionFurnaceManager.init();
-		RotaryGrinderManager.init();
+		RotaryGrinderManager.INSTANCE.init();
 		SoldererManager.init();
-		MagneticReassemblerManager.init();
+		MagneticReassemblerManager.INSTANCE.init();
 	}
 	
 	public static void initOreDict()

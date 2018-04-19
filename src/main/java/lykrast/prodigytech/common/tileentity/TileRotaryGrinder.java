@@ -3,7 +3,7 @@ package lykrast.prodigytech.common.tileentity;
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
 
@@ -22,7 +22,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimple implements ITicka
     {
     	if (getStackInSlot(0).isEmpty() || temperature < 80) return false;
     	
-    	RotaryGrinderRecipe recipe = RotaryGrinderManager.findRecipe(getStackInSlot(0));
+    	SimpleRecipe recipe = RotaryGrinderManager.INSTANCE.findRecipe(getStackInSlot(0));
     	if (recipe == null) return false;
     	ItemStack itemstack = recipe.getOutput();
     	
@@ -67,7 +67,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimple implements ITicka
         	{
             	if (processTimeMax <= 0)
             	{
-            		RotaryGrinderRecipe recipe = RotaryGrinderManager.findRecipe(getStackInSlot(0));
+            		SimpleRecipe recipe = RotaryGrinderManager.INSTANCE.findRecipe(getStackInSlot(0));
             		processTimeMax = recipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
@@ -78,7 +78,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimple implements ITicka
             		
             		if (canProcess())
             		{
-            			RotaryGrinderRecipe recipe = RotaryGrinderManager.findRecipe(getStackInSlot(0));
+            			SimpleRecipe recipe = RotaryGrinderManager.INSTANCE.findRecipe(getStackInSlot(0));
             			processTimeMax = recipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
@@ -113,7 +113,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimple implements ITicka
 	private void smelt()
 	{
 		ItemStack itemstack = getStackInSlot(0);
-        ItemStack itemstack1 = RotaryGrinderManager.findRecipe(itemstack).getOutput();
+        ItemStack itemstack1 = RotaryGrinderManager.INSTANCE.findRecipe(itemstack).getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
         if (itemstack2.isEmpty())
@@ -130,7 +130,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimple implements ITicka
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index == 0) return RotaryGrinderManager.isValidInput(stack);
+		if (index == 0) return RotaryGrinderManager.INSTANCE.isValidInput(stack);
 		else return false;
 	}
 

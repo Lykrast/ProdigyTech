@@ -3,7 +3,7 @@ package lykrast.prodigytech.common.tileentity;
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
-import lykrast.prodigytech.common.recipe.MagneticReassemblerManager.MagneticReassemblerRecipe;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
 
@@ -22,7 +22,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimple implements 
     {
     	if (getStackInSlot(0).isEmpty() || temperature < 125) return false;
     	
-    	MagneticReassemblerRecipe recipe = MagneticReassemblerManager.findRecipe(getStackInSlot(0));
+    	SimpleRecipe recipe = MagneticReassemblerManager.INSTANCE.findRecipe(getStackInSlot(0));
     	if (recipe == null) return false;
     	ItemStack itemstack = recipe.getOutput();
     	
@@ -73,7 +73,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimple implements 
         	{
             	if (processTimeMax <= 0)
             	{
-            		MagneticReassemblerRecipe recipe = MagneticReassemblerManager.findRecipe(getStackInSlot(0));
+            		SimpleRecipe recipe = MagneticReassemblerManager.INSTANCE.findRecipe(getStackInSlot(0));
             		processTimeMax = recipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
@@ -84,7 +84,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimple implements 
             		
             		if (canProcess())
             		{
-            			MagneticReassemblerRecipe recipe = MagneticReassemblerManager.findRecipe(getStackInSlot(0));
+            			SimpleRecipe recipe = MagneticReassemblerManager.INSTANCE.findRecipe(getStackInSlot(0));
             			processTimeMax = recipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
@@ -119,7 +119,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimple implements 
 	private void smelt()
 	{
 		ItemStack itemstack = getStackInSlot(0);
-        ItemStack itemstack1 = MagneticReassemblerManager.findRecipe(itemstack).getOutput();
+        ItemStack itemstack1 = MagneticReassemblerManager.INSTANCE.findRecipe(itemstack).getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
         if (itemstack2.isEmpty())
@@ -136,7 +136,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimple implements 
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index == 0) return MagneticReassemblerManager.isValidInput(stack);
+		if (index == 0) return MagneticReassemblerManager.INSTANCE.isValidInput(stack);
 		else return false;
 	}
 

@@ -1,8 +1,5 @@
 package lykrast.prodigytech.common.recipe;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.block.BlockStoneSlab;
@@ -11,78 +8,20 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class RotaryGrinderManager {
-	public static final List<RotaryGrinderRecipe> RECIPES = new ArrayList<>();
+public class RotaryGrinderManager extends SimpleRecipeManager {
+	public static final RotaryGrinderManager INSTANCE = new RotaryGrinderManager();
 	
-	public static RotaryGrinderRecipe addRecipe(ItemStack in, ItemStack out)
+	public SimpleRecipe addRecipe(ItemStack in, ItemStack out)
 	{
-		return addRecipe(new RotaryGrinderRecipe(in, out));
+		return addRecipe(in, out, Config.rotaryGrinderProcessTime);
 	}
 	
-	public static RotaryGrinderRecipe addRecipe(ItemStack in, ItemStack out, int time)
+	public SimpleRecipe addRecipe(String inOre, ItemStack out)
 	{
-		return addRecipe(new RotaryGrinderRecipe(in, out, time));
+		return addRecipe(inOre, out, Config.rotaryGrinderProcessTime);
 	}
 	
-	public static RotaryGrinderRecipe addRecipe(String in, ItemStack out)
-	{
-		return addRecipe(new RotaryGrinderRecipe(in, out));
-	}
-	
-	public static RotaryGrinderRecipe addRecipe(String in, ItemStack out, int time)
-	{
-		return addRecipe(new RotaryGrinderRecipe(in, out, time));
-	}
-	
-	private static RotaryGrinderRecipe addRecipe(RotaryGrinderRecipe recipe)
-	{
-		RECIPES.add(recipe);
-		return recipe;
-	}
-	
-	public static RotaryGrinderRecipe findRecipe(ItemStack in)
-	{
-		for (RotaryGrinderRecipe recipe : RECIPES)
-			if (recipe.isValidInput(in)) return recipe;
-		
-		return null;
-	}
-	
-	public static RotaryGrinderRecipe findOreRecipe(String in)
-	{
-		int id = OreDictionary.getOreID(in);
-		for (RotaryGrinderRecipe recipe : RECIPES)
-			if (recipe.getOreID() == id) return recipe;
-		
-		return null;
-	}
-	
-	public static RotaryGrinderRecipe removeRecipe(ItemStack in)
-	{
-		RotaryGrinderRecipe recipe = findRecipe(in);
-		if (recipe != null) RECIPES.remove(recipe);
-		
-		return recipe;
-	}
-	
-	public static RotaryGrinderRecipe removeOreRecipe(String in)
-	{
-		RotaryGrinderRecipe recipe = findOreRecipe(in);
-		if (recipe != null) RECIPES.remove(recipe);
-		
-		return recipe;
-	}
-	
-	//Probably REALLY need to optimise those one day
-	public static boolean isValidInput(ItemStack check)
-	{
-		for (RotaryGrinderRecipe recipe : RECIPES)
-			if (recipe.isValidInput(check)) return true;
-		
-		return false;
-	}
-	
-	public static void init()
+	public void init()
 	{
 		addRecipe("logWood", new ItemStack(ModItems.sawdust, 4));
 		addRecipe("plankWood", new ItemStack(ModItems.sawdust));
@@ -146,85 +85,10 @@ public class RotaryGrinderManager {
 		addRecipe(new ItemStack(ModItems.energionBatteryTripleEmpty), new ItemStack(ModItems.ferramicDustTiny, 50));
 		
 		addRecipe("gemEnergion", new ItemStack(ModItems.energionDust));
-		addRecipe("gemBigEnergion", new ItemStack(ModItems.energionDust, 6), Config.rotaryGrinderProcessTime * 6);
-		addRecipe("blockEnergion", new ItemStack(ModItems.energionDust, 54), Config.rotaryGrinderProcessTime * 54);
+//		addRecipe("gemBigEnergion", new ItemStack(ModItems.energionDust, 6), Config.rotaryGrinderProcessTime * 6);
+//		addRecipe("blockEnergion", new ItemStack(ModItems.energionDust, 54), Config.rotaryGrinderProcessTime * 54);
 		
 		addRecipe(new ItemStack(ModItems.infernoCrystal), new ItemStack(ModItems.infernoFuel));
-	}
-	
-	public static class RotaryGrinderRecipe {
-		private final ItemStack input;
-		private final ItemStack output;
-		private final int time, oreInput;
-		
-		public RotaryGrinderRecipe(ItemStack input, ItemStack output)
-		{
-			this(input, output, Config.rotaryGrinderProcessTime);
-		}
-		
-		public RotaryGrinderRecipe(ItemStack input, ItemStack output, int time)
-		{
-			this.input = input;
-			//No support for recipes requiring multiple items for now
-			input.setCount(1);
-			this.output = output;
-			this.time = time;
-			oreInput = -1;
-		}
-		
-		public RotaryGrinderRecipe(String input, ItemStack output)
-		{
-			this(input, output, Config.rotaryGrinderProcessTime);
-		}
-		
-		public RotaryGrinderRecipe(String input, ItemStack output, int time)
-		{
-			oreInput = OreDictionary.getOreID(input);
-			this.input = ItemStack.EMPTY;
-			this.output = output;
-			this.time = time;
-		}
-		
-		public ItemStack getInput()
-		{
-			return input.copy();
-		}
-		
-		public int getOreID()
-		{
-			return oreInput;
-		}
-		
-		public ItemStack getOutput()
-		{
-			return output.copy();
-		}
-		
-		public int getTimeTicks()
-		{
-			return time;
-		}
-		
-		public int getTimeProcessing()
-		{
-			return time * 10;
-		}
-		
-		public boolean isValidInput(ItemStack in)
-		{
-			if (in.isEmpty()) return false;
-			if (oreInput != -1)
-			{
-				int[] oreIDs = OreDictionary.getOreIDs(in);
-				for (int i : oreIDs)
-				{
-					if (i == oreInput) return true;
-				}
-				return false;
-			}
-			
-			return (in.isItemEqual(input) && in.getCount() >= input.getCount());
-		}
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
@@ -15,19 +15,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class RotaryGrinderWrapper implements IRecipeWrapper {
+public class SimpleRecipeWrapper implements IRecipeWrapper {
 	private ItemStack out;
 	private List<List<ItemStack>> in;
 	private final IDrawableAnimated arrow;
 	
-	public RotaryGrinderWrapper(RotaryGrinderRecipe recipe, IGuiHelper guiHelper)
+	public SimpleRecipeWrapper(SimpleRecipe recipe, IGuiHelper guiHelper)
 	{
 		List<ItemStack> inputs = new ArrayList<>();
 		
-		int ore = recipe.getOreID();
-		if (ore != -1)
+		if (recipe.isOreRecipe())
 		{
-			List<ItemStack> items = OreDictionary.getOres(OreDictionary.getOreName(ore), false);
+			List<ItemStack> items = OreDictionary.getOres(recipe.getOreInput(), false);
 			inputs.addAll(items);
 		}
 		else inputs.add(recipe.getInput());

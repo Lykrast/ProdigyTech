@@ -16,7 +16,7 @@ public class SlotRotaryGrinderInput extends Slot {
      */
     public boolean isItemValid(ItemStack stack)
     {
-        return RotaryGrinderManager.isValidInput(stack);
+        return RotaryGrinderManager.INSTANCE.isValidInput(stack);
     }
 
 }

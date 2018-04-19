@@ -16,7 +16,7 @@ public class SlotMagneticReassemblerInput extends Slot {
      */
     public boolean isItemValid(ItemStack stack)
     {
-        return MagneticReassemblerManager.isValidInput(stack);
+        return MagneticReassemblerManager.INSTANCE.isValidInput(stack);
     }
 
 }

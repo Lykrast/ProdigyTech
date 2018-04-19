@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager.RotaryGrinderRecipe;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 
-public class RotaryGrinderCategory extends ProdigyCategory<RotaryGrinderWrapper> {
+public class RotaryGrinderCategory extends ProdigyCategory<SimpleRecipeWrapper> {
 	public static final String UID = "ptgrinder";
 
 	public RotaryGrinderCategory(IGuiHelper guiHelper) {
@@ -19,7 +19,7 @@ public class RotaryGrinderCategory extends ProdigyCategory<RotaryGrinderWrapper>
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, RotaryGrinderWrapper recipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, SimpleRecipeWrapper recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
 		guiItemStacks.init(0, true, 0, 4);
@@ -31,11 +31,11 @@ public class RotaryGrinderCategory extends ProdigyCategory<RotaryGrinderWrapper>
 	public static void registerRecipes(IModRegistry registry)
 	{
 		IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
-		List<RotaryGrinderWrapper> list = new ArrayList<>();
+		List<SimpleRecipeWrapper> list = new ArrayList<>();
 		
-		for (RotaryGrinderRecipe recipe : RotaryGrinderManager.RECIPES)
+		for (SimpleRecipe recipe : RotaryGrinderManager.INSTANCE.getAllRecipes())
 		{
-			list.add(new RotaryGrinderWrapper(recipe, guiHelper));
+			list.add(new SimpleRecipeWrapper(recipe, guiHelper));
 		}
 		
 		registry.addRecipes(list, UID);

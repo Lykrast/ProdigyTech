@@ -121,7 +121,7 @@ public class ContainerMagneticReassembler extends ContainerMachine<TileHotAirMac
             //Inventory slots
             else
             {
-            	if (MagneticReassemblerManager.isValidInput(itemstack1))
+            	if (MagneticReassemblerManager.INSTANCE.isValidInput(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {

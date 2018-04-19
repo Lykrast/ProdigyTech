@@ -121,7 +121,7 @@ public class ContainerRotaryGrinder extends ContainerMachine<TileRotaryGrinder> 
             //Inventory slots
             else
             {
-            	if (RotaryGrinderManager.isValidInput(itemstack1))
+            	if (RotaryGrinderManager.INSTANCE.isValidInput(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {

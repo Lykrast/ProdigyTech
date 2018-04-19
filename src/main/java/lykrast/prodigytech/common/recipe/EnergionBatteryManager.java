@@ -8,41 +8,29 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class EnergionBatteryManager {
+	//That whole shit is ugly as hell
 	public static final List<Item> BATTERIES = new ArrayList<>();
-	public static final List<Item> BATTERIES_EMPTY = new ArrayList<>();
 	
 	public static void register(Item battery)
 	{
 		if (!(battery instanceof IEnergionBattery)) return;
 		BATTERIES.add(battery);
-		BATTERIES_EMPTY.add(((IEnergionBattery)battery).getEmptyForm());
 	}
 	
 	public static void unregister(Item battery)
 	{
 		if (!(battery instanceof IEnergionBattery)) return;
 		BATTERIES.remove(battery);
-		BATTERIES_EMPTY.remove(((IEnergionBattery)battery).getEmptyForm());
 	}
 	
 	public static boolean isBattery(Item i)
 	{
-		return BATTERIES.contains(i);
+		return i instanceof IEnergionBattery;
 	}
 	
 	public static boolean isBattery(ItemStack stack)
 	{
 		return isBattery(stack.getItem());
-	}
-	
-	public static boolean isEmptyBattery(Item i)
-	{
-		return BATTERIES_EMPTY.contains(i);
-	}
-	
-	public static boolean isEmptyBattery(ItemStack stack)
-	{
-		return isEmptyBattery(stack.getItem());
 	}
 	
 	public static List<Item> getBatteryList()

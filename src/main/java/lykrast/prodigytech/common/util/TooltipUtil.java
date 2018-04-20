@@ -24,7 +24,7 @@ public class TooltipUtil {
 	public static void addTooltip(ItemStack stack, List<String> tooltip)
 	{
 		String tip = I18n.format(stack.getUnlocalizedName() + ".tooltip");
-		String[] lines = tip.split("\\\\n");
+		String[] lines = tip.split("\n");
 		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
 	}
 	

@@ -3,7 +3,13 @@ package lykrast.prodigytech.common.recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class SimpleRecipe {
+public class SimpleRecipe implements Comparable<SimpleRecipe> {
+	private static int NEXTID = 0;
+	/**
+	 * A simple int used to sort the unordered recipes by order of creation for JEI. It's nicer.
+	 */
+	private int id;
+	
 	protected final ItemStack input;
 	protected final ItemStack output;
 	protected final int time;
@@ -16,6 +22,8 @@ public class SimpleRecipe {
 		this.output = output;
 		this.time = time;
 		oreInput = null;
+		
+		id = NEXTID++;
 	}
 
 	public SimpleRecipe(String inputOre, ItemStack output, int time) {
@@ -23,6 +31,8 @@ public class SimpleRecipe {
 		this.input = ItemStack.EMPTY;
 		this.output = output;
 		this.time = time;
+		
+		id = NEXTID++;
 	}
 	
 	/**
@@ -66,5 +76,10 @@ public class SimpleRecipe {
 		}
 
 		return (in.isItemEqual(input) && in.getCount() >= input.getCount());
+	}
+
+	@Override
+	public int compareTo(SimpleRecipe other) {
+		return Integer.compareUnsigned(id, other.id);
 	}
 }

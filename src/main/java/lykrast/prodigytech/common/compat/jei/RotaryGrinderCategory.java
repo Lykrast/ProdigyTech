@@ -33,10 +33,8 @@ public class RotaryGrinderCategory extends ProdigyCategory<SimpleRecipeWrapper> 
 		IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 		List<SimpleRecipeWrapper> list = new ArrayList<>();
 		
-		for (SimpleRecipe recipe : RotaryGrinderManager.INSTANCE.getAllRecipes())
-		{
-			list.add(new SimpleRecipeWrapper(recipe, guiHelper));
-		}
+		List<SimpleRecipe> recipes = RotaryGrinderManager.INSTANCE.getAllRecipes();
+		recipes.stream().sorted().forEachOrdered(recipe -> list.add(new SimpleRecipeWrapper(recipe, guiHelper)));
 		
 		registry.addRecipes(list, UID);
 	}

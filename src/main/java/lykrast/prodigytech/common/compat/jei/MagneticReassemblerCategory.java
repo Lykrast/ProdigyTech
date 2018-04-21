@@ -32,11 +32,9 @@ public class MagneticReassemblerCategory extends ProdigyCategory<SimpleRecipeWra
 	{
 		IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
 		List<SimpleRecipeWrapper> list = new ArrayList<>();
-		
-		for (SimpleRecipe recipe : MagneticReassemblerManager.INSTANCE.getAllRecipes())
-		{
-			list.add(new SimpleRecipeWrapper(recipe, guiHelper));
-		}
+
+		List<SimpleRecipe> recipes = MagneticReassemblerManager.INSTANCE.getAllRecipes();
+		recipes.stream().sorted().forEachOrdered(recipe -> list.add(new SimpleRecipeWrapper(recipe, guiHelper)));
 		
 		registry.addRecipes(list, UID);
 	}

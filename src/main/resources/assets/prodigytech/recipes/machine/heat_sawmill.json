@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"IGI",
+		"I I",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" }
+	},
+	"result": { "item": "prodigytech:heat_sawmill" }
+}

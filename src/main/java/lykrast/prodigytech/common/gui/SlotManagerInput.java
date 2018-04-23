@@ -1,14 +1,16 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
+import lykrast.prodigytech.common.recipe.SimpleRecipeManagerAbstract;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class SlotRotaryGrinderInput extends Slot {
+public class SlotManagerInput extends Slot {
+	private SimpleRecipeManagerAbstract<?> manager;
 
-	public SlotRotaryGrinderInput(IInventory inventoryIn, int index, int xPosition, int yPosition) {
+	public SlotManagerInput(SimpleRecipeManagerAbstract<?> manager, IInventory inventoryIn, int index, int xPosition, int yPosition) {
 		super(inventoryIn, index, xPosition, yPosition);
+		this.manager = manager;
 	}
 
     /**
@@ -16,7 +18,7 @@ public class SlotRotaryGrinderInput extends Slot {
      */
     public boolean isItemValid(ItemStack stack)
     {
-        return RotaryGrinderManager.INSTANCE.isValidInput(stack);
+        return manager.isValidInput(stack);
     }
 
 }

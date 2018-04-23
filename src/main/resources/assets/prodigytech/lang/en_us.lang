@@ -7,9 +7,11 @@ itemGroup.prodigytech=Prodigy Tech
 #----------------------------
 #Blocks
 #----------------------------
+#Start
 tile.prodigytech.explosion_furnace.name=Explosion Furnace
 tile.prodigytech.explosion_furnace.tooltip=Uses an explosive reaction\nto process items
 
+#Aeroheaters
 tile.prodigytech.magmatic_aeroheater.name=Magmatic Aeroheater
 tile.prodigytech.magmatic_aeroheater.tooltip=Makes constant hot air when above Lava
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
@@ -17,22 +19,30 @@ tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuel
 tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
 tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
 
+#Heat
 tile.prodigytech.incinerator.name=Incinerator
 tile.prodigytech.incinerator.tooltip=Burns any item into Ash
 tile.prodigytech.blower_furnace.name=Blower Furnace
 tile.prodigytech.blower_furnace.tooltip=Smelts things like a Furnace
 tile.prodigytech.rotary_grinder.name=Rotary Grinder
 tile.prodigytech.rotary_grinder.tooltip=Crushes things
+tile.prodigytech.heat_sawmill.name=Heat Sawmill
+tile.prodigytech.heat_sawmill.tooltip=Cuts wood more efficiently than by hand
+
 tile.prodigytech.solderer.name=Solderer
 tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
+
+#Circuits
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
 
+#Misc tech
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
 
+#Storage and decoration
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
 tile.prodigytech.ash_bricks.name=Ash Bricks
@@ -105,7 +115,10 @@ container.prodigytech.energion_aeroheater=Energion Aeroheater
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder
+container.prodigytech.heat_sawmill=Heat Sawmill
+
 container.prodigytech.solderer=Solderer
+
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 
 container.prodigytech.temperature=Air Temperature : %s°C
@@ -124,6 +137,7 @@ container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
 container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
 container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
+container.prodigytech.jei.ptsawmill=Heat Sawmill
 container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptbattery=Energion Battery Usage

@@ -1,7 +1,7 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
-import lykrast.prodigytech.common.tileentity.TileRotaryGrinder;
+import lykrast.prodigytech.common.recipe.HeatSawmillManager;
+import lykrast.prodigytech.common.tileentity.TileHeatSawmill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
@@ -10,24 +10,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerRotaryGrinder extends ContainerMachine<TileRotaryGrinder> {
+public class ContainerHeatSawmill extends ContainerMachine<TileHeatSawmill> {
     private int temperature;
     private int temperatureOut;
     private int processTime;
     private int processTimeMax;
     
-	public ContainerRotaryGrinder(InventoryPlayer userInv, TileRotaryGrinder tile) {
+	public ContainerHeatSawmill(InventoryPlayer userInv, TileHeatSawmill tile) {
 		super(tile);
 		
 		//Slot IDs
 		//Tile - Input 0					: 0
 		//Tile - Output 1					: 1
-		//Player - Inventory 9-35			: 2-28
-		//Player - Hotbar 0-8				: 29-37
+		//Tile - Secondary Output 2			: 2
+		//Player - Inventory 9-35			: 3-29
+		//Player - Hotbar 0-8				: 30-38
 		
 		//Fuel slot
-    	this.addSlotToContainer(new SlotManagerInput(RotaryGrinderManager.INSTANCE, tile, 0, 56, 35));
+    	this.addSlotToContainer(new SlotManagerInput(HeatSawmillManager.INSTANCE, tile, 0, 56, 35));
     	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 116, 35));
+    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 2, 142, 35));
 
 		//Player slots
         for (int i = 0; i < 3; ++i)
@@ -109,9 +111,9 @@ public class ContainerRotaryGrinder extends ContainerMachine<TileRotaryGrinder> 
             itemstack = itemstack1.copy();
 
             //Tile Slots
-            if (index <= 1)
+            if (index <= 2)
             {
-                if (!this.mergeItemStack(itemstack1, 2, 38, true))
+                if (!this.mergeItemStack(itemstack1, 3, 39, true))
                 {
                     return ItemStack.EMPTY;
                 }
@@ -121,7 +123,7 @@ public class ContainerRotaryGrinder extends ContainerMachine<TileRotaryGrinder> 
             //Inventory slots
             else
             {
-            	if (RotaryGrinderManager.INSTANCE.isValidInput(itemstack1))
+            	if (HeatSawmillManager.INSTANCE.isValidInput(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
@@ -129,14 +131,14 @@ public class ContainerRotaryGrinder extends ContainerMachine<TileRotaryGrinder> 
                     }
                 }
             	//Player inventory
-                if (index >= 2 && index < 29)
+                if (index >= 3 && index < 30)
                 {
-                    if (!this.mergeItemStack(itemstack1, 29, 38, false))
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (index >= 29 && index < 38 && !this.mergeItemStack(itemstack1, 2, 29, false))
+                else if (index >= 29 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
                 {
                     return ItemStack.EMPTY;
                 }

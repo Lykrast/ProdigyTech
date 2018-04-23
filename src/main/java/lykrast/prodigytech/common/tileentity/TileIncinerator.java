@@ -26,7 +26,7 @@ public class TileIncinerator extends TileHotAirMachineSimple implements ITickabl
 	@Override
 	protected int getProcessSpeed()
 	{
-		return temperature / 10;
+		return temperature / 8;
 	}
 
 	@Override

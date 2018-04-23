@@ -1,7 +1,7 @@
 package lykrast.prodigytech.common.gui;
 
 import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
-import lykrast.prodigytech.common.tileentity.TileHotAirMachineSimple;
+import lykrast.prodigytech.common.tileentity.TileHotAirMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
@@ -10,13 +10,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerMagneticReassembler extends ContainerMachine<TileHotAirMachineSimple> {
+public class ContainerMagneticReassembler extends ContainerMachine<TileHotAirMachine> {
     private int temperature;
     private int temperatureOut;
     private int processTime;
     private int processTimeMax;
     
-	public ContainerMagneticReassembler(InventoryPlayer userInv, TileHotAirMachineSimple tile) {
+	public ContainerMagneticReassembler(InventoryPlayer userInv, TileHotAirMachine tile) {
 		super(tile);
 		
 		//Slot IDs
@@ -26,7 +26,7 @@ public class ContainerMagneticReassembler extends ContainerMachine<TileHotAirMac
 		//Player - Hotbar 0-8				: 29-37
 		
 		//Fuel slot
-    	this.addSlotToContainer(new SlotMagneticReassemblerInput(tile, 0, 56, 35));
+    	this.addSlotToContainer(new SlotManagerInput(MagneticReassemblerManager.INSTANCE, tile, 0, 56, 35));
     	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 1, 116, 35));
 
 		//Player slots

@@ -26,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
-		incinerator, blowerFurnace, rotaryGrinder, solderer,
+		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal,
 		airFunnel, linearExtractor,
 		ferramicBlock, carbonPlateBlock,
@@ -39,6 +39,7 @@ public class ModBlocks {
 		//Machines
 		explosionFurnace = initBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
 		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
+		
 		//Aeroheaters
 		aeroheaterMagmatic = initBlock(new BlockAeroheaterMagmatic(6.0F, 45.0F, 1), "magmatic_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterMagmatic.class, PREFIX + "magmatic_aeroheater");
@@ -46,6 +47,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
 		aeroheaterEnergion = initBlock(new BlockAeroheaterEnergion(6.0F, 45.0F, 1), "energion_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, PREFIX + "energion_aeroheater");
+		
 		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
 		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");
@@ -53,11 +55,16 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileBlowerFurnace.class, PREFIX + "blower_furnace");
 		rotaryGrinder = initBlock(new BlockRotaryGrinder(6.0F, 45.0F, 1), "rotary_grinder");
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
+		heatSawmill = initBlock(new BlockHeatSawmill(6.0F, 45.0F, 1), "heat_sawmill");
+		GameRegistry.registerTileEntity(TileHeatSawmill.class, PREFIX + "heat_sawmill");
+		
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
+		
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
+		
 		//Misc Ferramic tier
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");

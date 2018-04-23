@@ -2,6 +2,7 @@ package lykrast.prodigytech.client.gui;
 
 import com.google.common.collect.ImmutableList;
 
+import lykrast.prodigytech.common.tileentity.TileHotAirMachine;
 import lykrast.prodigytech.common.tileentity.TileHotAirMachineSimple;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.resources.I18n;
@@ -12,19 +13,22 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 public abstract class GuiHotAirMachineSimple extends GuiInventory {
-
 	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/hot_air_simple_machine.png");
 
 	protected abstract int getProcessLeftScaled(int pixels);
 
 	protected final IInventory playerInventory;
-	protected final TileHotAirMachineSimple tile;
+	protected final TileHotAirMachine tile;
 	protected static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
 	protected static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
 	protected final String temperature;
 	protected final String temperatureOut;
+	
+	protected ResourceLocation getGUI() {
+		return GUI;
+	}
 
-	public GuiHotAirMachineSimple(InventoryPlayer playerInv, TileHotAirMachineSimple tile, Container inventorySlotsIn) {
+	public GuiHotAirMachineSimple(InventoryPlayer playerInv, TileHotAirMachine tile, Container inventorySlotsIn) {
 		super(inventorySlotsIn);
 		
 		playerInventory = playerInv;
@@ -38,7 +42,7 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		this.mc.getTextureManager().bindTexture(GUI);
+		this.mc.getTextureManager().bindTexture(getGUI());
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	
 	    if (TileHotAirMachineSimple.isProcessing(tile))

@@ -254,6 +254,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
     }
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void setCustomStateMapper() {
 		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(DEFUSED).build());
 	}

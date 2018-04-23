@@ -15,10 +15,12 @@ public class Config {
 	//General
 	
 	//Machines
-	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, soldererProcessTime, 
+	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
+		soldererProcessTime, 
 		magneticReassemblerProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
+	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
 	public static int soldererMaxGold;
 	
 	//Energion
@@ -69,6 +71,13 @@ public class Config {
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
+		//HeatSawmill
+		heatSawmillProcessTime = cfg.getInt("heatSawmillProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
+				"The base amount of time (in ticks) that the Heat Sawmill takes to process 1 item\n");
+		heatSawmillPlankMultiplier = cfg.getFloat("heatSawmillPlankMultiplier", CATEGORY_MACHINES, 1.5F, 1.0F, 10.0F, 
+				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
+		heatSawmillStickMultiplier = cfg.getFloat("heatSawmillStickMultiplier", CATEGORY_MACHINES, 2.0F, 1.0F, 10.0F, 
+				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
 		//Solderer
 		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 3000, 
 				"The base amount of time (in ticks) that the Solderer takes to make 1 Crude Circuit\n"

@@ -2,25 +2,25 @@ package lykrast.prodigytech.common.block;
 
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemBlockMachineHotAir;
-import lykrast.prodigytech.common.tileentity.TileIncinerator;
+import lykrast.prodigytech.common.tileentity.TileHeatSawmill;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockIncinerator extends BlockHotAirMachine<TileIncinerator> implements ICustomItemBlock {
+public class BlockHeatSawmill extends BlockHotAirMachine<TileHeatSawmill> implements ICustomItemBlock {
 
-    public BlockIncinerator(float hardness, float resistance, int harvestLevel) {
-		super(hardness, resistance, harvestLevel, TileIncinerator.class);
+    public BlockHeatSawmill(float hardness, float resistance, int harvestLevel) {
+		super(hardness, resistance, harvestLevel, TileHeatSawmill.class);
 	}
 
 	@Override
 	protected int getGuiID() {
-		return ProdigyTechGuiHandler.INCINERATOR;
+		return ProdigyTechGuiHandler.HEAT_SAWMILL;
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileIncinerator();
+		return new TileHeatSawmill();
 	}
 
 	@Override

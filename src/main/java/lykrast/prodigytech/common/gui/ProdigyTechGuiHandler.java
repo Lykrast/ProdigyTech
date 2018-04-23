@@ -4,6 +4,7 @@ import lykrast.prodigytech.client.gui.GuiAeroheaterEnergion;
 import lykrast.prodigytech.client.gui.GuiAeroheaterSolid;
 import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
 import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
+import lykrast.prodigytech.client.gui.GuiHeatSawmill;
 import lykrast.prodigytech.client.gui.GuiIncinerator;
 import lykrast.prodigytech.client.gui.GuiLinearExtractor;
 import lykrast.prodigytech.client.gui.GuiMagneticReassembler;
@@ -13,6 +14,7 @@ import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileBlowerFurnace;
 import lykrast.prodigytech.common.tileentity.TileExplosionFurnace;
+import lykrast.prodigytech.common.tileentity.TileHeatSawmill;
 import lykrast.prodigytech.common.tileentity.TileIncinerator;
 import lykrast.prodigytech.common.tileentity.TileLinearExtractor;
 import lykrast.prodigytech.common.tileentity.TileMagneticReassembler;
@@ -25,7 +27,8 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class ProdigyTechGuiHandler implements IGuiHandler {
 	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
-			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, LINEAR_EXTRACTOR = 8;
+			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, LINEAR_EXTRACTOR = 8,
+			HEAT_SAWMILL = 9;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -48,6 +51,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
 			case LINEAR_EXTRACTOR:
 				return new ContainerLinearExtractor(player.inventory, (TileLinearExtractor)world.getTileEntity(new BlockPos(x, y, z)));
+			case HEAT_SAWMILL:
+				return new ContainerHeatSawmill(player.inventory, (TileHeatSawmill)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -73,6 +78,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiAeroheaterEnergion(player.inventory, (TileAeroheaterEnergion)world.getTileEntity(new BlockPos(x, y, z)));
 			case LINEAR_EXTRACTOR:
 				return new GuiLinearExtractor(player.inventory, (TileLinearExtractor)world.getTileEntity(new BlockPos(x, y, z)));
+			case HEAT_SAWMILL:
+				return new GuiHeatSawmill(player.inventory, (TileHeatSawmill)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

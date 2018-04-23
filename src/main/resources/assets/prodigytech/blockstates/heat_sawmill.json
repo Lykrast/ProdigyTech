@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:heat_sawmill" },
+        "active=false,facing=south": { "model": "prodigytech:heat_sawmill", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:heat_sawmill", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:heat_sawmill", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:heat_sawmill_active" },
+        "active=true,facing=south": { "model": "prodigytech:heat_sawmill_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:heat_sawmill_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:heat_sawmill_active", "y": 90 }
+    }
+}

@@ -2,7 +2,6 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
-import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import lykrast.prodigytech.common.recipe.SimpleRecipeSecondaryOutput;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.item.ItemStack;
@@ -29,18 +28,28 @@ public class TileHeatSawmill extends TileHotAirMachine {
 				new boolean[]{true,false,false}, 
 				new boolean[]{false,true,true});
 	}
+
+	private SimpleRecipeSecondaryOutput cachedRecipe;
+    private void updateCachedRecipe() {
+    	if (cachedRecipe == null) cachedRecipe = HeatSawmillManager.INSTANCE.findRecipe(getStackInSlot(0));
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(0))) cachedRecipe = HeatSawmillManager.INSTANCE.findRecipe(getStackInSlot(0));
+    }
     
     @Override
 	protected boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || temperature < 80) return false;
-    	
-    	SimpleRecipeSecondaryOutput recipe = HeatSawmillManager.INSTANCE.findRecipe(getStackInSlot(0));
-    	if (recipe == null) return false;
-    	
-    	if (recipe.hasSecondaryOutput() && !getStackInSlot(2).isEmpty())
+    	if (getStackInSlot(0).isEmpty() || temperature < 80)
     	{
-        	ItemStack secondaryOutput = recipe.getSecondaryOutput();
+    		cachedRecipe = null;
+    		return false;
+    	}
+    	
+    	updateCachedRecipe();
+    	if (cachedRecipe == null) return false;
+    	
+    	if (cachedRecipe.hasSecondaryOutput() && !getStackInSlot(2).isEmpty())
+    	{
+        	ItemStack secondaryOutput = cachedRecipe.getSecondaryOutput();
     	    ItemStack outputSlot = getStackInSlot(2);
     	    
     	    //Secondary output contains an item that does not match current recipe
@@ -50,7 +59,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
     	    else if (outputSlot.getCount() + secondaryOutput.getCount() > outputSlot.getMaxStackSize()) return false;
     	}
     	
-    	ItemStack itemstack = recipe.getOutput();
+    	ItemStack itemstack = cachedRecipe.getOutput();
 	    ItemStack itemstack1 = getStackInSlot(1);
 		
 	    //Output empty
@@ -90,8 +99,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
         	{
             	if (processTimeMax <= 0)
             	{
-            		SimpleRecipe recipe = HeatSawmillManager.INSTANCE.findRecipe(getStackInSlot(0));
-            		processTimeMax = recipe.getTimeProcessing();
+            		processTimeMax = cachedRecipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
             	else if (processTime <= 0)
@@ -101,8 +109,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
             		
             		if (canProcess())
             		{
-            			SimpleRecipe recipe = HeatSawmillManager.INSTANCE.findRecipe(getStackInSlot(0));
-            			processTimeMax = recipe.getTimeProcessing();
+            			processTimeMax = cachedRecipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
             		else
@@ -136,9 +143,9 @@ public class TileHeatSawmill extends TileHotAirMachine {
 	protected void smelt()
 	{
 		ItemStack itemstack = getStackInSlot(0);
-		SimpleRecipeSecondaryOutput recipe = HeatSawmillManager.INSTANCE.findRecipe(itemstack);
+		updateCachedRecipe();
         //Primary output
-        ItemStack itemstack1 = recipe.getOutput();
+        ItemStack itemstack1 = cachedRecipe.getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
         if (itemstack2.isEmpty())
@@ -151,7 +158,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
         }
         
         //Secondary output
-        itemstack1 = recipe.getSecondaryOutput();
+        itemstack1 = cachedRecipe.getSecondaryOutput();
         itemstack2 = getStackInSlot(2);
 
         if (itemstack2.isEmpty())

@@ -15,20 +15,32 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
     public TileHotAirMachineSimpleManaged(SimpleRecipeManager manager) {
 		super();
 		this.manager = manager;
+		cachedRecipe = null;
 	}
     
     protected boolean isTooCool() {
     	return temperature < 80;
     }
+
+	private SimpleRecipe cachedRecipe;
+    private void updateCachedRecipe() {
+    	if (cachedRecipe == null) cachedRecipe = manager.findRecipe(getStackInSlot(0));
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(0))) cachedRecipe = manager.findRecipe(getStackInSlot(0));
+    }
     
     @Override
 	protected boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || isTooCool()) return false;
+    	if (getStackInSlot(0).isEmpty() || isTooCool())
+    	{
+    		cachedRecipe = null;
+    		return false;
+    	}
     	
-    	SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
-    	if (recipe == null) return false;
-    	ItemStack itemstack = recipe.getOutput();
+    	updateCachedRecipe();
+    	if (cachedRecipe == null) return false;
+    	
+    	ItemStack itemstack = cachedRecipe.getOutput();
     	
 	    ItemStack itemstack1 = getStackInSlot(1);
 		
@@ -69,8 +81,7 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
         	{
             	if (processTimeMax <= 0)
             	{
-            		SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
-            		processTimeMax = recipe.getTimeProcessing();
+            		processTimeMax = cachedRecipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
             	else if (processTime <= 0)
@@ -80,8 +91,7 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
             		
             		if (canProcess())
             		{
-            			SimpleRecipe recipe = manager.findRecipe(getStackInSlot(0));
-            			processTimeMax = recipe.getTimeProcessing();
+            			processTimeMax = cachedRecipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
             		else
@@ -115,7 +125,8 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
 	protected void smelt()
 	{
 		ItemStack itemstack = getStackInSlot(0);
-        ItemStack itemstack1 = manager.findRecipe(itemstack).getOutput();
+		updateCachedRecipe();
+        ItemStack itemstack1 = cachedRecipe.getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
         if (itemstack2.isEmpty())

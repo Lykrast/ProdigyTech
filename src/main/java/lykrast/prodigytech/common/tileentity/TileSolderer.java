@@ -58,14 +58,25 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 		if (amount > (Config.soldererMaxGold - gold)) return 0;
 		else return amount;
 	}
+
+	private SoldererRecipe cachedRecipe;
+    private void updateCachedRecipe() {
+    	if (cachedRecipe == null) cachedRecipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(0), getStackInSlot(2), gold)) cachedRecipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
+    }
     
 	private boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || getStackInSlot(3).isEmpty() || temperature < 125) return false;
+    	if (getStackInSlot(0).isEmpty() || getStackInSlot(3).isEmpty() || temperature < 125)
+    	{
+    		cachedRecipe = null;
+    		return false;
+    	}
     	
-    	SoldererRecipe recipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
-    	if (recipe == null) return false;
-    	ItemStack itemstack = recipe.getOutput();
+    	updateCachedRecipe();
+    	if (cachedRecipe == null) return false;
+    	
+    	ItemStack itemstack = cachedRecipe.getOutput();
     	
 	    ItemStack itemstack1 = getStackInSlot(4);
 		
@@ -109,8 +120,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
         	{
             	if (processTimeMax <= 0)
             	{
-            		SoldererRecipe recipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
-            		processTimeMax = recipe.getTimeProcessing();
+            		processTimeMax = cachedRecipe.getTimeProcessing();
             		processTime = processTimeMax;
             	}
             	else if (processTime <= 0)
@@ -120,8 +130,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
             		
             		if (canProcess())
             		{
-            			SoldererRecipe recipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
-                		processTimeMax = recipe.getTimeProcessing();
+                		processTimeMax = cachedRecipe.getTimeProcessing();
                 		processTime = processTimeMax;
             		}
             		else
@@ -152,8 +161,8 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 	
 	private void smelt()
 	{
-		SoldererRecipe recipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
-        ItemStack itemstack1 = recipe.getOutput();
+		updateCachedRecipe();
+        ItemStack itemstack1 = cachedRecipe.getOutput();
         ItemStack itemstack2 = getStackInSlot(4);
 
         if (itemstack2.isEmpty())
@@ -165,9 +174,9 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
             itemstack2.grow(itemstack1.getCount());
         }
 
-        if (recipe.requiresAdditive()) getStackInSlot(2).shrink(recipe.getAdditive().getCount());
+        if (cachedRecipe.requiresAdditive()) getStackInSlot(2).shrink(cachedRecipe.getAdditive().getCount());
         getStackInSlot(3).shrink(1);
-        gold -= recipe.getGoldAmount();
+        gold -= cachedRecipe.getGoldAmount();
 	}
 	
 	private int getProcessSpeed()

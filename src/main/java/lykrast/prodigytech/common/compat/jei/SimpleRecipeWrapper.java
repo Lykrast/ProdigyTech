@@ -7,10 +7,8 @@ import java.util.List;
 import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
-import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.config.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -34,8 +32,7 @@ public class SimpleRecipeWrapper implements IRecipeWrapper {
 		in = Collections.singletonList(inputs);
 		out = recipe.getOutput();
 		
-		IDrawableStatic arrowDrawable = guiHelper.createDrawable(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17);
-		arrow = guiHelper.createAnimatedDrawable(arrowDrawable, recipe.getTimeTicks(), IDrawableAnimated.StartDirection.LEFT, false);
+		arrow = guiHelper.createAnimatedDrawable(ProdigyTechJEI.getDefaultProcessArrow(guiHelper), recipe.getTimeTicks(), IDrawableAnimated.StartDirection.LEFT, false);
 	}
 
 	@Override

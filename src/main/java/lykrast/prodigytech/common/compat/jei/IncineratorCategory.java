@@ -6,11 +6,9 @@ import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawableAnimated;
-import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.config.Constants;
 import net.minecraft.client.Minecraft;
 
 public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
@@ -20,8 +18,7 @@ public class IncineratorCategory extends ProdigyCategory<IncineratorWrapper> {
 	public IncineratorCategory(IGuiHelper guiHelper) {
 		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 36, 82, 26, 0, 10, 0, 0), UID);
 		
-		IDrawableStatic arrowDrawable = guiHelper.createDrawable(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17);
-		this.arrow = guiHelper.createAnimatedDrawable(arrowDrawable, Config.incineratorProcessTime, IDrawableAnimated.StartDirection.LEFT, false);
+		this.arrow = guiHelper.createAnimatedDrawable(ProdigyTechJEI.getDefaultProcessArrow(guiHelper), Config.incineratorProcessTime, IDrawableAnimated.StartDirection.LEFT, false);
 	}
 	
 	@Override

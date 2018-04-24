@@ -16,6 +16,7 @@ import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,10 @@ import net.minecraft.util.ResourceLocation;
 @JEIPlugin
 public class ProdigyTechJEI implements IModPlugin {
 	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/jei.png");
+	
+	public static IDrawableStatic getDefaultProcessArrow(IGuiHelper guiHelper) {
+		return guiHelper.createDrawable(GUI, 104, 36, 24, 17);
+	}
 	
 	@Override
 	public void register(IModRegistry registry)

@@ -11,10 +11,8 @@ import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
-import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.config.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -38,8 +36,7 @@ public class SoldererWrapper implements IRecipeWrapper {
 		output = recipe.getOutput();
 		goldAmount = recipe.getGoldAmount();
 		
-		IDrawableStatic arrowDrawable = guiHelper.createDrawable(Constants.RECIPE_GUI_VANILLA, 82, 128, 24, 17);
-		arrow = guiHelper.createAnimatedDrawable(arrowDrawable, recipe.getTimeTicks(), IDrawableAnimated.StartDirection.LEFT, false);
+		arrow = guiHelper.createAnimatedDrawable(ProdigyTechJEI.getDefaultProcessArrow(guiHelper), recipe.getTimeTicks(), IDrawableAnimated.StartDirection.LEFT, false);
 		
 		goldScale = goldAmount * 52 / Config.soldererMaxGold;
 		goldGauge = guiHelper.createDrawable(GuiSolderer.GUI, 176, 35 + (52 - goldScale), 4, goldScale);

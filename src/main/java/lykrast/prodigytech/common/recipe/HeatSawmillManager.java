@@ -42,7 +42,9 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	public void init() {
 		addRecipe("plankWood", new ItemStack(Items.STICK, (int)(2 * Config.heatSawmillStickMultiplier)), new ItemStack(ModItems.sawdust));
 		
-		registerPlanks();
+		//So it turns out there are several mods that do their oredict in Init like barbarians
+		//So that got moved into the proxies' PostInit in order to work
+		//registerPlanks();
 	}
 	
 	//Lots of stuff below is from CoFH to automatically register all registered woods
@@ -50,7 +52,7 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	
 	//From Thermal Expansion
 	//https://github.com/CoFH/ThermalExpansion/blob/1.12/src/main/java/cofh/thermalexpansion/util/managers/machine/SawmillManager.java
-	private void registerPlanks() {
+	public void registerPlanks() {
 		InventoryCraftingFalse tempCrafting = new InventoryCraftingFalse(3, 3);
 
 		for (int i = 0; i < 9; i++) {

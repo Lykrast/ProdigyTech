@@ -4,6 +4,7 @@ import java.io.File;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -31,6 +32,9 @@ public class CommonProxy {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
+		//So it turns out there are several mods that do their oredict in Init like barbarians
+		//So that got moved from the Manager's init in order to work
+		HeatSawmillManager.INSTANCE.registerPlanks();
 	}
 
 }

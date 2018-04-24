@@ -1,10 +1,7 @@
 package lykrast.prodigytech.common.recipe;
 
-import java.util.List;
-
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
@@ -12,8 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.OreIngredient;
 
 public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	public static final HeatSawmillManager INSTANCE = new HeatSawmillManager();
@@ -50,7 +46,7 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	//Lots of stuff below is from CoFH to automatically register all registered woods
 	//Credits to them for having this stuff open source on a permissive license
 	
-	//From Thermal Expansion
+	//From Thermal Expansion (and modified a bit)
 	//https://github.com/CoFH/ThermalExpansion/blob/1.12/src/main/java/cofh/thermalexpansion/util/managers/machine/SawmillManager.java
 	public void registerPlanks() {
 		InventoryCraftingFalse tempCrafting = new InventoryCraftingFalse(3, 3);
@@ -59,25 +55,14 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 			tempCrafting.setInventorySlotContents(i, ItemStack.EMPTY);
 		}
 		
-		List<ItemStack> ores = OreDictionary.getOres("logWood", false);
+		//Thanks Thiakil
+		ItemStack[] ores = new OreIngredient("logWood").getMatchingStacks();
 		
 		for (ItemStack log : ores)
 		{
-			//That's a workaround used in CoFH Core to ignore an overridden getDamage()
-			if (Items.DIAMOND.getDamage(log) == OreDictionary.WILDCARD_VALUE)
-			{
-				NonNullList<ItemStack> logList = NonNullList.create();
-				Block block = Block.getBlockFromItem(log.getItem());
-				block.getSubBlocks(block.getCreativeTabToDisplayOn(), logList);
-				
-				for (ItemStack log1 : logList) registerPlank(tempCrafting, log1);
-			}
-			else
-			{
-				ItemStack log1 = log.copy();
-				log1.setCount(1);
-				registerPlank(tempCrafting, log1);
-			}
+			ItemStack log1 = log.copy();
+			log1.setCount(1);
+			registerPlank(tempCrafting, log1);
 		}
 	}
 	

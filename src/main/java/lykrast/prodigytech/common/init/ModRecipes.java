@@ -58,6 +58,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("foodFlour", ModItems.flour);
 		OreDictionary.registerOre("plateCarbon", ModItems.carbonPlate);
 		OreDictionary.registerOre("blockPlateCarbon", ModBlocks.carbonPlateBlock);
+		OreDictionary.registerOre("plankWood", new ItemStack(ModBlocks.particleBoard, 1, OreDictionary.WILDCARD_VALUE));
 	}
 	
 	public static void initSmelting()

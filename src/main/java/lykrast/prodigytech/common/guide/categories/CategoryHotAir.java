@@ -72,6 +72,8 @@ public class CategoryHotAir {
 		machinesHeatSawmill.add(GuideUtil.textPage(prefix("machines.sawmill.content")));
 		machinesHeatSawmill.add(GuideUtil.recipePage("machine/heat_sawmill"));
 		machinesHeatSawmill.add(GuideUtil.recipePage("materials/ferramic_gear"));
+		machinesHeatSawmill.add(GuideUtil.recipePage("decorative/particle_board"));
+		machinesHeatSawmill.add(GuideUtil.recipePage("decorative/particle_board_planks"));
 		entries.put(new ResourceLocation(GuideUtil.getBlockName(ModBlocks.heatSawmill)), 
 				new Entry(machinesHeatSawmill, GuideUtil.getBlockName(ModBlocks.heatSawmill)));
 		

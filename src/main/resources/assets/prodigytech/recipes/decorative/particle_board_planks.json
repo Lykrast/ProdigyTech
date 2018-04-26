@@ -1,0 +1,7 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:particle_board", "data": 0 }
+	],
+	"result": { "item": "prodigytech:particle_board", "data": 1, "count": 1 }
+}

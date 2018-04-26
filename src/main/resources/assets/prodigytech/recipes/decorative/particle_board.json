@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"group": "particle_board",
+	"pattern": [
+		"SSS",
+		"SCS",
+		"SSS"
+	],
+	"key": {
+		"C": { "item": "minecraft:clay_ball" },
+		"S": { "type": "forge:ore_dict", "ore": "dustWood" }
+	},
+	"result": { "item": "prodigytech:particle_board", "data": 0, "count": 2 }
+}

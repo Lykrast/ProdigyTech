@@ -30,7 +30,7 @@ public class ModBlocks {
 		magneticReassembler, energionCrystal,
 		airFunnel, linearExtractor,
 		ferramicBlock, carbonPlateBlock,
-		ashBricks;
+		ashBricks, particleBoard;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
@@ -79,7 +79,8 @@ public class ModBlocks {
 		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 30.0F, "pickaxe", 1), "carbon_plate_block");
 		
 		//Decoration
-		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 10.0F, "pickaxe", 0), "ash_bricks");
+		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 30.0F, "pickaxe", 0), "ash_bricks");
+		particleBoard = initBlock(new BlockParticleBoard(2.0F, 15.0F), "particle_board");
 	}
 	
 	@SubscribeEvent

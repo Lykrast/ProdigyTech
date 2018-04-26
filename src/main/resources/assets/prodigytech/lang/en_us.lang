@@ -170,19 +170,38 @@ guide.prodigytech.author=Lykrast
 
 #Categories
 guide.prodigytech.category.introduction=Introduction
+guide.prodigytech.category.hotair=Hot Air
 
 #Entries
 #Introduction
 guide.prodigytech.entry.introduction.gettingstarted=Getting Started
 guide.prodigytech.entry.introduction.gettingstarted.content=In order to progress in ProdigyTech, you'll need to make Ferramic in an Explosion Furnace. First collect a good supply of the required materials : Iron, Sand, Gunpowder and Clay.\nOnce you have enough of them, you can craft an Explosion Furnace and go to the next entry.
 
-guide.prodigytech.entry.introduction.explosionfurnace=Explosion Furnace
 guide.prodigytech.entry.introduction.explosionfurnace.content1=The Explosion Furnace is the first machine to make. Using an explosive reaction, it can be used to turn Iron and Clay into Ferramic, a strong heat resistant material, as well as crush large amounts of Stone.
 guide.prodigytech.entry.introduction.explosionfurnace.content2=Its GUI is split into 4 parts. On the left you have 2 vertical slots, the top one is the Explosive and the bottom one is the Reactant. On their right, you have 3 input slots, followed by the Reagent slot, and finally 3 output slots.
 guide.prodigytech.entry.introduction.explosionfurnace.content3=To simply make Ferramic Ingots, put 5 Gunpowder in the Explosive slot, 4 Sand in the Reactant, 16 Iron Ingots in the input and 4 Clay in the Reagent slot (shift clicking or automation will sort them automatically), then stand back and give it a redstone pulse.
-guide.prodigytech.entry.introduction.explosionfurnace.content4=You can double or triple the proportions as you want, and you can make too much Clay or Iron Ingots without consequences, but don't mess up the proportions on the explosive and reactant.
+guide.prodigytech.entry.introduction.explosionfurnace.content4=You can double or triple the proportions as you want, and you can make too much Clay or Iron Ingots without consequences, but don't mess up the proportions on the explosive and reactant, otherwise items will be lost.
 
 guide.prodigytech.entry.introduction.explosionfurnace.advanced=Explosion Furnace mechanics
 guide.prodigytech.entry.introduction.explosionfurnace.advanced.content1=When given a redstone pulse, the Explosion Furnace will attempt to consume all Explosive and Reactant in its slots. If it succesfully did, it will produce an explosion and generate "Explosive Power" (or EP). The amount of EP generated is proportional to the amount of Explosive.
 guide.prodigytech.entry.introduction.explosionfurnace.advanced.content2=At the same time, an efficiency multiplier will be calculated depending on how far from the ideal proportions the quantities of Explosive and Reactants are (for Gunpowder and Sand it's 5:4). Being further from the ideal proportions results in more items to be lost in the process.
-guide.prodigytech.entry.introduction.explosionfurnace.advanced.content3=Then, inputs are run top to bottom. If there is enough EP to process one, it consumes the appropriate amount of EP and gets processed. If the recipe requires a Reagent, it will be consumed appropriately if here, and if not the input items will be lost.
+guide.prodigytech.entry.introduction.explosionfurnace.advanced.content3=Then, inputs are run top to bottom. If there is enough EP to process one, it consumes the appropriate amount of EP and gets processed. If the recipe requires a Reagent, it will be consumed appropriately if present, and if not the input item will be lost.
+guide.prodigytech.entry.introduction.explosionfurnace.advanced.content4=Explosives, Reactants, inputs and Reagents can be inserted from any side by Hoppers and such, and outputs can be extracted from any side as well. If the output slots are full while processing items, the excess items will be thrown in front of the Explosion Furnace.
+
+#Hot Air
+guide.prodigytech.entry.hotair.mechanics=Hot Air mechanics
+guide.prodigytech.entry.hotair.mechanics.content1=Most machines in the mod will use Hot Air as their fuel. Hot Air can be produced with Aeroheaters, which will output their Hot Air up.\nHot Air always travels upwards and is lost when going through anything that does not let it pass.
+guide.prodigytech.entry.hotair.mechanics.content2=Hot Air machines will require Hot Air to be supplied to their bottom side at a certain temperature in order to work. Some of them will also transmit their Hot Air up, with a lower temperature while working. This allows you to power several machines with the same Aeroheater.
+guide.prodigytech.entry.hotair.mechanics.content3=Higher temperatures will result in machines working faster. It also indirectly allows you to chain more machines since the temperature can go through a lot more machines before being too low to be usable.
+guide.prodigytech.entry.hotair.mechanics.content4=Air Funnels allows you to transfer Hot Air along longer distances without having to make expensive machines.\nIn addition, they will stop transmitting Hot Air when supplied with a redstone signal.
+
+guide.prodigytech.entry.hotair.aeroheaters=Aeroheaters
+guide.prodigytech.entry.hotair.aeroheaters.content=As said previously, Aeroheaters are what produce Hot Air. Most of them will take time to heat up and have residual heat once out of fuel. This is means it is more efficent to leave them running for a long time without stops.\nFor now you have two choices to power your machines.
+
+guide.prodigytech.entry.hotair.aeroheaters.magmatic.content=The Magmatic Aeroheater will constantly produce low temperature Hot Air as long as it is above a Lava block (source or flowing). While it never needs refueling, it is also not hot enough to allow chaining machines or to power more advanced ones.
+guide.prodigytech.entry.hotair.aeroheaters.solid.content=The Solid Fuel Aeroheater burns Furnace fuels to produce its Hot Air. This one can reach much higher temperatures, but will require a constant source of fuel to work.\nFuels can be inserted from any side except the top.
+
+guide.prodigytech.entry.hotair.machines.grinder.content=The Rotary Grinder works like a lot of well known machines: it crushes things. Most notably, it can crush an Ore into 2 Dusts, each being smeltable into an Ingot. It has a variety of other uses, and is required to progress the mod.\nItems can be inserted/extracted from any side except top and bottom.
+guide.prodigytech.entry.hotair.machines.furnace.content=The Blower Furnace is simply a Hot Air powered Furnace. While it is slower than a normal Furnace on low temperatures, it is much more fuel efficient and can be chained with other machines.\nItems can be inserted/extracted from any side except top and bottom.
+guide.prodigytech.entry.hotair.machines.sawmill.content=The Heat Sawmill can cut wood much more efficiently than hands can. This includes cutting Logs into Planks, and Planks into Sticks. This process will also produce Sawdust.\nItems can be inserted/extracted from any side except top and bottom.
+guide.prodigytech.entry.hotair.machines.incinerator.content=The Incinerator is the simplest machine. It will take any item and turn it into Ash. This Ash has a variety of uses, including decoration and serving as a low power explosive for the Explosion Furnace.\nItems can be inserted/extracted from any side except top and bottom.

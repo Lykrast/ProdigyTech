@@ -7,5 +7,5 @@
 		{ "type": "forge:ore_dict", "ore": "paper" },
 		{ "type": "forge:ore_dict", "ore": "paper" }
 	],
-	"result": { "item": "prodigytech:circuit_plate_unfired", "count": 3 }
+	"result": { "item": "prodigytech:circuit_plate", "count": 3 }
 }

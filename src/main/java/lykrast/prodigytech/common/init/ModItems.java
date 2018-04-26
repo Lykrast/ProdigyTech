@@ -34,7 +34,7 @@ public class ModItems {
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
 		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
-		circuitPlate, circuitPlateUnfired, circuit, patternCircuit,
+		circuitPlate, circuit, patternCircuit,
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
@@ -75,7 +75,6 @@ public class ModItems {
 		
 		//Solderer
 		circuitPlate = initItem(new Item(), "circuit_plate");
-		circuitPlateUnfired = initItem(new Item(), "circuit_plate_unfired");
 		circuit = initItem(new ItemCircuit(), "circuit");
 		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
 

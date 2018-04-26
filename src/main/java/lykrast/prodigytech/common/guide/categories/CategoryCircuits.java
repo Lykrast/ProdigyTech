@@ -10,7 +10,6 @@ import amerifrance.guideapi.api.impl.Entry;
 import amerifrance.guideapi.api.impl.abstraction.CategoryAbstract;
 import amerifrance.guideapi.api.impl.abstraction.EntryAbstract;
 import amerifrance.guideapi.category.CategoryItemStack;
-import amerifrance.guideapi.page.PageFurnaceRecipe;
 import lykrast.prodigytech.common.guide.GuideUtil;
 import lykrast.prodigytech.common.guide.ProdigyTechGuide;
 import lykrast.prodigytech.common.init.ModBlocks;
@@ -37,8 +36,7 @@ public class CategoryCircuits {
 		solderer.add(GuideUtil.textPage(prefix("solderer.content3")));
 		solderer.add(GuideUtil.recipePage("machine/solderer"));
 		solderer.add(GuideUtil.recipePage("materials/carbon_plate"));
-		solderer.add(GuideUtil.recipePage("materials/circuit_plate_unfired"));
-		solderer.add(new PageFurnaceRecipe(ModItems.circuitPlateUnfired));
+		solderer.add(GuideUtil.recipePage("materials/circuit_plate"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_crude_ini"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_refined"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_perfected"));

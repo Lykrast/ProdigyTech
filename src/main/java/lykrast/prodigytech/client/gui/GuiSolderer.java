@@ -17,7 +17,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class GuiSolderer extends GuiInventory {
 
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/solderer.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/solderer.png");
 
 	protected final IInventory playerInventory;
 	protected final TileSolderer tile;

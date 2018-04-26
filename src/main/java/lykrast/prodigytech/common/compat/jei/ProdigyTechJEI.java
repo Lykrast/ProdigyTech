@@ -24,7 +24,7 @@ import net.minecraft.util.ResourceLocation;
 
 @JEIPlugin
 public class ProdigyTechJEI implements IModPlugin {
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/jei.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/jei.png");
 	
 	public static IDrawableStatic getDefaultProcessArrow(IGuiHelper guiHelper) {
 		return guiHelper.createDrawable(GUI, 104, 36, 24, 17);

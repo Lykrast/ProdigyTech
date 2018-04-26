@@ -2,6 +2,7 @@ package lykrast.prodigytech.core;
 
 import java.util.logging.Logger;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -43,5 +44,9 @@ public class ProdigyTech
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent e) {
 		proxy.postInit(e);
+	}
+	
+	public static ResourceLocation resource(String name) {
+		return new ResourceLocation(MODID, name);
 	}
 }

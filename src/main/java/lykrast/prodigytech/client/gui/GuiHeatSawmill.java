@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 public class GuiHeatSawmill extends GuiHotAirMachineSimple {
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/heat_sawmill.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/heat_sawmill.png");
 	
 	public GuiHeatSawmill(InventoryPlayer playerInv, TileHeatSawmill tile) {
 		super(playerInv, tile, new ContainerHeatSawmill(playerInv, tile));

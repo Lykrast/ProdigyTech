@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 public class GuiAeroheaterSolid extends GuiInventory {
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/solid_fuel_aeroheater.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/solid_fuel_aeroheater.png");
     private final IInventory playerInventory;
     private final TileAeroheaterSolid tile;
     private static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";

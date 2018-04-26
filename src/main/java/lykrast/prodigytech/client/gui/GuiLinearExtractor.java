@@ -8,7 +8,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiLinearExtractor extends GuiInventory {
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/linear_extractor.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/linear_extractor.png");
     private final IInventory playerInventory;
     private final TileLinearExtractor tile;
 

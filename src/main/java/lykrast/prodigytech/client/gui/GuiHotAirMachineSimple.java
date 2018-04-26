@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
 public abstract class GuiHotAirMachineSimple extends GuiInventory {
-	public static final ResourceLocation GUI = new ResourceLocation(ProdigyTech.MODID, "textures/gui/hot_air_simple_machine.png");
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/hot_air_simple_machine.png");
 
 	protected abstract int getProcessLeftScaled(int pixels);
 

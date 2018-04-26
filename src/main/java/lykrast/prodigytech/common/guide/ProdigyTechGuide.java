@@ -27,6 +27,7 @@ public class ProdigyTechGuide implements IGuideBook {
 		
 		book.addCategory(CategoryIntroduction.build());
 		book.addCategory(CategoryHotAir.build());
+		book.addCategory(CategoryCircuits.build());
 				
 		return book.build();
 	}

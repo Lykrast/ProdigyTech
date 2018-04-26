@@ -173,6 +173,7 @@ guide.prodigytech.author=Lykrast
 #Categories
 guide.prodigytech.category.introduction=Introduction
 guide.prodigytech.category.hotair=Hot Air
+guide.prodigytech.category.circuits=Circuits
 
 #Entries
 #Introduction
@@ -207,3 +208,10 @@ guide.prodigytech.entry.hotair.machines.grinder.content=The Rotary Grinder works
 guide.prodigytech.entry.hotair.machines.furnace.content=The Blower Furnace is simply a Hot Air powered Furnace. While it is slower than a normal Furnace on low temperatures, it is much more fuel efficient and can be chained with other machines.\nItems can be inserted/extracted from any side except top and bottom.
 guide.prodigytech.entry.hotair.machines.sawmill.content=The Heat Sawmill can cut wood much more efficiently than hands can. This includes cutting Logs into Planks, and Planks into Sticks. This process will also produce Sawdust, which can be made into Particle Board.\nItems can be inserted/extracted from any side except top and bottom.
 guide.prodigytech.entry.hotair.machines.incinerator.content=The Incinerator is the simplest machine. It will take any item and turn it into Ash. This Ash has a variety of uses, including decoration and serving as a low power explosive for the Explosion Furnace.\nItems can be inserted/extracted from any side except top and bottom.
+
+#Circuits
+guide.prodigytech.entry.circuits.solderer.content1=The Solderer is a machine that can make various Circuits, which are needed for more advanced machines. It requires too much temperature for a mere Magmatic Aeroheater to fuel it, and unlike other machines does not share its remaining Hot Air.
+guide.prodigytech.entry.circuits.solderer.content2=To make a Circuit, the machine needs Circuit Plates, Gold Dust and an appropriate Circuit Pattern. The latter will tell which Circuit will be made. The time spent and the amount of Gold needed depends on the Circuit made, and some of them will need an additional item to be consumed.
+guide.prodigytech.entry.circuits.solderer.content3=The machine needs to melt inserted Gold Dust before being able to use it, which it will do once hot enough. All items will be automatically put in the correct slots when shift clicked or inserted through automation.\nItems can be inserted/extracted from any side except the bottom.
+
+guide.prodigytech.entry.circuits.reassembler.content=The Magnetic Reassembler uses strong magnets to force small particules together. This makes it act as a reverse Rotary Grinder, and is an essential component on getting started with Energion Crystal farming.\nItems can be inserted/extracted from any side except top and bottom.

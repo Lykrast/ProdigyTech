@@ -1,12 +1,27 @@
 package lykrast.prodigytech.common.guide;
 
+import java.awt.Color;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import amerifrance.guideapi.api.GuideBook;
 import amerifrance.guideapi.api.IGuideBook;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.BookBinder;
-import lykrast.prodigytech.common.guide.categories.*;
+import lykrast.prodigytech.common.guide.categories.CategoryCircuits;
+import lykrast.prodigytech.common.guide.categories.CategoryHotAir;
+import lykrast.prodigytech.common.guide.categories.CategoryIntroduction;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 @GuideBook
 public class ProdigyTechGuide implements IGuideBook {
@@ -23,7 +38,9 @@ public class ProdigyTechGuide implements IGuideBook {
 				.setItemName("item.prodigytech.guide.name")
 				.setGuideTitle(prefix("title"))
 				.setHeader(prefix("header"))
-				.setAuthor(prefix("author"));
+				.setAuthor(prefix("author"))
+				.setHasCustomModel()
+				.setColor(Color.WHITE);
 		
 		book.addCategory(CategoryIntroduction.build());
 		book.addCategory(CategoryHotAir.build());
@@ -31,5 +48,15 @@ public class ProdigyTechGuide implements IGuideBook {
 				
 		return book.build();
 	}
+	
+    @Nullable
+    public IRecipe getRecipe(@Nonnull ItemStack bookStack) {
+        return new ShapelessOreRecipe(null, bookStack, Items.BOOK, Items.CLAY_BALL).setRegistryName(ProdigyTech.resource("guide"));
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public void handleModel(@Nonnull ItemStack bookStack) {
+    	ModelLoader.setCustomModelResourceLocation(bookStack.getItem(), bookStack.getMetadata(), new ModelResourceLocation(ProdigyTech.MODID + ".guide", "inventory"));
+    }
 
 }

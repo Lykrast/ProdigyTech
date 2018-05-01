@@ -1,13 +1,6 @@
 package lykrast.prodigytech.common.compat.jei;
 
-import lykrast.prodigytech.client.gui.GuiAeroheaterSolid;
-import lykrast.prodigytech.client.gui.GuiBlowerFurnace;
-import lykrast.prodigytech.client.gui.GuiExplosionFurnace;
-import lykrast.prodigytech.client.gui.GuiHeatSawmill;
-import lykrast.prodigytech.client.gui.GuiIncinerator;
-import lykrast.prodigytech.client.gui.GuiMagneticReassembler;
-import lykrast.prodigytech.client.gui.GuiRotaryGrinder;
-import lykrast.prodigytech.client.gui.GuiSolderer;
+import lykrast.prodigytech.client.gui.*;
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -42,6 +35,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		SoldererCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
 		EnergionBatteryCategory.registerRecipes(registry);
+		AtomicReshaperCategory.registerRecipes(registry);
 
 		//Catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceCategory.UID);
@@ -51,6 +45,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.heatSawmill), HeatSawmillCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.atomicReshaper), AtomicReshaperCategory.UID);
 		
 		//Battery usage
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterEnergion), EnergionBatteryCategory.UID);
@@ -66,6 +61,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiHeatSawmill.class, 79, 35, 24, 17, HeatSawmillCategory.UID);
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
+		registry.addRecipeClickArea(GuiAtomicReshaper.class, 67, 35, 48, 17, AtomicReshaperCategory.UID);
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeClickArea(GuiAeroheaterSolid.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
@@ -84,5 +80,6 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
 		registry.addRecipeCategories(new EnergionBatteryCategory(guiHelper));
+		registry.addRecipeCategories(new AtomicReshaperCategory(guiHelper));
 	}
 }

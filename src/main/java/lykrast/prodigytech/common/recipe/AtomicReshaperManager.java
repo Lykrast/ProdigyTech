@@ -40,7 +40,10 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 		addRecipe("dirt", 200, 3, new ItemStack(Blocks.CLAY));
 	}
 	
-	public static class AtomicReshaperRecipe implements ISingleInputRecipe {
+	public static class AtomicReshaperRecipe implements ISingleInputRecipe, Comparable<AtomicReshaperRecipe> {
+		private static int NEXTID = 0;
+		private int id;
+		
 		protected final ItemStack input;
 		protected final String oreInput;
 		protected final List<Pair<ItemStack, Integer>> outputs;
@@ -54,6 +57,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			this.primordium = primordium;
 			this.outputs = new ArrayList<>();
 			processOutputs(outputs);
+			id = NEXTID++;
 		}
 		
 		public AtomicReshaperRecipe(String input, int time, int primordium, Object... outputs) {
@@ -63,6 +67,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			this.primordium = primordium;
 			this.outputs = new ArrayList<>();
 			processOutputs(outputs);
+			id = NEXTID++;
 		}
 		
 		private void processOutputs(Object[] args) {
@@ -124,6 +129,10 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			return outputs;
 		}
 		
+		public int getTotalWeight() {
+			return totalWeight;
+		}
+		
 		public ItemStack getRandomOutput(Random rand) {
 			int index = rand.nextInt(totalWeight);
 			
@@ -150,6 +159,11 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			}
 
 			return (in.isItemEqual(input) && in.getCount() >= input.getCount());
+		}
+
+		@Override
+		public int compareTo(AtomicReshaperRecipe other) {
+			return Integer.compareUnsigned(id, other.id);
 		}
 	}
 }

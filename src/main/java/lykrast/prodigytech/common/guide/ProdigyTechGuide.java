@@ -51,7 +51,7 @@ public class ProdigyTechGuide implements IGuideBook {
 	
     @Nullable
     public IRecipe getRecipe(@Nonnull ItemStack bookStack) {
-        return new ShapelessOreRecipe(null, bookStack, Items.BOOK, Items.CLAY_BALL).setRegistryName(ProdigyTech.resource("guide"));
+        return new ShapelessOreRecipe(null, bookStack, Items.BOOK, "sand").setRegistryName(ProdigyTech.resource("guide"));
     }
 	
     @SideOnly(Side.CLIENT)

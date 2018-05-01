@@ -8,6 +8,7 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager.AtomicReshaperRecipe;
+import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -28,7 +29,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 	
 	@Override
 	public void init() {
-		addRecipe("stone", 600, 20, new ItemStack(Blocks.COAL_ORE), 64, 
+		addRecipe("stone", Config.atomicReshaperProcessTime * 3, 20, new ItemStack(Blocks.COAL_ORE), 64, 
 				new ItemStack(Blocks.IRON_ORE), 48, 
 				new ItemStack(Blocks.REDSTONE_ORE), 33, 
 				new ItemStack(Blocks.LAPIS_ORE), 22, 
@@ -36,8 +37,8 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 				new ItemStack(Blocks.DIAMOND_ORE), 14, 
 				new ItemStack(Blocks.EMERALD_ORE), 10);
 		
-		addRecipe("sand", 200, 1, new ItemStack(Blocks.DIRT));
-		addRecipe("dirt", 200, 3, new ItemStack(Blocks.CLAY));
+		addRecipe("sand", Config.atomicReshaperProcessTime, 1, new ItemStack(Blocks.DIRT));
+		addRecipe("dirt", Config.atomicReshaperProcessTime, 3, new ItemStack(Blocks.CLAY));
 	}
 	
 	public static class AtomicReshaperRecipe implements ISingleInputRecipe, Comparable<AtomicReshaperRecipe> {

@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.recipe;
 
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
+import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -32,6 +33,12 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 		addRecipe(new ItemStack(Blocks.SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2));
 		addRecipe(new ItemStack(Blocks.RED_SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2, 1));
 		addRecipe(new ItemStack(Blocks.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST, 4));
+		addRecipe(new ItemStack(Blocks.CLAY), new ItemStack(Items.CLAY_BALL, 4), Config.rotaryGrinderProcessTime / 8);
+		addRecipe(new ItemStack(Blocks.BRICK_BLOCK), new ItemStack(Items.BRICK, 4));
+		addRecipe(new ItemStack(Blocks.NETHER_BRICK), new ItemStack(Items.NETHERBRICK, 4));
+		addRecipe(new ItemStack(Blocks.PRISMARINE, 1, BlockPrismarine.ROUGH_META), new ItemStack(Items.PRISMARINE_SHARD, 4));
+		addRecipe(new ItemStack(Blocks.PRISMARINE, 1, BlockPrismarine.BRICKS_META), new ItemStack(Items.PRISMARINE_SHARD, 9));
+		addRecipe(new ItemStack(Blocks.PRISMARINE, 1, BlockPrismarine.DARK_META), new ItemStack(Items.PRISMARINE_SHARD, 8));
 
 		addRecipe(new ItemStack(Items.BLAZE_ROD), new ItemStack(Items.BLAZE_POWDER, 4));
 		addRecipe(new ItemStack(Items.BONE), new ItemStack(Items.DYE, 6, 15));
@@ -72,7 +79,6 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 		addRecipe("gemQuartz", new ItemStack(ModItems.quartzDust));
 		addRecipe("blockQuartz", new ItemStack(ModItems.quartzDust, 4), Config.rotaryGrinderProcessTime * 4);
 		addRecipe(new ItemStack(Blocks.QUARTZ_STAIRS), new ItemStack(ModItems.quartzDust, 6), (int) (Config.rotaryGrinderProcessTime * 6));
-		//I hate this
 		addRecipe(new ItemStack(Blocks.STONE_SLAB, 1, Blocks.STONE_SLAB.getMetaFromState(Blocks.STONE_SLAB.getDefaultState().withProperty(BlockStoneSlab.VARIANT, BlockStoneSlab.EnumType.QUARTZ))), 
 				new ItemStack(ModItems.quartzDust, 2), Config.rotaryGrinderProcessTime * 2);
 		

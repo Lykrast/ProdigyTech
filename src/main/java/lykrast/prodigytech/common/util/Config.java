@@ -17,7 +17,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
-		magneticReassemblerProcessTime;
+		magneticReassemblerProcessTime, atomicReshaperProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
@@ -90,6 +90,9 @@ public class Config {
 				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		//Atomic Reshaper
+		atomicReshaperProcessTime = cfg.getInt("atomicReshaperProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
+				"The base amount of time (in ticks) that the Atomic Reassembler takes to process 1 item\n"
+				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		atomicReshaperMaxPrimordium = cfg.getInt("atomicReshaperMaxPrimordium", CATEGORY_MACHINES, 4, 1, 64, 
 				"How many Primordium items can the Atomic Reshaper hold in its internal buffer");
 		

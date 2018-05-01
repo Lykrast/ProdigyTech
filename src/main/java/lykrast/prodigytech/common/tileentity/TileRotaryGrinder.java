@@ -15,7 +15,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimpleManaged {
 	@Override
 	protected int getProcessSpeed()
 	{
-		return temperature / 10;
+		return temperature / 8;
 	}
 
 }

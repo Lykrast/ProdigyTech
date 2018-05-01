@@ -35,6 +35,8 @@ tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern 
 #Circuits
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
+tile.prodigytech.atomic_reshaper.name=Atomic Reshaper
+tile.prodigytech.atomic_reshaper.tooltip=Turns things into other things\nusing Primordium
 
 #Misc tech
 tile.prodigytech.air_funnel.name=Air Funnel
@@ -97,6 +99,8 @@ item.prodigytech.energion_battery_triple_empty.name=Triple Energion Battery (Emp
 item.prodigytech.energion_battery_triple.name=Triple Energion Battery
 item.prodigytech.energion_battery_creative.name=Creative Energion Battery
 
+item.prodigytech.primordium.name=Primordium
+
 item.prodigytech.crystal_cutter.name=Crystal Cutter
 item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals\nRight click to partially harvest a grown Crystal
 
@@ -123,6 +127,7 @@ container.prodigytech.heat_sawmill=Heat Sawmill
 container.prodigytech.solderer=Solderer
 
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
+container.prodigytech.atomic_reshaper=Atomic Reshaper
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C
@@ -130,6 +135,9 @@ container.prodigytech.solderer.gold.blocks=%s Blocks
 container.prodigytech.solderer.gold.ingots=%s Ingots
 container.prodigytech.solderer.gold.nuggets=%s Nuggets
 container.prodigytech.solderer.gold.empty=Empty
+
+container.prodigytech.atomic_reshaper.primordium.amount=%s Primordium units
+container.prodigytech.atomic_reshaper.primordium.empty=Empty
 
 container.prodigytech.linear_extractor=Linear Extractor
 
@@ -146,6 +154,7 @@ container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
+container.prodigytech.jei.ptreshaper=Atomic Reshaper
 
 #----------------------------
 #Advancements

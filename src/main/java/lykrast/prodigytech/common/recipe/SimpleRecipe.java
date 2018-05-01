@@ -3,7 +3,7 @@ package lykrast.prodigytech.common.recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class SimpleRecipe implements Comparable<SimpleRecipe> {
+public class SimpleRecipe implements ISingleInputRecipe, Comparable<SimpleRecipe> {
 	private static int NEXTID = 0;
 	/**
 	 * A simple int used to sort the unordered recipes by order of creation for JEI. It's nicer.

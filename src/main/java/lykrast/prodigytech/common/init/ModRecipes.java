@@ -1,5 +1,6 @@
 package lykrast.prodigytech.common.init;
 
+import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
@@ -26,6 +27,7 @@ public class ModRecipes {
 		SoldererManager.init();
 		MagneticReassemblerManager.INSTANCE.init();
 		HeatSawmillManager.INSTANCE.init();
+		AtomicReshaperManager.INSTANCE.init();
 	}
 	
 	public static void initOreDict()

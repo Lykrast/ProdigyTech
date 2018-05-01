@@ -38,7 +38,8 @@ public class ModItems {
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
-		crystalCutter;
+		crystalCutter,
+		primordium;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -91,6 +92,9 @@ public class ModItems {
 		
 		//Tools
 		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
+		
+		//Atomic Reshaper
+		primordium = initItem(new Item(), "primordium");
 	}
 	
 	@SubscribeEvent

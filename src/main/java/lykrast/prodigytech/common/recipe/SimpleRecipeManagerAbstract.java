@@ -6,14 +6,14 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
+import lykrast.prodigytech.common.util.RecipeUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public abstract class SimpleRecipeManagerAbstract<T extends SimpleRecipe> {
+public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> {
 	/**
 	 * The map containing all recipes that check Item and metadata. Will have to be redone in 1.13.
 	 */
@@ -40,14 +40,6 @@ public abstract class SimpleRecipeManagerAbstract<T extends SimpleRecipe> {
 		return list;
 	}
 	
-	protected Pair<Item, Integer> stackToPair(ItemStack stack) {
-		return new ImmutablePair<Item, Integer>(stack.getItem(), stack.getMetadata());
-	}
-	
-	protected Pair<Item, Integer> stackToWildcardPair(ItemStack stack) {
-		return new ImmutablePair<Item, Integer>(stack.getItem(), OreDictionary.WILDCARD_VALUE);
-	}
-	
 	/**
 	 * Register a recipe.
 	 * @param recipe recipe to register
@@ -56,7 +48,7 @@ public abstract class SimpleRecipeManagerAbstract<T extends SimpleRecipe> {
 	protected T addRecipe(T recipe)
 	{
 		if (recipe.isOreRecipe()) recipesOre.put(recipe.getOreInput(), recipe);
-		else recipes.put(stackToPair(recipe.getInput()), recipe);
+		else recipes.put(RecipeUtil.stackToPair(recipe.getInput()), recipe);
 		return recipe;
 	}
 	
@@ -69,9 +61,10 @@ public abstract class SimpleRecipeManagerAbstract<T extends SimpleRecipe> {
 	@Nullable
 	public T findRecipe(ItemStack in)
 	{
-		T recipe = recipes.get(stackToPair(in));
+		if (in.isEmpty()) return null;
+		T recipe = recipes.get(RecipeUtil.stackToPair(in));
 		if (recipe != null) return recipe;
-		recipe = recipes.get(stackToWildcardPair(in));
+		recipe = recipes.get(RecipeUtil.stackToWildcardPair(in));
 		if (recipe != null) return recipe;
 		
 		//Check for ore
@@ -104,10 +97,10 @@ public abstract class SimpleRecipeManagerAbstract<T extends SimpleRecipe> {
 	@Nullable
 	public T removeRecipe(ItemStack in)
 	{
-		T removed = recipes.remove(stackToPair(in));
+		T removed = recipes.remove(RecipeUtil.stackToPair(in));
 		if (removed != null) return removed;
 		
-		return recipes.remove(stackToWildcardPair(in));
+		return recipes.remove(RecipeUtil.stackToWildcardPair(in));
 	}
 	
 	/**

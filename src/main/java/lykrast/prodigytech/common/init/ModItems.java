@@ -39,7 +39,7 @@ public class ModItems {
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
 		crystalCutter,
-		primordium;
+		primordium, aeternusCrystal;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -95,6 +95,7 @@ public class ModItems {
 		
 		//Atomic Reshaper
 		primordium = initItem(new Item(), "primordium");
+		aeternusCrystal = initItem(new ItemFuel(12800), "aeternus_crystal");
 	}
 	
 	@SubscribeEvent

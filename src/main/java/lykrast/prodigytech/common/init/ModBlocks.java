@@ -28,7 +28,7 @@ public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, atomicReshaper,
-		airFunnel, linearExtractor,
+		airFunnel, linearExtractor, funnellingExtractor,
 		ferramicBlock, carbonPlateBlock,
 		ashBricks, particleBoard;
 	private static List<Block> blockList = new ArrayList<>();
@@ -73,6 +73,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
+		funnellingExtractor = initBlock(new BlockFunnellingExtractor(6.0F, 45.0F, 1), "funnelling_extractor");
+		GameRegistry.registerTileEntity(TileFunnellingExtractor.class, PREFIX + "funnelling_extractor");
 		
 		//Energion
 		energionCrystal = initBlock(new BlockEnergionCrystal(0.35F, 0.5F, 0), "energion_crystal");

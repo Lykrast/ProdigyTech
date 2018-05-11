@@ -1,7 +1,7 @@
 package lykrast.prodigytech.client.gui;
 
-import lykrast.prodigytech.common.gui.ContainerLinearExtractor;
-import lykrast.prodigytech.common.tileentity.TileLinearExtractor;
+import lykrast.prodigytech.common.gui.ContainerExtractor;
+import lykrast.prodigytech.common.tileentity.TileExtractor;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -10,10 +10,10 @@ import net.minecraft.util.ResourceLocation;
 public class GuiLinearExtractor extends GuiInventory {
 	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/linear_extractor.png");
     private final IInventory playerInventory;
-    private final TileLinearExtractor tile;
+    private final TileExtractor tile;
 
-	public GuiLinearExtractor(InventoryPlayer playerInv, TileLinearExtractor tile) {
-		super(new ContainerLinearExtractor(playerInv, tile));
+	public GuiLinearExtractor(InventoryPlayer playerInv, TileExtractor tile) {
+		super(new ContainerExtractor(playerInv, tile));
 		
 		playerInventory = playerInv;
 		this.tile = tile;

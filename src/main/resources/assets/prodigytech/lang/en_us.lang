@@ -43,6 +43,8 @@ tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
+tile.prodigytech.funnelling_extractor.name=Funnelling Extractor
+tile.prodigytech.funnelling_extractor.tooltip=Pulls item from inventories on all sides\nand pushes them forwards\nTurn off with redstone
 
 #Storage and decoration
 tile.prodigytech.ferramic_block.name=Block of Ferramic
@@ -141,6 +143,7 @@ container.prodigytech.atomic_reshaper.primordium.amount=%s Primordium units
 container.prodigytech.atomic_reshaper.primordium.empty=Empty
 
 container.prodigytech.linear_extractor=Linear Extractor
+container.prodigytech.funnelling_extractor=Funnelling Extractor
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace

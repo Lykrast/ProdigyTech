@@ -28,7 +28,7 @@ public class Config {
 	public static int energionBatteryDuration;
 	
 	//Automation
-	public static int linearExtractorDelay, linearExtractorMaxStack;
+	public static int extractorDelay, extractorMaxStack;
 	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
@@ -105,11 +105,11 @@ public class Config {
 		//-----------
 		//Automation
 		//-----------
-		linearExtractorDelay = cfg.getInt("linearExtractorDelay", CATEGORY_AUTOMATION, 10, 1, 200, 
-				"The time (in ticks) between 2 push/pulls of a Linear Extractor\n"
+		extractorDelay = cfg.getInt("extractorDelay", CATEGORY_AUTOMATION, 10, 1, 200, 
+				"The time (in ticks) between 2 push/pulls of an Extractor\n"
 				+ "1 means every tick, 20 means once every second and so on");
-		linearExtractorMaxStack = cfg.getInt("linearExtractorMaxStack", CATEGORY_AUTOMATION, 64, 1, 64, 
-				"How many items from a stack a Linear Extractor can push/pull at once");
+		extractorMaxStack = cfg.getInt("extractorMaxStack", CATEGORY_AUTOMATION, 64, 1, 64, 
+				"How many items from a stack an Extractor can push/pull at once");
 	}
 
 }

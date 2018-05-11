@@ -1,15 +1,15 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.tileentity.TileLinearExtractor;
+import lykrast.prodigytech.common.tileentity.TileExtractor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerLinearExtractor extends ContainerMachine<TileLinearExtractor> {
+public class ContainerExtractor extends ContainerMachine<TileExtractor> {
     
-	public ContainerLinearExtractor(InventoryPlayer userInv, TileLinearExtractor tile) {
+	public ContainerExtractor(InventoryPlayer userInv, TileExtractor tile) {
 		super(tile);
 		
 		//Slot IDs

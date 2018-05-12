@@ -1,7 +1,7 @@
 package lykrast.prodigytech.common.util;
 
 import lykrast.prodigytech.common.item.EnergionToolInventoryProvider;
-import lykrast.prodigytech.common.item.ItemEnergionTool;
+import lykrast.prodigytech.common.item.ItemEnergionUser;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -13,7 +13,7 @@ public class EventHandler {
 
 	@SubscribeEvent
 	public static void attachCapabilitiesItemStack(AttachCapabilitiesEvent<ItemStack> event) {
-		if (event.getObject().getItem() instanceof ItemEnergionTool) {
+		if (event.getObject().getItem() instanceof ItemEnergionUser) {
 			event.addCapability(ProdigyTech.resource("battery_inv"), new EnergionToolInventoryProvider());
 		}
 	}

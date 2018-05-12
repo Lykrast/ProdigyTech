@@ -9,6 +9,7 @@ import lykrast.prodigytech.common.item.ItemCrystalCutter;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
 import lykrast.prodigytech.common.item.ItemEnergionCrystalSeed;
+import lykrast.prodigytech.common.item.ItemEnergionTool;
 import lykrast.prodigytech.common.item.ItemFuel;
 import lykrast.prodigytech.common.item.ItemSugarCube;
 import lykrast.prodigytech.common.util.Config;
@@ -38,7 +39,7 @@ public class ModItems {
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
-		crystalCutter,
+		crystalCutter, toolTest,
 		primordium, aeternusCrystal;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
@@ -92,6 +93,7 @@ public class ModItems {
 		
 		//Tools
 		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
+		//toolTest = initItem(new ItemEnergionTool(), "tool_test");
 		
 		//Atomic Reshaper
 		primordium = initItem(new Item(), "primordium");

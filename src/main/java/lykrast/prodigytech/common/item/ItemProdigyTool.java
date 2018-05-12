@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 //A lighter ItemTool for my custom tools needs
+//Honestly I don't know if I'll ever use this for something that's not the Crystal Cutter
 public class ItemProdigyTool extends Item {
 	protected float harvestSpeed;
 	private int enchatability;

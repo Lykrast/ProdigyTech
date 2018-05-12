@@ -1,22 +1,22 @@
 package lykrast.prodigytech.client.gui;
 
-import lykrast.prodigytech.common.gui.ContainerExtractor;
-import lykrast.prodigytech.common.tileentity.TileExtractor;
+import lykrast.prodigytech.common.gui.ContainerEnergionTool;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiLinearExtractor extends GuiInventory {
-	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/linear_extractor.png");
+public class GuiEnergionTool extends GuiInventory {
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/energion_tool.png");
     private final IInventory playerInventory;
-    private final TileExtractor tile;
+    private final ItemStack tool;
 
-	public GuiLinearExtractor(InventoryPlayer playerInv, TileExtractor tile) {
-		super(new ContainerExtractor(playerInv, tile));
+	public GuiEnergionTool(InventoryPlayer playerInv, ItemStack tool) {
+		super(new ContainerEnergionTool(playerInv, tool));
 		
 		playerInventory = playerInv;
-		this.tile = tile;
+		this.tool = tool;
 		
 		this.xSize = 176;
 		this.ySize = 133;
@@ -33,7 +33,7 @@ public class GuiLinearExtractor extends GuiInventory {
      */
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
-        String s = tile.getDisplayName().getUnformattedText();
+        String s = tool.getDisplayName();
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
     }

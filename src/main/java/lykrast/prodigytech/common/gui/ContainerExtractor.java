@@ -21,18 +21,7 @@ public class ContainerExtractor extends ContainerMachine<TileExtractor> {
     	this.addSlotToContainer(new Slot(tile, 0, 80, 20));
 
 		//Player slots
-    	for (int l = 0; l < 3; ++l)
-        {
-            for (int k = 0; k < 9; ++k)
-            {
-                this.addSlotToContainer(new Slot(userInv, k + l * 9 + 9, 8 + k * 18, l * 18 + 51));
-            }
-        }
-
-        for (int i1 = 0; i1 < 9; ++i1)
-        {
-            this.addSlotToContainer(new Slot(userInv, i1, 8 + i1 * 18, 109));
-        }
+    	addPlayerSlotsHopper(userInv);
 	}
 
     public void addListener(IContainerListener listener)

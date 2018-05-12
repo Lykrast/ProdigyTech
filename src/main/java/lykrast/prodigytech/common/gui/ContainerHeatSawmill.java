@@ -32,18 +32,7 @@ public class ContainerHeatSawmill extends ContainerMachine<TileHeatSawmill> {
     	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 2, 142, 35));
 
 		//Player slots
-        for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 9; ++j)
-            {
-                this.addSlotToContainer(new Slot(userInv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-            }
-        }
-
-        for (int k = 0; k < 9; ++k)
-        {
-            this.addSlotToContainer(new Slot(userInv, k, 8 + k * 18, 142));
-        }
+    	addPlayerSlotsDefault(userInv);
 	}
 
     public void addListener(IContainerListener listener)

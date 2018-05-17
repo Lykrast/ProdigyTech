@@ -1,20 +1,5 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"model": "cube_all"
-	},
-	"variants": {
-		"variant": {
-			"normal": {
-				"textures": {
-					"all": "prodigytech:blocks/particle_board"
-				}
-			},
-			"planks": {
-				"textures": {
-					"all": "prodigytech:blocks/particle_board_planks"
-				}
-			}
-		}
-	}
+    "variants": {
+        "normal": { "model": "prodigytech:particle_board" }
+    }
 }

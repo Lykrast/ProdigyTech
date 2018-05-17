@@ -50,8 +50,8 @@ tile.prodigytech.funnelling_extractor.tooltip=Pulls item from inventories on all
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
 tile.prodigytech.ash_bricks.name=Ash Bricks
-tile.prodigytech.particle_board.normal.name=Particle Board
-tile.prodigytech.particle_board.planks.name=Particle Board Planks
+tile.prodigytech.particle_board.name=Particle Board
+tile.prodigytech.particle_board_planks.name=Particle Board Planks
 
 #----------------------------
 #Items

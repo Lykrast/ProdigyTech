@@ -30,7 +30,7 @@ public class ModBlocks {
 		magneticReassembler, energionCrystal, atomicReshaper,
 		airFunnel, linearExtractor, funnellingExtractor,
 		ferramicBlock, carbonPlateBlock,
-		ashBricks, particleBoard;
+		ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
@@ -85,7 +85,8 @@ public class ModBlocks {
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 30.0F, "pickaxe", 0), "ash_bricks");
-		particleBoard = initBlock(new BlockParticleBoard(2.0F, 15.0F), "particle_board");
+		particleBoard = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "particle_board");
+		particleBoardPlanks = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "particle_board_planks");
 	}
 	
 	@SubscribeEvent

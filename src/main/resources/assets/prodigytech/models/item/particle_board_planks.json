@@ -1,6 +1,3 @@
 {
-	"parent": "block/cube_all",
-	"textures": { 
-		"all": "prodigytech:blocks/particle_board_planks"
-	}
+    "parent": "prodigytech:block/particle_board_planks"
 }

@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:decorative/particle_board"
+      "prodigytech:decorative/particle_board_clay"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "prodigytech:decorative/particle_board"
+        "recipe": "prodigytech:decorative/particle_board_clay"
       }
     }
   },

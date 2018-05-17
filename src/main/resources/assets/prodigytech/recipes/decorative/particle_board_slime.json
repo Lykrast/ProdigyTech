@@ -7,8 +7,8 @@
 		"SSS"
 	],
 	"key": {
-		"C": { "item": "minecraft:clay_ball" },
+		"C": { "type": "forge:ore_dict", "ore": "slimeball" },
 		"S": { "type": "forge:ore_dict", "ore": "dustWood" }
 	},
-	"result": { "item": "prodigytech:particle_board", "data": 0, "count": 2 }
+	"result": { "item": "prodigytech:particle_board", "count": 2 }
 }

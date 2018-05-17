@@ -29,6 +29,7 @@ public class ModBlocks {
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, atomicReshaper,
 		airFunnel, linearExtractor, funnellingExtractor,
+		zorraLog, zorraPlanks,
 		ferramicBlock, carbonPlateBlock,
 		ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
@@ -78,6 +79,10 @@ public class ModBlocks {
 		
 		//Energion
 		energionCrystal = initBlock(new BlockEnergionCrystal(0.35F, 0.5F, 0), "energion_crystal");
+		
+		//Zorra
+		zorraLog = initBlock(new BlockLogGeneric(2.0F, 15.0F), "zorra_log");
+		zorraPlanks = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "zorra_planks");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");

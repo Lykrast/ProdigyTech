@@ -1,0 +1,7 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:zorra_log" }
+	],
+	"result": { "item": "prodigytech:zorra_planks", "count": 4 }
+}

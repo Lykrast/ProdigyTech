@@ -62,6 +62,8 @@ public class ModRecipes {
 		OreDictionary.registerOre("blockPlateCarbon", ModBlocks.carbonPlateBlock);
 		OreDictionary.registerOre("plankWood", ModBlocks.particleBoard);
 		OreDictionary.registerOre("plankWood", ModBlocks.particleBoardPlanks);
+		OreDictionary.registerOre("logWood", ModBlocks.zorraLog);
+		OreDictionary.registerOre("plankWood", ModBlocks.zorraPlanks);
 	}
 	
 	public static void initSmelting()

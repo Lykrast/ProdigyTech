@@ -46,6 +46,10 @@ tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\n
 tile.prodigytech.funnelling_extractor.name=Funnelling Extractor
 tile.prodigytech.funnelling_extractor.tooltip=Pulls item from inventories on all sides\nand pushes them forwards\nTurn off with redstone
 
+#Zorra
+tile.prodigytech.zorra_log.name=Zorra Wood
+tile.prodigytech.zorra_planks.name=Zorra Wood Planks
+
 #Storage and decoration
 tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates

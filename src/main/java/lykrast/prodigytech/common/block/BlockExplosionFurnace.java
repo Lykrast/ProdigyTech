@@ -9,7 +9,6 @@ import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -141,7 +140,7 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING, TRIGGERED});
+        return new BlockStateContainer(this, FACING, TRIGGERED);
     }
 	
 	/**

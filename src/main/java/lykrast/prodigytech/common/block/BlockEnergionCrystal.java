@@ -9,7 +9,6 @@ import lykrast.prodigytech.common.util.AABBUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockFaceShape;
@@ -250,7 +249,7 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
 	@Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {AGE, DEFUSED});
+        return new BlockStateContainer(this, AGE, DEFUSED);
     }
 
 	@Override

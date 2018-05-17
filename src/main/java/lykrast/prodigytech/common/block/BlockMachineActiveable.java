@@ -2,7 +2,6 @@ package lykrast.prodigytech.common.block;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -63,7 +62,7 @@ public abstract class BlockMachineActiveable<T extends TileEntity> extends Block
 	}
 
 	protected BlockStateContainer createBlockState() {
-	    return new BlockStateContainer(this, new IProperty[] {FACING, ACTIVE});
+	    return new BlockStateContainer(this, FACING, ACTIVE);
 	}
 
 }

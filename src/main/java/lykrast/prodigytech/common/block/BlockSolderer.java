@@ -7,7 +7,6 @@ import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -99,7 +98,7 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 	}
 
 	protected BlockStateContainer createBlockState() {
-	    return new BlockStateContainer(this, new IProperty[] {ACTIVE});
+	    return new BlockStateContainer(this, ACTIVE);
 	}
 
     public boolean isFullCube(IBlockState state)

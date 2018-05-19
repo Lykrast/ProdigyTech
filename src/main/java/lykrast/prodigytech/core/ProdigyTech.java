@@ -20,7 +20,7 @@ public class ProdigyTech
 {
     public static final String MODID = "prodigytech",
     		NAME = "Prodigy Tech",
-    		VERSION = "0.0.1",
+    		VERSION = "@VERSION@",
     		DEPENDENCIES = "required-after:guideapi;";
     
 	@Instance

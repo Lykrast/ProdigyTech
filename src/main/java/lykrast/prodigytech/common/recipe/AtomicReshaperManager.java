@@ -7,10 +7,12 @@ import java.util.Random;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
+import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager.AtomicReshaperRecipe;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -18,19 +20,19 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 	public static final AtomicReshaperManager INSTANCE = new AtomicReshaperManager();
 	private AtomicReshaperManager() {}
 
-	public AtomicReshaperRecipe addRecipe(ItemStack input, int time, int primordium, Object... outputs)
-	{
+	public AtomicReshaperRecipe addRecipe(ItemStack input, int time, int primordium, Object... outputs) {
 		return addRecipe(new AtomicReshaperRecipe(input, time, primordium, outputs));
 	}
 	
-	public AtomicReshaperRecipe addRecipe(String input, int time, int primordium, Object... outputs)
-	{
+	public AtomicReshaperRecipe addRecipe(String input, int time, int primordium, Object... outputs) {
 		return addRecipe(new AtomicReshaperRecipe(input, time, primordium, outputs));
 	}
 	
 	@Override
 	public void init() {
-		addRecipe("stone", Config.atomicReshaperProcessTime * 3, 20, new ItemStack(Blocks.COAL_ORE), 64, 
+		addRecipe("treeSapling", Config.atomicReshaperProcessTime, 50, new ItemStack(ModBlocks.zorraSapling));
+		addRecipe("stone", Config.atomicReshaperProcessTime * 3, 20, 
+				new ItemStack(Blocks.COAL_ORE), 64, 
 				new ItemStack(Blocks.IRON_ORE), 48, 
 				new ItemStack(Blocks.REDSTONE_ORE), 33, 
 				new ItemStack(Blocks.LAPIS_ORE), 22, 
@@ -41,6 +43,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 		addRecipe("sand", Config.atomicReshaperProcessTime, 1, new ItemStack(Blocks.DIRT));
 		addRecipe("dirt", Config.atomicReshaperProcessTime, 3, new ItemStack(Blocks.CLAY));
 		addRecipe("paper", Config.atomicReshaperProcessTime, 2, new ItemStack(ModItems.circuitPlate));
+		addRecipe("dustAsh", Config.atomicReshaperProcessTime, 2, new ItemStack(Items.GUNPOWDER));
 		addRecipe(new ItemStack(ModItems.infernoCrystal), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.aeternusCrystal));
 	}
 	

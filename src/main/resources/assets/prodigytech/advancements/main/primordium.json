@@ -1,23 +1,23 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:rotary_grinder"
+            "item": "prodigytech:primordium"
         },
         "title": {
-            "translate": "advancements.prodigytech.main.rotary_grinder.title"
+            "translate": "advancements.prodigytech.main.primordium.title"
         },
         "description": {
-            "translate": "advancements.prodigytech.main.rotary_grinder.description"
+            "translate": "advancements.prodigytech.main.primordium.description"
         }
     },
-    "parent": "prodigytech:main/aeroheater",
+    "parent": "prodigytech:main/solderer",
     "criteria": {
-        "iron": {
+        "reshaper": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "prodigytech:rotary_grinder"
+                        "item": "prodigytech:atomic_reshaper"
                     }
                 ]
             }

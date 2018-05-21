@@ -5,6 +5,7 @@ import java.util.Random;
 
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
+import lykrast.prodigytech.common.item.ItemBlockInfoShift;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -16,6 +17,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
@@ -31,7 +33,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper {
+public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper, ICustomItemBlock {
     public static final PropertyBool SOAKED = PropertyBool.create("soaked");
     //To hurt people
     protected static final AxisAlignedBB COLLISION_AABB = new AxisAlignedBB(0.0625D, 0.0625D, 0.0625D, 0.9375D, 0.9375D, 0.9375D);
@@ -184,6 +186,11 @@ public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper 
 	@SideOnly(Side.CLIENT)
 	public void setCustomStateMapper() {
 		ModelLoader.setCustomStateMapper(this, (new StateMap.Builder()).ignore(CHECK_DECAY, DECAYABLE).build());
+	}
+
+	@Override
+	public ItemBlock getItemBlock() {
+		return new ItemBlockInfoShift(this);
 	}
 
 }

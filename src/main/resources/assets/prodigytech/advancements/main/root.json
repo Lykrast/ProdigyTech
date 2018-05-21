@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:solid_fuel_aeroheater"
+            "item": "prodigytech:ferramic_gear"
         },
         "title": {
             "translate": "advancements.prodigytech.main.root.title"

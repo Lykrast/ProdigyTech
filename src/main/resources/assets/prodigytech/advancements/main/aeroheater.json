@@ -1,0 +1,53 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:solid_fuel_aeroheater"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.aeroheater.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.aeroheater.description"
+        }
+    },
+    "parent": "prodigytech:main/explosion_furnace",
+    "criteria": {
+        "solid_fuel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:solid_fuel_aeroheater"
+                    }
+                ]
+            }
+        },
+        "magmatic": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:magmatic_aeroheater"
+                    }
+                ]
+            }
+        },
+        "energion": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:energion_aeroheater"
+                    }
+                ]
+            }
+        }
+    },
+	"requirements": [
+		[
+			"solid_fuel",
+			"magmatic",
+			"energion"
+		]
+	]
+}

@@ -1,7 +1,5 @@
 package lykrast.prodigytech.common.util;
 
-import java.util.logging.Level;
-
 import lykrast.prodigytech.core.CommonProxy;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraftforge.common.config.Configuration;
@@ -36,7 +34,7 @@ public class Config {
 			cfg.load();
 			initGeneralConfig(cfg);
 		} catch (Exception e) {
-			ProdigyTech.logger.log(Level.WARNING, "Problem loading config file!", e);
+			ProdigyTech.logger.warn("Problem loading config file!", e);
 		} finally {
 			if (cfg.hasChanged()) {
 				cfg.save();

@@ -50,6 +50,7 @@ tile.prodigytech.funnelling_extractor.tooltip=Pulls item from inventories on all
 tile.prodigytech.zorra_log.name=Zorra Wood
 tile.prodigytech.zorra_planks.name=Zorra Wood Planks
 tile.prodigytech.zorra_leaves.name=Zorra Leaves
+tile.prodigytech.zorra_leaves.tooltip=Razor sharp\nSapling grown leaves\nspread after killing something
 tile.prodigytech.zorra_sapling.name=Zorra Sapling
 
 #Storage and decoration
@@ -175,17 +176,27 @@ container.prodigytech.jei.ptreshaper=Atomic Reshaper
 #----------------------------
 #Advancements
 #----------------------------
+#Main line
 advancements.prodigytech.main.root.title=Prodigy Tech
 advancements.prodigytech.main.root.description=Wonders await you
 advancements.prodigytech.main.explosion_furnace.title=A Real Blast Furnace
-advancements.prodigytech.main.explosion_furnace.description=Make an Explosion Furnace
+advancements.prodigytech.main.explosion_furnace.description=Make an Explosion Furnace to craft Ferramic
+advancements.prodigytech.main.aeroheater.title=Turning Up The Heat
+advancements.prodigytech.main.aeroheater.description=Make an Aeroheater to generate Hot Air
 advancements.prodigytech.main.rotary_grinder.title=Nothing But Shreds
-advancements.prodigytech.main.rotary_grinder.description=Make a Rotary Grinder
+advancements.prodigytech.main.rotary_grinder.description=Make a Rotary Grinder to craft Dusts
 advancements.prodigytech.main.solderer.title=Precision Work
-advancements.prodigytech.main.solderer.description=Make a Solderer
+advancements.prodigytech.main.solderer.description=Make a Solderer to produce Circuits
+advancements.prodigytech.main.primordium.title=(Almost) Universally Usable
+advancements.prodigytech.main.primordium.description=Make a Primordialis Reactor to produce Primoridum and an Atomic Reshaper to use it
+advancements.prodigytech.main.zorra_leaf.title=Razor Sharp
+advancements.prodigytech.main.zorra_leaf.description=Reshape a Sapling into a Zorra Sapling and harvest its leaves to make Zorrasteel
 
+#Rotary Grinder side
 advancements.prodigytech.main.meat_patty.title=I'm Lovin' It
 advancements.prodigytech.main.meat_patty.description=Make a delicious Meat Patty
+advancements.prodigytech.main.energion_dust.title=Concentrated Power
+advancements.prodigytech.main.energion_dust.description=Make Energion Dust to fill Energion Batteries
 
 #----------------------------
 #Guide-API

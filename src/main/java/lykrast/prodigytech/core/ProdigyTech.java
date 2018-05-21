@@ -1,6 +1,7 @@
 package lykrast.prodigytech.core;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
@@ -26,7 +27,7 @@ public class ProdigyTech
 	@Instance
 	public static ProdigyTech instance;
 	
-	public static Logger logger;
+	public static Logger logger = LogManager.getLogger(MODID);
     
     @SidedProxy(clientSide = "lykrast.prodigytech.core.ClientProxy", serverSide = "lykrast.prodigytech.core.CommonProxy")
 	public static CommonProxy proxy;

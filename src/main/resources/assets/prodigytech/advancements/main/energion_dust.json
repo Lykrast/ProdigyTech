@@ -1,23 +1,23 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:rotary_grinder"
+            "item": "prodigytech:energion_dust"
         },
         "title": {
-            "translate": "advancements.prodigytech.main.rotary_grinder.title"
+            "translate": "advancements.prodigytech.main.energion_dust.title"
         },
         "description": {
-            "translate": "advancements.prodigytech.main.rotary_grinder.description"
+            "translate": "advancements.prodigytech.main.energion_dust.description"
         }
     },
-    "parent": "prodigytech:main/aeroheater",
+    "parent": "prodigytech:main/rotary_grinder",
     "criteria": {
         "iron": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "prodigytech:rotary_grinder"
+                        "item": "prodigytech:energion_dust"
                     }
                 ]
             }

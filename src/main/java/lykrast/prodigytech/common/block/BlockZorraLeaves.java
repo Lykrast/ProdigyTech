@@ -3,6 +3,8 @@ package lykrast.prodigytech.common.block;
 import java.util.List;
 import java.util.Random;
 
+import lykrast.prodigytech.common.init.ModBlocks;
+import lykrast.prodigytech.common.init.ModItems;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks.EnumType;
 import net.minecraft.block.properties.IProperty;
@@ -13,6 +15,7 @@ import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
@@ -21,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -77,6 +81,40 @@ public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper 
 		//Decay after spreading
 		super.updateTick(worldIn, pos, state, rand);
 	}
+	
+	@Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return Item.getItemFromBlock(ModBlocks.zorraSapling);
+    }
+
+	@Override
+    protected int getSaplingDropChance(IBlockState state) {
+        return 50;
+    }
+	
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+    	//Sapling, from the vanilla code
+        Random rand = world instanceof World ? ((World)world).rand : new Random();
+        int chance = this.getSaplingDropChance(state);
+
+        if (fortune > 0)
+        {
+            chance -= 2 << fortune;
+            if (chance < 10) chance = 10;
+        }
+
+        if (rand.nextInt(chance) == 0)
+        {
+            ItemStack drop = new ItemStack(getItemDropped(state, rand, fortune));
+            if (!drop.isEmpty()) drops.add(drop);
+        }
+        
+        //Leaves
+        int amount = MathHelper.clamp(1 + rand.nextInt(2) + rand.nextInt(fortune + 1), 1, 4);
+        drops.add(new ItemStack(ModItems.zorraLeaf, amount));
+    }
 	
 	@Override
     protected BlockStateContainer createBlockState() {

@@ -29,7 +29,7 @@ public class ModBlocks {
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, atomicReshaper,
 		airFunnel, linearExtractor, funnellingExtractor,
-		zorraLog, zorraPlanks, zorraLeaves,
+		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
 		ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
@@ -65,7 +65,6 @@ public class ModBlocks {
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
-		//TODO:make the block and tile
 		atomicReshaper = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "atomic_reshaper");
 		GameRegistry.registerTileEntity(TileAtomicReshaper.class, PREFIX + "atomic_reshaper");
 		
@@ -84,6 +83,7 @@ public class ModBlocks {
 		zorraLog = initBlock(new BlockLogGeneric(2.0F, 15.0F), "zorra_log");
 		zorraPlanks = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "zorra_planks");
 		zorraLeaves = initBlock(new BlockZorraLeaves(0.5F, 2.0F), "zorra_leaves");
+		zorraSapling = initBlock(new BlockZorraSapling(0.0F), "zorra_sapling");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");

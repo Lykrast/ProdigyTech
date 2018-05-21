@@ -70,6 +70,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("logWood", ModBlocks.zorraLog);
 		OreDictionary.registerOre("plankWood", ModBlocks.zorraPlanks);
 		OreDictionary.registerOre("treeLeaves", ModBlocks.zorraLeaves);
+		OreDictionary.registerOre("treeSapling", ModBlocks.zorraSapling);
 	}
 	
 	public static void initSmelting()

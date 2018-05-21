@@ -29,8 +29,8 @@ public class ModBlocks {
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, atomicReshaper,
 		airFunnel, linearExtractor, funnellingExtractor,
-		zorraLog, zorraPlanks,
-		ferramicBlock, carbonPlateBlock,
+		zorraLog, zorraPlanks, zorraLeaves,
+		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
 		ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
 	private static final String PREFIX = ProdigyTech.MODID + ".";
@@ -83,10 +83,12 @@ public class ModBlocks {
 		//Zorra
 		zorraLog = initBlock(new BlockLogGeneric(2.0F, 15.0F), "zorra_log");
 		zorraPlanks = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "zorra_planks");
+		zorraLeaves = initBlock(new BlockZorraLeaves(0.5F, 2.0F), "zorra_leaves");
 		
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
 		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 30.0F, "pickaxe", 1), "carbon_plate_block");
+		zorrasteelBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 90.0F, "pickaxe", 3), "zorrasteel_block");
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 30.0F, "pickaxe", 0), "ash_bricks");

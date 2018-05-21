@@ -38,8 +38,9 @@ public class ModItems {
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
-		crystalCutter, toolTest,
-		primordium, aeternusCrystal;
+		crystalCutter,
+		primordium, aeternusCrystal,
+		zorraLeaf, zorrasteelRaw, zorrasteelIngot;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -97,6 +98,11 @@ public class ModItems {
 		//Atomic Reshaper
 		primordium = initItem(new Item(), "primordium");
 		aeternusCrystal = initItem(new ItemFuel(12800), "aeternus_crystal");
+		
+		//Zorra
+		zorraLeaf = initItem(new Item(), "zorra_leaf");
+		zorrasteelRaw = initItem(new Item(), "zorrasteel_raw");
+		zorrasteelIngot = initItem(new Item(), "zorrasteel_ingot");
 	}
 	
 	@SubscribeEvent

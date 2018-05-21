@@ -112,6 +112,9 @@ public class ExplosionFurnaceManager {
 		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
 		//addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
 		
+		//Zorrasteel
+		addRecipe(new ItemStack(ModItems.zorrasteelRaw), new ItemStack(ModItems.zorrasteelIngot), 360);
+		
 		//Stone
 		//Those were tested by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed
 		addRecipe(new ItemStack(Blocks.STONE), new ItemStack(Blocks.COBBLESTONE), 45);

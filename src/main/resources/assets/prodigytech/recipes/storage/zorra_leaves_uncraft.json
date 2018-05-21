@@ -1,0 +1,7 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:zorra_leaves" }
+	],
+	"result": { "item": "prodigytech:zorra_leaf", "count": 4 }
+}

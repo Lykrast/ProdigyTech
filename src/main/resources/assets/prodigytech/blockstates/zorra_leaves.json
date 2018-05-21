@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "soaked=false": { "model": "prodigytech:zorra_leaves" },
+        "soaked=true": { "model": "prodigytech:zorra_leaves_soaked" }
+    }
+}

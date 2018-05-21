@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "prodigytech:blocks/zorra_leaves_soaked"
+    }
+}

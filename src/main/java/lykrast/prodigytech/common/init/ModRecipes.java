@@ -54,6 +54,11 @@ public class ModRecipes {
 		OreDictionary.registerOre("gemEnergion", ModItems.energionCrystalSeed);
 		OreDictionary.registerOre("dustEnergion", ModItems.energionDust);
 		
+		//Zorra
+		OreDictionary.registerOre("ingotRawZorrasteel", ModItems.zorrasteelRaw);
+		OreDictionary.registerOre("ingotZorrasteel", ModItems.zorrasteelIngot);
+		OreDictionary.registerOre("blockZorrasteel", ModBlocks.zorrasteelBlock);
+		
 		//Other
 		OreDictionary.registerOre("dustAsh", ModItems.ash);
 		OreDictionary.registerOre("dustWood", ModItems.sawdust);
@@ -64,6 +69,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("plankWood", ModBlocks.particleBoardPlanks);
 		OreDictionary.registerOre("logWood", ModBlocks.zorraLog);
 		OreDictionary.registerOre("plankWood", ModBlocks.zorraPlanks);
+		OreDictionary.registerOre("treeLeaves", ModBlocks.zorraLeaves);
 	}
 	
 	public static void initSmelting()

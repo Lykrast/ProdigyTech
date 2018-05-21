@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		" L ",
+		"LIL",
+		" L "
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotIron" },
+		"L": { "item": "prodigytech:zorra_leaf" }
+	},
+	"result": { "item": "prodigytech:zorrasteel_raw" }
+}

@@ -9,7 +9,7 @@
 		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
 		"G": { "type": "forge:ore_dict", "ore": "ingotGold" },
 		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
-		"C": { "item": "prodigytech:circuit", "data": 1 }
+		"C": { "item": "prodigytech:circuit_refined" }
 	},
 	"result": { "item": "prodigytech:magnetic_reassembler" }
 }

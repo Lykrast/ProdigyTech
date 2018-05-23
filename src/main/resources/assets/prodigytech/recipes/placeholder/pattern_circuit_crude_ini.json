@@ -5,5 +5,5 @@
 		{ "type": "forge:ore_dict", "ore": "ingotIron" },
 		{ "type": "forge:ore_dict", "ore": "paper" }
 	],
-	"result": { "item": "prodigytech:pattern_circuit", "data": 0 }
+	"result": { "item": "prodigytech:pattern_circuit_crude" }
 }

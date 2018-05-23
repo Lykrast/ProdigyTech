@@ -20,7 +20,7 @@ import net.minecraft.util.ResourceLocation;
 public class CategoryCircuits {
 	
 	public static CategoryAbstract build() {
-		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.circuits"), new ItemStack(ModItems.circuit, 1, 1));
+		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.circuits"), new ItemStack(ModItems.circuitRefined));
 	}
 	
 	private static String prefix(String str) {

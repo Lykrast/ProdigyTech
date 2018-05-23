@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lykrast.prodigytech.common.item.IItemCustomModel;
-import lykrast.prodigytech.common.item.ItemCircuit;
 import lykrast.prodigytech.common.item.ItemCrystalCutter;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
@@ -34,7 +33,8 @@ public class ModItems {
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
 		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
-		circuitPlate, circuit, patternCircuit,
+		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
+		patternCircuitCrude, patternCircuitRefined, patternCircuitPerfected,
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
@@ -77,8 +77,12 @@ public class ModItems {
 		
 		//Solderer
 		circuitPlate = initItem(new Item(), "circuit_plate");
-		circuit = initItem(new ItemCircuit(), "circuit");
-		patternCircuit = initItem(new ItemCircuit().setMaxStackSize(1), "pattern_circuit");
+		circuitCrude = initItem(new Item(), "circuit_crude");
+		circuitRefined = initItem(new Item(), "circuit_refined");
+		circuitPerfected = initItem(new Item(), "circuit_perfected");
+		patternCircuitCrude = initItem(new Item().setMaxStackSize(1), "pattern_circuit_crude");
+		patternCircuitRefined = initItem(new Item().setMaxStackSize(1), "pattern_circuit_refined");
+		patternCircuitPerfected = initItem(new Item().setMaxStackSize(1), "pattern_circuit_perfected");
 
 		//Energion
 		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");

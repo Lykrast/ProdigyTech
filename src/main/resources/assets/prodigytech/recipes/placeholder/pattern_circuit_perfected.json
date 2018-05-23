@@ -1,7 +1,7 @@
 {
 	"type": "forge:ore_shapeless",
 	"ingredients": [
-		{ "item": "prodigytech:pattern_circuit", "data": 1 }
+		{ "item": "prodigytech:pattern_circuit_refined" }
 	],
-	"result": { "item": "prodigytech:pattern_circuit", "data": 2 }
+	"result": { "item": "prodigytech:pattern_circuit_perfected" }
 }

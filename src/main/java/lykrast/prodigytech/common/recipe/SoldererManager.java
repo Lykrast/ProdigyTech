@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lykrast.prodigytech.common.init.ModItems;
-import lykrast.prodigytech.common.item.ItemCircuit;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -86,12 +85,12 @@ public class SoldererManager {
 		idGoldDust = OreDictionary.getOreID("dustGold");
 		idGoldTinyDust = OreDictionary.getOreID("dustTinyGold");
 		
-		addRecipe(new ItemStack(ModItems.patternCircuit, 1, ItemCircuit.CRUDE), ItemStack.EMPTY, 
-				new ItemStack(ModItems.circuit, 1, ItemCircuit.CRUDE), 3);
-		addRecipe(new ItemStack(ModItems.patternCircuit, 1, ItemCircuit.REFINED), new ItemStack(Items.IRON_INGOT), 
-				new ItemStack(ModItems.circuit, 1, ItemCircuit.REFINED), 6, (int) (Config.soldererProcessTime * 1.5));
-		addRecipe(new ItemStack(ModItems.patternCircuit, 1, ItemCircuit.PERFECTED), new ItemStack(Items.DIAMOND), 
-				new ItemStack(ModItems.circuit, 1, ItemCircuit.PERFECTED), 9, Config.soldererProcessTime * 2);
+		addRecipe(new ItemStack(ModItems.patternCircuitCrude), ItemStack.EMPTY, 
+				new ItemStack(ModItems.circuitCrude), 3);
+		addRecipe(new ItemStack(ModItems.patternCircuitRefined), new ItemStack(Items.IRON_INGOT), 
+				new ItemStack(ModItems.circuitRefined), 6, (int) (Config.soldererProcessTime * 1.5));
+		addRecipe(new ItemStack(ModItems.patternCircuitPerfected), new ItemStack(Items.DIAMOND), 
+				new ItemStack(ModItems.circuitPerfected), 9, Config.soldererProcessTime * 2);
 	}
 	
 	public static class SoldererRecipe {

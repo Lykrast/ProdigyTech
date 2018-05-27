@@ -35,6 +35,8 @@ tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern 
 #Circuits
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
+tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
+tile.prodigytech.primordialis_reactor.tooltip=Turns plant matter into Primordium\nMix different types for more efficiency
 tile.prodigytech.atomic_reshaper.name=Atomic Reshaper
 tile.prodigytech.atomic_reshaper.tooltip=Turns things into other things\nusing Primordium
 
@@ -143,6 +145,7 @@ container.prodigytech.heat_sawmill=Heat Sawmill
 container.prodigytech.solderer=Solderer
 
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
+container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
 
 container.prodigytech.temperature=Air Temperature : %s°C
@@ -171,6 +174,7 @@ container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
+container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper
 
 #----------------------------

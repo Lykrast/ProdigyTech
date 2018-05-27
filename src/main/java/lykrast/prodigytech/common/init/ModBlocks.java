@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion,
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
-		magneticReassembler, energionCrystal, atomicReshaper,
+		magneticReassembler, energionCrystal, primordialisReactor, atomicReshaper,
 		airFunnel, linearExtractor, funnellingExtractor,
 		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
@@ -65,6 +65,8 @@ public class ModBlocks {
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
+		primordialisReactor = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "primordialis_reactor");
+		GameRegistry.registerTileEntity(TilePrimordialisReactor.class, PREFIX + "primordialis_reactor");
 		atomicReshaper = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "atomic_reshaper");
 		GameRegistry.registerTileEntity(TileAtomicReshaper.class, PREFIX + "atomic_reshaper");
 		

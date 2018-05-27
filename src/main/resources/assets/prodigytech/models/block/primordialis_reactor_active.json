@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "prodigytech:blocks/machine_air_hatch",
+        "front": "prodigytech:blocks/primordialis_reactor_front_active",
+        "side": "prodigytech:blocks/primordialis_reactor_side_active"
+    }
+}

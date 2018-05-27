@@ -191,6 +191,8 @@ advancements.prodigytech.main.rotary_grinder.title=Nothing But Shreds
 advancements.prodigytech.main.rotary_grinder.description=Make a Rotary Grinder to craft Dusts
 advancements.prodigytech.main.solderer.title=Precision Work
 advancements.prodigytech.main.solderer.description=Make a Solderer to produce Circuits
+advancements.prodigytech.main.energion_aeroheater.title=Up To Eleven
+advancements.prodigytech.main.energion_aeroheater.description=Make an Energion Aeroheater to power better machines
 advancements.prodigytech.main.primordium.title=(Almost) Universally Usable
 advancements.prodigytech.main.primordium.description=Make a Primordialis Reactor to produce Primoridum and an Atomic Reshaper to use it
 advancements.prodigytech.main.zorra_leaf.title=Razor Sharp
@@ -201,6 +203,10 @@ advancements.prodigytech.main.meat_patty.title=I'm Lovin' It
 advancements.prodigytech.main.meat_patty.description=Make a delicious Meat Patty
 advancements.prodigytech.main.energion_dust.title=Concentrated Power
 advancements.prodigytech.main.energion_dust.description=Make Energion Dust to fill Energion Batteries
+
+#Circuits side
+advancements.prodigytech.main.energion_crystal_seed.title=Fresh and Organic
+advancements.prodigytech.main.energion_crystal_seed.description=Make an Energion Crystal Seed to farm it
 
 #----------------------------
 #Guide-API

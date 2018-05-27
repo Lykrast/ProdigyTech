@@ -10,8 +10,18 @@
             "translate": "advancements.prodigytech.main.primordium.description"
         }
     },
-    "parent": "prodigytech:main/solderer",
+    "parent": "prodigytech:main/energion_aeroheater",
     "criteria": {
+        "reactor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:primordialis_reactor"
+                    }
+                ]
+            }
+        },
         "reshaper": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {

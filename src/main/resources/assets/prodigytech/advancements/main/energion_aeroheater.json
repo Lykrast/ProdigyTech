@@ -1,23 +1,23 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:circuit_refined"
+            "item": "prodigytech:energion_battery"
         },
         "title": {
-            "translate": "advancements.prodigytech.main.solderer.title"
+            "translate": "advancements.prodigytech.main.energion_aeroheater.title"
         },
         "description": {
-            "translate": "advancements.prodigytech.main.solderer.description"
+            "translate": "advancements.prodigytech.main.energion_aeroheater.description"
         }
     },
-    "parent": "prodigytech:main/rotary_grinder",
+    "parent": "prodigytech:main/solderer",
     "criteria": {
         "iron": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "prodigytech:solderer"
+                        "item": "prodigytech:energion_aeroheater"
                     }
                 ]
             }

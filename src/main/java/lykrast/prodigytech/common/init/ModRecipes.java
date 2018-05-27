@@ -4,6 +4,7 @@ import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
+import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SoldererManager;
 import net.minecraft.init.Items;
@@ -27,6 +28,7 @@ public class ModRecipes {
 		SoldererManager.init();
 		MagneticReassemblerManager.INSTANCE.init();
 		HeatSawmillManager.INSTANCE.init();
+		PrimordialisReactorManager.init();
 		AtomicReshaperManager.INSTANCE.init();
 	}
 	

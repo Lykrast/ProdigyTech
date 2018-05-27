@@ -65,7 +65,7 @@ public class ModBlocks {
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
-		primordialisReactor = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "primordialis_reactor");
+		primordialisReactor = initBlock(new BlockPrimordialisReactor(6.0F, 45.0F, 1), "primordialis_reactor");
 		GameRegistry.registerTileEntity(TilePrimordialisReactor.class, PREFIX + "primordialis_reactor");
 		atomicReshaper = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "atomic_reshaper");
 		GameRegistry.registerTileEntity(TileAtomicReshaper.class, PREFIX + "atomic_reshaper");
@@ -90,7 +90,7 @@ public class ModBlocks {
 		//Materials
 		ferramicBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 45.0F, "pickaxe", 1), "ferramic_block");
 		carbonPlateBlock = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 3.0F, 30.0F, "pickaxe", 1), "carbon_plate_block");
-		zorrasteelBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 90.0F, "pickaxe", 3), "zorrasteel_block");
+		zorrasteelBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 180.0F, "pickaxe", 3), "zorrasteel_block");
 		
 		//Decoration
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 30.0F, "pickaxe", 0), "ash_bricks");

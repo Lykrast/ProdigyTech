@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
+import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.util.Config;
@@ -18,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-public class TilePrimordialisReactor extends TileMachineInventory implements ITickable {
+public class TilePrimordialisReactor extends TileMachineInventory implements ITickable, IHotAir {
 	/** Progress for the current reactor cycle */
 	private int progressCycle;
 	/** Progress for the creation of Primordium */
@@ -237,6 +238,11 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
 			return (T)this;
 		return super.getCapability(capability, facing);
+	}
+
+	@Override
+	public int getOutAirTemperature() {
+		return temperatureOut;
 	}
 
     public void readFromNBT(NBTTagCompound compound)

@@ -89,11 +89,12 @@ public class Config {
 				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		//Primordialis Reactor
-		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 100, 1, 3000, 
+		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 
 				"The base amount of time (in ticks) that the Primordialis Reactor takes to make 1 cycle");
 		primordialisReactorRequiredInput = cfg.getInt("primordialisReactorRequiredInput", CATEGORY_MACHINES, 576, 9, 5760, 
 				"How many the Primordialis Reactor needs to consume to make 1 Primordium\n"
-				+ "Note that this can be divided by up to 9 by putting different items");
+				+ "Note that this can be divided by up to 9 by putting different items\n"
+				+ "This also means the number of cycles required ranges from this number to 1/81");
 		//Atomic Reshaper
 		atomicReshaperProcessTime = cfg.getInt("atomicReshaperProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
 				"The base amount of time (in ticks) that the Atomic Reassembler takes to process 1 item\n"

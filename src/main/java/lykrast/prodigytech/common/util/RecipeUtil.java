@@ -17,5 +17,9 @@ public class RecipeUtil {
 	public static Pair<Item, Integer> stackToWildcardPair(ItemStack stack) {
 		return new ImmutablePair<Item, Integer>(stack.getItem(), OreDictionary.WILDCARD_VALUE);
 	}
+	
+	public static ItemStack pairToStack(Pair<Item, Integer> pair) {
+		return new ItemStack(pair.getLeft(), 1, pair.getRight().intValue());
+	}
 
 }

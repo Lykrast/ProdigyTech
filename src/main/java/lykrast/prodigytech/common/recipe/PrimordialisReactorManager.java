@@ -1,6 +1,8 @@
 package lykrast.prodigytech.common.recipe;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -46,6 +48,17 @@ public class PrimordialisReactorManager {
 		for (int i : ores) if (inputsOre.contains(OreDictionary.getOreName(i))) return true;
 		
 		return false;
+	}
+	
+	public static List<ItemStack> getAllEntries() {
+		List<ItemStack> list = new ArrayList<>();
+		inputs.forEach(pair -> list.add(RecipeUtil.pairToStack(pair)));
+		return list;
+	}
+	
+	public static List<String> getAllOreEntries() {
+		List<String> list = new ArrayList<>(inputsOre);
+		return list;
 	}
 	
 	public static void init() {

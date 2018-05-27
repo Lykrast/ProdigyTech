@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"IPI",
+		"PCP",
+		"IPI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"P": { "type": "forge:ore_dict", "ore": "plateCarbon" },
+		"C": { "item": "prodigytech:circuit_perfected" }
+	},
+	"result": { "item": "prodigytech:primordialis_reactor" }
+}

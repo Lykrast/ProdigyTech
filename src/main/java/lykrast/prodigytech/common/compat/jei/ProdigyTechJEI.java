@@ -35,6 +35,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		SoldererCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
 		EnergionBatteryCategory.registerRecipes(registry);
+		PrimordialisReactorCategory.registerRecipes(registry);
 		AtomicReshaperCategory.registerRecipes(registry);
 
 		//Catalysts
@@ -45,6 +46,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.heatSawmill), HeatSawmillCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.primordialisReactor), PrimordialisReactorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.atomicReshaper), AtomicReshaperCategory.UID);
 		
 		//Battery usage
@@ -61,6 +63,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiHeatSawmill.class, 79, 35, 24, 17, HeatSawmillCategory.UID);
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
+		registry.addRecipeClickArea(GuiPrimordialisReactor.class, 77, 35, 62, 17, PrimordialisReactorCategory.UID);
 		registry.addRecipeClickArea(GuiAtomicReshaper.class, 67, 35, 48, 17, AtomicReshaperCategory.UID);
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
@@ -80,6 +83,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
 		registry.addRecipeCategories(new EnergionBatteryCategory(guiHelper));
+		registry.addRecipeCategories(new PrimordialisReactorCategory(guiHelper));
 		registry.addRecipeCategories(new AtomicReshaperCategory(guiHelper));
 	}
 }

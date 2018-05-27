@@ -1,0 +1,16 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"IGI",
+		"PCP",
+		"IRI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"P": { "type": "forge:ore_dict", "ore": "plateCarbon" },
+		"G": { "type": "forge:ore_dict", "ore": "glowstone" },
+		"R": { "type": "forge:ore_dict", "ore": "blockRedstone" },
+		"C": { "item": "prodigytech:circuit_perfected" }
+	},
+	"result": { "item": "prodigytech:atomic_reshaper" }
+}

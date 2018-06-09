@@ -7,7 +7,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 
 public class TileBlowerFurnace extends TileHotAirMachineSimple {
     public TileBlowerFurnace() {
-		super();
+		super(0.8F);
 	}
 
 	@Override
@@ -18,7 +18,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
     @Override
 	protected boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || temperature < 80) return false;
+    	if (getStackInSlot(0).isEmpty() || hotAir.getInAirTemperature() < 80) return false;
     	
     	ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(0));
     	if (itemstack.isEmpty()) return false;
@@ -46,7 +46,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
 	@Override
 	protected int getProcessSpeed()
 	{
-		return temperature / 8;
+		return hotAir.getInAirTemperature() / 8;
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
         	
         	if (canProcess())
         	{
@@ -90,7 +90,7 @@ public class TileBlowerFurnace extends TileHotAirMachineSimple {
     			processTime = 0;
     		}
         	
-        	updateOutTemperature();
+        	hotAir.updateOutTemperature();
         	
             if (flag != this.isProcessing())
             {

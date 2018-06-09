@@ -1,8 +1,7 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
-import lykrast.prodigytech.common.capability.IHotAir;
-import lykrast.prodigytech.common.util.TemperatureHelper;
+import lykrast.prodigytech.common.capability.HotAirMachine;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -17,18 +16,16 @@ import net.minecraftforge.items.IItemHandlerModifiable;
  * A hot air powered machine that does simple recipes.
  * @author Lykrast
  */
-public abstract class TileHotAirMachine extends TileMachineInventory implements ITickable, IHotAir {
+public abstract class TileHotAirMachine extends TileMachineInventory implements ITickable, IProcessing {
 	/** The number of ticks that the machine needs to process */
 	protected int processTime;
 	/** The number of ticks that the current recipes needs in total */
 	protected int processTimeMax;
-	/** The current temperature of the machine */
-	protected int temperature;
-	/** The temperature that will come out of the machine */
-	protected int temperatureOut;
+	protected HotAirMachine hotAir;
 
-	public TileHotAirMachine(int slots) {
+	public TileHotAirMachine(int slots, float outputMultiplier) {
 		super(slots);
+		hotAir = new HotAirMachine(this, outputMultiplier);
 	}
 
 	/**
@@ -39,6 +36,7 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 
 	protected abstract boolean canProcess();
 
+	@Override
 	public boolean isProcessing()
     {
         return processTime > 0;
@@ -58,26 +56,17 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 		}
 	}
 
-	protected void updateInTemperature() {
-		temperature = TemperatureHelper.getBlockTemp(world, pos.down());
-	}
-
-	protected void updateOutTemperature() {
-		if (isProcessing()) temperatureOut = (int) (temperature * 0.8F);
-		else temperatureOut = temperature;
-	}
-
 	public int getField(int id) {
 	    switch (id)
 	    {
 	        case 0:
-	            return this.processTime;
+	            return processTime;
 	        case 1:
-	            return this.processTimeMax;
+	            return processTimeMax;
 	        case 2:
-	            return this.temperature;
+	            return hotAir.getInAirTemperature();
 	        case 3:
-	            return this.temperatureOut;
+	            return hotAir.getOutAirTemperature();
 	        default:
 	            return 0;
 	    }
@@ -87,16 +76,16 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 	    switch (id)
 	    {
 	        case 0:
-	            this.processTime = value;
+	            processTime = value;
 	            break;
 	        case 1:
-	            this.processTimeMax = value;
+	            processTimeMax = value;
 	            break;
 	        case 2:
-	            this.temperature = value;
+	            hotAir.setTemperature(value);
 	            break;
 	        case 3:
-	            this.temperatureOut = value;
+	        	hotAir.setOutAirTemperature(value);
 	            break;
 	    }
 	}
@@ -124,22 +113,16 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return (T)invHandler;
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
-			return (T)this;
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	public int getOutAirTemperature() {
-		return temperatureOut;
 	}
 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.processTime = compound.getInteger("ProcessTime");
-        this.processTimeMax = compound.getInteger("ProcessTimeMax");
-        this.temperature = compound.getInteger("Temperature");
-        this.temperatureOut = compound.getInteger("TemperatureOut");
+        processTime = compound.getInteger("ProcessTime");
+        processTimeMax = compound.getInteger("ProcessTimeMax");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -147,8 +130,7 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);
         compound.setInteger("ProcessTimeMax", processTimeMax);
-        compound.setInteger("Temperature", temperature);
-        compound.setInteger("TemperatureOut", temperatureOut);
+        compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
     }

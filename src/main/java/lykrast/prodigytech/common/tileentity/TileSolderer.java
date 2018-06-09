@@ -1,11 +1,11 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
+import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.recipe.SoldererManager;
 import lykrast.prodigytech.common.recipe.SoldererManager.SoldererRecipe;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
-import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -16,13 +16,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileSolderer extends TileMachineInventory implements ITickable {
+public class TileSolderer extends TileMachineInventory implements ITickable, IProcessing {
 	/** The number of ticks that the machine needs to process */
 	private int processTime;
 	/** The number of ticks that the current recipes needs in total */
 	private int processTimeMax;
-	/** The current temperature of the machine */
-	private int temperature;
+	private HotAirMachine hotAir;
 	/** The amount of gold in the machine */
 	private int gold;
 
@@ -34,6 +33,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 	//4 Output
 	public TileSolderer() {
 		super(5);
+		hotAir = new HotAirMachine(this, 0.75F);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 	
 	private int canSmeltGold()
 	{
-		if (getStackInSlot(1).isEmpty() || temperature < 125) return 0;
+		if (getStackInSlot(1).isEmpty() || hotAir.getInAirTemperature() < 125) return 0;
 		
 		int amount = SoldererManager.getGoldAmount(getStackInSlot(1));
 		if (amount > (Config.soldererMaxGold - gold)) return 0;
@@ -67,7 +67,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
     
 	private boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || getStackInSlot(3).isEmpty() || temperature < 125)
+    	if (getStackInSlot(0).isEmpty() || getStackInSlot(3).isEmpty() || hotAir.getInAirTemperature() < 125)
     	{
     		cachedRecipe = null;
     		return false;
@@ -107,7 +107,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
 
     		int goldAmount = canSmeltGold();
     		if (goldAmount > 0)
@@ -181,9 +181,10 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 	
 	private int getProcessSpeed()
 	{
-		return (int) (temperature / 12.5);
+		return (int) (hotAir.getInAirTemperature() / 12.5);
 	}
 
+	@Override
 	public boolean isProcessing()
     {
         return processTime > 0;
@@ -203,21 +204,17 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 		}
 	}
 
-	private void updateInTemperature() {
-		temperature = TemperatureHelper.getBlockTemp(world, pos.down());
-	}
-
 	public int getField(int id) {
 	    switch (id)
 	    {
 	        case 0:
-	            return this.processTime;
+	            return processTime;
 	        case 1:
-	            return this.processTimeMax;
+	            return processTimeMax;
 	        case 2:
-	            return this.temperature;
+	            return hotAir.getInAirTemperature();
 	        case 3:
-	            return this.gold;
+	            return gold;
 	        default:
 	            return 0;
 	    }
@@ -227,16 +224,16 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
 	    switch (id)
 	    {
 	        case 0:
-	            this.processTime = value;
+	            processTime = value;
 	            break;
 	        case 1:
-	            this.processTimeMax = value;
+	            processTimeMax = value;
 	            break;
 	        case 2:
-	            this.temperature = value;
+	            hotAir.setTemperature(value);
 	            break;
 	        case 3:
-	            this.gold = value;
+	            gold = value;
 	            break;
 	    }
 	}
@@ -267,10 +264,10 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.processTime = compound.getInteger("ProcessTime");
-        this.processTimeMax = compound.getInteger("ProcessTimeMax");
-        this.temperature = compound.getInteger("Temperature");
-        this.gold = compound.getInteger("Gold");
+        processTime = compound.getInteger("ProcessTime");
+        processTimeMax = compound.getInteger("ProcessTimeMax");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
+        gold = compound.getInteger("Gold");
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -278,7 +275,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable {
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);
         compound.setInteger("ProcessTimeMax", processTimeMax);
-        compound.setInteger("Temperature", temperature);
+        compound.setTag("HotAir", hotAir.serializeNBT());
         compound.setInteger("Gold", gold);
 
         return compound;

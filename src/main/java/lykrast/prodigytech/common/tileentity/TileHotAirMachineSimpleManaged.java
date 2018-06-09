@@ -12,14 +12,14 @@ import net.minecraft.item.ItemStack;
 public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSimple {
 	protected final SimpleRecipeManager manager;
 	
-    public TileHotAirMachineSimpleManaged(SimpleRecipeManager manager) {
-		super();
+    public TileHotAirMachineSimpleManaged(SimpleRecipeManager manager, float outputMultiplier) {
+		super(outputMultiplier);
 		this.manager = manager;
 		cachedRecipe = null;
 	}
     
     protected boolean isTooCool() {
-    	return temperature < 80;
+    	return hotAir.getInAirTemperature() < 80;
     }
 
 	private SimpleRecipe cachedRecipe;
@@ -75,7 +75,7 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
         	
         	if (canProcess())
         	{
@@ -107,7 +107,7 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
     			processTime = 0;
     		}
         	
-        	updateOutTemperature();
+        	hotAir.updateOutTemperature();
         	
             if (flag != this.isProcessing())
             {

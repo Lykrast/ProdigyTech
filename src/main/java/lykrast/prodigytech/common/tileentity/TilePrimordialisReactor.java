@@ -2,12 +2,11 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
-import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
-import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -19,21 +18,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-public class TilePrimordialisReactor extends TileMachineInventory implements ITickable, IHotAir {
+public class TilePrimordialisReactor extends TileMachineInventory implements ITickable, IProcessing {
 	/** Progress for the current reactor cycle */
 	private int progressCycle;
 	/** Progress for the creation of Primordium */
 	private int progressPrimordium;
-	/** The current temperature of the machine */
-	private int temperature;
-	/** The temperature that will come out of the machine */
-	private int temperatureOut;
+	private HotAirMachine hotAir;
 
 	//Slots :
 	//0-8 Input
 	//9 Output
 	public TilePrimordialisReactor() {
 		super(10);
+		hotAir = new HotAirMachine(this, 0.5F);
 	}
 
 	@Override
@@ -49,7 +46,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
     
 	private boolean canProcess()
     {
-    	if (temperature < 250) return false;
+    	if (hotAir.getInAirTemperature() < 250) return false;
     	
     	boolean content = false;
     	for (int i=0;i<9;i++)
@@ -80,7 +77,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
     		
         	if (canProcess())
         	{
@@ -103,7 +100,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
         	//Can't process, stop the current cycle
         	else if (progressCycle > 0) progressCycle = 0;
         	
-        	updateOutTemperature();
+        	hotAir.updateOutTemperature();
         	
             if (flag != this.isProcessing())
             {
@@ -148,9 +145,10 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 	
 	private int getProcessSpeed()
 	{
-		return temperature / 25;
+		return hotAir.getInAirTemperature() / 25;
 	}
 
+	@Override
 	public boolean isProcessing()
     {
         return progressCycle > 0;
@@ -170,26 +168,17 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 		}
 	}
 
-	private void updateInTemperature() {
-		temperature = TemperatureHelper.getBlockTemp(world, pos.down());
-	}
-
-	protected void updateOutTemperature() {
-		if (isProcessing()) temperatureOut = (int) (temperature * 0.5F);
-		else temperatureOut = temperature;
-	}
-
 	public int getField(int id) {
 	    switch (id)
 	    {
 	        case 0:
-	            return this.progressCycle;
+	            return progressCycle;
 	        case 1:
-	            return this.progressPrimordium;
+	            return progressPrimordium;
 	        case 2:
-	            return this.temperature;
+	            return hotAir.getInAirTemperature();
 	        case 3:
-	            return this.temperatureOut;
+	            return hotAir.getOutAirTemperature();
 	        default:
 	            return 0;
 	    }
@@ -199,16 +188,16 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 	    switch (id)
 	    {
 	        case 0:
-	            this.progressCycle = value;
+	            progressCycle = value;
 	            break;
 	        case 1:
-	            this.progressPrimordium = value;
+	            progressPrimordium = value;
 	            break;
 	        case 2:
-	            this.temperature = value;
+	            hotAir.setTemperature(value);;
 	            break;
 	        case 3:
-	            this.temperatureOut = value;
+	        	hotAir.setOutAirTemperature(value);
 	            break;
 	    }
 	}
@@ -236,22 +225,16 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return (T)invHandler;
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
-			return (T)this;
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
-	}
-
-	@Override
-	public int getOutAirTemperature() {
-		return temperatureOut;
 	}
 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.progressCycle = compound.getInteger("ProgressCycle");
-        this.progressPrimordium = compound.getInteger("ProgressPrimordium");
-        this.temperature = compound.getInteger("Temperature");
-        this.temperatureOut = compound.getInteger("TemperatureOut");
+        progressCycle = compound.getInteger("ProgressCycle");
+        progressPrimordium = compound.getInteger("ProgressPrimordium");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -259,8 +242,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
         super.writeToNBT(compound);
         compound.setInteger("ProgressCycle", progressCycle);
         compound.setInteger("ProgressPrimordium", progressPrimordium);
-        compound.setInteger("Temperature", temperature);
-        compound.setInteger("TemperatureOut", temperatureOut);
+        compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
     }

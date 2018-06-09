@@ -2,25 +2,25 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockAeroheaterMagmatic;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
-import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.capability.HotAirAeroheater;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
-public class TileAeroheaterMagmatic extends TileEntity implements ITickable, IHotAir {
-    /** The current temperature of the heater */
-    private int temperature;
-    /** A clock to change the speed at which temperature raises */
-    private int temperatureClock;
+public class TileAeroheaterMagmatic extends TileEntity implements ITickable {
+    private HotAirAeroheater hotAir;
     private boolean active;
     private boolean checkNextTick = false;
 
 	public TileAeroheaterMagmatic() {
-		temperature = 30;
+		hotAir = new HotAir();
 		active = false;
 		checkNextTick = true;
 	}
@@ -45,8 +45,8 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable, IHo
         		checkActive();
         	}
         	
-            if (active) raiseTemperature();
-            else lowerTemperature();
+            if (active) hotAir.raiseTemperature();
+            else hotAir.lowerTemperature();
         	
             if (flag != active)
             {
@@ -61,47 +61,24 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable, IHo
         }
 	}
 	
-	private void raiseTemperature()
-	{
-		if (temperature >= 80) return;
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature++;
-			
-			//10 seconds to reach 80 °C (when Draft Furnace starts working)
-			temperatureClock = 4;
-		}
-	}
-	
-	private void lowerTemperature()
-	{
-		if (temperature <= 30) return;
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature--;
-			
-			//20 seconds to cool down fully
-			temperatureClock = 8;
-		}
-	}
+	@Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
+        return (oldState.getBlock() != newState.getBlock());
+    }
 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.temperature = compound.getInteger("Temperature");
-        this.temperatureClock = compound.getInteger("TemperatureClock");
-        checkActive();
+        active = compound.getBoolean("Active");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
+        checkNextTick = true;
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("Temperature", temperature);
-        compound.setInteger("TemperatureClock", temperatureClock);
+        compound.setBoolean("Active", active);
+        compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
     }
@@ -119,13 +96,27 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable, IHo
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
-			return (T)this;
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}
+	
+	private static class HotAir extends HotAirAeroheater {
+		public HotAir() {
+			super(80);
+		}
 
-	@Override
-	public int getOutAirTemperature() {
-		return temperature;
+		@Override
+		protected void resetRaiseClock() {
+			//10 seconds to reach 80 °C (when Draft Furnace starts working)
+			temperatureClock = 4;
+		}
+
+		@Override
+		protected void resetLowerClock() {
+			//20 seconds to cool down fully
+			temperatureClock = 8;
+		}
+		
 	}
 
 }

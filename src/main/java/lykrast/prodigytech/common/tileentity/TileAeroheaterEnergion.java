@@ -2,7 +2,7 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
-import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.capability.HotAirAeroheater;
 import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandlerEnergion;
@@ -13,17 +13,12 @@ import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAeroheaterEnergion extends TileMachineInventory implements ITickable, IHotAir {
-	private static final int[] MAX_TEMP = {0, 80, 100, 125, 160, 200, 250};
-	
-    /** The current temperature of the heater */
-    private int temperature;
-    /** A clock to change the speed at which temperature raises */
-    private int temperatureClock;
+public class TileAeroheaterEnergion extends TileMachineInventory implements ITickable {
+    private TileAeroheaterEnergion.HotAir hotAir;
 
 	public TileAeroheaterEnergion() {
 		super(6);
-		temperature = 30;
+		hotAir = new HotAir();
 	}
 
 	@Override
@@ -55,8 +50,8 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
         	
         	boolean active = energy > 0;
 
-            if (active) raiseTemperature(energy);
-            else lowerTemperature();
+            if (active) hotAir.raiseTemperature(energy);
+            else hotAir.lowerTemperature();
         	
             if (flag != active)
             {
@@ -70,59 +65,6 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
             this.markDirty();
         }
 	}
-	
-	private void raiseTemperature(int energy)
-	{
-		if (temperature == MAX_TEMP[energy]) return;
-		else if (temperature > MAX_TEMP[energy])
-		{
-			lowerTemperature();
-			return;
-		}
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature++;
-			
-			//2.5 seconds to reach 80 °C
-			if (temperature < 80) temperatureClock = 1;
-			//5 more seconds to reach 100 °C with exactly 2 batteries
-			else if (temperature < 100) temperatureClock = 10 / energy;
-			//10 more seconds to reach 125 °C with exactly 3 batteries
-			else if (temperature < 125) temperatureClock = 24 / energy;
-			//21 more seconds to reach 160 °C with exactly 4 batteries
-			else if (temperature < 160) temperatureClock = 48 / energy;
-			//32 more seconds to reach 200 °C with exactly 5 batteries
-			else if (temperature < 200) temperatureClock = 80 / energy;
-			//60 more seconds to reach 250 °C
-			else temperatureClock = 24;
-		}
-	}
-	
-	private void lowerTemperature()
-	{
-		if (temperature <= 30) return;
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature--;
-
-			//Stays at 5+ furnaces (250-200) for 2.5 seconds
-			if (temperature > 200) temperatureClock = 1;
-			//Stays at 4+ furnaces (200-160) for 4 seconds
-			if (temperature > 160) temperatureClock = 2;
-			//Stays at 3+ furnaces (160-125) for 7 seconds
-			else if (temperature > 125) temperatureClock = 4;
-			//Stays at 2+ furnaces (125-100) for 10 seconds
-			else if (temperature > 100) temperatureClock = 8;
-			//Stays at 1+ furnaces (100-80) for 12 seconds
-			else if (temperature > 80) temperatureClock = 12;
-			//Fully cools (80-30) in 35 seconds
-			else temperatureClock = 14;
-		}
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
@@ -133,15 +75,13 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.temperature = compound.getInteger("Temperature");
-        this.temperatureClock = compound.getInteger("TemperatureClock");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        compound.setInteger("Temperature", temperature);
-        compound.setInteger("TemperatureClock", temperatureClock);
+        compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
     }
@@ -151,7 +91,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
         switch (id)
         {
             case 0:
-                return this.temperature;
+                return hotAir.getOutAirTemperature();
             default:
                 return 0;
         }
@@ -162,7 +102,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
         switch (id)
         {
             case 0:
-                this.temperature = value;
+                hotAir.setTemperature(value);
                 break;
         }
     }
@@ -191,13 +131,65 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return (T)invHandler;
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
-			return (T)this;
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}
+	
+	private static class HotAir extends HotAirAeroheater {
+		private static final int[] MAX_TEMP = {0, 80, 100, 125, 160, 200, 250};
+		
+		public HotAir() {
+			super(250);
+		}
+		
+		public void raiseTemperature(int energy)
+		{
+			if (temperature == MAX_TEMP[energy]) return;
+			else if (temperature > MAX_TEMP[energy])
+			{
+				lowerTemperature();
+				return;
+			}
+			
+			if (temperatureClock > 1) temperatureClock--;
+			else
+			{
+				temperature++;
+				
+				//2.5 seconds to reach 80 °C
+				if (temperature < 80) temperatureClock = 1;
+				//5 more seconds to reach 100 °C with exactly 2 batteries
+				else if (temperature < 100) temperatureClock = 10 / energy;
+				//10 more seconds to reach 125 °C with exactly 3 batteries
+				else if (temperature < 125) temperatureClock = 24 / energy;
+				//21 more seconds to reach 160 °C with exactly 4 batteries
+				else if (temperature < 160) temperatureClock = 48 / energy;
+				//32 more seconds to reach 200 °C with exactly 5 batteries
+				else if (temperature < 200) temperatureClock = 80 / energy;
+				//60 more seconds to reach 250 °C
+				else temperatureClock = 24;
+			}
+		}
 
-	@Override
-	public int getOutAirTemperature() {
-		return temperature;
+		@Override
+		protected void resetRaiseClock() {}
+
+		@Override
+		protected void resetLowerClock() {
+			//Stays at 5+ furnaces (250-200) for 2.5 seconds
+			if (temperature > 200) temperatureClock = 1;
+			//Stays at 4+ furnaces (200-160) for 4 seconds
+			if (temperature > 160) temperatureClock = 2;
+			//Stays at 3+ furnaces (160-125) for 7 seconds
+			else if (temperature > 125) temperatureClock = 4;
+			//Stays at 2+ furnaces (125-100) for 10 seconds
+			else if (temperature > 100) temperatureClock = 8;
+			//Stays at 1+ furnaces (100-80) for 12 seconds
+			else if (temperature > 80) temperatureClock = 12;
+			//Fully cools (80-30) in 35 seconds
+			else temperatureClock = 14;
+		}
+		
 	}
 
 }

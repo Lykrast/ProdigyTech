@@ -1,5 +1,6 @@
 package lykrast.prodigytech.common.block;
 
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.item.ItemBlockInfoShift;
 import lykrast.prodigytech.common.tileentity.TileAirFunnel;
 import lykrast.prodigytech.common.util.TemperatureHelper;
@@ -41,7 +42,7 @@ public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider,
      */
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getOutAirTemperature());
+        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 
         super.onEntityWalk(worldIn, pos, entityIn);
     }

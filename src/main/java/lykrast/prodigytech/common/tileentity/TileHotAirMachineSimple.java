@@ -8,8 +8,8 @@ import net.minecraftforge.items.IItemHandlerModifiable;
  * @author Lykrast
  */
 public abstract class TileHotAirMachineSimple extends TileHotAirMachine {
-	public TileHotAirMachineSimple() {
-		super(2);
+	public TileHotAirMachineSimple(float outputMultiplier) {
+		super(2, outputMultiplier);
 	}
 	
 	@Override

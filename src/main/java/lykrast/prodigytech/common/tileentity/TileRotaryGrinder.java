@@ -4,7 +4,7 @@ import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 
 public class TileRotaryGrinder extends TileHotAirMachineSimpleManaged {
     public TileRotaryGrinder() {
-		super(RotaryGrinderManager.INSTANCE);
+		super(RotaryGrinderManager.INSTANCE, 0.8F);
 	}
 
 	@Override
@@ -15,7 +15,7 @@ public class TileRotaryGrinder extends TileHotAirMachineSimpleManaged {
 	@Override
 	protected int getProcessSpeed()
 	{
-		return temperature / 8;
+		return hotAir.getInAirTemperature() / 8;
 	}
 
 }

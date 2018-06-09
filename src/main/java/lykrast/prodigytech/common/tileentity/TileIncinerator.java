@@ -1,15 +1,14 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
-import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
 
-public class TileIncinerator extends TileHotAirMachineSimple implements ITickable, IHotAir {
+public class TileIncinerator extends TileHotAirMachineSimple implements ITickable {
     public TileIncinerator() {
-		super();
+		super(0.8F);
 	}
 
 	@Override
@@ -20,13 +19,13 @@ public class TileIncinerator extends TileHotAirMachineSimple implements ITickabl
     @Override
 	protected boolean canProcess()
     {
-    	return (!getStackInSlot(0).isEmpty() && temperature >= 80);
+    	return (!getStackInSlot(0).isEmpty() && hotAir.getInAirTemperature() >= 80);
     }
 	
 	@Override
 	protected int getProcessSpeed()
 	{
-		return temperature / 8;
+		return hotAir.getInAirTemperature() / 8;
 	}
 
 	@Override
@@ -38,7 +37,7 @@ public class TileIncinerator extends TileHotAirMachineSimple implements ITickabl
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
         	
         	if (canProcess())
         	{
@@ -70,7 +69,7 @@ public class TileIncinerator extends TileHotAirMachineSimple implements ITickabl
     			processTime = 0;
     		}
         	
-        	updateOutTemperature();
+        	hotAir.updateOutTemperature();
         	
             if (flag != this.isProcessing())
             {

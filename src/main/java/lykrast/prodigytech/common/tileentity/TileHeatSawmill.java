@@ -9,7 +9,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class TileHeatSawmill extends TileHotAirMachine {
     public TileHeatSawmill() {
-		super(3);
+		super(3, 0.8F);
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
 
 	@Override
 	protected int getProcessSpeed() {
-		return temperature / 8;
+		return hotAir.getInAirTemperature() / 8;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
     @Override
 	protected boolean canProcess()
     {
-    	if (getStackInSlot(0).isEmpty() || temperature < 80)
+    	if (getStackInSlot(0).isEmpty() || hotAir.getInAirTemperature() < 80)
     	{
     		cachedRecipe = null;
     		return false;
@@ -93,7 +93,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
         	
         	if (canProcess())
         	{
@@ -125,7 +125,7 @@ public class TileHeatSawmill extends TileHotAirMachine {
     			processTime = 0;
     		}
         	
-        	updateOutTemperature();
+        	hotAir.updateOutTemperature();
         	
             if (flag != this.isProcessing())
             {

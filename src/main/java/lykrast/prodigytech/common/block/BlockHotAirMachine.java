@@ -1,6 +1,6 @@
 package lykrast.prodigytech.common.block;
 
-import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.tileentity.TileMachineInventory;
 import lykrast.prodigytech.common.util.TemperatureHelper;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -25,7 +25,7 @@ public abstract class BlockHotAirMachine<T extends TileMachineInventory> extends
      */
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
-        TemperatureHelper.hotAirDamage(entityIn, ((IHotAir) getTileEntity(worldIn, pos)).getOutAirTemperature());
+        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 
         super.onEntityWalk(worldIn, pos, entityIn);
     }

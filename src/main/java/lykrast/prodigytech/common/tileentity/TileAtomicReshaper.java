@@ -1,12 +1,12 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
+import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager.AtomicReshaperRecipe;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
-import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,13 +17,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAtomicReshaper extends TileMachineInventory implements ITickable {
+public class TileAtomicReshaper extends TileMachineInventory implements ITickable, IProcessing {
 	/** The number of ticks that the machine needs to process */
 	private int processTime;
 	/** The number of ticks that the current recipes needs in total */
 	private int processTimeMax;
-	/** The current temperature of the machine */
-	private int temperature;
+	private HotAirMachine hotAir;
 	/** The amount of primordium in the machine */
 	private int primordium;
 
@@ -33,6 +32,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	//2 Output
 	public TileAtomicReshaper() {
 		super(3);
+		hotAir = new HotAirMachine(this, 0.5F);
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
     
 	private boolean canProcess()
     {
-    	if (getStackInSlot(1).isEmpty() || temperature < 250)
+    	if (getStackInSlot(1).isEmpty() || hotAir.getInAirTemperature() < 250)
     	{
     		cachedRecipe = null;
     		return false;
@@ -108,7 +108,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
         
         if (!this.world.isRemote)
         {
-        	updateInTemperature();
+        	hotAir.updateInTemperature(world, pos);
 
     		int primordiumAmount = canSmeltPrimordium();
     		if (primordiumAmount > 0)
@@ -188,9 +188,10 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	
 	private int getProcessSpeed()
 	{
-		return temperature / 25;
+		return hotAir.getInAirTemperature() / 25;
 	}
 
+	@Override
 	public boolean isProcessing()
     {
         return processTime > 0;
@@ -210,21 +211,17 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 		}
 	}
 
-	private void updateInTemperature() {
-		temperature = TemperatureHelper.getBlockTemp(world, pos.down());
-	}
-
 	public int getField(int id) {
 	    switch (id)
 	    {
 	        case 0:
-	            return this.processTime;
+	            return processTime;
 	        case 1:
-	            return this.processTimeMax;
+	            return processTimeMax;
 	        case 2:
-	            return this.temperature;
+	            return hotAir.getInAirTemperature();
 	        case 3:
-	            return this.primordium;
+	            return primordium;
 	        default:
 	            return 0;
 	    }
@@ -234,16 +231,16 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	    switch (id)
 	    {
 	        case 0:
-	            this.processTime = value;
+	            processTime = value;
 	            break;
 	        case 1:
-	            this.processTimeMax = value;
+	            processTimeMax = value;
 	            break;
 	        case 2:
-	            this.temperature = value;
+	        	hotAir.setTemperature(value);
 	            break;
 	        case 3:
-	            this.primordium = value;
+	            primordium = value;
 	            break;
 	    }
 	}
@@ -274,10 +271,10 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.processTime = compound.getInteger("ProcessTime");
-        this.processTimeMax = compound.getInteger("ProcessTimeMax");
-        this.temperature = compound.getInteger("Temperature");
-        this.primordium = compound.getInteger("Primordium");
+        processTime = compound.getInteger("ProcessTime");
+        processTimeMax = compound.getInteger("ProcessTimeMax");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
+        primordium = compound.getInteger("Primordium");
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -285,7 +282,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);
         compound.setInteger("ProcessTimeMax", processTimeMax);
-        compound.setInteger("Temperature", temperature);
+        compound.setTag("HotAir", hotAir.serializeNBT());
         compound.setInteger("Primordium", primordium);
 
         return compound;

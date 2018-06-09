@@ -23,12 +23,16 @@ public class TemperatureHelper {
         }
 	}
 	
+	public static void hotAirDamage(Entity entity, IHotAir hotAir)
+	{
+		hotAirDamage(entity, hotAir.getOutAirTemperature());
+	}
+	
 	public static float getDamageFromTemperature (int temperature)
 	{
 		if (temperature < 100) return 0.0F;
 		
-		int tmp = (temperature - 100) / 50;
-		return (float) Math.pow(2, tmp);
+		return temperature / 50F;
 	}
 	
 	public static int getBlockTemp(World world, BlockPos pos)
@@ -37,10 +41,7 @@ public class TemperatureHelper {
 		if (tile != null)
 		{
 			IHotAir capability = tile.getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP);
-			if (capability != null)
-			{
-				return capability.getOutAirTemperature();
-			}
+			if (capability != null) return capability.getOutAirTemperature();
 		}
 		
 		return 30;

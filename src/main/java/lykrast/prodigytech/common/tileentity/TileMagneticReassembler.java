@@ -4,12 +4,12 @@ import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
 
 public class TileMagneticReassembler extends TileHotAirMachineSimpleManaged {
     public TileMagneticReassembler() {
-		super(MagneticReassemblerManager.INSTANCE);
+		super(MagneticReassemblerManager.INSTANCE, 0.75F);
 	}
     
     @Override
     protected boolean isTooCool() {
-    	return temperature < 125;
+    	return hotAir.getInAirTemperature() < 125;
     }
 
 	@Override
@@ -20,13 +20,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimpleManaged {
 	@Override
 	protected int getProcessSpeed()
 	{
-		return (int) (temperature / 12.5);
-	}
-
-	@Override
-	protected void updateOutTemperature() {
-		if (isProcessing()) temperatureOut = (int) (temperature * 0.75F);
-		else temperatureOut = temperature;
+		return (int) (hotAir.getInAirTemperature() / 12.5);
 	}
 
 }

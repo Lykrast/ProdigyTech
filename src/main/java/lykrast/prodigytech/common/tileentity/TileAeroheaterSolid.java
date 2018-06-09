@@ -2,7 +2,7 @@ package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
-import lykrast.prodigytech.common.capability.IHotAir;
+import lykrast.prodigytech.common.capability.HotAirAeroheater;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -16,19 +16,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAeroheaterSolid extends TileMachineInventory implements ITickable, IHotAir {
+public class TileAeroheaterSolid extends TileMachineInventory implements ITickable {
     /** The number of ticks that the furnace will keep burning */
     private int furnaceBurnTime;
     /** The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for */
     private int currentItemBurnTime;
-    /** The current temperature of the heater */
-    private int temperature;
-    /** A clock to change the speed at which temperature raises */
-    private int temperatureClock;
+    private HotAirAeroheater hotAir;
 
 	public TileAeroheaterSolid() {
 		super(1);
-		temperature = 30;
+		hotAir = new HotAir();
 	}
 
 	@Override
@@ -80,8 +77,8 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 				}
 			}
 
-            if (this.isBurning()) raiseTemperature();
-            else lowerTemperature();
+            if (this.isBurning()) hotAir.raiseTemperature();
+            else hotAir.lowerTemperature();
         	
             if (flag != this.isBurning())
             {
@@ -95,50 +92,6 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
             this.markDirty();
         }
 	}
-	
-	private void raiseTemperature()
-	{
-		if (temperature >= 200) return;
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature++;
-			
-			//5 seconds to reach 80 °C (when Draft Furnace starts working)
-			if (temperature < 80) temperatureClock = 2;
-			//10 more seconds to reach 100 °C (Draft Furnace reaches Furnace speed and 2 can get fueled at once)
-			else if (temperature < 100) temperatureClock = 10;
-			//30 more seconds to reach 125 °C (3 Draft Furnaces at once)
-			else if (temperature < 125) temperatureClock = 24;
-			//70 more seconds to reach 160 °C (4 Draft Furnaces at once)
-			else if (temperature < 160) temperatureClock = 40;
-			//120 more seconds to reach 200 °C (5 Draft Furnaces at once)
-			else temperatureClock = 60;
-		}
-	}
-	
-	private void lowerTemperature()
-	{
-		if (temperature <= 30) return;
-		
-		if (temperatureClock > 1) temperatureClock--;
-		else
-		{
-			temperature--;
-			
-			//Stays at 4+ furnaces (200-160) for 4 seconds
-			if (temperature > 160) temperatureClock = 2;
-			//Stays at 3+ furnaces (160-125) for 7 seconds
-			else if (temperature > 125) temperatureClock = 4;
-			//Stays at 2+ furnaces (125-100) for 10 seconds
-			else if (temperature > 100) temperatureClock = 8;
-			//Stays at 1+ furnaces (100-80) for 15 seconds
-			else if (temperature > 80) temperatureClock = 15;
-			//Fully cools (80-30) in 50 seconds
-			else temperatureClock = 20;
-		}
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
@@ -149,10 +102,9 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        this.furnaceBurnTime = compound.getInteger("BurnTime");
-        this.currentItemBurnTime = compound.getInteger("MaxBurnTime");
-        this.temperature = compound.getInteger("Temperature");
-        this.temperatureClock = compound.getInteger("TemperatureClock");
+        furnaceBurnTime = compound.getInteger("BurnTime");
+        currentItemBurnTime = compound.getInteger("MaxBurnTime");
+        hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -160,8 +112,7 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
         super.writeToNBT(compound);
         compound.setInteger("BurnTime", furnaceBurnTime);
         compound.setInteger("MaxBurnTime", currentItemBurnTime);
-        compound.setInteger("Temperature", temperature);
-        compound.setInteger("TemperatureClock", temperatureClock);
+        compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
     }
@@ -171,11 +122,11 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
         switch (id)
         {
             case 0:
-                return this.furnaceBurnTime;
+                return furnaceBurnTime;
             case 1:
-                return this.currentItemBurnTime;
+                return currentItemBurnTime;
             case 2:
-                return this.temperature;
+                return hotAir.getOutAirTemperature();
             default:
                 return 0;
         }
@@ -186,13 +137,13 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
         switch (id)
         {
             case 0:
-                this.furnaceBurnTime = value;
+                furnaceBurnTime = value;
                 break;
             case 1:
-                this.currentItemBurnTime = value;
+                currentItemBurnTime = value;
                 break;
             case 2:
-                this.temperature = value;
+            	hotAir.setTemperature(value);
                 break;
         }
     }
@@ -221,13 +172,43 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return (T)invHandler;
 		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
-			return (T)this;
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}
+	
+	private static class HotAir extends HotAirAeroheater {
+		public HotAir() {
+			super(200);
+		}
 
-	@Override
-	public int getOutAirTemperature() {
-		return temperature;
+		@Override
+		protected void resetRaiseClock() {
+			//5 seconds to reach 80 °C (when Blower Furnace starts working)
+			if (temperature < 80) temperatureClock = 2;
+			//10 more seconds to reach 100 °C (Blower Furnace reaches Furnace speed and 2 can get fueled at once)
+			else if (temperature < 100) temperatureClock = 10;
+			//30 more seconds to reach 125 °C (3 Blower Furnaces at once)
+			else if (temperature < 125) temperatureClock = 24;
+			//70 more seconds to reach 160 °C (4 Blower Furnaces at once)
+			else if (temperature < 160) temperatureClock = 40;
+			//120 more seconds to reach 200 °C (5 Blower Furnaces at once)
+			else temperatureClock = 60;
+		}
+
+		@Override
+		protected void resetLowerClock() {
+			//Stays at 4+ furnaces (200-160) for 4 seconds
+			if (temperature > 160) temperatureClock = 2;
+			//Stays at 3+ furnaces (160-125) for 7 seconds
+			else if (temperature > 125) temperatureClock = 4;
+			//Stays at 2+ furnaces (125-100) for 10 seconds
+			else if (temperature > 100) temperatureClock = 8;
+			//Stays at 1+ furnaces (100-80) for 15 seconds
+			else if (temperature > 80) temperatureClock = 15;
+			//Fully cools (80-30) in 50 seconds
+			else temperatureClock = 20;
+		}
+		
 	}
 
 }

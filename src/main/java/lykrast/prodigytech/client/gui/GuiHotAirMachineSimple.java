@@ -51,10 +51,10 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 	        this.drawTexturedModalRect(guiLeft + 79, guiTop + 35, 176, 0, k, 17);
 	    }
 	
-	    int l = getTemperatureScaled(false, 17, 30, 100);
+	    int l = getTemperatureScaled(false, 17, 30, 80);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 	
-	    int m = getTemperatureScaled(true, 17, 30, 100);
+	    int m = getTemperatureScaled(true, 17, 30, 80);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 16 + (17 - m), 176, 17 + (17 - m), 18, m + 1);
 	}
 
@@ -67,7 +67,7 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 	    this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 	}
 
-	private int getTemperatureScaled(boolean isOut, int pixels, int min, int max) {
+	protected int getTemperatureScaled(boolean isOut, int pixels, int min, int max) {
 		int index = 2;
 		if (isOut) index = 3;
 		

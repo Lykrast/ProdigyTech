@@ -219,6 +219,8 @@ guide.prodigytech.author=Lykrast
 guide.prodigytech.category.introduction=Introduction
 guide.prodigytech.category.hotair=Hot Air
 guide.prodigytech.category.circuits=Circuits
+guide.prodigytech.category.energion=Energion
+guide.prodigytech.category.primordium=Primordium
 
 #Entries
 #Introduction
@@ -244,7 +246,7 @@ guide.prodigytech.entry.hotair.mechanics.content3=Higher temperatures will resul
 guide.prodigytech.entry.hotair.mechanics.content4=Air Funnels allows you to transfer Hot Air along longer distances without having to make expensive machines.\nIn addition, they will stop transmitting Hot Air when supplied with a redstone signal.
 
 guide.prodigytech.entry.hotair.aeroheaters=Aeroheaters
-guide.prodigytech.entry.hotair.aeroheaters.content=As said previously, Aeroheaters are what produce Hot Air. Most of them will take time to heat up and have residual heat once out of fuel. This is means it is more efficent to leave them running for a long time without stops.\nFor now you have two choices to power your machines.
+guide.prodigytech.entry.hotair.aeroheaters.content=As said previously, Aeroheaters are what produce Hot Air. Most of them will take time to heat up and have residual heat once out of fuel. This is means it is more efficient to leave them running for a long time without stops.\nFor now you have two choices to power your machines.
 
 guide.prodigytech.entry.hotair.aeroheaters.magmatic.content=The Magmatic Aeroheater will constantly produce low temperature Hot Air as long as it is above a Lava block (source or flowing). While it never needs refueling, it is also not hot enough to allow chaining machines or to power more advanced ones.
 guide.prodigytech.entry.hotair.aeroheaters.solid.content=The Solid Fuel Aeroheater burns Furnace fuels to produce its Hot Air. This one can reach much higher temperatures, but will require a constant source of fuel to work.\nFuels can be inserted from any side except the top.
@@ -260,3 +262,27 @@ guide.prodigytech.entry.circuits.solderer.content2=To make a Circuit, the machin
 guide.prodigytech.entry.circuits.solderer.content3=The machine needs to melt inserted Gold Dust before being able to use it, which it will do once hot enough. All items will be automatically put in the correct slots when shift clicked or inserted through automation.\nItems can be inserted/extracted from any side except the bottom.
 
 guide.prodigytech.entry.circuits.reassembler.content=The Magnetic Reassembler uses strong magnets to force small particules together. This makes it act as a reverse Rotary Grinder, and is an essential component on getting started with Energion Crystal farming.\nItems can be inserted/extracted from any side except top and bottom.
+
+#Energion
+guide.prodigytech.entry.energion.dust.content=Energion Dust is a mixture oozing with raw energy. Its main use is filling up Energion Batteries, which are required to progress further.
+
+guide.prodigytech.entry.energion.batteries=Batteries
+guide.prodigytech.entry.energion.batteries.content1=Energion Batteries are simple way of exploiting Energion. They can be manually filled with Energion Dust, ready to be used by some machines. They will eventually deplete and will need to be filled again.
+guide.prodigytech.entry.energion.batteries.content2=Bigger Batteries can be made, which last longer but requires more Energion to be filled up again. All Batteries last the same amount of time per Energion Dust.
+
+guide.prodigytech.entry.energion.crystals=Crystal Farming
+guide.prodigytech.entry.energion.crystals.content1=Energion Dust can be turned into Energion Crystals in a Magnetic Reassembler. These Crystals can then be planted on the ground and will slowly grow over time, yielding more Crystals. Those can then either be replanted or grinded into useable Energion Dust.
+guide.prodigytech.entry.energion.crystals.content2=Those Crystals are HIGHLY DANGEROUS once grown, and should NEVER be harvested without the Crystal Cutter. You can right click a Crystal with it to harvest only a stage at a time, or just break it to harvest it all at once.
+
+guide.prodigytech.entry.energion.aeroheater.content1=The Energion Aeroheater will be your main use of Energion Batteries. Up to 6 Energion Batteries can be inserted, all being used at the same rate. The more batteries are being used, the hotter it can get.
+guide.prodigytech.entry.energion.aeroheater.content2=It can reach a maximum temperature of 80, 100, 125, 160, 200 and 250°C with 1, 2, 3, 4, 5 and 6 active Batteries, respectively. Batteries can be inserted and empty Batteries can be extracted from any side except the top.
+
+#Primordium
+guide.prodigytech.entry.primordium.primordialis_reactor.content1=The Primordialis Reactor is a machine that turns plant matter into Primordium. It requires heat that only an Energion Aeroheater can provide, and will need a lot of infrastructure to work at an acceptable speed. Items can be inserted/extracted from all sides except top and bottom.
+guide.prodigytech.entry.primordium.primordialis_reactor.content2=Putting different items simultaneously in the Reactor will cause it to be both faster and more efficient. 9 different items at once will allow it to require roughly 9x less items and 81x less time than with a single type of item.
+
+guide.prodigytech.entry.primordium.atomic_reshaper.content=The Atomic Reshaper can transform materials into other using varying amounts of Primordium. Most notably, it can turn Stone into random raw ores. Items can be inserted/extracted from all sides except the top and bottom.
+
+guide.prodigytech.entry.primordium.zorra=Zorra
+guide.prodigytech.entry.primordium.zorra.content1=The Zorra is an artificial breed of tree obtained by putting any Sapling through the Atomic Reshaper. Its leaves are razor sharp and can be harvested to make Zorrasteel.
+guide.prodigytech.entry.primordium.zorra.content2=While Zorra Saplings are expensive and the trees don't yield a lot of them, any Zorra Leaves grown from a Sapling can absorb the blood of any creature it kills and use it to spread a few blocks.

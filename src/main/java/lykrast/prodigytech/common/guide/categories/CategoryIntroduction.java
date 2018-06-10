@@ -40,8 +40,8 @@ public class CategoryIntroduction {
 		explosionFurnace.add(GuideUtil.textPage(prefix("explosionfurnace.content2")));
 		explosionFurnace.add(GuideUtil.textPage(prefix("explosionfurnace.content3")));
 		explosionFurnace.add(GuideUtil.textPage(prefix("explosionfurnace.content4")));
-		entries.put(new ResourceLocation(GuideUtil.getBlockName(ModBlocks.explosionFurnace)), 
-				new Entry(explosionFurnace, GuideUtil.getBlockName(ModBlocks.explosionFurnace)));
+		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.explosionFurnace)), 
+				new Entry(explosionFurnace, GuideUtil.getName(ModBlocks.explosionFurnace)));
 		
 		List<IPage> explosionFurnaceAdvanced = new ArrayList<>();
 		explosionFurnaceAdvanced.add(GuideUtil.textPage(prefix("explosionfurnace.advanced.content1")));

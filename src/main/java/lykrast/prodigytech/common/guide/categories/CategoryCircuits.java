@@ -40,14 +40,14 @@ public class CategoryCircuits {
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_crude_ini"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_refined"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_perfected"));
-		entries.put(new ResourceLocation(GuideUtil.getBlockName(ModBlocks.solderer)), 
-				new Entry(solderer, GuideUtil.getBlockName(ModBlocks.solderer)));
+		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.solderer)), 
+				new Entry(solderer, GuideUtil.getName(ModBlocks.solderer)));
 		
 		List<IPage> magneticReassembler = new ArrayList<>();
 		magneticReassembler.add(GuideUtil.textPage(prefix("reassembler.content")));
 		magneticReassembler.add(GuideUtil.recipePage("machine/magnetic_reassembler"));
-		entries.put(new ResourceLocation(GuideUtil.getBlockName(ModBlocks.magneticReassembler)), 
-				new Entry(magneticReassembler, GuideUtil.getBlockName(ModBlocks.magneticReassembler)));
+		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.magneticReassembler)), 
+				new Entry(magneticReassembler, GuideUtil.getName(ModBlocks.magneticReassembler)));
 		
 		return entries;
 	}

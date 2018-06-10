@@ -5,12 +5,16 @@ import amerifrance.guideapi.page.PageJsonRecipe;
 import amerifrance.guideapi.page.PageText;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 
 public class GuideUtil {
 	private GuideUtil() {}
 	
-	public static String getBlockName(Block block) {
+	public static String getName(Block block) {
 		return block.getUnlocalizedName() + ".name";
+	}
+	public static String getName(Item item) {
+		return item.getUnlocalizedName() + ".name";
 	}
 	
 	public static IPage textPage(String content) {

@@ -50,6 +50,12 @@ public class CategoryPrimordium {
 		entries.put(new ResourceLocation(prefix("zorra")), 
 				new Entry(zorra, prefix("zorra")));
 		
+		List<IPage> tartaric = new ArrayList<>();
+		tartaric.add(GuideUtil.textPage(prefix("tartaric_aeroheater.content")));
+		tartaric.add(GuideUtil.recipePage("machine/tartaric_aeroheater"));
+		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterTartaric)), 
+				new Entry(tartaric, GuideUtil.getName(ModBlocks.aeroheaterTartaric)));
+		
 		return entries;
 	}
 }

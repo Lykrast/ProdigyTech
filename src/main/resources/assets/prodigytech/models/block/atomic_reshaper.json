@@ -1,7 +1,7 @@
 {
     "parent": "block/orientable",
     "textures": {
-        "top": "prodigytech:blocks/ferramic_block",
+        "top": "prodigytech:blocks/machine_air_hatch",
         "front": "prodigytech:blocks/atomic_reshaper_front",
         "side": "prodigytech:blocks/ferramic_block"
     }

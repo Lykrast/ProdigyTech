@@ -22,9 +22,10 @@ public class GuiAtomicReshaper extends GuiInventory {
 	protected final IInventory playerInventory;
 	protected final TileAtomicReshaper tile;
 	protected static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
+	protected static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
 	protected static final String AMOUNT_UNLOCALIZED = "container.prodigytech.atomic_reshaper.primordium.amount";
 	protected static final String EMPTY_UNLOCALIZED = "container.prodigytech.atomic_reshaper.primordium.empty";
-	protected final String temperature, amount, empty;
+	protected final String temperature, temperatureOut, amount, empty;
 
 	public GuiAtomicReshaper(InventoryPlayer playerInv, TileAtomicReshaper tile) {
 		super(new ContainerAtomicReshaper(playerInv, tile));
@@ -35,6 +36,7 @@ public class GuiAtomicReshaper extends GuiInventory {
 		this.xSize = 176;
 		this.ySize = 166;
 		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
+		temperatureOut = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 		amount = I18n.format(AMOUNT_UNLOCALIZED, "%d");
 		empty = I18n.format(EMPTY_UNLOCALIZED);
 	}
@@ -67,10 +69,13 @@ public class GuiAtomicReshaper extends GuiInventory {
 	    //Heat
 	    int l = getFieldScaled(2, 17, 30, 250);
 	    this.drawTexturedModalRect(guiLeft + 43, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
+	    //Heat output
+	    l = getFieldScaled(3, 17, 30, 250);
+	    this.drawTexturedModalRect(guiLeft + 43, guiTop + 16 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 	
 	    //Primordium
-	    int m = getFieldScaled(3, 52, 0, Config.atomicReshaperMaxPrimordium * 100);
-	    this.drawTexturedModalRect(guiLeft + 37, guiTop + 17 + (52 - m), 176, 35 + (52 - m), 4, m);
+	    l = getFieldScaled(4, 52, 0, Config.atomicReshaperMaxPrimordium * 100);
+	    this.drawTexturedModalRect(guiLeft + 37, guiTop + 17 + (52 - l), 176, 35 + (52 - l), 4, l);
 	}
 
 	/**
@@ -95,14 +100,22 @@ public class GuiAtomicReshaper extends GuiInventory {
 	}
 
 	private void renderToolTips(int x, int y) {
-		if (x >= guiLeft + 43 && x <= guiLeft + 61 && y >= guiTop + 52 && y <= guiTop + 70)
+		if (x >= guiLeft + 43 && x <= guiLeft + 61)
 		{
-        	String tooltip = String.format(temperature, tile.getField(2));
-            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			if (y >= guiTop + 52 && y <= guiTop + 70)
+			{
+	        	String tooltip = String.format(temperature, tile.getField(2));
+	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			}
+			else if (y >= guiTop + 16 && y <= guiTop + 34)
+			{
+	        	String tooltip = String.format(temperatureOut, tile.getField(3));
+	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			}
 		}
         else if (x >= guiLeft + 37 && x <= guiLeft + 41 && y >= guiTop + 19 && y <= guiTop + 70)
         {
-            this.drawHoveringText(getPrimordiumString(tile.getField(3)), x, y, fontRenderer);
+            this.drawHoveringText(getPrimordiumString(tile.getField(4)), x, y, fontRenderer);
         }
 	}
 	

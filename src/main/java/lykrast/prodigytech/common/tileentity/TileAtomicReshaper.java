@@ -1,6 +1,7 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
@@ -147,6 +148,8 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
         		processTime = 0;
         	}
         	
+        	hotAir.updateOutTemperature();
+        	
             if (flag != this.isProcessing())
             {
                 flag1 = true;
@@ -221,6 +224,8 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	        case 2:
 	            return hotAir.getInAirTemperature();
 	        case 3:
+	            return hotAir.getOutAirTemperature();
+	        case 4:
 	            return primordium;
 	        default:
 	            return 0;
@@ -240,18 +245,23 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	        	hotAir.setTemperature(value);
 	            break;
 	        case 3:
+	        	hotAir.setOutAirTemperature(value);
+	            break;
+	        case 4:
 	            primordium = value;
 	            break;
 	    }
 	}
 
 	public int getFieldCount() {
-	    return 4;
+	    return 5;
 	}
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.DOWN)
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
+			return true;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -263,11 +273,13 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.DOWN)
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return (T)invHandler;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}
-
+	
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);

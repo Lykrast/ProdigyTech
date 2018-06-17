@@ -22,11 +22,12 @@ public class GuiSolderer extends GuiInventory {
 	protected final IInventory playerInventory;
 	protected final TileSolderer tile;
 	protected static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
+	protected static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
 	protected static final String BLOCKS_UNLOCALIZED = "container.prodigytech.solderer.gold.blocks";
 	protected static final String INGOTS_UNLOCALIZED = "container.prodigytech.solderer.gold.ingots";
 	protected static final String NUGGETS_UNLOCALIZED = "container.prodigytech.solderer.gold.nuggets";
 	protected static final String EMPTY_UNLOCALIZED = "container.prodigytech.solderer.gold.empty";
-	protected final String temperature, blocks, ingots, nuggets, empty;
+	protected final String temperature, temperatureOut, blocks, ingots, nuggets, empty;
 
 	public GuiSolderer(InventoryPlayer playerInv, TileSolderer tile) {
 		super(new ContainerSolderer(playerInv, tile));
@@ -37,6 +38,7 @@ public class GuiSolderer extends GuiInventory {
 		this.xSize = 176;
 		this.ySize = 166;
 		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
+		temperatureOut = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 		blocks = I18n.format(BLOCKS_UNLOCALIZED, "%d");
 		ingots = I18n.format(INGOTS_UNLOCALIZED, "%d");
 		nuggets = I18n.format(NUGGETS_UNLOCALIZED, "%d");
@@ -71,10 +73,13 @@ public class GuiSolderer extends GuiInventory {
 	    //Heat
 	    int l = getFieldScaled(2, 17, 30, 125);
 	    this.drawTexturedModalRect(guiLeft + 82, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
+	    //Heat output
+	    l = getFieldScaled(3, 17, 30, 125);
+	    this.drawTexturedModalRect(guiLeft + 82, guiTop + 16 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 	
 	    //Gold
-	    int m = getFieldScaled(3, 52, 0, Config.soldererMaxGold);
-	    this.drawTexturedModalRect(guiLeft + 49, guiTop + 17 + (52 - m), 176, 35 + (52 - m), 4, m);
+	    l = getFieldScaled(4, 52, 0, Config.soldererMaxGold);
+	    this.drawTexturedModalRect(guiLeft + 49, guiTop + 17 + (52 - l), 176, 35 + (52 - l), 4, l);
 	}
 
 	/**
@@ -99,14 +104,22 @@ public class GuiSolderer extends GuiInventory {
 	}
 
 	private void renderToolTips(int x, int y) {
-		if (x >= guiLeft + 82 && x <= guiLeft + 100 && y >= guiTop + 52 && y <= guiTop + 70)
+		if (x >= guiLeft + 82 && x <= guiLeft + 100)
 		{
-        	String tooltip = String.format(temperature, tile.getField(2));
-            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			if (y >= guiTop + 52 && y <= guiTop + 70)
+			{
+	        	String tooltip = String.format(temperature, tile.getField(2));
+	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			}
+			else if (y >= guiTop + 16 && y <= guiTop + 34)
+			{
+	        	String tooltip = String.format(temperatureOut, tile.getField(3));
+	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
+			}
 		}
         else if (x >= guiLeft + 49 && x <= guiLeft + 53 && y >= guiTop + 19 && y <= guiTop + 70)
         {
-            this.drawHoveringText(getGoldString(tile.getField(3)), x, y, fontRenderer);
+            this.drawHoveringText(getGoldString(tile.getField(4)), x, y, fontRenderer);
         }
 	}
 	

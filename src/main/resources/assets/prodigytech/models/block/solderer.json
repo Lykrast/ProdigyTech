@@ -1,7 +1,7 @@
 {   "parent": "block/block",
     "textures": {
         "particle": "prodigytech:blocks/solderer_inside_top",
-        "top": "prodigytech:blocks/ferramic_block",
+        "top": "prodigytech:blocks/machine_air_hatch",
         "down": "prodigytech:blocks/machine_air_hatch",
         "side": "prodigytech:blocks/solderer_side",
         "insidetop": "prodigytech:blocks/solderer_inside_top",

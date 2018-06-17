@@ -1,8 +1,10 @@
 package lykrast.prodigytech.common.block;
 
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemBlockMachineHotAir;
 import lykrast.prodigytech.common.tileentity.TileSolderer;
+import lykrast.prodigytech.common.util.TemperatureHelper;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -10,6 +12,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemBlock;
@@ -43,6 +46,16 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 		if (tile instanceof TileSolderer) return (TileSolderer)tile;
 		else return null;
 	}
+
+	/**
+     * Called when the given entity walks on this Block
+     */
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    {
+        TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
+
+        super.onEntityWalk(worldIn, pos, entityIn);
+    }
 
     /**
      * Called when the block is right clicked by a player.
@@ -116,7 +129,7 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 
 	@Override
 	public ItemBlock getItemBlock() {
-		return new ItemBlockMachineHotAir(this, 125);
+		return new ItemBlockMachineHotAir(this, 125, 75);
 	}
 
 }

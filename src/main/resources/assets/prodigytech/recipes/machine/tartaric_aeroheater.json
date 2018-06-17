@@ -1,0 +1,15 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"ZFZ",
+		"ZNZ"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"Z": { "type": "forge:ore_dict", "ore": "ingotZorrasteel" },
+		"N": { "type": "forge:ore_dict", "ore": "netherrack" },
+		"F": { "item": "minecraft:furnace" }
+	},
+	"result": { "item": "prodigytech:tartaric_aeroheater" }
+}

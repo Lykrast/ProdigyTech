@@ -18,6 +18,8 @@ tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuels\nTurn off with redstone signal
 tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
 tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
+tile.prodigytech.tartaric_aeroheater.name=Tartaric Aeroheater
+tile.prodigytech.tartaric_aeroheater.tooltip=Makes very hot air out of Furnace fuels\nConsumes fuel faster as it heats up\nTurn off with redstone signal
 
 #Heat
 tile.prodigytech.incinerator.name=Incinerator
@@ -136,6 +138,7 @@ tooltip.prodigytech.energion.consumption=§bEnergy consumption:§f %dx§r
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.energion_aeroheater=Energion Aeroheater
+container.prodigytech.tartaric_aeroheater=Tartaric Aeroheater
 
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
@@ -197,6 +200,8 @@ advancements.prodigytech.main.primordium.title=(Almost) Universally Usable
 advancements.prodigytech.main.primordium.description=Make a Primordialis Reactor to produce Primoridum and an Atomic Reshaper to use it
 advancements.prodigytech.main.zorra_leaf.title=Razor Sharp
 advancements.prodigytech.main.zorra_leaf.description=Reshape a Sapling into a Zorra Sapling and harvest its leaves to make Zorrasteel
+advancements.prodigytech.main.tartaric_aeroheater.title=Like Fire, Hellfire
+advancements.prodigytech.main.tartaric_aeroheater.description=Make a Tartaric Aeroheater
 
 #Rotary Grinder side
 advancements.prodigytech.main.meat_patty.title=I'm Lovin' It

@@ -2,8 +2,8 @@ package lykrast.prodigytech.client.gui;
 
 import com.google.common.collect.ImmutableList;
 
-import lykrast.prodigytech.common.gui.ContainerAeroheaterSolid;
-import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
+import lykrast.prodigytech.common.gui.ContainerAeroheaterTartaric;
+import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -11,15 +11,15 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class GuiAeroheaterSolid extends GuiInventory {
-	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/solid_fuel_aeroheater.png");
+public class GuiAeroheaterTartaric extends GuiInventory {
+	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/tartaric_aeroheater.png");
     private final IInventory playerInventory;
-    private final TileAeroheaterSolid tile;
+    private final TileAeroheaterTartaric tile;
     private static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
     private final String temperature;
 
-	public GuiAeroheaterSolid(InventoryPlayer playerInv, TileAeroheaterSolid tile) {
-		super(new ContainerAeroheaterSolid(playerInv, tile));
+	public GuiAeroheaterTartaric(InventoryPlayer playerInv, TileAeroheaterTartaric tile) {
+		super(new ContainerAeroheaterTartaric(playerInv, tile));
 		
 		playerInventory = playerInv;
 		this.tile = tile;
@@ -34,13 +34,13 @@ public class GuiAeroheaterSolid extends GuiInventory {
 		this.mc.getTextureManager().bindTexture(GUI);
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-        if (TileAeroheaterSolid.isBurning(tile))
+        if (TileAeroheaterTartaric.isBurning(tile))
         {
             int k = getBurnLeftScaled(13);
             this.drawTexturedModalRect(guiLeft + 81, guiTop + 37 + (13 - k), 176, (13 - k), 14, k + 1);
         }
 
-        int l = getTemperatureScaled(17, 30, 200);
+        int l = getTemperatureScaled(17, 30, 1000);
         this.drawTexturedModalRect(guiLeft + 79, guiTop + 16 + (17 - l), 176, 14 + (17 - l), 18, l + 1);
 	}
 

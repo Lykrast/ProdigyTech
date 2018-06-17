@@ -41,13 +41,24 @@
                     }
                 ]
             }
+        },
+        "tartaric": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:tartaric_aeroheater"
+                    }
+                ]
+            }
         }
     },
 	"requirements": [
 		[
 			"solid_fuel",
 			"magmatic",
-			"energion"
+			"energion",
+			"tartaric"
 		]
 	]
 }

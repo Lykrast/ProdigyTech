@@ -55,6 +55,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		//Vanilla catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.blowerFurnace), VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterSolid), VanillaRecipeCategoryUid.FUEL);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterTartaric), VanillaRecipeCategoryUid.FUEL);
 		
 		//Clickable areas
 		registry.addRecipeClickArea(GuiExplosionFurnace.class, 79, 34, 42, 17, ExplosionFurnaceCategory.UID, ExplosionFurnaceExplosiveCategory.UID);
@@ -68,6 +69,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeClickArea(GuiAeroheaterSolid.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
+		registry.addRecipeClickArea(GuiAeroheaterTartaric.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
 	}
 	
 	@Override

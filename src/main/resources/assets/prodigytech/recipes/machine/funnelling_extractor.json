@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"G",
+		"E"
+	],
+	"key": {
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" },
+		"E": { "item": "prodigytech:linear_extractor" }
+	},
+	"result": { "item": "prodigytech:funnelling_extractor" }
+}

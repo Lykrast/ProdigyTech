@@ -227,6 +227,8 @@ guide.prodigytech.category.circuits=Circuits
 guide.prodigytech.category.energion=Energion
 guide.prodigytech.category.primordium=Primordium
 
+guide.prodigytech.category.automation=Automation
+
 #Entries
 #Introduction
 guide.prodigytech.entry.introduction.gettingstarted=Getting Started
@@ -293,3 +295,7 @@ guide.prodigytech.entry.primordium.zorra.content1=The Zorra is an artificial bre
 guide.prodigytech.entry.primordium.zorra.content2=While Zorra Saplings are expensive and the trees don't yield a lot of them, any Zorra Leaves grown from a Sapling can absorb the blood of any creature it kills and use it to spread a few blocks.
 
 guide.prodigytech.entry.primordium.tartaric_aeroheater.content=The Tartaric Aeroheater is the most powerful Aeroheater there is, if you can afford to run it. It burns Furnace fuel like the Solid Fuel Aeroheater, but will eat through it faster and faster as it heats up.\nFuels can be inserted from any side except the top.
+
+#Automation
+guide.prodigytech.entry.automation.linear.content=The Linear Extractor is the simplest of the Extractors. It will quickly pull items from an inventory in front of it and push them to an inventory on the opposite side, or keep it in its small internal inventory. It can be oriented in any direction and disabled with redstone.
+guide.prodigytech.entry.automation.funnelling.content=The Funnelling Extractor is similar to the Linear one, but pulls from all 5 sides it is not pushing to. Items are pulled in a specific order, with the opposite side of the pushing one always being the first one.

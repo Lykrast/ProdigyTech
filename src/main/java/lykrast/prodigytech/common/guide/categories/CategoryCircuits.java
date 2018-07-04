@@ -18,18 +18,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CategoryCircuits {
+	private static final Map<ResourceLocation, EntryAbstract> ENTRIES = new LinkedHashMap<>();
 	
 	public static CategoryAbstract build() {
-		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.circuits"), new ItemStack(ModItems.circuitRefined));
+		return new CategoryItemStack(ENTRIES, ProdigyTechGuide.prefix("category.circuits"), new ItemStack(ModItems.circuitRefined));
 	}
 	
 	private static String prefix(String str) {
 		return ProdigyTechGuide.prefix("entry.circuits." + str);
 	}
 	
-	private static Map<ResourceLocation, EntryAbstract> buildMap() {
-		Map<ResourceLocation, EntryAbstract> entries = new LinkedHashMap<>();
-		
+	public static void buildMap() {
 		List<IPage> solderer = new ArrayList<>();
 		solderer.add(GuideUtil.textPage(prefix("solderer.content1")));
 		solderer.add(GuideUtil.textPage(prefix("solderer.content2")));
@@ -40,15 +39,13 @@ public class CategoryCircuits {
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_crude_ini"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_refined"));
 		solderer.add(GuideUtil.recipePage("placeholder/pattern_circuit_perfected"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.solderer)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.solderer)), 
 				new Entry(solderer, GuideUtil.getName(ModBlocks.solderer)));
 		
 		List<IPage> magneticReassembler = new ArrayList<>();
 		magneticReassembler.add(GuideUtil.textPage(prefix("reassembler.content")));
 		magneticReassembler.add(GuideUtil.recipePage("machine/magnetic_reassembler"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.magneticReassembler)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.magneticReassembler)), 
 				new Entry(magneticReassembler, GuideUtil.getName(ModBlocks.magneticReassembler)));
-		
-		return entries;
 	}
 }

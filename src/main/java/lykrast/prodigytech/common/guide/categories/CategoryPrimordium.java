@@ -18,44 +18,41 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CategoryPrimordium {
+	private static final Map<ResourceLocation, EntryAbstract> ENTRIES = new LinkedHashMap<>();
 	
 	public static CategoryAbstract build() {
-		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.primordium"), new ItemStack(ModItems.primordium));
+		return new CategoryItemStack(ENTRIES, ProdigyTechGuide.prefix("category.primordium"), new ItemStack(ModItems.primordium));
 	}
 	
 	private static String prefix(String str) {
 		return ProdigyTechGuide.prefix("entry.primordium." + str);
 	}
-	
-	private static Map<ResourceLocation, EntryAbstract> buildMap() {
-		Map<ResourceLocation, EntryAbstract> entries = new LinkedHashMap<>();
-		
+
+	public static void buildMap() {		
 		List<IPage> reactor = new ArrayList<>();
 		reactor.add(GuideUtil.textPage(prefix("primordialis_reactor.content1")));
 		reactor.add(GuideUtil.textPage(prefix("primordialis_reactor.content2")));
 		reactor.add(GuideUtil.recipePage("machine/primordialis_reactor"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.primordialisReactor)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.primordialisReactor)), 
 				new Entry(reactor, GuideUtil.getName(ModBlocks.primordialisReactor)));
 		
 		List<IPage> reshaper = new ArrayList<>();
 		reshaper.add(GuideUtil.textPage(prefix("atomic_reshaper.content")));
 		reshaper.add(GuideUtil.recipePage("machine/atomic_reshaper"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.atomicReshaper)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.atomicReshaper)), 
 				new Entry(reshaper, GuideUtil.getName(ModBlocks.atomicReshaper)));
 		
 		List<IPage> zorra = new ArrayList<>();
 		zorra.add(GuideUtil.textPage(prefix("zorra.content1")));
 		zorra.add(GuideUtil.textPage(prefix("zorra.content2")));
 		zorra.add(GuideUtil.recipePage("materials/zorrasteel_raw"));
-		entries.put(new ResourceLocation(prefix("zorra")), 
+		ENTRIES.put(new ResourceLocation(prefix("zorra")), 
 				new Entry(zorra, prefix("zorra")));
 		
 		List<IPage> tartaric = new ArrayList<>();
 		tartaric.add(GuideUtil.textPage(prefix("tartaric_aeroheater.content")));
 		tartaric.add(GuideUtil.recipePage("machine/tartaric_aeroheater"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterTartaric)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterTartaric)), 
 				new Entry(tartaric, GuideUtil.getName(ModBlocks.aeroheaterTartaric)));
-		
-		return entries;
 	}
 }

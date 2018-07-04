@@ -18,22 +18,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CategoryEnergion {
+	private static final Map<ResourceLocation, EntryAbstract> ENTRIES = new LinkedHashMap<>();
 	
 	public static CategoryAbstract build() {
-		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.energion"), new ItemStack(ModItems.energionDust));
+		return new CategoryItemStack(ENTRIES, ProdigyTechGuide.prefix("category.energion"), new ItemStack(ModItems.energionDust));
 	}
 	
 	private static String prefix(String str) {
 		return ProdigyTechGuide.prefix("entry.energion." + str);
 	}
-	
-	private static Map<ResourceLocation, EntryAbstract> buildMap() {
-		Map<ResourceLocation, EntryAbstract> entries = new LinkedHashMap<>();
-		
+
+	public static void buildMap() {
 		List<IPage> dust = new ArrayList<>();
 		dust.add(GuideUtil.textPage(prefix("dust.content")));
 		dust.add(GuideUtil.recipePage("materials/energion_dust"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModItems.energionDust)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModItems.energionDust)), 
 				new Entry(dust, GuideUtil.getName(ModItems.energionDust)));
 		
 		List<IPage> batteries = new ArrayList<>();
@@ -45,23 +44,21 @@ public class CategoryEnergion {
 		batteries.add(GuideUtil.recipePage("materials/energion_battery_double"));
 		batteries.add(GuideUtil.recipePage("materials/energion_battery_triple_empty"));
 		batteries.add(GuideUtil.recipePage("materials/energion_battery_triple"));
-		entries.put(new ResourceLocation(prefix("batteries")), 
+		ENTRIES.put(new ResourceLocation(prefix("batteries")), 
 				new Entry(batteries, prefix("batteries")));
 		
 		List<IPage> crystal = new ArrayList<>();
 		crystal.add(GuideUtil.textPage(prefix("crystals.content1")));
 		crystal.add(GuideUtil.textPage(prefix("crystals.content2")));
 		crystal.add(GuideUtil.recipePage("tools/crystal_cutter"));
-		entries.put(new ResourceLocation(prefix("crystals")), 
+		ENTRIES.put(new ResourceLocation(prefix("crystals")), 
 				new Entry(crystal, prefix("crystals")));
 		
 		List<IPage> aeroheater = new ArrayList<>();
 		aeroheater.add(GuideUtil.textPage(prefix("aeroheater.content1")));
 		aeroheater.add(GuideUtil.textPage(prefix("aeroheater.content2")));
 		aeroheater.add(GuideUtil.recipePage("machine/energion_aeroheater"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterEnergion)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterEnergion)), 
 				new Entry(aeroheater, GuideUtil.getName(ModBlocks.aeroheaterEnergion)));
-		
-		return entries;
 	}
 }

@@ -17,55 +17,54 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class CategoryHotAir {
+	private static final Map<ResourceLocation, EntryAbstract> ENTRIES = new LinkedHashMap<>();
 	
 	public static CategoryAbstract build() {
-		return new CategoryItemStack(buildMap(), ProdigyTechGuide.prefix("category.hotair"), new ItemStack(ModBlocks.aeroheaterSolid));
+		return new CategoryItemStack(ENTRIES, ProdigyTechGuide.prefix("category.hotair"), new ItemStack(ModBlocks.aeroheaterSolid));
 	}
 	
 	private static String prefix(String str) {
 		return ProdigyTechGuide.prefix("entry.hotair." + str);
 	}
-	
-	private static Map<ResourceLocation, EntryAbstract> buildMap() {
-		Map<ResourceLocation, EntryAbstract> entries = new LinkedHashMap<>();
-		
+
+	public static void buildMap() {
 		List<IPage> mechanics = new ArrayList<>();
 		mechanics.add(GuideUtil.textPage(prefix("mechanics.content1")));
 		mechanics.add(GuideUtil.textPage(prefix("mechanics.content2")));
 		mechanics.add(GuideUtil.textPage(prefix("mechanics.content3")));
 		mechanics.add(GuideUtil.textPage(prefix("mechanics.content4")));
 		mechanics.add(GuideUtil.recipePage("machine/air_funnel"));
-		entries.put(new ResourceLocation(prefix("mechanics")), 
+		ENTRIES.put(new ResourceLocation(prefix("mechanics")), 
 				new Entry(mechanics, prefix("mechanics")));
 		
 		List<IPage> aeroheaters = new ArrayList<>();
 		aeroheaters.add(GuideUtil.textPage(prefix("aeroheaters.content")));
-		entries.put(new ResourceLocation(prefix("aeroheaters")), 
+		ENTRIES.put(new ResourceLocation(prefix("aeroheaters")), 
 				new Entry(aeroheaters, prefix("aeroheaters")));
 		
 		List<IPage> aeroheatersMagmatic = new ArrayList<>();
 		aeroheatersMagmatic.add(GuideUtil.textPage(prefix("aeroheaters.magmatic.content")));
 		aeroheatersMagmatic.add(GuideUtil.recipePage("machine/magmatic_aeroheater"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterMagmatic)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterMagmatic)), 
 				new Entry(aeroheatersMagmatic, GuideUtil.getName(ModBlocks.aeroheaterMagmatic)));
 		
 		List<IPage> aeroheatersSolid = new ArrayList<>();
 		aeroheatersSolid.add(GuideUtil.textPage(prefix("aeroheaters.solid.content")));
 		aeroheatersSolid.add(GuideUtil.recipePage("machine/solid_fuel_aeroheater"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterSolid)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterSolid)), 
 				new Entry(aeroheatersSolid, GuideUtil.getName(ModBlocks.aeroheaterSolid)));
 		
 		List<IPage> machinesRotaryGrinder = new ArrayList<>();
 		machinesRotaryGrinder.add(GuideUtil.textPage(prefix("machines.grinder.content")));
 		machinesRotaryGrinder.add(GuideUtil.recipePage("machine/rotary_grinder"));
 		machinesRotaryGrinder.add(GuideUtil.recipePage("materials/ferramic_gear"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.rotaryGrinder)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.rotaryGrinder)), 
 				new Entry(machinesRotaryGrinder, GuideUtil.getName(ModBlocks.rotaryGrinder)));
 		
 		List<IPage> machinesBlowerFurnace = new ArrayList<>();
 		machinesBlowerFurnace.add(GuideUtil.textPage(prefix("machines.furnace.content")));
 		machinesBlowerFurnace.add(GuideUtil.recipePage("machine/blower_furnace"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.blowerFurnace)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.blowerFurnace)), 
 				new Entry(machinesBlowerFurnace, GuideUtil.getName(ModBlocks.blowerFurnace)));
 		
 		List<IPage> machinesHeatSawmill = new ArrayList<>();
@@ -75,7 +74,7 @@ public class CategoryHotAir {
 		machinesHeatSawmill.add(GuideUtil.recipePage("decorative/particle_board_clay"));
 		machinesHeatSawmill.add(GuideUtil.recipePage("decorative/particle_board_slime"));
 		machinesHeatSawmill.add(GuideUtil.recipePage("decorative/particle_board_planks"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.heatSawmill)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.heatSawmill)), 
 				new Entry(machinesHeatSawmill, GuideUtil.getName(ModBlocks.heatSawmill)));
 		
 		List<IPage> machinesIncinerator = new ArrayList<>();
@@ -83,9 +82,7 @@ public class CategoryHotAir {
 		machinesIncinerator.add(GuideUtil.recipePage("machine/incinerator"));
 		machinesIncinerator.add(GuideUtil.recipePage("materials/inferno_fuel"));
 		machinesIncinerator.add(GuideUtil.recipePage("decorative/ash_bricks"));
-		entries.put(new ResourceLocation(GuideUtil.getName(ModBlocks.incinerator)), 
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.incinerator)), 
 				new Entry(machinesIncinerator, GuideUtil.getName(ModBlocks.incinerator)));
-		
-		return entries;
 	}
 }

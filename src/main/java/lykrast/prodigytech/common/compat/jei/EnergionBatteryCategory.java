@@ -15,7 +15,7 @@ public class EnergionBatteryCategory extends ProdigyCategory<EnergionBatteryWrap
 	public static final String UID = "ptbattery";
 
 	public EnergionBatteryCategory(IGuiHelper guiHelper) {
-		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 116, 82, 26, 0, 10, 0, 0), UID);
+		super(guiHelper, guiHelper.drawableBuilder(ProdigyTechJEI.GUI, 0, 116, 82, 26).addPadding(0, 10, 0, 0).build(), UID);
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class ExplosionFurnaceCategory extends ProdigyCategory<ExplosionFurnaceWr
 	public static final String UID = "ptexplosionfurnace";
 
 	public ExplosionFurnaceCategory(IGuiHelper guiHelper) {
-		super(guiHelper, guiHelper.createDrawable(ProdigyTechJEI.GUI, 0, 0, 90, 36, 0, 20, 0, 0), UID);
+		super(guiHelper, guiHelper.drawableBuilder(ProdigyTechJEI.GUI, 0, 0, 90, 36).addPadding(0, 20, 0, 0).build(), UID);
 	}
 
 	@Override

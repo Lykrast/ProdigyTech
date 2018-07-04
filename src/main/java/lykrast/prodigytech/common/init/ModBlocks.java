@@ -33,52 +33,51 @@ public class ModBlocks {
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
 		ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
-	private static final String PREFIX = ProdigyTech.MODID + ".";
 	
 	static
 	{
 		//Machines
 		explosionFurnace = initBlock(new BlockExplosionFurnace(3.5F, 17.5F, 0), "explosion_furnace");
-		GameRegistry.registerTileEntity(TileExplosionFurnace.class, PREFIX + "explosion_furnace");
+		GameRegistry.registerTileEntity(TileExplosionFurnace.class, ProdigyTech.resource("explosion_furnace"));
 		
 		//Aeroheaters
 		aeroheaterMagmatic = initBlock(new BlockAeroheaterMagmatic(6.0F, 45.0F, 1), "magmatic_aeroheater");
-		GameRegistry.registerTileEntity(TileAeroheaterMagmatic.class, PREFIX + "magmatic_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterMagmatic.class, ProdigyTech.resource("magmatic_aeroheater"));
 		aeroheaterSolid = initBlock(new BlockAeroheaterSolid(6.0F, 45.0F, 1), "solid_fuel_aeroheater");
-		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, PREFIX + "solid_fuel_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterSolid.class, ProdigyTech.resource("solid_fuel_aeroheater"));
 		aeroheaterEnergion = initBlock(new BlockAeroheaterEnergion(6.0F, 45.0F, 1), "energion_aeroheater");
-		GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, PREFIX + "energion_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, ProdigyTech.resource("energion_aeroheater"));
 		aeroheaterTartaric = initBlock(new BlockAeroheaterTartaric(6.0F, 45.0F, 1), "tartaric_aeroheater");
-		GameRegistry.registerTileEntity(TileAeroheaterTartaric.class, PREFIX + "tartaric_aeroheater");
+		GameRegistry.registerTileEntity(TileAeroheaterTartaric.class, ProdigyTech.resource("tartaric_aeroheater"));
 		
 		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");
-		GameRegistry.registerTileEntity(TileIncinerator.class, PREFIX + "incinerator");
+		GameRegistry.registerTileEntity(TileIncinerator.class, ProdigyTech.resource("incinerator"));
 		blowerFurnace = initBlock(new BlockBlowerFurnace(6.0F, 45.0F, 1), "blower_furnace");
-		GameRegistry.registerTileEntity(TileBlowerFurnace.class, PREFIX + "blower_furnace");
+		GameRegistry.registerTileEntity(TileBlowerFurnace.class, ProdigyTech.resource("blower_furnace"));
 		rotaryGrinder = initBlock(new BlockRotaryGrinder(6.0F, 45.0F, 1), "rotary_grinder");
-		GameRegistry.registerTileEntity(TileRotaryGrinder.class, PREFIX + "rotary_grinder");
+		GameRegistry.registerTileEntity(TileRotaryGrinder.class, ProdigyTech.resource("rotary_grinder"));
 		heatSawmill = initBlock(new BlockHeatSawmill(6.0F, 45.0F, 1), "heat_sawmill");
-		GameRegistry.registerTileEntity(TileHeatSawmill.class, PREFIX + "heat_sawmill");
+		GameRegistry.registerTileEntity(TileHeatSawmill.class, ProdigyTech.resource("heat_sawmill"));
 		
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
-		GameRegistry.registerTileEntity(TileSolderer.class, PREFIX + "solderer");
+		GameRegistry.registerTileEntity(TileSolderer.class, ProdigyTech.resource("solderer"));
 		
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
-		GameRegistry.registerTileEntity(TileMagneticReassembler.class, PREFIX + "magnetic_reassembler");
+		GameRegistry.registerTileEntity(TileMagneticReassembler.class, ProdigyTech.resource("magnetic_reassembler"));
 		primordialisReactor = initBlock(new BlockPrimordialisReactor(6.0F, 45.0F, 1), "primordialis_reactor");
-		GameRegistry.registerTileEntity(TilePrimordialisReactor.class, PREFIX + "primordialis_reactor");
+		GameRegistry.registerTileEntity(TilePrimordialisReactor.class, ProdigyTech.resource("primordialis_reactor"));
 		atomicReshaper = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "atomic_reshaper");
-		GameRegistry.registerTileEntity(TileAtomicReshaper.class, PREFIX + "atomic_reshaper");
+		GameRegistry.registerTileEntity(TileAtomicReshaper.class, ProdigyTech.resource("atomic_reshaper"));
 		
 		//Misc Ferramic tier
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
-		GameRegistry.registerTileEntity(TileAirFunnel.class, PREFIX + "air_funnel");
+		GameRegistry.registerTileEntity(TileAirFunnel.class, ProdigyTech.resource("air_funnel"));
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
-		GameRegistry.registerTileEntity(TileLinearExtractor.class, PREFIX + "linear_extractor");
+		GameRegistry.registerTileEntity(TileLinearExtractor.class, ProdigyTech.resource("linear_extractor"));
 		funnellingExtractor = initBlock(new BlockFunnellingExtractor(6.0F, 45.0F, 1), "funnelling_extractor");
-		GameRegistry.registerTileEntity(TileFunnellingExtractor.class, PREFIX + "funnelling_extractor");
+		GameRegistry.registerTileEntity(TileFunnellingExtractor.class, ProdigyTech.resource("funnelling_extractor"));
 		
 		//Energion
 		energionCrystal = initBlock(new BlockEnergionCrystal(0.35F, 0.5F, 0), "energion_crystal");

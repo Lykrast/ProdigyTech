@@ -42,9 +42,7 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 		int width = minecraft.fontRenderer.getStringWidth(power);
-		int x = (recipeWidth - 4 - width)/2;
-		int y = 45;
-		minecraft.fontRenderer.drawString(power, x, y, Color.gray.getRGB());
+		minecraft.fontRenderer.drawString(power, (recipeWidth - width)/2, 45, Color.gray.getRGB());
 	}
 
 }

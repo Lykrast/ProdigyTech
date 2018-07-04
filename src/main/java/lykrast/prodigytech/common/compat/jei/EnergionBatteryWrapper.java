@@ -35,7 +35,8 @@ public class EnergionBatteryWrapper implements IRecipeWrapper {
 	
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString(duration, 0, 30, Color.GRAY.getRGB());
+		int width = minecraft.fontRenderer.getStringWidth(duration);
+		minecraft.fontRenderer.drawString(duration, 52 - width/2, 30, Color.GRAY.getRGB());
 	}
 
 }

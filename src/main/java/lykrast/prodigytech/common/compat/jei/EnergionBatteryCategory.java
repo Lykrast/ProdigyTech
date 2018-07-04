@@ -15,15 +15,15 @@ public class EnergionBatteryCategory extends ProdigyCategory<EnergionBatteryWrap
 	public static final String UID = "ptbattery";
 
 	public EnergionBatteryCategory(IGuiHelper guiHelper) {
-		super(guiHelper, guiHelper.drawableBuilder(ProdigyTechJEI.GUI, 0, 116, 82, 26).addPadding(0, 10, 10, 11).build(), UID);
+		super(guiHelper, guiHelper.drawableBuilder(ProdigyTechJEI.GUI, 0, 116, 82, 26).addPadding(0, 10, 11, 10).build(), UID);
 	}
 
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, EnergionBatteryWrapper recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 
-		guiItemStacks.init(0, true, 10, 4);
-		guiItemStacks.init(1, false, 70, 4);
+		guiItemStacks.init(0, true, 11, 4);
+		guiItemStacks.init(1, false, 71, 4);
 
 		guiItemStacks.set(ingredients);
 	}

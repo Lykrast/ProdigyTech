@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:automatic_crystal_cutter" },
+        "active=false,facing=south": { "model": "prodigytech:automatic_crystal_cutter", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:automatic_crystal_cutter", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:automatic_crystal_cutter", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:automatic_crystal_cutter_active" },
+        "active=true,facing=south": { "model": "prodigytech:automatic_crystal_cutter_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:automatic_crystal_cutter_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:automatic_crystal_cutter_active", "y": 90 }
+    }
+}

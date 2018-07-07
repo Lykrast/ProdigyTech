@@ -15,7 +15,8 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
-		magneticReassemblerProcessTime, primordialisReactorCycleTime, atomicReshaperProcessTime;
+		magneticReassemblerProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
+		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
@@ -78,16 +79,26 @@ public class Config {
 				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
 		heatSawmillStickMultiplier = cfg.getFloat("heatSawmillStickMultiplier", CATEGORY_MACHINES, 2.0F, 1.0F, 10.0F, 
 				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
+		
 		//Solderer
 		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 3000, 
 				"The base amount of time (in ticks) that the Solderer takes to make 1 Crude Circuit\n"
 				+ "The time of all other recipes are derived from this value");
 		soldererMaxGold = cfg.getInt("soldererMaxGold", CATEGORY_MACHINES, 81, 9, 20736, 
 				"How much gold (in nuggets) can the Solderer hold in its internal buffer");
+		
 		//Magnetic Reassembler
 		magneticReassemblerProcessTime = cfg.getInt("magneticReassemblerProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
 				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
+		//Automatic Crystal Cutter
+		automaticCrystalCutterHarvestTime = cfg.getInt("automaticCrystalCutterHarvestTime", CATEGORY_MACHINES, 100, 1, 3000, 
+				"The base amount of time (in ticks) that the Automatic Crystal Cutter takes to harvest 1 stage");
+		automaticCrystalCutterIdleTime = cfg.getInt("automaticCrystalCutterIdleTime", CATEGORY_MACHINES, 60, 1, 200, 
+				"The time (in ticks) between 2 checks of the Automatic Crystal Cutter\n"
+				+ "1 means every tick, 20 means once every second and so on\n"
+				+ "Lower value will make them more reactive to crystal growing, but will make them sligtly laggier when idle");
+		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 
 				"The base amount of time (in ticks) that the Primordialis Reactor takes to make 1 cycle");

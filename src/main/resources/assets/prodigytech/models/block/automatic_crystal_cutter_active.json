@@ -1,0 +1,10 @@
+{
+    "parent": "prodigytech:block/harvester",
+    "textures": {
+        "top": "prodigytech:blocks/machine_air_hatch",
+        "front": "prodigytech:blocks/automatic_crystal_cutter_front_active",
+        "left": "prodigytech:blocks/harvester_left_active",
+        "right": "prodigytech:blocks/harvester_right_active",
+        "back": "prodigytech:blocks/ferramic_block"
+    }
+}

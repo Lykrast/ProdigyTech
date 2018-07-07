@@ -37,6 +37,10 @@ tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern 
 #Circuits
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
+tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
+tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
+
+#Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
 tile.prodigytech.primordialis_reactor.tooltip=Turns plant matter into Primordium\nMix different types for more efficiency
 tile.prodigytech.atomic_reshaper.name=Atomic Reshaper
@@ -148,6 +152,8 @@ container.prodigytech.heat_sawmill=Heat Sawmill
 container.prodigytech.solderer=Solderer
 
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
+container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
+
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
 

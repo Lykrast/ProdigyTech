@@ -290,6 +290,9 @@ guide.prodigytech.entry.energion.crystals.content2=Those Crystals are HIGHLY DAN
 guide.prodigytech.entry.energion.aeroheater.content1=The Energion Aeroheater will be your main use of Energion Batteries. Up to 6 Energion Batteries can be inserted, all being used at the same rate. The more batteries are being used, the hotter it can get.
 guide.prodigytech.entry.energion.aeroheater.content2=It can reach a maximum temperature of 80, 100, 125, 160, 200 and 250°C with 1, 2, 3, 4, 5 and 6 active Batteries, respectively. Batteries can be inserted and empty Batteries can be extracted from any side except the top.
 
+guide.prodigytech.entry.energion.automatic.content1=The Automatic Crystal Cutter is a simple machine to automate your Energion Crystal farming. Simply power it with Hot Air and plant a crystal in front of it. When the crystal is fully grown, the Cutter will harvest it until it is back at its first stage. Extract from any side except top and bottom.
+guide.prodigytech.entry.energion.automatic.content2=Since it is likely each Cutter will spend more time being inactive than active, it is possible to stack large amounts of them vertically with the minimum Hot Air requirements with minimal penalty.
+
 #Primordium
 guide.prodigytech.entry.primordium.primordialis_reactor.content1=The Primordialis Reactor is a machine that turns plant matter into Primordium. It requires heat that only an Energion Aeroheater can provide, and will need a lot of infrastructure to work at an acceptable speed. Items can be inserted/extracted from all sides except top and bottom.
 guide.prodigytech.entry.primordium.primordialis_reactor.content2=Putting different items simultaneously in the Reactor will cause it to be both faster and more efficient. 9 different items at once will allow it to require roughly 9x less items and 81x less time than with a single type of item.

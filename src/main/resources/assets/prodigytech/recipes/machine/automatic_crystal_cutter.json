@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"ICG",
+		"I I"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" },
+		"C": { "item": "prodigytech:circuit_crude" }
+	},
+	"result": { "item": "prodigytech:automatic_crystal_cutter" }
+}

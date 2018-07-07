@@ -60,5 +60,12 @@ public class CategoryEnergion {
 		aeroheater.add(GuideUtil.recipePage("machine/energion_aeroheater"));
 		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterEnergion)), 
 				new Entry(aeroheater, GuideUtil.getName(ModBlocks.aeroheaterEnergion)));
+		
+		List<IPage> automatic = new ArrayList<>();
+		automatic.add(GuideUtil.textPage(prefix("automatic.content1")));
+		automatic.add(GuideUtil.textPage(prefix("automatic.content2")));
+		automatic.add(GuideUtil.recipePage("machine/automatic_crystal_cutter"));
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.automaticCrystalCutter)), 
+				new Entry(automatic, GuideUtil.getName(ModBlocks.automaticCrystalCutter)));
 	}
 }

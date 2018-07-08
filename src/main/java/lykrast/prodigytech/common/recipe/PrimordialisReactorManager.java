@@ -11,6 +11,7 @@ import lykrast.prodigytech.common.util.RecipeUtil;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -82,5 +83,6 @@ public class PrimordialisReactorManager {
 		addInput(Items.MELON_SEEDS);
 		addInput(Blocks.PUMPKIN);
 		addInput(Items.PUMPKIN_SEEDS);
+		addInput(new ItemStack(Items.DYE, 1, EnumDyeColor.BROWN.getDyeDamage()));
 	}
 }

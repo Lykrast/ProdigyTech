@@ -1,5 +1,7 @@
 package lykrast.prodigytech.common.tileentity;
 
+import java.util.Arrays;
+
 import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirAeroheater;
@@ -15,7 +17,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
-import scala.actors.threadpool.Arrays;
 
 public class TileAeroheaterTartaric extends TileMachineInventory implements ITickable {
     /** The number of ticks that the furnace will keep burning */

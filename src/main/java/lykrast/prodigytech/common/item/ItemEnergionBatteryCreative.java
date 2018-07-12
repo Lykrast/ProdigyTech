@@ -6,34 +6,24 @@ import net.minecraft.item.ItemStack;
 
 public class ItemEnergionBatteryCreative extends Item implements IEnergionBattery {
 	
-	public ItemEnergionBatteryCreative()
-	{
+	public ItemEnergionBatteryCreative() {
 		super();
 		setMaxStackSize(1);
 		EnergionBatteryManager.register(this);
 	}
-
-	@Override
-	public Item getEmptyForm()
-	{
-		return null;
-	}
 	
 	@Override
-	public ItemStack getEmptyStack()
-	{
+	public ItemStack getEmptyStack() {
 		return ItemStack.EMPTY;
 	}
 	
 	@Override
-	public int extract(ItemStack stack, int amount)
-	{
+	public int extract(ItemStack stack, int amount) {
 		return amount;
 	}
 
 	@Override
-	public boolean isDepleted(ItemStack stack)
-	{
+	public boolean isDepleted(ItemStack stack) {
 		return false;
 	}
 

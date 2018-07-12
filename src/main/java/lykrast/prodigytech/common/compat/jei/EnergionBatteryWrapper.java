@@ -16,13 +16,12 @@ public class EnergionBatteryWrapper implements IRecipeWrapper {
 	private ItemStack in;
 	private final String duration;
 	
-	public EnergionBatteryWrapper(Item item, IGuiHelper guiHelper)
-	{
+	public EnergionBatteryWrapper(Item item, IGuiHelper guiHelper) {
 		IEnergionBattery battery = (IEnergionBattery)item;
 		in = new ItemStack(item);
 		out = battery.getEmptyStack();
 		
-		int lifetime = battery.getLifetime();
+		int lifetime = battery.getTotalLifetime(in);
 		if (lifetime < 0) duration = I18n.format("container.prodigytech.jei.ptbattery.undefined");
 		else duration = I18n.format("container.prodigytech.jei.ptbattery.lifetime", lifetime);
 	}

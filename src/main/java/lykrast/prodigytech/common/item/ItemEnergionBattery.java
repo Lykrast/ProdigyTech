@@ -4,33 +4,24 @@ import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemEnergionBattery extends Item implements IEnergionBattery {
+public class ItemEnergionBattery extends Item implements IEnergionBattery, IEnergionFillable {
 	private final Item empty;
 	
-	public ItemEnergionBattery(int duration, Item empty)
-	{
+	public ItemEnergionBattery(int duration, Item empty) {
 		super();
 		setMaxStackSize(1);
 		setMaxDamage(duration);
 		this.empty = empty;
 		EnergionBatteryManager.register(this);
 	}
-
-	@Override
-	public Item getEmptyForm()
-	{
-		return empty;
-	}
 	
 	@Override
-	public ItemStack getEmptyStack()
-	{
+	public ItemStack getEmptyStack() {
 		return new ItemStack(empty);
 	}
 	
 	@Override
-	public int extract(ItemStack stack, int amount)
-	{
+	public int extract(ItemStack stack, int amount) {
 		int extracted = Math.min(amount, stack.getMaxDamage() - stack.getItemDamage());
 		stack.setItemDamage(stack.getItemDamage() + extracted);
 		
@@ -38,16 +29,29 @@ public class ItemEnergionBattery extends Item implements IEnergionBattery {
 	}
 
 	@Override
-	public boolean isDepleted(ItemStack stack)
-	{
+	public boolean isDepleted(ItemStack stack) {
 		return stack.getItemDamage() >= stack.getMaxDamage();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
-	public int getLifetime()
-	{
-		return getMaxDamage();
+	public int getTotalLifetime(ItemStack stack) {
+		return stack.getMaxDamage();
+	}
+
+	@Override
+	public int getFillableAmount(ItemStack stack, int amount) {
+		return Math.min(amount, stack.getItemDamage());
+	}
+
+	@Override
+	public ItemStack fill(ItemStack stack, int amount) {
+		stack.setItemDamage(stack.getItemDamage() - amount);
+		return stack;
+	}
+
+	@Override
+	public boolean isFull(ItemStack stack) {
+		return stack.getItemDamage() <= 0;
 	}
 
 }

@@ -1,8 +1,11 @@
 package lykrast.prodigytech.common.item;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Interface for making an Energion Battery from which power can be extracted.
+ * @author Lykrast
+ */
 public interface IEnergionBattery {
 	
 	/**
@@ -19,12 +22,6 @@ public interface IEnergionBattery {
 	 * @return true if it's depleted and should be replaced
 	 */
 	public boolean isDepleted(ItemStack stack);
-
-	/**
-	 * Gives an Item form of the depleted battery
-	 * @return Item form of the depleted battery
-	 */
-	public Item getEmptyForm();
 	
 	/**
 	 * Gives an ItemStack form of the depleted battery
@@ -33,12 +30,12 @@ public interface IEnergionBattery {
 	public ItemStack getEmptyStack();
 	
 	/**
-	 * Gives the expected lifetime of the battery in ticks if 
+	 * Gives the total expected lifetime of the battery in ticks if 
 	 * 1 energy is extracted per tick
+	 * @param stack battery to check
 	 * @return expected lifetime in ticks, or a negative number if it can vary or is not defined
 	 */
-	default public int getLifetime()
-	{
+	default public int getTotalLifetime(ItemStack stack) {
 		return -1;
 	}
 

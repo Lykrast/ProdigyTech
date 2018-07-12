@@ -189,6 +189,7 @@ container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
+container.prodigytech.jei.ptreplenisher=Battery Replenisher
 container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper
 
@@ -289,12 +290,14 @@ guide.prodigytech.entry.energion.batteries=Batteries
 guide.prodigytech.entry.energion.batteries.content1=Energion Batteries are simple way of exploiting Energion. They can be manually filled with Energion Dust, ready to be used by some machines. They will eventually deplete and will need to be filled again.
 guide.prodigytech.entry.energion.batteries.content2=Bigger Batteries can be made, which last longer but requires more Energion to be filled up again. All Batteries last the same amount of time per Energion Dust.
 
+guide.prodigytech.entry.energion.aeroheater.content1=The Energion Aeroheater will be your main use of Energion Batteries. Up to 6 Energion Batteries can be inserted, all being used at the same rate. The more batteries are being used, the hotter it can get.
+guide.prodigytech.entry.energion.aeroheater.content2=It can reach a maximum temperature of 80, 100, 125, 160, 200 and 250°C with 1, 2, 3, 4, 5 and 6 active Batteries, respectively. Batteries can be inserted and empty Batteries can be extracted from any side except the top.
+
+guide.prodigytech.entry.energion.replenisher.content=The Battery Replenisher is a simple machine that will fill empty or partially depleted Energion Batteries with Energion Dust. It needs to be provided with Hot Air to work, and can only fill a single Battery at a time. Insert and extract from any side but top and bottom.
+
 guide.prodigytech.entry.energion.crystals=Crystal Farming
 guide.prodigytech.entry.energion.crystals.content1=Energion Dust can be turned into Energion Crystals in a Magnetic Reassembler. These Crystals can then be planted on the ground and will slowly grow over time, yielding more Crystals. Those can then either be replanted or grinded into useable Energion Dust.
 guide.prodigytech.entry.energion.crystals.content2=Those Crystals are HIGHLY DANGEROUS once grown, and should NEVER be harvested without the Crystal Cutter. You can right click a Crystal with it to harvest only a stage at a time, or just break it to harvest it all at once.
-
-guide.prodigytech.entry.energion.aeroheater.content1=The Energion Aeroheater will be your main use of Energion Batteries. Up to 6 Energion Batteries can be inserted, all being used at the same rate. The more batteries are being used, the hotter it can get.
-guide.prodigytech.entry.energion.aeroheater.content2=It can reach a maximum temperature of 80, 100, 125, 160, 200 and 250°C with 1, 2, 3, 4, 5 and 6 active Batteries, respectively. Batteries can be inserted and empty Batteries can be extracted from any side except the top.
 
 guide.prodigytech.entry.energion.automatic.content1=The Automatic Crystal Cutter is a simple machine to automate your Energion Crystal farming. Simply power it with Hot Air and plant a crystal in front of it. When the crystal is fully grown, the Cutter will harvest it until it is back at its first stage. Extract from any side except top and bottom.
 guide.prodigytech.entry.energion.automatic.content2=Since it is likely each Cutter will spend more time being inactive than active, it is possible to stack large amounts of them vertically with the minimum Hot Air requirements with minimal penalty.

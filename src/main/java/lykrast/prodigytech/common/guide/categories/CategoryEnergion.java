@@ -47,19 +47,25 @@ public class CategoryEnergion {
 		ENTRIES.put(new ResourceLocation(prefix("batteries")), 
 				new Entry(batteries, prefix("batteries")));
 		
-		List<IPage> crystal = new ArrayList<>();
-		crystal.add(GuideUtil.textPage(prefix("crystals.content1")));
-		crystal.add(GuideUtil.textPage(prefix("crystals.content2")));
-		crystal.add(GuideUtil.recipePage("tools/crystal_cutter"));
-		ENTRIES.put(new ResourceLocation(prefix("crystals")), 
-				new Entry(crystal, prefix("crystals")));
-		
 		List<IPage> aeroheater = new ArrayList<>();
 		aeroheater.add(GuideUtil.textPage(prefix("aeroheater.content1")));
 		aeroheater.add(GuideUtil.textPage(prefix("aeroheater.content2")));
 		aeroheater.add(GuideUtil.recipePage("machine/energion_aeroheater"));
 		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterEnergion)), 
 				new Entry(aeroheater, GuideUtil.getName(ModBlocks.aeroheaterEnergion)));
+		
+		List<IPage> replenisher = new ArrayList<>();
+		replenisher.add(GuideUtil.textPage(prefix("replenisher.content")));
+		replenisher.add(GuideUtil.recipePage("machine/battery_replenisher"));
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.batteryReplenisher)), 
+				new Entry(replenisher, GuideUtil.getName(ModBlocks.batteryReplenisher)));
+		
+		List<IPage> crystal = new ArrayList<>();
+		crystal.add(GuideUtil.textPage(prefix("crystals.content1")));
+		crystal.add(GuideUtil.textPage(prefix("crystals.content2")));
+		crystal.add(GuideUtil.recipePage("tools/crystal_cutter"));
+		ENTRIES.put(new ResourceLocation(prefix("crystals")), 
+				new Entry(crystal, prefix("crystals")));
 		
 		List<IPage> automatic = new ArrayList<>();
 		automatic.add(GuideUtil.textPage(prefix("automatic.content1")));

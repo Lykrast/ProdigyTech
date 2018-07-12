@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "prodigytech:blocks/machine_air_hatch",
+        "front": "prodigytech:blocks/battery_replenisher_front",
+        "side": "prodigytech:blocks/ferramic_block"
+    }
+}

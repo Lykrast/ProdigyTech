@@ -5,6 +5,7 @@ import java.util.List;
 
 import lykrast.prodigytech.common.item.IItemCustomModel;
 import lykrast.prodigytech.common.item.ItemCrystalCutter;
+import lykrast.prodigytech.common.item.ItemEmptyBattery;
 import lykrast.prodigytech.common.item.ItemEnergionBattery;
 import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
 import lykrast.prodigytech.common.item.ItemEnergionCrystalSeed;
@@ -87,12 +88,19 @@ public class ModItems {
 		//Energion
 		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");
 		energionDust = initItem(new Item(), "energion_dust");
-		energionBatteryEmpty = initItem(new Item(), "energion_battery_empty");
+		
+		energionBatteryEmpty = initItem(new ItemEmptyBattery(), "energion_battery_empty");
 		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");
-		energionBatteryDoubleEmpty = initItem(new Item(), "energion_battery_double_empty");
+		((ItemEmptyBattery)energionBatteryEmpty).setFilledItem(energionBattery);
+		
+		energionBatteryDoubleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_double_empty");
 		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
-		energionBatteryTripleEmpty = initItem(new Item(), "energion_battery_triple_empty");
+		((ItemEmptyBattery)energionBatteryDoubleEmpty).setFilledItem(energionBatteryDouble);
+		
+		energionBatteryTripleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_triple_empty");
 		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
+		((ItemEmptyBattery)energionBatteryTripleEmpty).setFilledItem(energionBatteryTriple);
+		
 		energionBatteryCreative = initItem(new ItemEnergionBatteryCreative(), "energion_battery_creative");
 		
 		//Tools

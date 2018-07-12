@@ -58,7 +58,7 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 		
 		if (current.isEmpty())
 		{
-			int accepted = Math.min(stack.getMaxStackSize(), inventory.getSlotLimit(realSlot));
+			int accepted = Math.min(stack.getMaxStackSize(), getSlotLimit(slot));
 			if(accepted < stack.getCount())
 			{
 				if(!simulate)
@@ -88,7 +88,7 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 			if(!ItemHandlerHelper.canItemStacksStack(stack, current))
 				return stack;
 
-			int accepted = Math.min(stack.getMaxStackSize(), inventory.getSlotLimit(realSlot)) - current.getCount();
+			int accepted = Math.min(stack.getMaxStackSize(), getSlotLimit(slot)) - current.getCount();
 			if(accepted < stack.getCount())
 			{
 				if(!simulate)
@@ -145,7 +145,7 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 
 	@Override
 	public int getSlotLimit(int slot) {
-		return inventory.getInventoryStackLimit();
+		return inventory.getSlotLimit(slot+offset);
 	}
 
 	@Override

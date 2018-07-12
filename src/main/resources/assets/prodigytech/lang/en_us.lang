@@ -39,6 +39,8 @@ tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
 tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
 tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
+tile.prodigytech.battery_replenisher.name=Battery Replenisher
+tile.prodigytech.battery_replenisher.tooltip=Fills Energion Batteries automatically
 
 #Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
@@ -153,6 +155,10 @@ container.prodigytech.solderer=Solderer
 
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
+
+container.prodigytech.battery_replenisher=Battery Replenisher
+container.prodigytech.battery_replenisher.energion.amount=%s Energion units
+container.prodigytech.battery_replenisher.energion.empty=Empty
 
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper

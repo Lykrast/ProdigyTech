@@ -16,11 +16,13 @@ public class Config {
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
 		magneticReassemblerProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
+		batteryReplenisherSpeed,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
 	public static int soldererMaxGold;
+	public static int batteryReplenisherMaxEnergion;
 	public static int primordialisReactorRequiredInput;
 	public static int atomicReshaperMaxPrimordium;
 	
@@ -98,6 +100,11 @@ public class Config {
 				"The time (in ticks) between 2 checks of the Automatic Crystal Cutter\n"
 				+ "1 means every tick, 20 means once every second and so on\n"
 				+ "Lower value will make them more reactive to crystal growing, but will make them sligtly laggier when idle");
+		//Battery Replenisher
+		batteryReplenisherSpeed = cfg.getInt("batteryReplenisherSpeed", CATEGORY_MACHINES, 10, 1, 1000000, 
+				"How much energion ticks can the Battery Replenisher fill per tick");
+		batteryReplenisherMaxEnergion = cfg.getInt("batteryReplenisherMaxEnergion", CATEGORY_MACHINES, 3, 1, 64, 
+				"How many Energion Dust equivalent can the Battery Replenisher hold in its internal buffer");
 		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 

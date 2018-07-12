@@ -1,9 +1,9 @@
 {
 	"type": "forge:ore_shaped",
 	"pattern": [
-		" L ",
+		"LLL",
 		"LIL",
-		" L "
+		"LLL"
 	],
 	"key": {
 		"I": { "type": "forge:ore_dict", "ore": "ingotIron" },

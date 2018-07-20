@@ -52,9 +52,9 @@ tile.prodigytech.atomic_reshaper.tooltip=Turns things into other things\nusing P
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 tile.prodigytech.linear_extractor.name=Linear Extractor
-tile.prodigytech.linear_extractor.tooltip=Pulls item from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
+tile.prodigytech.linear_extractor.tooltip=Pulls items from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
 tile.prodigytech.funnelling_extractor.name=Funnelling Extractor
-tile.prodigytech.funnelling_extractor.tooltip=Pulls item from inventories on all sides\nand pushes them forwards\nTurn off with redstone
+tile.prodigytech.funnelling_extractor.tooltip=Pulls items from inventories on all sides\nand pushes them forward\nTurn off with redstone
 
 #Zorra
 tile.prodigytech.zorra_log.name=Zorra Wood

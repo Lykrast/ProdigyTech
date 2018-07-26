@@ -38,12 +38,9 @@ public class AtomicReshaperWrapper implements IRecipeWrapper {
 		}
 		else in.add(recipe.getInput());
 		
-		List<ItemStack> outputs = new ArrayList<>();
-		if (!recipe.isSingleOutput())
-		{
-			recipe.getWeightedOutputs().stream().forEach(p -> outputs.add(p.getLeft().copy()));
-		}
-		else outputs.add(recipe.getSingleOutput());
+		List<ItemStack> outputs;
+		if (!recipe.isSingleOutput()) outputs = recipe.getOutputList();
+		else outputs = Collections.singletonList(recipe.getSingleOutput());
 		out = Collections.singletonList(outputs);
 		
 		primordiumAmount = recipe.getPrimordiumAmount();

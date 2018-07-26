@@ -37,7 +37,7 @@ public class ProdigyTechGuide implements IGuideBook {
 	@Override
 	public Book buildBook() {
 		BookBinder book = new BookBinder(ProdigyTech.resource("guide"))
-				.setCreativeTab(CreativeTabsProdigyTech.instance)
+				.setCreativeTab(CreativeTabsProdigyTech.INSTANCE)
 				.setItemName("item.prodigytech.guide.name")
 				.setGuideTitle(prefix("title"))
 				.setHeader(prefix("header"))

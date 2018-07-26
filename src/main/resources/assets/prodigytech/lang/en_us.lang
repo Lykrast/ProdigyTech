@@ -3,6 +3,7 @@
 #Creative Tabs
 #----------------------------
 itemGroup.prodigytech=Prodigy Tech
+itemGroup.ptmysterytreats=Mystery Treats
 
 #----------------------------
 #Blocks
@@ -99,6 +100,7 @@ item.prodigytech.carbon_plate.name=Carbon Plate
 item.prodigytech.inferno_fuel.name=Inferno Fuel
 item.prodigytech.inferno_crystal.name=Inferno Crystal
 item.prodigytech.sugar_cube.name=Sugar Cube
+item.prodigytech.mystery_treat.name=Mystery Treat
 
 item.prodigytech.circuit_plate.name=Circuit Plate
 item.prodigytech.circuit_crude.name=Crude Circuit
@@ -226,6 +228,10 @@ advancements.prodigytech.main.energion_dust.description=Make Energion Dust to fi
 advancements.prodigytech.main.energion_crystal_seed.title=Fresh and Organic
 advancements.prodigytech.main.energion_crystal_seed.description=Make an Energion Crystal Seed to farm it
 
+#Primordium side
+advancements.prodigytech.main.mystery_treat.title=It Could Be Anything
+advancements.prodigytech.main.mystery_treat.description=Aquire a Mystery Treat
+
 #----------------------------
 #Guide-API
 #----------------------------
@@ -313,6 +319,9 @@ guide.prodigytech.entry.primordium.zorra.content1=The Zorra is an artificial bre
 guide.prodigytech.entry.primordium.zorra.content2=While Zorra Saplings are expensive and the trees don't yield a lot of them, any Zorra Leaves grown from a Sapling can absorb the blood of any creature it kills and use it to spread a few blocks.
 
 guide.prodigytech.entry.primordium.tartaric_aeroheater.content=The Tartaric Aeroheater is the most powerful Aeroheater there is, if you can afford to run it. It burns Furnace fuel like the Solid Fuel Aeroheater, but will eat through it faster and faster as it heats up.\nFuels can be inserted from any side except the top.
+
+guide.prodigytech.entry.primordium.mystery_treat.content1=Mystery Treats are edible candy made from reshaping Sugar. They have 1 or 2 colors, each color representing a potion effect which will be granted by eating the Treat.
+guide.prodigytech.entry.primordium.mystery_treat.content2=For 2 colors Treats, a color that appears on the 2 stripes will have a weaker effect than if it appeared on the rest of the Treat. A single colored Treat will always have a stronger effect.
 
 #Automation
 guide.prodigytech.entry.automation.linear.content=The Linear Extractor is the simplest of the Extractors. It will quickly pull items from an inventory in front of it and push them to an inventory on the opposite side, or keep it in its small internal inventory. It can be oriented in any direction and disabled with redstone.

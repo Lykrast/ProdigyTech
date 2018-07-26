@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class CreativeTabsProdigyTech extends CreativeTabs {
 	
-	public static final CreativeTabs instance = new CreativeTabsProdigyTech(CreativeTabs.getNextID(), "prodigytech");
+	public static final CreativeTabs INSTANCE = new CreativeTabsProdigyTech(CreativeTabs.getNextID(), "prodigytech");
 
 	public CreativeTabsProdigyTech(int index, String label) {
 		super(index, label);

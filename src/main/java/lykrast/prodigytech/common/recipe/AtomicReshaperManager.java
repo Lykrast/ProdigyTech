@@ -9,11 +9,13 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
+import lykrast.prodigytech.common.item.ItemMysteryTreat;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager.AtomicReshaperRecipe;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicReshaperRecipe> {
@@ -39,6 +41,27 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 				new ItemStack(Blocks.GOLD_ORE), 20, 
 				new ItemStack(Blocks.DIAMOND_ORE), 14, 
 				new ItemStack(Blocks.EMERALD_ORE), 10);
+		
+		//Mystery Treats
+		addRecipe(new AtomicReshaperRecipe(new ItemStack(Items.SUGAR), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.mysteryTreat)) {
+
+			@Override
+			public boolean isSingleOutput() {
+				return false;
+			}
+			
+			@Override
+			public List<ItemStack> getOutputList() {
+				NonNullList<ItemStack> list = NonNullList.create();
+				ModItems.mysteryTreat.getSubItems(null, list);
+				return list;
+			}
+			
+			@Override
+			public ItemStack getRandomOutput(Random rand) {
+		    	return ItemMysteryTreat.createRandom(rand);
+			}
+		});
 		
 		addRecipe("sand", Config.atomicReshaperProcessTime, 1, new ItemStack(Blocks.DIRT));
 		addRecipe("dirt", Config.atomicReshaperProcessTime, 3, new ItemStack(Blocks.CLAY));
@@ -132,8 +155,11 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			return outputs.get(0).getLeft().copy();
 		}
 
-		public List<Pair<ItemStack, Integer>> getWeightedOutputs() {
-			return outputs;
+		//Currently only used for JEI
+		public List<ItemStack> getOutputList() {
+			List<ItemStack> list = new ArrayList<>();
+			outputs.stream().forEach(p -> list.add(p.getLeft().copy()));
+			return list;
 		}
 		
 		public int getTotalWeight() {

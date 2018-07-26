@@ -124,7 +124,7 @@ public class ModBlocks {
 	
 	public static Block initBlock(Block block, String name)
 	{
-		return initBlock(block, name, CreativeTabsProdigyTech.instance);
+		return initBlock(block, name, CreativeTabsProdigyTech.INSTANCE);
 	}
 	
 	public static Block initBlock(Block block, String name, CreativeTabs tab)

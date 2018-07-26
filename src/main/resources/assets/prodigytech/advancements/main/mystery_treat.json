@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:mystery_treat"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.mystery_treat.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.mystery_treat.description"
+        }
+    },
+    "parent": "prodigytech:main/primordium",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:mystery_treat"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import java.io.File;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.item.ItemMysteryTreat;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
@@ -28,6 +29,7 @@ public class CommonProxy {
 
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
+		ItemMysteryTreat.initEffects();
 	}
 
 	@EventHandler

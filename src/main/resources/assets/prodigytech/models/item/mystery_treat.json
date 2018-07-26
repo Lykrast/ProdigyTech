@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "prodigytech:items/mystery_treat_bg",
+        "layer1": "prodigytech:items/mystery_treat_fg"
+    }
+}

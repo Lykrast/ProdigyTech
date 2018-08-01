@@ -1,8 +1,10 @@
 package lykrast.prodigytech.common.recipe;
 
+import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -38,6 +40,14 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	public void init() {
 		addRecipe("plankWood", new ItemStack(Items.STICK, (int)(2 * Config.heatSawmillStickMultiplier)), new ItemStack(ModItems.sawdust));
 		
+		if (!Config.heatSawmillAutoPlankRecipes) {
+			for (int i=0;i<=3;i++)
+				registerPlank(new ItemStack(Blocks.LOG, 1, i), new ItemStack(Blocks.PLANKS, 4, i));
+			for (int i=0;i<=1;i++)
+				registerPlank(new ItemStack(Blocks.LOG2, 1, i), new ItemStack(Blocks.PLANKS, 4, i+4));
+			registerPlank(new ItemStack(ModBlocks.zorraLog), new ItemStack(ModBlocks.zorraPlanks, 4));
+		}
+		
 		//So it turns out there are several mods that do their oredict in Init like barbarians
 		//So that got moved into the proxies' PostInit in order to work
 		//registerPlanks();
@@ -49,6 +59,8 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 	//From Thermal Expansion (and modified a bit)
 	//https://github.com/CoFH/ThermalExpansion/blob/1.12/src/main/java/cofh/thermalexpansion/util/managers/machine/SawmillManager.java
 	public void registerPlanks() {
+		if (!Config.heatSawmillAutoPlankRecipes) return;
+		
 		InventoryCraftingFalse tempCrafting = new InventoryCraftingFalse(3, 3);
 
 		for (int i = 0; i < 9; i++) {
@@ -62,20 +74,15 @@ public class HeatSawmillManager extends SimpleRecipeManagerSecondaryOutput {
 		{
 			ItemStack log1 = log.copy();
 			log1.setCount(1);
-			registerPlank(tempCrafting, log1);
+			tempCrafting.setInventorySlotContents(0, log1);
+			ItemStack result = CraftingManager.findMatchingResult(tempCrafting, null);
+			if (!result.isEmpty()) registerPlank(log1, result.copy());
 		}
 	}
 	
-	private void registerPlank(InventoryCrafting inv, ItemStack log) {
-		inv.setInventorySlotContents(0, log);
-		ItemStack result = CraftingManager.findMatchingResult(inv, null);
-		
-		if (!result.isEmpty())
-		{
-			result = result.copy();
-			result.setCount(Math.min(result.getMaxStackSize(), (int)(result.getCount() * Config.heatSawmillPlankMultiplier)));
-			addRecipe(log, result, new ItemStack(ModItems.sawdust));
-		}
+	private void registerPlank(ItemStack log, ItemStack plank) {
+		plank.setCount(Math.min(plank.getMaxStackSize(), (int)(plank.getCount() * Config.heatSawmillPlankMultiplier)));
+		addRecipe(log, plank, new ItemStack(ModItems.sawdust));
 	}
 	
 	//From CoFH Core

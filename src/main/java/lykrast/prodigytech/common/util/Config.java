@@ -20,7 +20,9 @@ public class Config {
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance;
 	public static int rotaryGrinderOreMultiplier;
+	public static boolean rotaryGrinderAutoOreRecipes;
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
+	public static boolean heatSawmillAutoPlankRecipes;
 	public static int soldererMaxGold;
 	public static int batteryReplenisherMaxEnergion;
 	public static int primordialisReactorRequiredInput;
@@ -74,6 +76,9 @@ public class Config {
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
+		rotaryGrinderAutoOreRecipes = cfg.getBoolean("rotaryGrinderAutoOreRecipes", CATEGORY_MACHINES, true, 
+				"Automatically generate Rotary Grinder recipes to grind ores into dust?\n"
+				+ "If false, only recipes for vanilla ores and Prodigy Tech ingots will be registered");
 		//HeatSawmill
 		heatSawmillProcessTime = cfg.getInt("heatSawmillProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
 				"The base amount of time (in ticks) that the Heat Sawmill takes to process 1 item\n");
@@ -81,6 +86,9 @@ public class Config {
 				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
 		heatSawmillStickMultiplier = cfg.getFloat("heatSawmillStickMultiplier", CATEGORY_MACHINES, 2.0F, 1.0F, 10.0F, 
 				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
+		heatSawmillAutoPlankRecipes = cfg.getBoolean("heatSawmillAutoPlankRecipes", CATEGORY_MACHINES, true, 
+				"Automatically generate Heat Sawmill recipes to cut wood into planks\n"
+				+ "If false, only recipes for vanilla logs and zorra will be registered");
 		
 		//Solderer
 		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 3000, 

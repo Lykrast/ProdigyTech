@@ -111,13 +111,16 @@ public class ItemMysteryTreat extends ItemFood {
 	@Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-    	int size = EFFECTS.size();
-    	for (int i=0;i<size;i++) {
-    		for (int j=0;j<size;j++) {
-    			if (j == i) items.add(createWithEffect(EFFECTS.get(i)[2]));
-    			else items.add(createWithEffect(EFFECTS.get(i)[1], EFFECTS.get(j)[0]));
-    		}
-    	}
+        if (this.isInCreativeTab(tab))
+        {
+        	int size = EFFECTS.size();
+        	for (int i=0;i<size;i++) {
+        		for (int j=0;j<size;j++) {
+        			if (j == i) items.add(createWithEffect(EFFECTS.get(i)[2]));
+        			else items.add(createWithEffect(EFFECTS.get(i)[1], EFFECTS.get(j)[0]));
+        		}
+        	}
+        }
     }
 	
 	private static class Color implements IItemColor {

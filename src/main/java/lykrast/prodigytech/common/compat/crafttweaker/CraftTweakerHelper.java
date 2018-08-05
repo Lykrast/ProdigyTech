@@ -10,7 +10,7 @@ public class CraftTweakerHelper {
 	public static void preInit() {
 		//ExplosionFurnace
 		CraftTweakerAPI.registerClass(RotaryGrinder.class);
-		//Solderer
+		CraftTweakerAPI.registerClass(Solderer.class);
 		CraftTweakerAPI.registerClass(MagneticReassembler.class);
 		CraftTweakerAPI.registerClass(HeatSawmill.class);
 		CraftTweakerAPI.registerClass(PrimordialisReactor.class);

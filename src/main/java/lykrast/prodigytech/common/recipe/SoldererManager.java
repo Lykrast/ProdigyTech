@@ -15,20 +15,21 @@ public class SoldererManager {
 	public static final List<SoldererRecipe> RECIPES = new ArrayList<>();
 	private static int idGoldDust, idGoldTinyDust;
 	
-	public static SoldererRecipe addRecipe(ItemStack pattern, ItemStack additive, ItemStack output, int gold)
-	{
+	public static SoldererRecipe addRecipe(ItemStack pattern, ItemStack additive, ItemStack output, int gold) {
 		return addRecipe(new SoldererRecipe(pattern, additive, output, gold));
 	}
 	
-	public static SoldererRecipe addRecipe(ItemStack pattern, ItemStack additive, ItemStack output, int gold, int time)
-	{
+	public static SoldererRecipe addRecipe(ItemStack pattern, ItemStack additive, ItemStack output, int gold, int time) {
 		return addRecipe(new SoldererRecipe(pattern, additive, output, gold, time));
 	}
 	
-	private static SoldererRecipe addRecipe(SoldererRecipe recipe)
-	{
+	public static SoldererRecipe addRecipe(SoldererRecipe recipe) {
 		RECIPES.add(recipe);
 		return recipe;
+	}
+	
+	public static void removeAll() {
+		RECIPES.clear();
 	}
 	
 	public static SoldererRecipe findRecipe(ItemStack pattern, ItemStack additive, int gold)

@@ -115,6 +115,14 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	}
 	
 	/**
+	 * Removes all registered recipes.
+	 */
+	public void removeAll() {
+		recipes.clear();
+		recipesOre.clear();
+	}
+	
+	/**
 	 * Check if a given ItemStack is a valid input for this Manager.
 	 * Both the item itself and its Ore Dictionary tags are checked.
 	 * @param check ItemStack to check

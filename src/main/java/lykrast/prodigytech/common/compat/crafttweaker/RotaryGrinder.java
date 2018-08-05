@@ -13,6 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.prodigytech.rotarygrinder")
 public class RotaryGrinder {
+	//Add
 	@ZenMethod
 	public static void addRecipe(IItemStack in, IItemStack out, int time) {
 		if (in == null || out == null || time <= 0) return;
@@ -53,6 +54,7 @@ public class RotaryGrinder {
 		}
 	}
 	
+	//Remove
 	@ZenMethod
 	public static void removeRecipe(IItemStack in) {
 		if (in == null) return;
@@ -98,6 +100,23 @@ public class RotaryGrinder {
 		@Override
 		public String describe() {
 			return "Removing Rotary Grinder recipe with input " + ore;
+		}
+	}
+	
+	@ZenMethod
+	public static void removeAll() {
+		CraftTweakerAPI.apply(new RemoveAll());
+	}
+	
+	private static class RemoveAll implements IAction {
+		@Override
+		public void apply() {
+			RotaryGrinderManager.INSTANCE.removeAll();
+		}
+
+		@Override
+		public String describe() {
+			return "Removing all Rotary Grinder recipes";
 		}
 	}
 }

@@ -7,6 +7,7 @@ import crafttweaker.api.oredict.IOreDictEntry;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import lykrast.prodigytech.common.util.Config;
+import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -49,6 +50,54 @@ public class RotaryGrinder {
 		@Override
 		public String describe() {
 			return "Adding Rotary Grinder recipe for " + recipe.getOutput().getDisplayName();
+		}
+	}
+	
+	@ZenMethod
+	public static void removeRecipe(IItemStack in) {
+		if (in == null) return;
+		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(in)));
+	}
+	
+	private static class Remove implements IAction {
+		private final ItemStack stack;
+		
+		public Remove(ItemStack stack) {
+			this.stack = stack;
+		}
+
+		@Override
+		public void apply() {
+			RotaryGrinderManager.INSTANCE.removeRecipe(stack);
+		}
+
+		@Override
+		public String describe() {
+			return "Removing Rotary Grinder recipe with input " + stack.getDisplayName();
+		}
+	}
+	
+	@ZenMethod
+	public static void removeRecipe(IOreDictEntry in) {
+		if (in == null) return;
+		CraftTweakerAPI.apply(new RemoveOre(in.getName()));
+	}
+	
+	private static class RemoveOre implements IAction {
+		private final String ore;
+		
+		public RemoveOre(String ore) {
+			this.ore = ore;
+		}
+
+		@Override
+		public void apply() {
+			RotaryGrinderManager.INSTANCE.removeOreRecipe(ore);
+		}
+
+		@Override
+		public String describe() {
+			return "Removing Rotary Grinder recipe with input " + ore;
 		}
 	}
 }

@@ -55,10 +55,10 @@ public class CategoryPrimordium {
 		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterTartaric)), 
 				new Entry(tartaric, GuideUtil.getName(ModBlocks.aeroheaterTartaric)));
 		
-//		List<IPage> mystery = new ArrayList<>();
-//		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content1")));
-//		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content2")));
-//		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModItems.mysteryTreat)), 
-//				new Entry(mystery, GuideUtil.getName(ModItems.mysteryTreat)));
+		List<IPage> mystery = new ArrayList<>();
+		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content1")));
+		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content2")));
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModItems.mysteryTreat)), 
+				new Entry(mystery, GuideUtil.getName(ModItems.mysteryTreat)));
 	}
 }

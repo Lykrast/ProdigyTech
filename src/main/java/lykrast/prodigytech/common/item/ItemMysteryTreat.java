@@ -112,6 +112,11 @@ public class ItemMysteryTreat extends ItemFood {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (!isInCreativeTab(tab)) return;
         
+        if (EFFECTS.isEmpty()) {
+        	items.add(new ItemStack(this));
+        	return;
+        }
+        
     	int size = EFFECTS.size();
     	for (int i=0;i<size;i++) {
     		for (int j=0;j<size;j++) {

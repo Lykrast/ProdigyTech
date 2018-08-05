@@ -3,8 +3,10 @@ package lykrast.prodigytech.common.compat.crafttweaker;
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.oredict.IOreDictEntry;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SimpleRecipe;
+import lykrast.prodigytech.common.util.Config;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -13,9 +15,23 @@ public class RotaryGrinder {
 	@ZenMethod
 	public static void addRecipe(IItemStack in, IItemStack out, int time) {
 		if (in == null || out == null || time <= 0) return;
-		
-		SimpleRecipe recipe = new SimpleRecipe(CraftTweakerHelper.toItemStack(in), CraftTweakerHelper.toItemStack(out), time);
-		CraftTweakerAPI.apply(new Add(recipe));
+		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IOreDictEntry in, IItemStack out, int time) {
+		if (in == null || out == null || time <= 0) return;
+		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IItemStack in, IItemStack out) {
+		addRecipe(in, out, Config.rotaryGrinderProcessTime);
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IOreDictEntry in, IItemStack out) {
+		addRecipe(in, out, Config.rotaryGrinderProcessTime);
 	}
 	
 	private static class Add implements IAction {

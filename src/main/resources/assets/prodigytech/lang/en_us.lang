@@ -100,7 +100,6 @@ item.prodigytech.carbon_plate.name=Carbon Plate
 item.prodigytech.inferno_fuel.name=Inferno Fuel
 item.prodigytech.inferno_crystal.name=Inferno Crystal
 item.prodigytech.sugar_cube.name=Sugar Cube
-item.prodigytech.mystery_treat.name=Mystery Treat
 
 item.prodigytech.circuit_plate.name=Circuit Plate
 item.prodigytech.circuit_crude.name=Crude Circuit
@@ -124,6 +123,7 @@ item.prodigytech.energion_battery_creative.name=Creative Energion Battery
 
 item.prodigytech.primordium.name=Primordium
 item.prodigytech.aeternus_crystal.name=Aeternus Crystal
+item.prodigytech.mystery_treat.name=Mystery Treat
 
 item.prodigytech.zorra_leaf.name=Zorra Leaf
 item.prodigytech.zorrasteel_raw.name=Raw Zorrasteel Ingot

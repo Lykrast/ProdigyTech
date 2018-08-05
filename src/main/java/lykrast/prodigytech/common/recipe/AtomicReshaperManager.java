@@ -53,7 +53,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			@Override
 			public List<ItemStack> getOutputList() {
 				NonNullList<ItemStack> list = NonNullList.create();
-				ModItems.mysteryTreat.getSubItems(null, list);
+				ModItems.mysteryTreat.getSubItems(ModItems.mysteryTreat.getCreativeTab(), list);
 				return list;
 			}
 			

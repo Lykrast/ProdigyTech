@@ -45,7 +45,7 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @param recipe recipe to register
 	 * @return registered recipe
 	 */
-	protected T addRecipe(T recipe)
+	public T addRecipe(T recipe)
 	{
 		if (recipe.isOreRecipe()) recipesOre.put(recipe.getOreInput(), recipe);
 		else recipes.put(RecipeUtil.stackToPair(recipe.getInput()), recipe);

@@ -8,6 +8,7 @@ import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.item.ItemStack;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -15,25 +16,19 @@ import stanhebben.zenscript.annotations.ZenMethod;
 public class RotaryGrinder {
 	//Add
 	@ZenMethod
-	public static void addRecipe(IItemStack in, IItemStack out, int time) {
-		if (in == null || out == null || time <= 0) return;
+	public static void addRecipe(IItemStack in, IItemStack out, @Optional int time) {
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
+		if (out == null) throw new IllegalArgumentException("Output cannot be null");
+		if (time <= 0) time = Config.rotaryGrinderProcessTime;
 		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
 	}
 	
 	@ZenMethod
-	public static void addRecipe(IOreDictEntry in, IItemStack out, int time) {
-		if (in == null || out == null || time <= 0) return;
+	public static void addRecipe(IOreDictEntry in, IItemStack out, @Optional int time) {
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
+		if (out == null) throw new IllegalArgumentException("Output cannot be null");
+		if (time <= 0) time = Config.rotaryGrinderProcessTime;
 		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
-	}
-	
-	@ZenMethod
-	public static void addRecipe(IItemStack in, IItemStack out) {
-		addRecipe(in, out, Config.rotaryGrinderProcessTime);
-	}
-	
-	@ZenMethod
-	public static void addRecipe(IOreDictEntry in, IItemStack out) {
-		addRecipe(in, out, Config.rotaryGrinderProcessTime);
 	}
 	
 	private static class Add implements IAction {
@@ -57,7 +52,7 @@ public class RotaryGrinder {
 	//Remove
 	@ZenMethod
 	public static void removeRecipe(IItemStack in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(in)));
 	}
 	
@@ -81,7 +76,7 @@ public class RotaryGrinder {
 	
 	@ZenMethod
 	public static void removeRecipe(IOreDictEntry in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new RemoveOre(in.getName()));
 	}
 	

@@ -14,7 +14,7 @@ public class PrimordialisReactor {
 	//Add
 	@ZenMethod
 	public static void addInput(IItemStack in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.toItemStack(in)));
 	}
 	
@@ -38,7 +38,7 @@ public class PrimordialisReactor {
 	
 	@ZenMethod
 	public static void addInput(IOreDictEntry in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new AddOre(in.getName()));
 	}
 	
@@ -63,7 +63,7 @@ public class PrimordialisReactor {
 	//Remove
 	@ZenMethod
 	public static void removeInput(IItemStack in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(in)));
 	}
 	
@@ -87,7 +87,7 @@ public class PrimordialisReactor {
 	
 	@ZenMethod
 	public static void removeInput(IOreDictEntry in) {
-		if (in == null) return;
+		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		CraftTweakerAPI.apply(new RemoveOre(in.getName()));
 	}
 	

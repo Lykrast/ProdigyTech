@@ -1,0 +1,122 @@
+package lykrast.prodigytech.common.compat.crafttweaker;
+
+import crafttweaker.CraftTweakerAPI;
+import crafttweaker.IAction;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.oredict.IOreDictEntry;
+import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
+import lykrast.prodigytech.common.recipe.SimpleRecipe;
+import lykrast.prodigytech.common.util.Config;
+import net.minecraft.item.ItemStack;
+import stanhebben.zenscript.annotations.ZenClass;
+import stanhebben.zenscript.annotations.ZenMethod;
+
+@ZenClass("mods.prodigytech.magneticreassembler")
+public class MagneticReassembler {
+	//Add
+	@ZenMethod
+	public static void addRecipe(IItemStack in, IItemStack out, int time) {
+		if (in == null || out == null || time <= 0) return;
+		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IOreDictEntry in, IItemStack out, int time) {
+		if (in == null || out == null || time <= 0) return;
+		CraftTweakerAPI.apply(new Add(CraftTweakerHelper.simpleRecipe(in, out, time)));
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IItemStack in, IItemStack out) {
+		addRecipe(in, out, Config.magneticReassemblerProcessTime);
+	}
+	
+	@ZenMethod
+	public static void addRecipe(IOreDictEntry in, IItemStack out) {
+		addRecipe(in, out, Config.magneticReassemblerProcessTime);
+	}
+	
+	private static class Add implements IAction {
+		private final SimpleRecipe recipe;
+		
+		public Add(SimpleRecipe recipe) {
+			this.recipe = recipe;
+		}
+
+		@Override
+		public void apply() {
+			MagneticReassemblerManager.INSTANCE.addRecipe(recipe);
+		}
+
+		@Override
+		public String describe() {
+			return "Adding Magnetic Reassembler recipe for " + recipe.getOutput().getDisplayName();
+		}
+	}
+	
+	//Remove
+	@ZenMethod
+	public static void removeRecipe(IItemStack in) {
+		if (in == null) return;
+		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(in)));
+	}
+	
+	private static class Remove implements IAction {
+		private final ItemStack stack;
+		
+		public Remove(ItemStack stack) {
+			this.stack = stack;
+		}
+
+		@Override
+		public void apply() {
+			MagneticReassemblerManager.INSTANCE.removeRecipe(stack);
+		}
+
+		@Override
+		public String describe() {
+			return "Removing Magnetic Reassembler recipe with input " + stack.getDisplayName();
+		}
+	}
+	
+	@ZenMethod
+	public static void removeRecipe(IOreDictEntry in) {
+		if (in == null) return;
+		CraftTweakerAPI.apply(new RemoveOre(in.getName()));
+	}
+	
+	private static class RemoveOre implements IAction {
+		private final String ore;
+		
+		public RemoveOre(String ore) {
+			this.ore = ore;
+		}
+
+		@Override
+		public void apply() {
+			MagneticReassemblerManager.INSTANCE.removeOreRecipe(ore);
+		}
+
+		@Override
+		public String describe() {
+			return "Removing Magnetic Reassembler recipe with input " + ore;
+		}
+	}
+	
+	@ZenMethod
+	public static void removeAll() {
+		CraftTweakerAPI.apply(new RemoveAll());
+	}
+	
+	private static class RemoveAll implements IAction {
+		@Override
+		public void apply() {
+			MagneticReassemblerManager.INSTANCE.removeAll();
+		}
+
+		@Override
+		public String describe() {
+			return "Removing all Magnetic Reassembler recipes";
+		}
+	}
+}

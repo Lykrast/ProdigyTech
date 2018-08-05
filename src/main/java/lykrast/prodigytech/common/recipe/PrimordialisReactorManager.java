@@ -40,6 +40,10 @@ public class PrimordialisReactorManager {
 	public static void removeInput(String ore) {
 		inputsOre.remove(ore);
 	}
+	public static void removeAll() {
+		inputs.clear();
+		inputsOre.clear();
+	}
 	
 	public static boolean isValidInput(ItemStack in) {
 		if (in.isEmpty()) return false;

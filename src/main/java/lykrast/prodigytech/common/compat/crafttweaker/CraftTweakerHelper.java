@@ -8,7 +8,13 @@ import net.minecraft.item.ItemStack;
 
 public class CraftTweakerHelper {
 	public static void preInit() {
+		//ExplosionFurnace
 		CraftTweakerAPI.registerClass(RotaryGrinder.class);
+		//Solderer
+		CraftTweakerAPI.registerClass(MagneticReassembler.class);
+		CraftTweakerAPI.registerClass(HeatSawmill.class);
+		CraftTweakerAPI.registerClass(PrimordialisReactor.class);
+		//Atomic Reshaper
 	}
 	
 	public static ItemStack toItemStack(IItemStack stack) {

@@ -43,25 +43,25 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 				new ItemStack(Blocks.EMERALD_ORE), 10);
 		
 		//Mystery Treats
-		addRecipe(new AtomicReshaperRecipe(new ItemStack(Items.SUGAR), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.mysteryTreat)) {
-
-			@Override
-			public boolean isSingleOutput() {
-				return false;
-			}
-			
-			@Override
-			public List<ItemStack> getOutputList() {
-				NonNullList<ItemStack> list = NonNullList.create();
-				ModItems.mysteryTreat.getSubItems(ModItems.mysteryTreat.getCreativeTab(), list);
-				return list;
-			}
-			
-			@Override
-			public ItemStack getRandomOutput(Random rand) {
-		    	return ItemMysteryTreat.createRandom(rand);
-			}
-		});
+//		addRecipe(new AtomicReshaperRecipe(new ItemStack(Items.SUGAR), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.mysteryTreat)) {
+//
+//			@Override
+//			public boolean isSingleOutput() {
+//				return false;
+//			}
+//			
+//			@Override
+//			public List<ItemStack> getOutputList() {
+//				NonNullList<ItemStack> list = NonNullList.create();
+//				ModItems.mysteryTreat.getSubItems(ModItems.mysteryTreat.getCreativeTab(), list);
+//				return list;
+//			}
+//			
+//			@Override
+//			public ItemStack getRandomOutput(Random rand) {
+//		    	return ItemMysteryTreat.createRandom(rand);
+//			}
+//		});
 		
 		addRecipe("sand", Config.atomicReshaperProcessTime, 1, new ItemStack(Blocks.DIRT));
 		addRecipe("dirt", Config.atomicReshaperProcessTime, 3, new ItemStack(Blocks.CLAY));

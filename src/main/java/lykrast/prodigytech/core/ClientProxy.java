@@ -9,7 +9,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent e) {
 		super.init(e);
-		Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ItemMysteryTreat.COLOR, ModItems.mysteryTreat);
+		//Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ItemMysteryTreat.COLOR, ModItems.mysteryTreat);
 	}
 
 }

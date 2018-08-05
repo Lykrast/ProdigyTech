@@ -14,7 +14,7 @@ public class CraftTweakerHelper {
 		CraftTweakerAPI.registerClass(MagneticReassembler.class);
 		CraftTweakerAPI.registerClass(HeatSawmill.class);
 		CraftTweakerAPI.registerClass(PrimordialisReactor.class);
-		//Atomic Reshaper
+		CraftTweakerAPI.registerClass(AtomicReshaper.class);
 	}
 	
 	public static ItemStack toItemStack(IItemStack stack) {

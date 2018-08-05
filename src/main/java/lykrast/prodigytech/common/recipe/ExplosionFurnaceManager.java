@@ -22,7 +22,7 @@ public class ExplosionFurnaceManager {
 		return addRecipe(new ExplosionFurnaceRecipe(in, out, power, reagent, craftPerReagent));
 	}
 	
-	private static ExplosionFurnaceRecipe addRecipe(ExplosionFurnaceRecipe recipe)
+	public static ExplosionFurnaceRecipe addRecipe(ExplosionFurnaceRecipe recipe)
 	{
 		RECIPES.add(recipe);
 		return recipe;
@@ -66,6 +66,14 @@ public class ExplosionFurnaceManager {
 		if (recipe != null) EXPLOSIVES.remove(recipe);
 		
 		return recipe;
+	}
+	
+	public static void removeAllRecipes() {
+		RECIPES.clear();
+	}
+	
+	public static void removeAllExplosives() {
+		EXPLOSIVES.clear();
 	}
 	
 	//Probably REALLY need to optimise those one day

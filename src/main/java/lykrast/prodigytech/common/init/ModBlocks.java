@@ -28,7 +28,7 @@ public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion, aeroheaterTartaric,
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, automaticCrystalCutter, batteryReplenisher, 
-		primordialisReactor, atomicReshaper,
+		primordialisReactor, atomicReshaper, zorraAltar,
 		airFunnel, linearExtractor, funnellingExtractor,
 		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
@@ -77,6 +77,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TilePrimordialisReactor.class, ProdigyTech.resource("primordialis_reactor"));
 		atomicReshaper = initBlock(new BlockAtomicReshaper(6.0F, 45.0F, 1), "atomic_reshaper");
 		GameRegistry.registerTileEntity(TileAtomicReshaper.class, ProdigyTech.resource("atomic_reshaper"));
+		zorraAltar = initBlock(new BlockZorraAltar(6.0F, 180.0F, 3), "zorra_altar");
 		
 		//Misc Ferramic tier
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");

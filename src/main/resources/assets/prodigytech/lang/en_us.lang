@@ -48,6 +48,8 @@ tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
 tile.prodigytech.primordialis_reactor.tooltip=Turns plant matter into Primordium\nMix different types for more efficiency
 tile.prodigytech.atomic_reshaper.name=Atomic Reshaper
 tile.prodigytech.atomic_reshaper.tooltip=Turns things into other things\nusing Primordium
+tile.prodigytech.zorra_altar.name=Zorra Altar
+tile.prodigytech.zorra_altar.tooltip=Applies or upgrades enchantments\non Zorrasteel equipment
 
 #Misc tech
 tile.prodigytech.air_funnel.name=Air Funnel

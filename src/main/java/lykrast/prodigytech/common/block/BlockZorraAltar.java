@@ -1,5 +1,7 @@
 package lykrast.prodigytech.common.block;
 
+import java.util.Random;
+
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemBlockInfoShift;
 import lykrast.prodigytech.core.ProdigyTech;
@@ -11,10 +13,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockZorraAltar extends BlockGeneric implements ICustomItemBlock {
     protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.75D, 1.0D);
@@ -33,6 +38,14 @@ public class BlockZorraAltar extends BlockGeneric implements ICustomItemBlock {
 
             return true;
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        super.randomDisplayTick(stateIn, worldIn, pos, rand);
+
+        if (rand.nextInt(10) == 0)
+            worldIn.spawnParticle(EnumParticleTypes.TOWN_AURA, pos.getX() + rand.nextFloat(), pos.getY() + 0.85, pos.getZ() + rand.nextFloat(), 0.0D, 0.0D, 0.0D);
     }
 
 	@Override

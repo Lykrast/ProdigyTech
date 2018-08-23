@@ -33,7 +33,7 @@ public class GuiZorraAltar extends GuiContainer {
 	//Mostly copied from the Enchanting Table
 	
     /** The ResourceLocation containing the Enchantment GUI texture location */
-    private static final ResourceLocation ENCHANTMENT_TABLE_GUI_TEXTURE = new ResourceLocation("textures/gui/container/enchanting_table.png");
+    private static final ResourceLocation ENCHANTMENT_TABLE_GUI_TEXTURE = ProdigyTech.resource("textures/gui/zorra_altar.png");
     /** The ResourceLocation containing the texture for the Book rendered above the enchantment table */
     private static final ResourceLocation ENCHANTMENT_TABLE_BOOK_TEXTURE = new ResourceLocation("textures/entity/enchanting_table_book.png");
     /** The ModelBook instance used for rendering the book on the Enchantment table */
@@ -105,9 +105,9 @@ public class GuiZorraAltar extends GuiContainer {
     {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(ENCHANTMENT_TABLE_GUI_TEXTURE);
-        int i = (this.width - this.xSize) / 2;
-        int j = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+        int midX = (width - xSize) / 2;
+        int midY = (height - ySize) / 2;
+        this.drawTexturedModalRect(midX, midY, 0, 0, xSize, ySize);
         GlStateManager.pushMatrix();
         GlStateManager.matrixMode(5889);
         GlStateManager.pushMatrix();
@@ -168,56 +168,66 @@ public class GuiZorraAltar extends GuiContainer {
         EnchantmentNameParts.getInstance().reseedRandomGenerator((long)this.container.xpSeed);
         int leaves = container.getLeafAmount();
 
-        for (int l = 0; l < 3; ++l)
+        for (int row = 0; row < 3; ++row)
         {
-            int i1 = i + 60;
+            int i1 = midX + 60;
             int j1 = i1 + 20;
-            this.zLevel = 0.0F;
-            this.mc.getTextureManager().bindTexture(ENCHANTMENT_TABLE_GUI_TEXTURE);
-            int k1 = this.container.enchantCost[l];
+            zLevel = 0.0F;
+            mc.getTextureManager().bindTexture(ENCHANTMENT_TABLE_GUI_TEXTURE);
+            int cost = container.enchantCost[row];
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-            if (k1 == 0)
-            {
-                this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 185, 108, 19);
-            }
+            //Draw empty row
+            if (cost == 0) drawTexturedModalRect(i1, midY + 14 + 19 * row, 0, 185, 108, 19);
             else
             {
-                String s = "" + k1;
-                int l1 = 86 - this.fontRenderer.getStringWidth(s);
-                String s1 = EnchantmentNameParts.getInstance().generateNewRandomName(this.fontRenderer, l1);
-                FontRenderer fontrenderer = this.mc.standardGalacticFontRenderer;
-                int i2 = 6839882;
+            	//Glyphs + cost
+                String displayCost = Integer.toString(cost);
+                int glyphLength = 86 - fontRenderer.getStringWidth(displayCost);
+                String glyph = EnchantmentNameParts.getInstance().generateNewRandomName(fontRenderer, glyphLength);
+                FontRenderer fontrenderer = mc.standardGalacticFontRenderer;
+                int shadowColor = 0x685E4A;
+                
+                int leafCost = row == 2 ? 3 : container.enchantLvl[row];
+                //Icon 0 (left) for new enchants
+                //Icon 1 (middle) for upgrading enchants
+                //Icon 2 (right) for the mystery option
+                int iconIndex = row == 2 ? 2 : (container.enchantLvl[row] == 1 ? 0 : 1);
 
-                if (((leaves < l + 1 || this.mc.player.experienceLevel < k1) && !this.mc.player.capabilities.isCreativeMode) || this.container.enchantId[l] == -1) // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
+                if (((leaves < leafCost || mc.player.experienceLevel < cost) && !mc.player.capabilities.isCreativeMode) || container.enchantId[row] == -1) // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
                 {
-                    this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 185, 108, 19);
-                    this.drawTexturedModalRect(i1 + 1, j + 15 + 19 * l, 16 * l, 239, 16, 16);
-                    fontrenderer.drawSplitString(s1, j1, j + 16 + 19 * l, l1, (i2 & 16711422) >> 1);
-                    i2 = 4226832;
+                	//Disabled background
+                    drawTexturedModalRect(i1, midY + 14 + 19 * row, 0, 185, 108, 19);
+                    //Disabled icon
+                    drawTexturedModalRect(i1 + 1, midY + 15 + 19 * row, 16 * iconIndex, 239, 16, 16);
+                    fontrenderer.drawSplitString(glyph, j1, midY + 16 + 19 * row, glyphLength, (shadowColor & 16711422) >> 1);
+                    shadowColor = 0x407F10;
                 }
                 else
                 {
-                    int j2 = mouseX - (i + 60);
-                    int k2 = mouseY - (j + 14 + 19 * l);
+                    int j2 = mouseX - (midX + 60);
+                    int k2 = mouseY - (midY + 14 + 19 * row);
 
                     if (j2 >= 0 && k2 >= 0 && j2 < 108 && k2 < 19)
                     {
-                        this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 204, 108, 19);
-                        i2 = 16777088;
+                    	//Selected background
+                        drawTexturedModalRect(i1, midY + 14 + 19 * row, 0, 204, 108, 19);
+                        shadowColor = 0xFFFF80;
                     }
                     else
                     {
-                        this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 166, 108, 19);
+                    	//Normal background
+                        drawTexturedModalRect(i1, midY + 14 + 19 * row, 0, 166, 108, 19);
                     }
 
-                    this.drawTexturedModalRect(i1 + 1, j + 15 + 19 * l, 16 * l, 223, 16, 16);
-                    fontrenderer.drawSplitString(s1, j1, j + 16 + 19 * l, l1, i2);
-                    i2 = 8453920;
+                    //Normal icon
+                    drawTexturedModalRect(i1 + 1, midY + 15 + 19 * row, 16 * iconIndex, 223, 16, 16);
+                    fontrenderer.drawSplitString(glyph, j1, midY + 16 + 19 * row, glyphLength, shadowColor);
+                    shadowColor = 0x80FF20;
                 }
 
                 fontrenderer = this.mc.fontRenderer;
-                fontrenderer.drawStringWithShadow(s, (float)(j1 + 86 - fontrenderer.getStringWidth(s)), (float)(j + 16 + 19 * l + 7), i2);
+                fontrenderer.drawStringWithShadow(displayCost, (float)(j1 + 86 - fontrenderer.getStringWidth(displayCost)), (float)(midY + 16 + 19 * row + 7), shadowColor);
             }
         }
     }

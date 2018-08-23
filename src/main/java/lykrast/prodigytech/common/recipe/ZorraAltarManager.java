@@ -77,6 +77,9 @@ public class ZorraAltarManager {
 		//AbyssalCraft - UNTESTED
 		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchant("abyssalcraft:light_pierce", 8, checker);
 		
+		//Soul Shards Respawn - UNTESTED
+		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchant("soulshardsrespawn:soul_stealer", 8, checker);
+		
 	}
 	
 	private List<EnchantmentData> enchants;

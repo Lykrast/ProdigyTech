@@ -166,6 +166,7 @@ container.prodigytech.battery_replenisher.energion.empty=Empty
 
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
+container.prodigytech.zorra_altar=Zorra Altar
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C

@@ -57,6 +57,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("dustEnergion", ModItems.energionDust);
 		
 		//Zorra
+		OreDictionary.registerOre("leafZorra", ModItems.zorraLeaf);
 		OreDictionary.registerOre("ingotRawZorrasteel", ModItems.zorrasteelRaw);
 		OreDictionary.registerOre("ingotZorrasteel", ModItems.zorrasteelIngot);
 		OreDictionary.registerOre("blockZorrasteel", ModBlocks.zorrasteelBlock);

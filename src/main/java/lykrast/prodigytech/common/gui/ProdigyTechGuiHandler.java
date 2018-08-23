@@ -12,7 +12,7 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
 			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, EXTRACTOR = 8,
 			HEAT_SAWMILL = 9, ATOMIC_RESHAPER = 10, ENERGION_TOOL = 11, PRIMORDIALIS_REACTOR = 12, AEROHEATER_TARTARIC = 13,
-			CRYSTAL_CUTTER = 14, BATTERY_REPLENISHER = 15;
+			CRYSTAL_CUTTER = 14, BATTERY_REPLENISHER = 15, ZORRA_ALTAR = 16;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -51,6 +51,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerCrystalCutter(player.inventory, (TileCrystalCutter)world.getTileEntity(new BlockPos(x, y, z)));
 			case BATTERY_REPLENISHER:
 				return new ContainerBatteryReplenisher(player.inventory, (TileBatteryReplenisher)world.getTileEntity(new BlockPos(x, y, z)));
+			case ZORRA_ALTAR:
+				return new ContainerZorraAltar(player.inventory, world, new BlockPos(x, y, z));
 		}
 		return null;
 	}
@@ -92,6 +94,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiCrystalCutter(player.inventory, (TileCrystalCutter)world.getTileEntity(new BlockPos(x, y, z)));
 			case BATTERY_REPLENISHER:
 				return new GuiBatteryReplenisher(player.inventory, (TileBatteryReplenisher)world.getTileEntity(new BlockPos(x, y, z)));
+			case ZORRA_ALTAR:
+				return new GuiZorraAltar(player.inventory, world);
 		}
 		return null;
 	}

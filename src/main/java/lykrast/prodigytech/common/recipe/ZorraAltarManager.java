@@ -33,14 +33,46 @@ public class ZorraAltarManager {
 	public void addEnchant(EnchantmentData enchant) {
 		enchants.add(enchant);
 	}
+	
+	/**
+	 * Adds the given enchantment to the pool, with the given maximul level
+	 * @param enchant enchantment to add
+	 * @param maxLvl maximum applicable level
+	 */
 	public void addEnchant(Enchantment enchant, int maxLvl) {
 		enchants.add(new EnchantmentData(enchant, maxLvl));
 	}
 	
+	/**
+	 * Gives the base cost in levels of applying this enchantment
+	 * @param data EnchantmentData to apply
+	 * @return cost in level to apply it
+	 */
 	public int getLevelCost(EnchantmentData data) {
 		int lvl = data.enchantmentLevel;
 		if (lvl <= 1) return data.enchantment.getMinEnchantability(1);
 		else return data.enchantment.getMinEnchantability(lvl) - (data.enchantment.getMinEnchantability(lvl - 1) / 2);
+	}
+	
+	/**
+	 * Applies a random deviation to the given level cost
+	 * @param cost level cost to deviate
+	 * @param rand Random to use
+	 * @return the cost randomly deviated
+	 */
+	public int deviate(int cost, Random rand) {
+		int deviation = Math.max(2, cost / 10);
+		return Math.max(1, cost - deviation + rand.nextInt(deviation * 2 + 1));
+	}
+	
+	/**
+	 * Gives a deviated level cost for applying the given enchantment
+	 * @param data EnchantmentData to apply
+	 * @param rand Random to use
+	 * @return cost in level to apply it, randomly deviated
+	 */
+	public int getRandomLevelCost(EnchantmentData data, Random rand) {
+		return deviate(getLevelCost(data), rand);
 	}
 	
 	public List<EnchantmentData> getAvailableEnchants(ItemStack stack) {
@@ -55,6 +87,12 @@ public class ZorraAltarManager {
 		return list;
 	}
 	
+	/**
+	 * Gives 3 random enchantments for the Zorra Altar
+	 * @param stack ItemStack to apply enchantments for
+	 * @param rand Random to use
+	 * @return up to 3 applicable enchantments
+	 */
 	public EnchantmentData[] getRandomEnchants(ItemStack stack, Random rand) {
 		List<EnchantmentData> apply = new ArrayList<>();
 		List<EnchantmentData> upgrade = new ArrayList<>();

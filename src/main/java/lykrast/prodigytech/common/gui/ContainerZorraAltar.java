@@ -211,7 +211,7 @@ public class ContainerZorraAltar extends Container {
                 		}
                 		else
                 		{
-                			enchantCost[i] = manager.getLevelCost(enchants[i]);
+                			enchantCost[i] = manager.getRandomLevelCost(enchants[i], rand);
                 			//3rd is hidden but costs less
                 			if (i == 2) enchantCost[i] = Math.max(1, enchantCost[i] / 2);
                             enchantId[i] = Enchantment.getEnchantmentID(enchants[i].enchantment);

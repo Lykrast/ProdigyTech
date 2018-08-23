@@ -55,6 +55,20 @@ public class CategoryPrimordium {
 		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.aeroheaterTartaric)), 
 				new Entry(tartaric, GuideUtil.getName(ModBlocks.aeroheaterTartaric)));
 		
+		List<IPage> zorrasteelTools = new ArrayList<>();
+		zorrasteelTools.add(GuideUtil.textPage(prefix("zorrasteel_tools.content")));
+		zorrasteelTools.add(GuideUtil.recipePage("tools/zorrasteel_sword"));
+		ENTRIES.put(new ResourceLocation(prefix("zorrasteel_tools")), 
+				new Entry(zorrasteelTools, prefix("zorrasteel_tools")));
+		
+		List<IPage> zorraAltar = new ArrayList<>();
+		zorraAltar.add(GuideUtil.textPage(prefix("zorra_altar.content1")));
+		zorraAltar.add(GuideUtil.textPage(prefix("zorra_altar.content2")));
+		zorraAltar.add(GuideUtil.textPage(prefix("zorra_altar.content3")));
+		zorraAltar.add(GuideUtil.recipePage("machine/zorra_altar"));
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.zorraAltar)), 
+				new Entry(zorraAltar, GuideUtil.getName(ModBlocks.zorraAltar)));
+		
 //		List<IPage> mystery = new ArrayList<>();
 //		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content1")));
 //		mystery.add(GuideUtil.textPage(prefix("mystery_treat.content2")));

@@ -1,23 +1,23 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:mystery_treat"
+            "item": "guideapi:prodigytech-guide"
         },
         "title": {
-            "translate": "advancements.prodigytech.main.mystery_treat.title"
+            "translate": "advancements.prodigytech.main.guide.title"
         },
         "description": {
-            "translate": "advancements.prodigytech.main.mystery_treat.description"
+            "translate": "advancements.prodigytech.main.guide.description"
         }
     },
-    "parent": "prodigytech:main/primordium",
+    "parent": "prodigytech:main/root",
     "criteria": {
         "iron": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
                 "items": [
                     {
-                        "item": "prodigytech:mystery_treat"
+                        "item": "guideapi:prodigytech-guide"
                     }
                 ]
             }

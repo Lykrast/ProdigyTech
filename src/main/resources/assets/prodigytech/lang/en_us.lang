@@ -209,6 +209,8 @@ container.prodigytech.jei.ptreshaper=Atomic Reshaper
 #Main line
 advancements.prodigytech.main.root.title=Prodigy Tech
 advancements.prodigytech.main.root.description=Wonders await you
+advancements.prodigytech.main.guide.title=Read to Win
+advancements.prodigytech.main.guide.description=Make the Handbook of Prodigies with a Book and Sand
 advancements.prodigytech.main.explosion_furnace.title=A Real Blast Furnace
 advancements.prodigytech.main.explosion_furnace.description=Make an Explosion Furnace to craft Ferramic
 advancements.prodigytech.main.aeroheater.title=Turning Up The Heat
@@ -329,6 +331,13 @@ guide.prodigytech.entry.primordium.zorra.content1=The Zorra is an artificial bre
 guide.prodigytech.entry.primordium.zorra.content2=While Zorra Saplings are expensive and the trees don't yield a lot of them, any Zorra Leaves grown from a Sapling can absorb the blood of any creature it kills and use it to spread a few blocks.
 
 guide.prodigytech.entry.primordium.tartaric_aeroheater.content=The Tartaric Aeroheater is the most powerful Aeroheater there is, if you can afford to run it. It burns Furnace fuel like the Solid Fuel Aeroheater, but will eat through it faster and faster as it heats up.\nFuels can be inserted from any side except the top.
+
+guide.prodigytech.entry.primordium.zorrasteel_tools=Zorrasteel Tools
+guide.prodigytech.entry.primordium.zorrasteel_tools.content=Zorrasteel can be used to make some tools. They are as strong as Diamond and are unbreakable. They also cannot receive enchantments the normal ways, for that you'll need a Zorra Altar. It also allows them to get enchanted a lot more than mundane tools.
+
+guide.prodigytech.entry.primordium.zorra_altar.content1=The Zorra Altar is used to apply or upgrade enchantments on Zorrasteel tools, at the cost of experience and Zorra Leaves. Putting a Zorrasteel tool in it will give you 3 options to choose from as well as their cost.
+guide.prodigytech.entry.primordium.zorra_altar.content2=The first slot will always be a new enchantment to apply (if possible), the second always an upgrade to an existing enchantment (if possible), and the third can be either and comes with a big experience discount, but you cannot see what it will apply.
+guide.prodigytech.entry.primordium.zorra_altar.content3=With enough experience, Zorrasteel tools can receive enchantments that far surpasses what standard tools can reach, although the price will start to accumulate quickly.
 
 guide.prodigytech.entry.primordium.mystery_treat.content1=Mystery Treats are edible candy made from reshaping Sugar. They have 1 or 2 colors, each color representing a potion effect which will be granted by eating the Treat.
 guide.prodigytech.entry.primordium.mystery_treat.content2=For 2 colors Treats, a color that appears on the 2 stripes will have a weaker effect than if it appeared on the rest of the Treat. A single colored Treat will always have a stronger effect.

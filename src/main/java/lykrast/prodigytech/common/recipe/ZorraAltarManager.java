@@ -9,12 +9,19 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ZorraAltarManager {
 	public static final ZorraAltarManager SWORD = new ZorraAltarManager();
 	
 	public static void init() {
+		//------------------------
+		//Sword
+		//------------------------
 		SWORD.addEnchant(Enchantments.SHARPNESS, 8);
 		SWORD.addEnchant(Enchantments.SMITE, 8);
 		SWORD.addEnchant(Enchantments.BANE_OF_ARTHROPODS, 8);
@@ -22,6 +29,25 @@ public class ZorraAltarManager {
 		SWORD.addEnchant(Enchantments.KNOCKBACK, 5);
 		SWORD.addEnchant(Enchantments.LOOTING, 6);
 		SWORD.addEnchant(Enchantments.SWEEPING, 6);
+		
+		//CoFH Core
+		if (Loader.isModLoaded("cofhcore"))
+		{
+			//CoFH Core makes enchants unapplicable and useless instead of not registering them when disabled individually
+			//So we use this dummy ItemStack to check if it's applicable
+			ItemStack checker = new ItemStack(Items.IRON_SWORD);
+			SWORD.addModdedEnchant("cofhcore:insight", 6, checker);
+			SWORD.addModdedEnchant("cofhcore:leech", 7, checker);
+			SWORD.addModdedEnchant("cofhcore:vorpal", 6, checker);
+
+			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("cofhcore:soulbound"));
+			if (soulbound != null && soulbound.canApply(checker))
+			{
+				//Check if it was configured to be permanent
+				if (soulbound.getMaxLevel() == 1) SWORD.addEnchant(soulbound, 1);
+				else SWORD.addEnchant(soulbound, 6);
+			}
+		}
 	}
 	
 	private List<EnchantmentData> enchants;
@@ -41,6 +67,15 @@ public class ZorraAltarManager {
 	 */
 	public void addEnchant(Enchantment enchant, int maxLvl) {
 		enchants.add(new EnchantmentData(enchant, maxLvl));
+	}
+	
+	public void addModdedEnchant(String key, int maxLvl, ItemStack checker) {
+		Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(key));
+		//CoFH Core makes enchantments unapplicable and useless instead of not registering them when disabled individually
+		//So we use this dummy ItemStack to check if it's applicable
+		if (enchant == null || !enchant.canApply(checker)) return;
+		
+		addEnchant(enchant, maxLvl);
 	}
 	
 	/**

@@ -7,6 +7,7 @@ import lykrast.prodigytech.common.compat.crafttweaker.CraftTweakerHelper;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.item.ItemMysteryTreat;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
+import lykrast.prodigytech.common.recipe.ZorraAltarManager;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
@@ -34,6 +35,7 @@ public class CommonProxy {
 	@EventHandler
 	public void init(FMLInitializationEvent e) {
 		ItemMysteryTreat.initEffects();
+		ZorraAltarManager.init();
 	}
 
 	@EventHandler

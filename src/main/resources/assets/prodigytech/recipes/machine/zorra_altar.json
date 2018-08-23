@@ -1,0 +1,11 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"ZZZ",
+		"ZZZ"
+	],
+	"key": {
+		"Z": { "type": "forge:ore_dict", "ore": "ingotZorrasteel" }
+	},
+	"result": { "item": "prodigytech:zorra_altar" }
+}

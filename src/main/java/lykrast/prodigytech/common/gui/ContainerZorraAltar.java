@@ -1,10 +1,13 @@
 package lykrast.prodigytech.common.gui;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
+import lykrast.prodigytech.common.item.IZorrasteelEquipment;
+import lykrast.prodigytech.common.recipe.ZorraAltarManager;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
@@ -12,17 +15,13 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
@@ -42,9 +41,9 @@ public class ContainerZorraAltar extends Container {
     private final Random rand;
     public int xpSeed;
     /** 3-member array storing the enchantment levels of each slot */
-    public int[] enchantLevels;
-    public int[] enchantClue;
-    public int[] worldClue;
+    public int[] enchantCost;
+    public int[] enchantId;
+    public int[] enchantLvl;
 
     @SideOnly(Side.CLIENT)
     public ContainerZorraAltar(InventoryPlayer playerInv, World worldIn)
@@ -74,9 +73,9 @@ public class ContainerZorraAltar extends Container {
             }
         };
         this.rand = new Random();
-        this.enchantLevels = new int[3];
-        this.enchantClue = new int[] { -1, -1, -1};
-        this.worldClue = new int[] { -1, -1, -1};
+        this.enchantCost = new int[3];
+        this.enchantId = new int[] { -1, -1, -1};
+        this.enchantLvl = new int[] { -1, -1, -1};
         this.worldPointer = worldIn;
         this.position = pos;
         this.xpSeed = playerInv.player.getXPSeed();
@@ -128,16 +127,16 @@ public class ContainerZorraAltar extends Container {
 
     protected void broadcastData(IContainerListener crafting)
     {
-        crafting.sendWindowProperty(this, 0, this.enchantLevels[0]);
-        crafting.sendWindowProperty(this, 1, this.enchantLevels[1]);
-        crafting.sendWindowProperty(this, 2, this.enchantLevels[2]);
+        crafting.sendWindowProperty(this, 0, this.enchantCost[0]);
+        crafting.sendWindowProperty(this, 1, this.enchantCost[1]);
+        crafting.sendWindowProperty(this, 2, this.enchantCost[2]);
         crafting.sendWindowProperty(this, 3, this.xpSeed & -16);
-        crafting.sendWindowProperty(this, 4, this.enchantClue[0]);
-        crafting.sendWindowProperty(this, 5, this.enchantClue[1]);
-        crafting.sendWindowProperty(this, 6, this.enchantClue[2]);
-        crafting.sendWindowProperty(this, 7, this.worldClue[0]);
-        crafting.sendWindowProperty(this, 8, this.worldClue[1]);
-        crafting.sendWindowProperty(this, 9, this.worldClue[2]);
+        crafting.sendWindowProperty(this, 4, this.enchantId[0]);
+        crafting.sendWindowProperty(this, 5, this.enchantId[1]);
+        crafting.sendWindowProperty(this, 6, this.enchantId[2]);
+        crafting.sendWindowProperty(this, 7, this.enchantLvl[0]);
+        crafting.sendWindowProperty(this, 8, this.enchantLvl[1]);
+        crafting.sendWindowProperty(this, 9, this.enchantLvl[2]);
     }
 
     public void addListener(IContainerListener listener)
@@ -165,7 +164,7 @@ public class ContainerZorraAltar extends Container {
     {
         if (id >= 0 && id <= 2)
         {
-            this.enchantLevels[id] = data;
+            this.enchantCost[id] = data;
         }
         else if (id == 3)
         {
@@ -173,11 +172,11 @@ public class ContainerZorraAltar extends Container {
         }
         else if (id >= 4 && id <= 6)
         {
-            this.enchantClue[id - 4] = data;
+            this.enchantId[id - 4] = data;
         }
         else if (id >= 7 && id <= 9)
         {
-            this.worldClue[id - 7] = data;
+            this.enchantLvl[id - 7] = data;
         }
         else
         {
@@ -190,56 +189,46 @@ public class ContainerZorraAltar extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-        if (inventoryIn == this.tableInventory)
+        if (inventoryIn == tableInventory)
         {
-            ItemStack itemstack = inventoryIn.getStackInSlot(0);
+            ItemStack target = inventoryIn.getStackInSlot(0);
 
-            if (!itemstack.isEmpty() && (itemstack.isItemEnchantable() || itemstack.isItemEnchanted()))
+            if (!target.isEmpty() && target.getItem() instanceof IZorrasteelEquipment)
             {
-                if (!this.worldPointer.isRemote)
+                if (!worldPointer.isRemote)
                 {
-                    int power = 0;
+                	ZorraAltarManager manager = ((IZorrasteelEquipment)target.getItem()).getManager();
+                    rand.setSeed(xpSeed);
+                	EnchantmentData[] enchants = manager.getRandomEnchants(target, rand);
+                	
+                	for (int i = 0; i < 3; i++)
+                	{
+                		if (enchants[i] == null)
+                		{
+                			enchantCost[i] = 0;
+                			enchantId[i] = -1;
+                			enchantLvl[i] = -1;
+                		}
+                		else
+                		{
+                			enchantCost[i] = manager.getLevelCost(enchants[i]);
+                			//3rd is hidden but costs less
+                			if (i == 2) enchantCost[i] = Math.max(1, enchantCost[i] / 2);
+                            enchantId[i] = Enchantment.getEnchantmentID(enchants[i].enchantment);
+                            enchantLvl[i] = enchants[i].enchantmentLevel;
+                		}
+                	}
 
-                    this.rand.setSeed((long)this.xpSeed);
-
-                    for (int i1 = 0; i1 < 3; ++i1)
-                    {
-                        this.enchantLevels[i1] = EnchantmentHelper.calcItemStackEnchantability(this.rand, i1, power, itemstack);
-                        this.enchantClue[i1] = -1;
-                        this.worldClue[i1] = -1;
-
-                        if (this.enchantLevels[i1] < i1 + 1)
-                        {
-                            this.enchantLevels[i1] = 0;
-                        }
-                        this.enchantLevels[i1] = net.minecraftforge.event.ForgeEventFactory.onEnchantmentLevelSet(worldPointer, position, i1, power, itemstack, enchantLevels[i1]);
-                    }
-
-                    for (int j1 = 0; j1 < 3; ++j1)
-                    {
-                        if (this.enchantLevels[j1] > 0)
-                        {
-                            List<EnchantmentData> list = this.getEnchantmentList(itemstack, j1, this.enchantLevels[j1]);
-
-                            if (list != null && !list.isEmpty())
-                            {
-                                EnchantmentData enchantmentdata = list.get(this.rand.nextInt(list.size()));
-                                this.enchantClue[j1] = Enchantment.getEnchantmentID(enchantmentdata.enchantment);
-                                this.worldClue[j1] = enchantmentdata.enchantmentLevel;
-                            }
-                        }
-                    }
-
-                    this.detectAndSendChanges();
+                    detectAndSendChanges();
                 }
             }
             else
             {
                 for (int i = 0; i < 3; ++i)
                 {
-                    this.enchantLevels[i] = 0;
-                    this.enchantClue[i] = -1;
-                    this.worldClue[i] = -1;
+                    enchantCost[i] = 0;
+                    enchantId[i] = -1;
+                    enchantLvl[i] = -1;
                 }
             }
         }
@@ -250,59 +239,38 @@ public class ContainerZorraAltar extends Container {
      */
     public boolean enchantItem(EntityPlayer playerIn, int id)
     {
-        ItemStack itemstack = this.tableInventory.getStackInSlot(0);
-        ItemStack itemstack1 = this.tableInventory.getStackInSlot(1);
-        int i = id + 1;
+        ItemStack target = this.tableInventory.getStackInSlot(0);
+        ItemStack leaves = this.tableInventory.getStackInSlot(1);
+        int leafCost = id == 2 ? 3 : enchantLvl[id];
 
-        if ((itemstack1.isEmpty() || itemstack1.getCount() < i) && !playerIn.capabilities.isCreativeMode)
+        if ((leaves.isEmpty() || leaves.getCount() < leafCost) && !playerIn.capabilities.isCreativeMode)
         {
             return false;
         }
-        else if (this.enchantLevels[id] > 0 && !itemstack.isEmpty() && (playerIn.experienceLevel >= i && playerIn.experienceLevel >= this.enchantLevels[id] || playerIn.capabilities.isCreativeMode))
+        else if (enchantCost[id] > 0 && !target.isEmpty() && (playerIn.experienceLevel >= enchantCost[id] && playerIn.experienceLevel >= enchantCost[id] || playerIn.capabilities.isCreativeMode))
         {
             if (!this.worldPointer.isRemote)
             {
-                List<EnchantmentData> list = this.getEnchantmentList(itemstack, id, this.enchantLevels[id]);
-
-                if (!list.isEmpty())
+                if (enchantId[id] != -1 && enchantLvl[id] != -1)
                 {
-                    playerIn.onEnchant(itemstack, i);
-                    boolean flag = itemstack.getItem() == Items.BOOK;
-
-                    if (flag)
-                    {
-                        itemstack = new ItemStack(Items.ENCHANTED_BOOK);
-                        this.tableInventory.setInventorySlotContents(0, itemstack);
-                    }
+                    playerIn.onEnchant(target, enchantCost[id]);
                     
-                    NBTTagList existing = itemstack.getEnchantmentTagList();
-
-                    for (EnchantmentData enchantmentdata : list)
+                    Map<Enchantment,Integer> map = EnchantmentHelper.getEnchantments(target);
+                    Enchantment toApply = Enchantment.getEnchantmentByID(enchantId[id]);
+                    Integer lvl = map.get(toApply);
+                    
+                    if (lvl != null)
                     {
-                        if (flag)
-                        {
-                            ItemEnchantedBook.addEnchantment(itemstack, enchantmentdata);
-                        }
-                        else
-                        {
-                        	boolean found = false;
-                        	int eid = Enchantment.getEnchantmentID(enchantmentdata.enchantment);
-                        	for (int j=0;j<existing.tagCount();j++) {
-                        		NBTTagCompound compound = existing.getCompoundTagAt(j);
-                        		if (compound.getShort("id") == eid) {
-                        			found = true;
-                        			break;
-                        		}
-                        	}
-                            if (!found) itemstack.addEnchantment(enchantmentdata.enchantment, enchantmentdata.enchantmentLevel);
-                        }
+                    	map.put(toApply, enchantLvl[id]);
+                    	EnchantmentHelper.setEnchantments(map, target);
                     }
+                    else target.addEnchantment(toApply, enchantLvl[id]);
 
                     if (!playerIn.capabilities.isCreativeMode)
                     {
-                        itemstack1.shrink(i);
+                        leaves.shrink(leafCost);
 
-                        if (itemstack1.isEmpty())
+                        if (leaves.isEmpty())
                         {
                             this.tableInventory.setInventorySlotContents(1, ItemStack.EMPTY);
                         }
@@ -312,7 +280,7 @@ public class ContainerZorraAltar extends Container {
 
                     if (playerIn instanceof EntityPlayerMP)
                     {
-                        CriteriaTriggers.ENCHANTED_ITEM.trigger((EntityPlayerMP)playerIn, itemstack, i);
+                        CriteriaTriggers.ENCHANTED_ITEM.trigger((EntityPlayerMP)playerIn, target, enchantCost[id]);
                     }
 
                     this.tableInventory.markDirty();
@@ -330,17 +298,9 @@ public class ContainerZorraAltar extends Container {
         }
     }
 
-    private List<EnchantmentData> getEnchantmentList(ItemStack stack, int enchantSlot, int level)
+    public int getLeafAmount()
     {
-        this.rand.setSeed((long)(this.xpSeed + enchantSlot));
-        List<EnchantmentData> list = EnchantmentHelper.buildEnchantmentList(this.rand, stack, level, false);
-
-        return list;
-    }
-
-    public int getLapisAmount()
-    {
-        ItemStack itemstack = this.tableInventory.getStackInSlot(1);
+        ItemStack itemstack = tableInventory.getStackInSlot(1);
         return itemstack.isEmpty() ? 0 : itemstack.getCount();
     }
 

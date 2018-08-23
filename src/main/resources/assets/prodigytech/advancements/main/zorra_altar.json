@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:zorra_altar"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.zorra_altar.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.zorra_altar.description"
+        },
+        "frame": "goal"
+    },
+    "parent": "prodigytech:main/zorra_leaf",
+    "criteria": {
+        "reshaper": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:zorra_altar"
+                    }
+                ]
+            }
+        }
+    }
+}

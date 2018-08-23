@@ -1,6 +1,7 @@
 package lykrast.prodigytech.client.gui;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -165,7 +166,7 @@ public class GuiZorraAltar extends GuiContainer {
         RenderHelper.disableStandardItemLighting();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         EnchantmentNameParts.getInstance().reseedRandomGenerator((long)this.container.xpSeed);
-        int k = this.container.getLapisAmount();
+        int leaves = container.getLeafAmount();
 
         for (int l = 0; l < 3; ++l)
         {
@@ -173,7 +174,7 @@ public class GuiZorraAltar extends GuiContainer {
             int j1 = i1 + 20;
             this.zLevel = 0.0F;
             this.mc.getTextureManager().bindTexture(ENCHANTMENT_TABLE_GUI_TEXTURE);
-            int k1 = this.container.enchantLevels[l];
+            int k1 = this.container.enchantCost[l];
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
             if (k1 == 0)
@@ -188,7 +189,7 @@ public class GuiZorraAltar extends GuiContainer {
                 FontRenderer fontrenderer = this.mc.standardGalacticFontRenderer;
                 int i2 = 6839882;
 
-                if (((k < l + 1 || this.mc.player.experienceLevel < k1) && !this.mc.player.capabilities.isCreativeMode) || this.container.enchantClue[l] == -1) // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
+                if (((leaves < l + 1 || this.mc.player.experienceLevel < k1) && !this.mc.player.capabilities.isCreativeMode) || this.container.enchantId[l] == -1) // Forge: render buttons as disabled when enchantable but enchantability not met on lower levels
                 {
                     this.drawTexturedModalRect(i1, j + 14 + 19 * l, 0, 185, 108, 19);
                     this.drawTexturedModalRect(i1 + 1, j + 15 + 19 * l, 16 * l, 239, 16, 16);
@@ -231,55 +232,62 @@ public class GuiZorraAltar extends GuiContainer {
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.renderHoveredToolTip(mouseX, mouseY);
         boolean flag = this.mc.player.capabilities.isCreativeMode;
-        int i = this.container.getLapisAmount();
+        int leaves = this.container.getLeafAmount();
 
         for (int j = 0; j < 3; ++j)
         {
-            int k = this.container.enchantLevels[j];
-            Enchantment enchantment = Enchantment.getEnchantmentByID(this.container.enchantClue[j]);
-            int l = this.container.worldClue[j];
-            int i1 = j + 1;
+            int cost = container.enchantCost[j];
+            Enchantment enchantment = Enchantment.getEnchantmentByID(this.container.enchantId[j]);
+            int lvl = container.enchantLvl[j];
+            int leafCost = j == 2 ? 3 : container.enchantLvl[j];
 
-            if (this.isPointInRegion(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && k > 0)
+            if (this.isPointInRegion(60, 14 + 19 * j, 108, 17, mouseX, mouseY) && cost > 0)
             {
                 List<String> list = Lists.<String>newArrayList();
-                list.add("" + TextFormatting.WHITE + TextFormatting.ITALIC + I18n.format("container.enchant.clue", enchantment == null ? "" : enchantment.getTranslatedName(l)));
-
-                if(enchantment == null) java.util.Collections.addAll(list, "", TextFormatting.RED + I18n.format("forge.container.enchant.limitedEnchantability")); else
-                if (!flag)
+                if(enchantment == null) Collections.addAll(list, "", TextFormatting.RED + I18n.format("forge.container.enchant.limitedEnchantability"));
+                else
                 {
-                    list.add("");
-
-                    if (this.mc.player.experienceLevel < k)
+                    if (enchantment != null)
                     {
-                        list.add(TextFormatting.RED + I18n.format("container.enchant.level.requirement", this.container.enchantLevels[j]));
+                    	//Hide the 3rd
+                    	if (j == 2) list.add("" + TextFormatting.WHITE + TextFormatting.ITALIC + I18n.format("container.prodigytech.zorra_altar.unknown"));
+                    	else list.add(TextFormatting.WHITE + enchantment.getTranslatedName(lvl));
                     }
-                    else
+                    if (!flag)
                     {
-                        String s;
+                        list.add("");
 
-                        if (i1 == 1)
+                        if (this.mc.player.experienceLevel < cost)
                         {
-                            s = I18n.format("container.enchant.lapis.one");
+                            list.add(TextFormatting.RED + I18n.format("container.enchant.level.requirement", this.container.enchantCost[j]));
                         }
                         else
                         {
-                            s = I18n.format("container.enchant.lapis.many", i1);
-                        }
+                            String s;
 
-                        TextFormatting textformatting = i >= i1 ? TextFormatting.GRAY : TextFormatting.RED;
-                        list.add(textformatting + "" + s);
+                            if (leafCost == 1)
+                            {
+                                s = I18n.format("container.prodigytech.zorra_altar.leaves.one");
+                            }
+                            else
+                            {
+                                s = I18n.format("container.prodigytech.zorra_altar.leaves.many", leafCost);
+                            }
 
-                        if (i1 == 1)
-                        {
-                            s = I18n.format("container.enchant.level.one");
-                        }
-                        else
-                        {
-                            s = I18n.format("container.enchant.level.many", i1);
-                        }
+                            TextFormatting textformatting = leaves >= leafCost ? TextFormatting.GRAY : TextFormatting.RED;
+                            list.add(textformatting + "" + s);
 
-                        list.add(TextFormatting.GRAY + "" + s);
+                            if (container.enchantCost[j] == 1)
+                            {
+                                s = I18n.format("container.enchant.level.one");
+                            }
+                            else
+                            {
+                                s = I18n.format("container.enchant.level.many", container.enchantCost[j]);
+                            }
+
+                            list.add(TextFormatting.GRAY + "" + s);
+                        }
                     }
                 }
 
@@ -315,7 +323,7 @@ public class GuiZorraAltar extends GuiContainer {
 
         for (int i = 0; i < 3; ++i)
         {
-            if (this.container.enchantLevels[i] != 0)
+            if (this.container.enchantCost[i] != 0)
             {
                 flag = true;
             }

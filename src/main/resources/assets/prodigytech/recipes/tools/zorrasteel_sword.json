@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"Z",
+		"Z",
+		"S"
+	],
+	"key": {
+		"Z": { "type": "forge:ore_dict", "ore": "ingotZorrasteel" },
+		"S": { "type": "forge:ore_dict", "ore": "stickWood" }
+	},
+	"result": { "item": "prodigytech:zorrasteel_sword" }
+}

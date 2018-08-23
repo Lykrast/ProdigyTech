@@ -134,6 +134,8 @@ item.prodigytech.zorrasteel_ingot.name=Zorrasteel Ingot
 item.prodigytech.crystal_cutter.name=Crystal Cutter
 item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals\nRight click to partially harvest a grown Crystal
 
+item.prodigytech.zorrasteel_sword.name=Zorrasteel Sword
+
 #----------------------------
 #UI
 #----------------------------
@@ -167,6 +169,9 @@ container.prodigytech.battery_replenisher.energion.empty=Empty
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
 container.prodigytech.zorra_altar=Zorra Altar
+container.prodigytech.zorra_altar.unknown=???
+container.prodigytech.zorra_altar.leaves.one=1 Zorra Leaf
+container.prodigytech.zorra_altar.leaves.many=%s Zorra Leaves
 
 container.prodigytech.temperature=Air Temperature : %s°C
 container.prodigytech.temperature.output=Output Air Temperature : %s°C
@@ -220,6 +225,8 @@ advancements.prodigytech.main.zorra_leaf.title=Razor Sharp
 advancements.prodigytech.main.zorra_leaf.description=Reshape a Sapling into a Zorra Sapling and harvest its leaves to make Zorrasteel
 advancements.prodigytech.main.tartaric_aeroheater.title=Like Fire, Hellfire
 advancements.prodigytech.main.tartaric_aeroheater.description=Make a Tartaric Aeroheater
+advancements.prodigytech.main.zorra_altar.title=Experience Tranquility
+advancements.prodigytech.main.zorra_altar.description=Make a Zorra Altar
 
 #Rotary Grinder side
 advancements.prodigytech.main.meat_patty.title=I'm Lovin' It

@@ -3,15 +3,7 @@ package lykrast.prodigytech.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import lykrast.prodigytech.common.item.IItemCustomModel;
-import lykrast.prodigytech.common.item.ItemCrystalCutter;
-import lykrast.prodigytech.common.item.ItemEmptyBattery;
-import lykrast.prodigytech.common.item.ItemEnergionBattery;
-import lykrast.prodigytech.common.item.ItemEnergionBatteryCreative;
-import lykrast.prodigytech.common.item.ItemEnergionCrystalSeed;
-import lykrast.prodigytech.common.item.ItemFuel;
-import lykrast.prodigytech.common.item.ItemMysteryTreat;
-import lykrast.prodigytech.common.item.ItemSugarCube;
+import lykrast.prodigytech.common.item.*;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.CreativeTabsMysteryTreats;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
@@ -21,9 +13,11 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -43,7 +37,9 @@ public class ModItems {
 		energionBatteryCreative,
 		crystalCutter,
 		primordium, aeternusCrystal, mysteryTreat,
-		zorraLeaf, zorrasteelRaw, zorrasteelIngot;
+		zorraLeaf, zorrasteelRaw, zorrasteelIngot,
+		zorrasteelSword;
+	public static ToolMaterial materialZorrasteel;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
 	
@@ -118,6 +114,10 @@ public class ModItems {
 		zorraLeaf = initItem(new Item(), "zorra_leaf");
 		zorrasteelRaw = initItem(new Item(), "zorrasteel_raw");
 		zorrasteelIngot = initItem(new Item(), "zorrasteel_ingot");
+		
+		//Tools
+		materialZorrasteel = EnumHelper.addToolMaterial("zorrasteel", 4, 0, 8, 3, 0);
+		zorrasteelSword = initItem(new ItemZorrasteelSword(materialZorrasteel), "zorrasteel_sword");
 	}
 	
 	@SubscribeEvent

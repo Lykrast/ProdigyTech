@@ -8,7 +8,7 @@ import net.minecraft.potion.PotionEffect;
 
 public class CreativeTabsMysteryTreats extends CreativeTabs {
 	
-	public static final CreativeTabs INSTANCE = new CreativeTabsMysteryTreats(CreativeTabs.getNextID(), "ptmysterytreats");
+	//public static final CreativeTabs INSTANCE = new CreativeTabsMysteryTreats(CreativeTabs.getNextID(), "ptmysterytreats");
 
 	public CreativeTabsMysteryTreats(int index, String label) {
 		super(index, label);

@@ -5,7 +5,6 @@ import java.util.List;
 
 import lykrast.prodigytech.common.item.*;
 import lykrast.prodigytech.common.util.Config;
-import lykrast.prodigytech.common.util.CreativeTabsMysteryTreats;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -108,7 +107,7 @@ public class ModItems {
 		//Atomic Reshaper
 		primordium = initItem(new Item(), "primordium");
 		aeternusCrystal = initItem(new ItemFuel(12800), "aeternus_crystal");
-		mysteryTreat = initItem(new ItemMysteryTreat(3, 0.8F), "mystery_treat", CreativeTabsMysteryTreats.INSTANCE);
+		//mysteryTreat = initItem(new ItemMysteryTreat(3, 0.8F), "mystery_treat", CreativeTabsMysteryTreats.INSTANCE);
 		
 		//Zorra
 		zorraLeaf = initItem(new Item(), "zorra_leaf");

@@ -29,25 +29,54 @@ public class ZorraAltarManager {
 		SWORD.addEnchant(Enchantments.KNOCKBACK, 5);
 		SWORD.addEnchant(Enchantments.LOOTING, 6);
 		SWORD.addEnchant(Enchantments.SWEEPING, 6);
+
+		ItemStack checker = new ItemStack(Items.IRON_SWORD);
+		//We only want 1 Soulbound
+		boolean hasSoulbound = false;
+		
+		//Ender IO - UNTESTED
+		if (Loader.isModLoaded("enderio"))
+		{
+			SWORD.addModdedEnchant("enderio:witherweapon", 1, checker);
+			if (!hasSoulbound) {
+				if (SWORD.addModdedEnchant("enderio:soulbound", 1, checker)) hasSoulbound = true;
+			}
+		}
 		
 		//CoFH Core
 		if (Loader.isModLoaded("cofhcore"))
 		{
 			//CoFH Core makes enchants unapplicable and useless instead of not registering them when disabled individually
 			//So we use this dummy ItemStack to check if it's applicable
-			ItemStack checker = new ItemStack(Items.IRON_SWORD);
 			SWORD.addModdedEnchant("cofhcore:insight", 6, checker);
 			SWORD.addModdedEnchant("cofhcore:leech", 7, checker);
 			SWORD.addModdedEnchant("cofhcore:vorpal", 6, checker);
 
 			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("cofhcore:soulbound"));
-			if (soulbound != null && soulbound.canApply(checker))
+			if (!hasSoulbound && soulbound != null && soulbound.canApply(checker))
 			{
+				hasSoulbound = true;
 				//Check if it was configured to be permanent
 				if (soulbound.getMaxLevel() == 1) SWORD.addEnchant(soulbound, 1);
 				else SWORD.addEnchant(soulbound, 6);
 			}
 		}
+		
+		//Cyclic - UNTESTED
+		if (Loader.isModLoaded("cyclicmagic"))
+		{
+			SWORD.addModdedEnchant("cyclicmagic:beheading", 1, checker);
+			SWORD.addModdedEnchant("cyclicmagic:lifeleech", 5, checker);
+			SWORD.addModdedEnchant("cyclicmagic:venom", 5, checker);
+			SWORD.addModdedEnchant("cyclicmagic:expboost", 6, checker);
+		}
+		
+		//Draconic Evolution - UNTESTED
+		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchant("draconicevolution:enchant_reaper", 8, checker);
+		
+		//AbyssalCraft - UNTESTED
+		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchant("abyssalcraft:light_pierce", 8, checker);
+		
 	}
 	
 	private List<EnchantmentData> enchants;
@@ -61,7 +90,7 @@ public class ZorraAltarManager {
 	}
 	
 	/**
-	 * Adds the given enchantment to the pool, with the given maximul level
+	 * Adds the given enchantment to the pool, with the given maximum level
 	 * @param enchant enchantment to add
 	 * @param maxLvl maximum applicable level
 	 */
@@ -69,13 +98,21 @@ public class ZorraAltarManager {
 		enchants.add(new EnchantmentData(enchant, maxLvl));
 	}
 	
-	public void addModdedEnchant(String key, int maxLvl, ItemStack checker) {
+	/**
+	 * Attempts to add the given enchantment given its registry name
+	 * @param key registry name of the enchantment to add
+	 * @param maxLvl maximum applicable level
+	 * @param checker ItemStack that should be enchantable with the target enchantment, used to check if the enchantment is disabled
+	 * @return true if the enchant was found, could be applied and has been added, false otherwise
+	 */
+	public boolean addModdedEnchant(String key, int maxLvl, ItemStack checker) {
 		Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(key));
 		//CoFH Core makes enchantments unapplicable and useless instead of not registering them when disabled individually
 		//So we use this dummy ItemStack to check if it's applicable
-		if (enchant == null || !enchant.canApply(checker)) return;
+		if (enchant == null || !enchant.canApply(checker)) return false;
 		
 		addEnchant(enchant, maxLvl);
+		return true;
 	}
 	
 	/**

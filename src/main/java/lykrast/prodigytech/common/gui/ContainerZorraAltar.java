@@ -8,6 +8,7 @@ import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.item.IZorrasteelEquipment;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
+import lykrast.prodigytech.common.util.Config;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
@@ -213,7 +214,7 @@ public class ContainerZorraAltar extends Container {
                 		{
                 			enchantCost[i] = manager.getRandomLevelCost(enchants[i], rand);
                 			//3rd is hidden but costs less
-                			if (i == 2) enchantCost[i] = Math.max(1, enchantCost[i] / 2);
+                			if (i == 2) enchantCost[i] = Math.max(1, (int)(enchantCost[i] * Config.altarUnknownMult));
                             enchantId[i] = Enchantment.getEnchantmentID(enchants[i].enchantment);
                             enchantLvl[i] = enchants[i].enchantmentLevel;
                 		}

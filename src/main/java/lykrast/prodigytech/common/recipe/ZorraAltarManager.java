@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import lykrast.prodigytech.common.util.Config;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -124,9 +125,10 @@ public class ZorraAltarManager {
 	 * @return cost in level to apply it
 	 */
 	public int getLevelCost(EnchantmentData data) {
-		int lvl = data.enchantmentLevel;
-		if (lvl <= 1) return data.enchantment.getMinEnchantability(1);
-		else return data.enchantment.getMinEnchantability(lvl) - (data.enchantment.getMinEnchantability(lvl - 1) / 2);
+		int lvl = data.enchantmentLevel, cost;
+		if (lvl <= 1) cost = data.enchantment.getMinEnchantability(1);
+		else cost = data.enchantment.getMinEnchantability(lvl) - (data.enchantment.getMinEnchantability(lvl - 1) / 2);
+		return Math.max(1, (int)(cost * Config.altarCostMult));
 	}
 	
 	/**
@@ -136,7 +138,7 @@ public class ZorraAltarManager {
 	 * @return the cost randomly deviated
 	 */
 	public int deviate(int cost, Random rand) {
-		int deviation = Math.max(2, cost / 10);
+		int deviation = Math.max(Config.altarDeviationMin, (int)(cost * Config.altarDeviationMult));
 		return Math.max(1, cost - deviation + rand.nextInt(deviation * 2 + 1));
 	}
 	

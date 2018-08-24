@@ -5,10 +5,11 @@ import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraftforge.common.config.Configuration;
 
 public class Config {
-	private static final String CATEGORY_GENERAL = "General";
+	//private static final String CATEGORY_GENERAL = "General";
 	private static final String CATEGORY_MACHINES = "Machines";
 	private static final String CATEGORY_ENERGION = "Energion";
 	private static final String CATEGORY_AUTOMATION = "Automation";
+	private static final String CATEGORY_ALTAR = "Zorra Altar";
 	
 	//General
 	
@@ -34,6 +35,10 @@ public class Config {
 	//Automation
 	public static int extractorDelay, extractorMaxStack;
 	
+	//Zorra Altar
+	public static int altarDeviationMin;
+	public static float altarDeviationMult, altarCostMult, altarUnknownMult;
+	
 	public static void readConfig() {
 		Configuration cfg = CommonProxy.config;
 		try {
@@ -49,10 +54,11 @@ public class Config {
 	}
 	
 	private static void initGeneralConfig(Configuration cfg) {
-		cfg.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
+		//cfg.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
 		cfg.addCustomCategoryComment(CATEGORY_MACHINES, "Machines configuration");
 		cfg.addCustomCategoryComment(CATEGORY_ENERGION, "Energion configuration");
 		cfg.addCustomCategoryComment(CATEGORY_AUTOMATION, "Automation configuration");
+		cfg.addCustomCategoryComment(CATEGORY_ALTAR, "Zorra Altar configuration");
 
 		//-----------
 		// General
@@ -81,7 +87,7 @@ public class Config {
 				+ "If false, only recipes for vanilla ores and Prodigy Tech ingots will be registered");
 		//HeatSawmill
 		heatSawmillProcessTime = cfg.getInt("heatSawmillProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
-				"The base amount of time (in ticks) that the Heat Sawmill takes to process 1 item\n");
+				"The base amount of time (in ticks) that the Heat Sawmill takes to process 1 item");
 		heatSawmillPlankMultiplier = cfg.getFloat("heatSawmillPlankMultiplier", CATEGORY_MACHINES, 1.5F, 1.0F, 10.0F, 
 				"Multiplier to the amount of planks the Heat Sawmil can extract from a single log (compared to manual crafting)");
 		heatSawmillStickMultiplier = cfg.getFloat("heatSawmillStickMultiplier", CATEGORY_MACHINES, 2.0F, 1.0F, 10.0F, 
@@ -142,6 +148,22 @@ public class Config {
 				+ "1 means every tick, 20 means once every second and so on");
 		extractorMaxStack = cfg.getInt("extractorMaxStack", CATEGORY_AUTOMATION, 64, 1, 64, 
 				"How many items from a stack an Extractor can push/pull at once");
+		
+		//-----------
+		//Zorra Altar
+		//-----------
+		altarCostMult = cfg.getFloat("altarCostMult", CATEGORY_ALTAR, 1.0F, 0.0F, 10.0F, 
+				"A multiplier applied to all enchantment costs on the Zorra Altar\n"
+				+ "For example 1.5 means that everything costs 50% more than the base amount");
+		altarUnknownMult = cfg.getFloat("altarUnknownMult", CATEGORY_ALTAR, 0.5F, 0.0F, 10.0F, 
+				"Cost multiplier for the unknown option\n"
+				+ "For example 0.5 means that the unknown option only costs 50% of the normal cost");
+		altarDeviationMin = cfg.getInt("altarDeviationMin", CATEGORY_ALTAR, 2, 0, 100, 
+				"Minimum random level deviation for enchantment cost on the Zorra Altar\n"
+				+ "2 means that the cost can range from -2 to +2 at least");
+		altarDeviationMult = cfg.getFloat("altarDeviationMult", CATEGORY_ALTAR, 0.1F, 0.0F, 2.0F, 
+				"Maximum random level deviation for enchantment cost on the Zorra Altar, multiplied by the base cost\n"
+				+ "0.10 means that the cost can range from -10% to +10% (unless it's smaller than the min value)");
 	}
 
 }

@@ -83,6 +83,9 @@ public class ZorraAltarManager {
 		//Soul Shards Respawn
 		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchant("soulshardsrespawn:soul_stealer", 8, checker);
 		
+		//EvilCraft
+		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchant("evilcraft:life_stealing", 6, checker);
+		
 	}
 	
 	private List<EnchantmentData> enchants;

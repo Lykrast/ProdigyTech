@@ -6,6 +6,7 @@ import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.compat.crafttweaker.CraftTweakerHelper;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
+import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
@@ -42,6 +43,7 @@ public class CommonProxy {
 		//So it turns out there are several mods that do their oredict in Init like barbarians
 		//So that got moved from the Manager's init in order to work
 		HeatSawmillManager.INSTANCE.registerPlanks();
+		RotaryGrinderManager.INSTANCE.registerOres();;
 	}
 
 }

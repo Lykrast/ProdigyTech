@@ -26,12 +26,15 @@ public class MagneticReassemblerManager extends SimpleRecipeManager {
 		addRecipe("sand", new ItemStack(Blocks.GRAVEL));
 		
 		addRecipe("dustCoal", new ItemStack(Items.COAL));
-		addRecipe("dustIron", new ItemStack(Items.IRON_INGOT));
-		addRecipe("dustTinyIron", new ItemStack(Items.IRON_NUGGET), Config.magneticReassemblerProcessTime / 9);
-		addRecipe("dustGold", new ItemStack(Items.GOLD_INGOT));
-		addRecipe("dustTinyGold", new ItemStack(Items.GOLD_NUGGET), Config.magneticReassemblerProcessTime / 9);
-		addRecipe("dustDiamond", new ItemStack(Items.DIAMOND));
-		addRecipe("dustEmerald", new ItemStack(Items.EMERALD));
+		if (!Config.autoOreRecipes)
+		{
+			addRecipe("dustIron", new ItemStack(Items.IRON_INGOT));
+			addRecipe("dustTinyIron", new ItemStack(Items.IRON_NUGGET), Config.magneticReassemblerProcessTime / 9);
+			addRecipe("dustGold", new ItemStack(Items.GOLD_INGOT));
+			addRecipe("dustTinyGold", new ItemStack(Items.GOLD_NUGGET), Config.magneticReassemblerProcessTime / 9);
+			addRecipe("dustDiamond", new ItemStack(Items.DIAMOND));
+			addRecipe("dustEmerald", new ItemStack(Items.EMERALD));
+		}
 		addRecipe("dustQuartz", new ItemStack(Items.QUARTZ));
 		
 		addRecipe("dustFerramic", new ItemStack(ModItems.ferramicIngot));

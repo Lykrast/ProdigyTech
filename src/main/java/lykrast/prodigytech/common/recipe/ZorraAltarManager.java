@@ -34,8 +34,11 @@ public class ZorraAltarManager {
 		ItemStack checker = new ItemStack(Items.IRON_SWORD);
 		//We only want 1 Soulbound
 		boolean hasSoulbound = false;
+
+		//EnderCore
+		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchant("endercore:xpboost", 6, checker);
 		
-		//Ender IO - UNTESTED
+		//Ender IO
 		if (Loader.isModLoaded("enderio"))
 		{
 			SWORD.addModdedEnchant("enderio:witherweapon", 1, checker);
@@ -63,22 +66,21 @@ public class ZorraAltarManager {
 			}
 		}
 		
-		//Cyclic - UNTESTED
+		//Cyclic
 		if (Loader.isModLoaded("cyclicmagic"))
 		{
-			SWORD.addModdedEnchant("cyclicmagic:beheading", 1, checker);
-			SWORD.addModdedEnchant("cyclicmagic:lifeleech", 5, checker);
-			SWORD.addModdedEnchant("cyclicmagic:venom", 5, checker);
-			SWORD.addModdedEnchant("cyclicmagic:expboost", 6, checker);
+			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checker);
+			SWORD.addModdedEnchant("cyclicmagic:enchantment.lifeleech", 5, checker);
+			SWORD.addModdedEnchant("cyclicmagic:enchantment.venom", 5, checker);
 		}
 		
-		//Draconic Evolution - UNTESTED
+		//Draconic Evolution
 		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchant("draconicevolution:enchant_reaper", 8, checker);
 		
-		//AbyssalCraft - UNTESTED
+		//AbyssalCraft
 		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchant("abyssalcraft:light_pierce", 8, checker);
 		
-		//Soul Shards Respawn - UNTESTED
+		//Soul Shards Respawn
 		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchant("soulshardsrespawn:soul_stealer", 8, checker);
 		
 	}

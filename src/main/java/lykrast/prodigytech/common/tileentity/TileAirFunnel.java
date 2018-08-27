@@ -12,7 +12,7 @@ public class TileAirFunnel extends TileEntity implements IHotAir {
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !world.isBlockPowered(pos))
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -21,14 +21,15 @@ public class TileAirFunnel extends TileEntity implements IHotAir {
 	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !world.isBlockPowered(pos))
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
 			return (T)this;
 		return super.getCapability(capability, facing);
 	}
 
 	@Override
 	public int getOutAirTemperature() {
-		return TemperatureHelper.getBlockTemp(world, pos.down());
+		if (world.isBlockPowered(pos)) return 30;
+		else return TemperatureHelper.getBlockTemp(world, pos.down());
 	}
 
 }

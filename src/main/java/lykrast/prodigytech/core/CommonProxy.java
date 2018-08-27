@@ -5,6 +5,7 @@ import java.io.File;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.compat.crafttweaker.CraftTweakerHelper;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
+import lykrast.prodigytech.common.network.PacketHandler;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
@@ -28,6 +29,7 @@ public class CommonProxy {
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
         CapabilityHotAir.register();
+        PacketHandler.registerMessages("prodigytech");
         
         if (Loader.isModLoaded("crafttweaker")) CraftTweakerHelper.preInit();
 	}

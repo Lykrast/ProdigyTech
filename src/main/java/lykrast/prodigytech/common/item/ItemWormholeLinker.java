@@ -18,7 +18,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -36,6 +36,8 @@ public class ItemWormholeLinker extends Item {
 		TileWormholeFunnel tile = BlockWormholeFunnel.getTileEntity(worldIn, pos);
 		if (tile == null) return EnumActionResult.FAIL;
 		
+		if (worldIn.isRemote) return EnumActionResult.SUCCESS;
+		
 		ItemStack stack = player.getHeldItem(hand);
 		//Linked pos
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Pos"))
@@ -47,23 +49,33 @@ public class ItemWormholeLinker extends Item {
 			nbt.removeTag("Pos");
 			stack.setTagCompound(nbt);
 			
+			//Check range
+			if (!tile.isInRange(targetPos)) 
+			{
+				player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error.distance"), true);
+				return EnumActionResult.SUCCESS;
+			}
+			
+			//Check if original tile is here
 			TileWormholeFunnel targetTile = BlockWormholeFunnel.getTileEntity(worldIn, targetPos);
 			if (targetTile == null)
 			{
-				player.sendStatusMessage(new TextComponentString("Original Funnel was removed."), true);
-				return EnumActionResult.FAIL;
-			}
-			
-			if (tile.createLink(targetTile))
-			{
-				player.sendStatusMessage(new TextComponentString("Link created between " + targetPos + " and " + pos), true);
+				player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error.lost"), true);
 				return EnumActionResult.SUCCESS;
 			}
-			else
+			
+			//Check if funnels are compatible
+			if (tile.isInput() == targetTile.isInput())
 			{
-				player.sendStatusMessage(new TextComponentString("Link could not be created"), true);
-				return EnumActionResult.FAIL;
+				player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error.incompatible"), true);
+				return EnumActionResult.SUCCESS;
 			}
+			
+			//Create the link
+			if (tile.createLink(targetTile)) player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.success"), true);
+			else player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error"), true);
+			
+			return EnumActionResult.SUCCESS;
 		}
 		//No linked pos
 		else
@@ -76,7 +88,7 @@ public class ItemWormholeLinker extends Item {
 			
 			stack.setTagCompound(nbt);
 			
-			player.sendStatusMessage(new TextComponentString("Linking with " + pos), true);
+			player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.start"), true);
 			return EnumActionResult.SUCCESS;
 		}
 	}

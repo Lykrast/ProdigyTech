@@ -193,6 +193,15 @@ container.prodigytech.atomic_reshaper.primordium.empty=Empty
 container.prodigytech.linear_extractor=Linear Extractor
 container.prodigytech.funnelling_extractor=Funnelling Extractor
 
+#Status messages
+#Wormhole Linker
+status.prodigytech.wormhole_linker.start=Linking started.
+status.prodigytech.wormhole_linker.success=§aLinking sucessful.
+status.prodigytech.wormhole_linker.error=§cLink could not be created.
+status.prodigytech.wormhole_linker.error.distance=§cFunnels are too far apart.
+status.prodigytech.wormhole_linker.error.incompatible=§cFunnels are not in compatible positions.
+status.prodigytech.wormhole_linker.error.lost=§cOriginal Funnel cannot be found.
+
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
 container.prodigytech.jei.ptexplosionfurnace.required=EP/item : %d

@@ -22,6 +22,10 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 		down = isDown;
 	}
 	
+	public boolean isInput() {
+		return down;
+	}
+	
 	public boolean isLinked() {
 		return linkedPos != null;
 	}
@@ -32,6 +36,16 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 	
 	public BlockPos getLinkedPos() {
 		return linkedPos;
+	}
+	
+	public boolean isInRange(BlockPos target) {
+		return distance(pos.getX(), target.getX()) <= 8
+				&& distance(pos.getY(), target.getY()) <= 8
+				&& distance(pos.getZ(), target.getZ()) <= 8;
+	}
+	
+	private int distance(int a, int b) {
+		return Math.abs(a - b);
 	}
 	
 	/**
@@ -54,6 +68,8 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 		
 		BlockWormholeFunnel.setActive(true, world, pos);
 		BlockWormholeFunnel.setActive(true, world, linkedPos);
+		
+		markDirty();
 		
 		return true;
 	}
@@ -94,6 +110,8 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 			BlockWormholeFunnel.setActive(false, world, pos);
 			linkedPos = null;
 		}
+		
+		markDirty();
 	}
 	
 	/**
@@ -113,14 +131,10 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
         super.invalidate();
     }
 	
-	private boolean canOutput() {
-		return !down && isActive();
-	}
-	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && canOutput())
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !down)
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -129,7 +143,7 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && canOutput())
+		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !down)
 			return (T)this;
 		return super.getCapability(capability, facing);
 	}

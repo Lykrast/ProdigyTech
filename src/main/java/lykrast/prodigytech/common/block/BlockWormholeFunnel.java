@@ -4,6 +4,8 @@ import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.item.ItemBlockInfoShift;
+import lykrast.prodigytech.common.network.PacketHandler;
+import lykrast.prodigytech.common.network.PacketWormholeDisplay;
 import lykrast.prodigytech.common.tileentity.TileWormholeFunnel;
 import lykrast.prodigytech.common.util.TemperatureHelper;
 import net.minecraft.block.ITileEntityProvider;
@@ -16,13 +18,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -40,22 +43,21 @@ public class BlockWormholeFunnel extends BlockGeneric implements ITileEntityProv
 	
 	@Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (playerIn.getHeldItem(hand).getItem() == ModItems.wormholeLinker) return false;
+        Item item = playerIn.getHeldItem(hand).getItem();
+		if (item == ModItems.wormholeLinker || item instanceof ItemBlock) return false;
 		
-		if (worldIn.isRemote) return true;
-        else
-        {
+		if (!worldIn.isRemote)
+		{
         	TileWormholeFunnel tile = getTileEntity(worldIn,pos);
 
-            if (tile != null)
+            if (tile != null && tile.isLinked() && tile.isActive() && playerIn instanceof EntityPlayerMP)
             {
-            	if (!tile.isLinked()) playerIn.sendMessage(new TextComponentString("Funnel is not linked."));
-            	else if (!tile.isActive()) playerIn.sendMessage(new TextComponentString("Funnel is linked to " + tile.getLinkedPos() + " but inactive."));
-            	else playerIn.sendMessage(new TextComponentString("Funnel is linked to " + tile.getLinkedPos() + " and active!"));
+            	BlockPos linked = tile.getLinkedPos();
+            	PacketHandler.INSTANCE.sendTo(new PacketWormholeDisplay(pos, linked), (EntityPlayerMP) playerIn);
             }
-
-            return true;
         }
+		
+		return true;
     }
 
 	public static void setActive(boolean active, World worldIn, BlockPos pos) {

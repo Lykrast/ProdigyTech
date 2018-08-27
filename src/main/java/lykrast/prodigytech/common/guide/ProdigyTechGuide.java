@@ -9,7 +9,7 @@ import amerifrance.guideapi.api.GuideBook;
 import amerifrance.guideapi.api.IGuideBook;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.BookBinder;
-import lykrast.prodigytech.common.guide.categories.CategoryAutomation;
+import lykrast.prodigytech.common.guide.categories.CategoryLogistics;
 import lykrast.prodigytech.common.guide.categories.CategoryCircuits;
 import lykrast.prodigytech.common.guide.categories.CategoryEnergion;
 import lykrast.prodigytech.common.guide.categories.CategoryHotAir;
@@ -50,7 +50,7 @@ public class ProdigyTechGuide implements IGuideBook {
 		book.addCategory(CategoryCircuits.build());
 		book.addCategory(CategoryEnergion.build());
 		book.addCategory(CategoryPrimordium.build());
-		book.addCategory(CategoryAutomation.build());
+		book.addCategory(CategoryLogistics.build());
 		
 		return book.build();
 	}
@@ -62,7 +62,7 @@ public class ProdigyTechGuide implements IGuideBook {
 		CategoryCircuits.buildMap();
 		CategoryEnergion.buildMap();
 		CategoryPrimordium.buildMap();
-		CategoryAutomation.buildMap();
+		CategoryLogistics.buildMap();
 	}
 	
     @Nullable

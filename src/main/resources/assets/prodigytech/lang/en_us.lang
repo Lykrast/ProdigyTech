@@ -57,7 +57,7 @@ tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
 #Funnels
 tile.prodigytech.wormhole_funnel.name=Wormhole Funnel
-tile.prodigytech.wormhole_funnel.tooltip=Transmits hot air to another Wormhole Funnel\nLink with a Wormhole Linker
+tile.prodigytech.wormhole_funnel.tooltip=Transmits hot air to another Wormhole Funnel\nLink with a Wormhole Linker\nRight click to see the linked Funnel
 #Extractors
 tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls items from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
@@ -139,7 +139,7 @@ item.prodigytech.zorrasteel_ingot.name=Zorrasteel Ingot
 item.prodigytech.crystal_cutter.name=Crystal Cutter
 item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals\nRight click to partially harvest a grown Crystal
 item.prodigytech.wormhole_linker.name=Wormhole Linker
-item.prodigytech.wormhole_linker.tooltip=Links Wormhole Funnels together\nRight click one then the other to link
+item.prodigytech.wormhole_linker.tooltip=Links Wormhole Funnels together\nRight click one then the other to link them
 
 item.prodigytech.zorrasteel_sword.name=Zorrasteel Sword
 
@@ -274,7 +274,7 @@ guide.prodigytech.category.circuits=Circuits
 guide.prodigytech.category.energion=Energion
 guide.prodigytech.category.primordium=Primordium
 
-guide.prodigytech.category.automation=Automation
+guide.prodigytech.category.logistics=Logistics
 
 #Entries
 #Introduction
@@ -358,6 +358,9 @@ guide.prodigytech.entry.primordium.zorra_altar.content3=With enough experience, 
 guide.prodigytech.entry.primordium.mystery_treat.content1=Mystery Treats are edible candy made from reshaping Sugar. They have 1 or 2 colors, each color representing a potion effect which will be granted by eating the Treat.
 guide.prodigytech.entry.primordium.mystery_treat.content2=For 2 colors Treats, a color that appears on the 2 stripes will have a weaker effect than if it appeared on the rest of the Treat. A single colored Treat will always have a stronger effect.
 
-#Automation
-guide.prodigytech.entry.automation.linear.content=The Linear Extractor is the simplest of the Extractors. It will quickly pull items from an inventory in front of it and push them to an inventory on the opposite side, or keep it in its small internal inventory. It can be oriented in any direction and disabled with redstone.
-guide.prodigytech.entry.automation.funnelling.content=The Funnelling Extractor is similar to the Linear one, but pulls from all 5 sides it is not pushing to. Items are pulled in a specific order, with the opposite side of the pushing one always being the first one.
+#Logistics
+guide.prodigytech.entry.logistics.linear.content=The Linear Extractor is the simplest of the Extractors. It will quickly pull items from an inventory in front of it and push them to an inventory on the opposite side, or keep it in its small internal inventory. It can be oriented in any direction and disabled with redstone.
+guide.prodigytech.entry.logistics.funnelling.content=The Funnelling Extractor is similar to the Linear one, but pulls from all 5 sides it is not pushing to. Items are pulled in a specific order, with the opposite side of the pushing one always being the first one.
+guide.prodigytech.entry.logistics.wormhole.content1=The Wormhole Funnel is the only way to transmit Hot Air horizontally. It can either be placed on top or below a block, and when linked with another Wormhole Funnel in the opposite position they will transmit Hot Air between eachother.
+guide.prodigytech.entry.logistics.wormhole.content2=Wormhole Funnels can be linked by using a Wormhole Linker. Right click a Funnel then the other to link them. Once linked you can right click any of the two Funnels with anything that's not a block or the Linker to show you where the other Funnel is.
+guide.prodigytech.entry.logistics.wormhole.content3=A Wormhole Funnel can only be linked to another Funnel in the same dimension and less than 8 blocks away on all axis. It also can only be linked to one other Funnel at a time.

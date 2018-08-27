@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"FEF",
+		"FCF"
+	],
+	"key": {
+		"E": { "type": "forge:ore_dict", "ore": "enderpearl" },
+		"C": { "item": "prodigytech:circuit_crude" },
+		"F": { "type": "forge:ore_dict", "ore": "ingotFerramic" }
+	},
+	"result": { "item": "prodigytech:wormhole_funnel", "count": 2 }
+}

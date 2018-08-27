@@ -29,7 +29,7 @@ public class ModBlocks {
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, energionCrystal, automaticCrystalCutter, batteryReplenisher, 
 		primordialisReactor, atomicReshaper, zorraAltar,
-		airFunnel, linearExtractor, funnellingExtractor,
+		airFunnel, wormholeFunnel, linearExtractor, funnellingExtractor,
 		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
 		ashBricks, particleBoard, particleBoardPlanks;
@@ -79,9 +79,13 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAtomicReshaper.class, ProdigyTech.resource("atomic_reshaper"));
 		zorraAltar = initBlock(new BlockZorraAltar(6.0F, 180.0F, 3), "zorra_altar");
 		
-		//Misc Ferramic tier
+		//Logistics
+		//Funnels
 		airFunnel = initBlock(new BlockAirFunnel(6.0F, 45.0F, 1), "air_funnel");
 		GameRegistry.registerTileEntity(TileAirFunnel.class, ProdigyTech.resource("air_funnel"));
+		wormholeFunnel = initBlock(new BlockWormholeFunnel(6.0F, 45.0F, 1), "wormhole_funnel");
+		GameRegistry.registerTileEntity(TileWormholeFunnel.class, ProdigyTech.resource("wormhole_funnel"));
+		//Extractors
 		linearExtractor = initBlock(new BlockLinearExtractor(6.0F, 45.0F, 1), "linear_extractor");
 		GameRegistry.registerTileEntity(TileLinearExtractor.class, ProdigyTech.resource("linear_extractor"));
 		funnellingExtractor = initBlock(new BlockFunnellingExtractor(6.0F, 45.0F, 1), "funnelling_extractor");

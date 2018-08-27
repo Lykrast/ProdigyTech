@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "active=false,down=true": { "model": "prodigytech:wormhole_funnel_down" },
+        "active=true,down=true": { "model": "prodigytech:wormhole_funnel_down_active" },
+        "active=false,down=false": { "model": "prodigytech:wormhole_funnel_up" },
+        "active=true,down=false": { "model": "prodigytech:wormhole_funnel_up_active" }
+    }
+}

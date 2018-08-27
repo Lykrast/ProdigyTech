@@ -1,0 +1,6 @@
+{
+    "parent": "prodigytech:block/wormhole_funnel_down",
+    "textures": {
+		"top": "prodigytech:blocks/wormhole_funnel_top_active"
+    }
+}

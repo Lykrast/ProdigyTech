@@ -34,7 +34,7 @@ public class ModItems {
 		energionCrystalSeed, energionDust, 
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
-		crystalCutter,
+		crystalCutter, wormholeLinker,
 		primordium, aeternusCrystal, mysteryTreat,
 		zorraLeaf, zorrasteelRaw, zorrasteelIngot,
 		zorrasteelSword;
@@ -102,6 +102,7 @@ public class ModItems {
 		
 		//Tools
 		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
+		wormholeLinker = initItem(new ItemWormholeLinker(), "wormhole_linker");
 		//toolTest = initItem(new ItemEnergionUser(), "tool_test");
 		
 		//Atomic Reshaper

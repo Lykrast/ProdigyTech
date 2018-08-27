@@ -51,9 +51,14 @@ tile.prodigytech.atomic_reshaper.tooltip=Turns things into other things\nusing P
 tile.prodigytech.zorra_altar.name=Zorra Altar
 tile.prodigytech.zorra_altar.tooltip=Applies or upgrades enchantments\non Zorrasteel equipment
 
-#Misc tech
+#Logistics
+#Funnels
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
+#Funnels
+tile.prodigytech.wormhole_funnel.name=Wormhole Funnel
+tile.prodigytech.wormhole_funnel.tooltip=Transmits hot air to another Wormhole Funnel\nLink with a Wormhole Linker
+#Extractors
 tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls items from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
 tile.prodigytech.funnelling_extractor.name=Funnelling Extractor
@@ -133,6 +138,8 @@ item.prodigytech.zorrasteel_ingot.name=Zorrasteel Ingot
 
 item.prodigytech.crystal_cutter.name=Crystal Cutter
 item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals\nRight click to partially harvest a grown Crystal
+item.prodigytech.wormhole_linker.name=Wormhole Linker
+item.prodigytech.wormhole_linker.tooltip=Links Wormhole Funnels together\nRight click one then the other to link
 
 item.prodigytech.zorrasteel_sword.name=Zorrasteel Sword
 

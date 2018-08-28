@@ -6,10 +6,14 @@ import javax.annotation.Nullable;
 
 import lykrast.prodigytech.common.block.BlockWormholeFunnel;
 import lykrast.prodigytech.common.init.ModBlocks;
+import lykrast.prodigytech.common.network.PacketHandler;
+import lykrast.prodigytech.common.network.PacketWormholeDisplay;
 import lykrast.prodigytech.common.tileentity.TileWormholeFunnel;
 import lykrast.prodigytech.common.util.TooltipUtil;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -72,7 +76,12 @@ public class ItemWormholeLinker extends Item {
 			}
 			
 			//Create the link
-			if (tile.createLink(targetTile)) player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.success"), true);
+			if (tile.createLink(targetTile))
+			{
+				player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.success"), true);
+				if (player instanceof EntityPlayerMP)
+            	PacketHandler.INSTANCE.sendTo(new PacketWormholeDisplay(targetPos, pos), (EntityPlayerMP) player);
+			}
 			else player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error"), true);
 			
 			return EnumActionResult.SUCCESS;
@@ -97,6 +106,7 @@ public class ItemWormholeLinker extends Item {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Pos")) tooltip.add(I18n.format(stack.getUnlocalizedName() + ".tooltip.linking"));
 		if (TooltipUtil.addShiftTooltip(tooltip)) TooltipUtil.addTooltip(stack, tooltip);
 	}
 }

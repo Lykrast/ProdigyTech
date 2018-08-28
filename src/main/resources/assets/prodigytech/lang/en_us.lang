@@ -136,10 +136,12 @@ item.prodigytech.zorra_leaf.name=Zorra Leaf
 item.prodigytech.zorrasteel_raw.name=Raw Zorrasteel Ingot
 item.prodigytech.zorrasteel_ingot.name=Zorrasteel Ingot
 
+#Tools
 item.prodigytech.crystal_cutter.name=Crystal Cutter
 item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals\nRight click to partially harvest a grown Crystal
 item.prodigytech.wormhole_linker.name=Wormhole Linker
 item.prodigytech.wormhole_linker.tooltip=Links Wormhole Funnels together\nRight click one then the other to link them
+item.prodigytech.wormhole_linker.tooltip.linking=Linking in progress
 
 item.prodigytech.zorrasteel_sword.name=Zorrasteel Sword
 

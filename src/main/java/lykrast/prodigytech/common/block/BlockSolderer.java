@@ -95,6 +95,16 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
         super.breakBlock(worldIn, pos, state);
     }
 
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+        return getTileEntity(worldIn, pos).getComparatorOutput();
+    }
+
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */

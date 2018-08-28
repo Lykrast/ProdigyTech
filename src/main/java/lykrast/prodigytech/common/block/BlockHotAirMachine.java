@@ -20,11 +20,9 @@ public abstract class BlockHotAirMachine<T extends TileMachineInventory> extends
 		super(Material.IRON, SoundType.METAL, hardness, resistance, "pickaxe", harvestLevel, tile);
 	}
 
-	/**
-     * Called when the given entity walks on this Block
-     */
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
-    {
+
+    @Override
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
         TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 
         super.onEntityWalk(worldIn, pos, entityIn);
@@ -32,11 +30,8 @@ public abstract class BlockHotAirMachine<T extends TileMachineInventory> extends
     
     protected abstract int getGuiID();
 
-    /**
-     * Called when the block is right clicked by a player.
-     */
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (worldIn.isRemote)
         {
             return true;
@@ -55,11 +50,8 @@ public abstract class BlockHotAirMachine<T extends TileMachineInventory> extends
         }
     }
 
-    /**
-     * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
-     */
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
-    {
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
     	T tile = getTileEntity(worldIn, pos);
 
         if (tile != null)
@@ -68,6 +60,16 @@ public abstract class BlockHotAirMachine<T extends TileMachineInventory> extends
         }
         
         super.breakBlock(worldIn, pos, state);
+    }
+
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+        return getTileEntity(worldIn, pos).getComparatorOutput();
     }
 
 }

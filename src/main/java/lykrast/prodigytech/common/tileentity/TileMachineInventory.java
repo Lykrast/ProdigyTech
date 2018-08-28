@@ -10,6 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
@@ -104,6 +105,24 @@ public abstract class TileMachineInventory extends TileEntity implements IProdig
         ItemStackHelper.saveAllItems(compound, inventory);
 
         return compound;
+    }
+    
+    public int getComparatorOutput() {
+    	//Same math as Container.calcRedstoneFromInventory
+        int count = 0;
+        float power = 0.0F;
+
+        for (ItemStack stack : inventory)
+        {
+            if (!stack.isEmpty())
+            {
+                power += stack.getCount() / (float)Math.min(getInventoryStackLimit(), stack.getMaxStackSize());
+                ++count;
+            }
+        }
+
+        power = power / inventory.size();
+        return MathHelper.floor(power * 14.0F) + (count > 0 ? 1 : 0);
     }
 
 	@Override

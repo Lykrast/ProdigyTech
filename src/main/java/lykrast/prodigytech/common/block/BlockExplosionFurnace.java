@@ -158,6 +158,16 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
         super.breakBlock(worldIn, pos, state);
     }
 
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+        return getTileEntity(worldIn, pos).getComparatorOutput();
+    }
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void setCustomStateMapper() {

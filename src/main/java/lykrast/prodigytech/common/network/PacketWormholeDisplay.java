@@ -48,23 +48,21 @@ public class PacketWormholeDisplay implements IMessage {
 
 		private void handle(PacketWormholeDisplay message, MessageContext ctx) {
 			World world = Minecraft.getMinecraft().world;
-			if (world.isBlockLoaded(message.origin) && world.isBlockLoaded(message.target)) {
-				BlockPos origin = message.origin;
-				BlockPos target = message.target;
-            	Vec3d dir = new Vec3d(target.getX() - origin.getX(), target.getY() - origin.getY(), target.getZ() - origin.getZ());
-            	int count = (int)(dir.lengthVector() * 4);
-            	dir = dir.normalize();
-            	double dx = dir.x * 0.25, dy = dir.y * 0.25, dz = dir.z * 0.25;
-            	double vx = dx * 0.1, vy = dy * 0.1, vz = dz * 0.1;
-            	
-            	double x = origin.getX() + 0.5, y = origin.getY() + 0.5, z = origin.getZ() + 0.5;
-            	for (int i = 0; i < count; i++)
-            	{
-            		world.spawnParticle(EnumParticleTypes.END_ROD, x, y, z, vx, vy, vz);
-            		x += dx;
-            		y += dy;
-            		z += dz;
-            	}
+			BlockPos origin = message.origin;
+			BlockPos target = message.target;
+			Vec3d dir = new Vec3d(target.getX() - origin.getX(), target.getY() - origin.getY(), target.getZ() - origin.getZ());
+			int count = (int) (dir.lengthVector() * 4);
+			dir = dir.normalize();
+			double dx = dir.x * 0.25, dy = dir.y * 0.25, dz = dir.z * 0.25;
+			double vx = dx * 0.1, vy = dy * 0.1, vz = dz * 0.1;
+
+			double x = origin.getX() + 0.5, y = origin.getY() + 0.5, z = origin.getZ() + 0.5;
+			for (int i = 0; i < count; i++)
+			{
+				world.spawnParticle(EnumParticleTypes.END_ROD, x, y, z, vx, vy, vz);
+				x += dx;
+				y += dy;
+				z += dz;
 			}
 		}
 	}

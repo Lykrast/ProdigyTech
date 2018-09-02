@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 @Mod(modid = ProdigyTech.MODID, 
 	name = ProdigyTech.NAME, 
@@ -28,12 +29,15 @@ public class ProdigyTech
 	public static ProdigyTech instance;
 	
 	public static Logger logger = LogManager.getLogger(MODID);
+	
+	public static SimpleNetworkWrapper networkChannel;
     
-    @SidedProxy(clientSide = "lykrast.prodigytech.core.ClientProxy", serverSide = "lykrast.prodigytech.core.CommonProxy")
+    @SidedProxy(clientSide = "lykrast.prodigytech.core.ClientProxy", serverSide = "lykrast.prodigytech.core.ServerProxy")
 	public static CommonProxy proxy;
     
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
+		networkChannel = proxy.createNetworkChannel();
 		proxy.preInit(e);
 	}
 

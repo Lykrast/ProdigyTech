@@ -4,10 +4,10 @@ import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.item.ItemBlockInfoShift;
-import lykrast.prodigytech.common.network.PacketHandler;
 import lykrast.prodigytech.common.network.PacketWormholeDisplay;
 import lykrast.prodigytech.common.tileentity.TileWormholeFunnel;
 import lykrast.prodigytech.common.util.TemperatureHelper;
+import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -53,7 +53,7 @@ public class BlockWormholeFunnel extends BlockGeneric implements ITileEntityProv
             if (tile != null && tile.isLinked() && tile.isActive() && playerIn instanceof EntityPlayerMP)
             {
             	BlockPos linked = tile.getLinkedPos();
-            	PacketHandler.INSTANCE.sendTo(new PacketWormholeDisplay(pos, linked), (EntityPlayerMP) playerIn);
+            	ProdigyTech.networkChannel.sendTo(new PacketWormholeDisplay(pos, linked), (EntityPlayerMP) playerIn);
             }
         }
 		

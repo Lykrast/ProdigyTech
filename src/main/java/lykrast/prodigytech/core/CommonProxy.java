@@ -5,7 +5,6 @@ import java.io.File;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.compat.crafttweaker.CraftTweakerHelper;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
-import lykrast.prodigytech.common.network.PacketHandler;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
@@ -17,9 +16,15 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public class CommonProxy {
 	public static Configuration config;
+	
+	public SimpleNetworkWrapper createNetworkChannel() {
+		SimpleNetworkWrapper channel = NetworkRegistry.INSTANCE.newSimpleChannel(ProdigyTech.MODID);
+		return channel;
+	}
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
@@ -29,7 +34,6 @@ public class CommonProxy {
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
         CapabilityHotAir.register();
-        PacketHandler.registerMessages("prodigytech");
         
         if (Loader.isModLoaded("crafttweaker")) CraftTweakerHelper.preInit();
 	}

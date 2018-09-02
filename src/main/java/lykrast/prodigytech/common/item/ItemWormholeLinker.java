@@ -6,10 +6,10 @@ import javax.annotation.Nullable;
 
 import lykrast.prodigytech.common.block.BlockWormholeFunnel;
 import lykrast.prodigytech.common.init.ModBlocks;
-import lykrast.prodigytech.common.network.PacketHandler;
 import lykrast.prodigytech.common.network.PacketWormholeDisplay;
 import lykrast.prodigytech.common.tileentity.TileWormholeFunnel;
 import lykrast.prodigytech.common.util.TooltipUtil;
+import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -80,7 +80,7 @@ public class ItemWormholeLinker extends Item {
 			{
 				player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.success"), true);
 				if (player instanceof EntityPlayerMP)
-            	PacketHandler.INSTANCE.sendTo(new PacketWormholeDisplay(targetPos, pos), (EntityPlayerMP) player);
+            	ProdigyTech.networkChannel.sendTo(new PacketWormholeDisplay(targetPos, pos), (EntityPlayerMP) player);
 			}
 			else player.sendStatusMessage(new TextComponentTranslation("status.prodigytech.wormhole_linker.error"), true);
 			

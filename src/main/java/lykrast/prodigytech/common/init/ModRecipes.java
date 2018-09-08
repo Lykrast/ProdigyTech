@@ -51,6 +51,7 @@ public class ModRecipes {
 		OreDictionary.registerOre("dustDiamond", ModItems.diamondDust);
 		OreDictionary.registerOre("dustEmerald", ModItems.emeraldDust);
 		OreDictionary.registerOre("dustQuartz", ModItems.quartzDust);
+		OreDictionary.registerOre("dustNetherQuartz", ModItems.quartzDust);
 		
 		//Energion
 		OreDictionary.registerOre("gemEnergion", ModItems.energionCrystalSeed);

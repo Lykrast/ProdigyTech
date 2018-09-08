@@ -39,6 +39,7 @@ public class RecipeUtil {
 	//Ores to not generate recipes for as they don't behave like the others
 	public static final List<String> ORE_BLACKLIST = new ArrayList<>();
 	static {
+		MOD_PREFERENCE.add("minecraft");
 		MOD_PREFERENCE.add("basemetals");
 		MOD_PREFERENCE.add("baseminerals");
 		MOD_PREFERENCE.add("modernmetals");
@@ -56,6 +57,7 @@ public class RecipeUtil {
 		ORE_BLACKLIST.add("Lapis");
 		ORE_BLACKLIST.add("Redstone");
 		ORE_BLACKLIST.add("Quartz");
+		ORE_BLACKLIST.add("NetherQuartz");
 		ORE_BLACKLIST.add("Prismarine");
 		ORE_BLACKLIST.add("Glowstone");
 		ORE_BLACKLIST.add("Ferramic");

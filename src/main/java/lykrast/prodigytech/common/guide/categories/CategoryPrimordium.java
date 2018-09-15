@@ -58,6 +58,7 @@ public class CategoryPrimordium {
 		List<IPage> zorrasteelTools = new ArrayList<>();
 		zorrasteelTools.add(GuideUtil.textPage(prefix("zorrasteel_tools.content")));
 		zorrasteelTools.add(GuideUtil.recipePage("tools/zorrasteel_sword"));
+		zorrasteelTools.add(GuideUtil.recipePage("tools/zorrasteel_handbow"));
 		ENTRIES.put(new ResourceLocation(prefix("zorrasteel_tools")), 
 				new Entry(zorrasteelTools, prefix("zorrasteel_tools")));
 		

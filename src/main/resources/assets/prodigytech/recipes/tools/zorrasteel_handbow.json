@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"ZZZ",
+		"  C"
+	],
+	"key": {
+		"Z": { "type": "forge:ore_dict", "ore": "ingotZorrasteel" },
+		"C": { "type": "forge:ore_dict", "ore": "plateCarbon" }
+	},
+	"result": { "item": "prodigytech:zorrasteel_handbow" }
+}

@@ -142,8 +142,10 @@ item.prodigytech.crystal_cutter.tooltip=Can safely break grown Energion Crystals
 item.prodigytech.wormhole_linker.name=Wormhole Linker
 item.prodigytech.wormhole_linker.tooltip=Links Wormhole Funnels together\nRight click one then the other to link them
 item.prodigytech.wormhole_linker.tooltip.linking=Linking in progress
+item.prodigytech.ferramic_handbow.name=Ferramic Handbow
 
 item.prodigytech.zorrasteel_sword.name=Zorrasteel Sword
+item.prodigytech.zorrasteel_handbow.name=Zorrasteel Handbow
 
 #----------------------------
 #UI
@@ -277,11 +279,12 @@ guide.prodigytech.category.energion=Energion
 guide.prodigytech.category.primordium=Primordium
 
 guide.prodigytech.category.logistics=Logistics
+guide.prodigytech.category.equipment=Equipment
 
 #Entries
 #Introduction
 guide.prodigytech.entry.introduction.gettingstarted=Getting Started
-guide.prodigytech.entry.introduction.gettingstarted.content=In order to progress in ProdigyTech, you'll need to make Ferramic in an Explosion Furnace. First collect a good supply of the required materials : Iron, Sand, Gunpowder and Clay.\nOnce you have enough of them, you can craft an Explosion Furnace and go to the next entry.
+guide.prodigytech.entry.introduction.gettingstarted.content=In order to progress in Prodigy Tech, you'll need to make Ferramic in an Explosion Furnace. First collect a good supply of the required materials : Iron, Sand, Gunpowder and Clay.\nOnce you have enough of them, you can craft an Explosion Furnace and go to the next entry.
 
 guide.prodigytech.entry.introduction.explosionfurnace.content1=The Explosion Furnace is the first machine to make. Using an explosive reaction, it can be used to turn Iron and Clay into Ferramic, a strong heat resistant material, as well as crush large amounts of Stone.
 guide.prodigytech.entry.introduction.explosionfurnace.content2=Its GUI is split into 4 parts. On the left you have 2 vertical slots, the top one is the Explosive and the bottom one is the Reactant. On their right, you have 3 input slots, followed by the Reagent slot, and finally 3 output slots.
@@ -366,3 +369,6 @@ guide.prodigytech.entry.logistics.funnelling.content=The Funnelling Extractor is
 guide.prodigytech.entry.logistics.wormhole.content1=The Wormhole Funnel is the only way to transmit Hot Air horizontally. It can either be placed on top or below a block, and when linked with another Wormhole Funnel in the opposite position they will transmit Hot Air between eachother.
 guide.prodigytech.entry.logistics.wormhole.content2=Wormhole Funnels can be linked by using a Wormhole Linker. Right click a Funnel then the other to link them. Once linked you can right click any of the two Funnels with anything that's not a block or the Linker to show you where the other Funnel is.
 guide.prodigytech.entry.logistics.wormhole.content3=A Wormhole Funnel can only be linked to another Funnel in the same dimension and less than 8 blocks away on all axis. It also can only be linked to one other Funnel at a time.
+
+#Equipment
+guide.prodigytech.entry.equipment.handbow.content=The Ferramic Handbow is very similar to a simple wooden Bow. It lasts longer but most importantly will automatically fire once its shot is fully charged, making it much more suitable for medium range combat. It can receive all the same enchantments as the normal Bow.

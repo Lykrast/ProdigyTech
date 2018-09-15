@@ -9,12 +9,7 @@ import amerifrance.guideapi.api.GuideBook;
 import amerifrance.guideapi.api.IGuideBook;
 import amerifrance.guideapi.api.impl.Book;
 import amerifrance.guideapi.api.impl.BookBinder;
-import lykrast.prodigytech.common.guide.categories.CategoryLogistics;
-import lykrast.prodigytech.common.guide.categories.CategoryCircuits;
-import lykrast.prodigytech.common.guide.categories.CategoryEnergion;
-import lykrast.prodigytech.common.guide.categories.CategoryHotAir;
-import lykrast.prodigytech.common.guide.categories.CategoryIntroduction;
-import lykrast.prodigytech.common.guide.categories.CategoryPrimordium;
+import lykrast.prodigytech.common.guide.categories.*;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -51,6 +46,7 @@ public class ProdigyTechGuide implements IGuideBook {
 		book.addCategory(CategoryEnergion.build());
 		book.addCategory(CategoryPrimordium.build());
 		book.addCategory(CategoryLogistics.build());
+		book.addCategory(CategoryEquipment.build());
 		
 		return book.build();
 	}
@@ -63,6 +59,7 @@ public class ProdigyTechGuide implements IGuideBook {
 		CategoryEnergion.buildMap();
 		CategoryPrimordium.buildMap();
 		CategoryLogistics.buildMap();
+		CategoryEquipment.buildMap();
 	}
 	
     @Nullable

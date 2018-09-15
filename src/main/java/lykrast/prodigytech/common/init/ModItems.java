@@ -35,9 +35,10 @@ public class ModItems {
 		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
 		energionBatteryCreative,
 		crystalCutter, wormholeLinker,
+		ferramicHandbow,
 		primordium, aeternusCrystal, mysteryTreat,
 		zorraLeaf, zorrasteelRaw, zorrasteelIngot,
-		zorrasteelSword;
+		zorrasteelSword, zorrasteelHandbow;
 	public static ToolMaterial materialZorrasteel;
 	private static List<Item> itemList = new ArrayList<>();
 	static List<Item> itemBlockList = new ArrayList<>();
@@ -103,6 +104,7 @@ public class ModItems {
 		//Tools
 		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
 		wormholeLinker = initItem(new ItemWormholeLinker(), "wormhole_linker");
+		ferramicHandbow = initItem(new ItemHandbow(864), "ferramic_handbow");
 		//toolTest = initItem(new ItemEnergionUser(), "tool_test");
 		
 		//Atomic Reshaper
@@ -117,7 +119,8 @@ public class ModItems {
 		
 		//Tools
 		materialZorrasteel = EnumHelper.addToolMaterial("zorrasteel", 4, 0, 8, 3, 0);
-		zorrasteelSword = initItem(new ItemZorrasteelSword(materialZorrasteel), "zorrasteel_sword");
+		zorrasteelSword = initItem(new ItemSwordZorrasteel(materialZorrasteel), "zorrasteel_sword");
+		zorrasteelHandbow = initItem(new ItemHandbowZorrasteel(), "zorrasteel_handbow");
 	}
 	
 	@SubscribeEvent

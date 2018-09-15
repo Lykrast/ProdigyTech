@@ -17,12 +17,12 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class ZorraAltarManager {
-	public static final ZorraAltarManager SWORD = new ZorraAltarManager();
+	public static final ZorraAltarManager 
+			SWORD = new ZorraAltarManager(),
+			BOW = new ZorraAltarManager();
 	
 	public static void init() {
-		//------------------------
-		//Sword
-		//------------------------
+		//Vanilla
 		SWORD.addEnchantBonusLevel(Enchantments.SHARPNESS, Config.altarBonusLvl);
 		SWORD.addEnchantBonusLevel(Enchantments.SMITE, Config.altarBonusLvl);
 		SWORD.addEnchantBonusLevel(Enchantments.BANE_OF_ARTHROPODS, Config.altarBonusLvl);
@@ -30,20 +30,32 @@ public class ZorraAltarManager {
 		SWORD.addEnchantBonusLevel(Enchantments.KNOCKBACK, Config.altarBonusLvl);
 		SWORD.addEnchantBonusLevel(Enchantments.LOOTING, Config.altarBonusLvl);
 		SWORD.addEnchantBonusLevel(Enchantments.SWEEPING, Config.altarBonusLvl);
+		
+		BOW.addEnchantBonusLevel(Enchantments.POWER, Config.altarBonusLvl);
+		BOW.addEnchantBonusLevel(Enchantments.PUNCH, Config.altarBonusLvl);
+		BOW.addEnchantBonusLevel(Enchantments.FLAME, Config.altarBonusLvl);
+		BOW.addEnchant(Enchantments.INFINITY, 1);
 
-		ItemStack checker = new ItemStack(Items.IRON_SWORD);
+		ItemStack checkerSword = new ItemStack(Items.IRON_SWORD);
+		ItemStack checkerBow = new ItemStack(Items.BOW);
 		//We only want 1 Soulbound
 		boolean hasSoulbound = false;
 
 		//EnderCore
-		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checker);
+		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerSword);
 		
 		//Ender IO
 		if (Loader.isModLoaded("enderio"))
 		{
-			SWORD.addModdedEnchant("enderio:witherweapon", 1, checker);
-			if (!hasSoulbound) {
-				if (SWORD.addModdedEnchant("enderio:soulbound", 1, checker)) hasSoulbound = true;
+			SWORD.addModdedEnchant("enderio:witherweapon", 1, checkerSword);
+			//Untested
+			BOW.addModdedEnchant("enderio:witherarrow", 1, checkerBow);
+			
+			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("enderio:soulbound"));
+			if (!hasSoulbound && soulbound != null && (soulbound.canApply(checkerSword) || soulbound.canApply(checkerBow))) {
+				hasSoulbound = true;
+				SWORD.addEnchant(soulbound, 1);
+				BOW.addEnchant(soulbound, 1);
 			}
 		}
 		
@@ -52,39 +64,53 @@ public class ZorraAltarManager {
 		{
 			//CoFH Core makes enchants unapplicable and useless instead of not registering them when disabled individually
 			//So we use this dummy ItemStack to check if it's applicable
-			SWORD.addModdedEnchantBonusLevel("cofhcore:insight", Config.altarBonusLvl, checker);
-			SWORD.addModdedEnchantBonusLevel("cofhcore:leech", Config.altarBonusLvl, checker);
-			SWORD.addModdedEnchantBonusLevel("cofhcore:vorpal", Config.altarBonusLvl, checker);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:insight", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:leech", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:vorpal", Config.altarBonusLvl, checkerSword);
+			BOW.addModdedEnchantBonusLevel("cofhcore:insight", Config.altarBonusLvl, checkerBow);
+			//Multishot doesn't work :(
+			//BOW.addModdedEnchantBonusLevel("cofhcore:multishot", 0, checkerBow);
 
 			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("cofhcore:soulbound"));
-			if (!hasSoulbound && soulbound != null && soulbound.canApply(checker))
+			if (!hasSoulbound && soulbound != null && (soulbound.canApply(checkerSword) || soulbound.canApply(checkerBow)))
 			{
 				hasSoulbound = true;
 				//Check if it was configured to be permanent
-				if (soulbound.getMaxLevel() == 1) SWORD.addEnchant(soulbound, 1);
-				else SWORD.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
+				if (soulbound.getMaxLevel() == 1)
+				{
+					SWORD.addEnchant(soulbound, 1);
+					BOW.addEnchant(soulbound, 1);
+				}
+				else
+				{
+					SWORD.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
+					BOW.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
+				}
 			}
 		}
 		
 		//Cyclic
 		if (Loader.isModLoaded("cyclicmagic"))
 		{
-			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checker);
-			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.lifeleech", Config.altarBonusLvl, checker);
-			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.venom", Config.altarBonusLvl, checker);
+			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.lifeleech", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.venom", Config.altarBonusLvl, checkerSword);
+			//Untested
+			BOW.addModdedEnchant("cyclicmagic:enchantment.quickdraw", 1, checkerBow);
+			BOW.addModdedEnchant("cyclicmagic:enchantment.multishot", 1, checkerBow);
 		}
 		
 		//Draconic Evolution
-		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchantBonusLevel("draconicevolution:enchant_reaper", Config.altarBonusLvl, checker);
+		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchantBonusLevel("draconicevolution:enchant_reaper", Config.altarBonusLvl, checkerSword);
 		
 		//AbyssalCraft
-		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchantBonusLevel("abyssalcraft:light_pierce", Config.altarBonusLvl, checker);
+		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchantBonusLevel("abyssalcraft:light_pierce", Config.altarBonusLvl, checkerSword);
 		
 		//Soul Shards Respawn
-		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchantBonusLevel("soulshardsrespawn:soul_stealer", Config.altarBonusLvl, checker);
+		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchantBonusLevel("soulshardsrespawn:soul_stealer", Config.altarBonusLvl, checkerSword);
 		
 		//EvilCraft
-		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checker);
+		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checkerSword);
 		
 	}
 	

@@ -3,20 +3,24 @@ package lykrast.prodigytech.common.item;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 
-public class ItemZorrasteelSword extends ItemSword implements IZorrasteelEquipment {
+public class ItemHandbowZorrasteel extends ItemHandbow implements IZorrasteelEquipment {
 
-	public ItemZorrasteelSword(ToolMaterial material) {
-		super(material);
+	public ItemHandbowZorrasteel() {
+		super(0);
 	}
 
 	@Override
 	public ZorraAltarManager getManager() {
-		return ZorraAltarManager.SWORD;
+		return ZorraAltarManager.BOW;
 	}
 
 	//Zorrasteel tools are only enchantable on the Zorra Altar
+	
+	@Override
+    public int getItemEnchantability() {
+        return 1;
+    }
 	
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {

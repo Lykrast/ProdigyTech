@@ -1,0 +1,12 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"FFF",
+		"  C"
+	],
+	"key": {
+		"F": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"C": { "type": "forge:ore_dict", "ore": "plateCarbon" }
+	},
+	"result": { "item": "prodigytech:ferramic_handbow" }
+}

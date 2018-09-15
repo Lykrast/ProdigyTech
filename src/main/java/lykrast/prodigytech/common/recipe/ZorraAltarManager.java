@@ -23,20 +23,20 @@ public class ZorraAltarManager {
 		//------------------------
 		//Sword
 		//------------------------
-		SWORD.addEnchant(Enchantments.SHARPNESS, 8);
-		SWORD.addEnchant(Enchantments.SMITE, 8);
-		SWORD.addEnchant(Enchantments.BANE_OF_ARTHROPODS, 8);
-		SWORD.addEnchant(Enchantments.FIRE_ASPECT, 5);
-		SWORD.addEnchant(Enchantments.KNOCKBACK, 5);
-		SWORD.addEnchant(Enchantments.LOOTING, 6);
-		SWORD.addEnchant(Enchantments.SWEEPING, 6);
+		SWORD.addEnchantBonusLevel(Enchantments.SHARPNESS, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.SMITE, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.BANE_OF_ARTHROPODS, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.FIRE_ASPECT, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.KNOCKBACK, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.LOOTING, Config.altarBonusLvl);
+		SWORD.addEnchantBonusLevel(Enchantments.SWEEPING, Config.altarBonusLvl);
 
 		ItemStack checker = new ItemStack(Items.IRON_SWORD);
 		//We only want 1 Soulbound
 		boolean hasSoulbound = false;
 
 		//EnderCore
-		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchant("endercore:xpboost", 6, checker);
+		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checker);
 		
 		//Ender IO
 		if (Loader.isModLoaded("enderio"))
@@ -52,9 +52,9 @@ public class ZorraAltarManager {
 		{
 			//CoFH Core makes enchants unapplicable and useless instead of not registering them when disabled individually
 			//So we use this dummy ItemStack to check if it's applicable
-			SWORD.addModdedEnchant("cofhcore:insight", 6, checker);
-			SWORD.addModdedEnchant("cofhcore:leech", 7, checker);
-			SWORD.addModdedEnchant("cofhcore:vorpal", 6, checker);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:insight", Config.altarBonusLvl, checker);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:leech", Config.altarBonusLvl, checker);
+			SWORD.addModdedEnchantBonusLevel("cofhcore:vorpal", Config.altarBonusLvl, checker);
 
 			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("cofhcore:soulbound"));
 			if (!hasSoulbound && soulbound != null && soulbound.canApply(checker))
@@ -62,7 +62,7 @@ public class ZorraAltarManager {
 				hasSoulbound = true;
 				//Check if it was configured to be permanent
 				if (soulbound.getMaxLevel() == 1) SWORD.addEnchant(soulbound, 1);
-				else SWORD.addEnchant(soulbound, 6);
+				else SWORD.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
 			}
 		}
 		
@@ -70,21 +70,21 @@ public class ZorraAltarManager {
 		if (Loader.isModLoaded("cyclicmagic"))
 		{
 			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checker);
-			SWORD.addModdedEnchant("cyclicmagic:enchantment.lifeleech", 5, checker);
-			SWORD.addModdedEnchant("cyclicmagic:enchantment.venom", 5, checker);
+			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.lifeleech", Config.altarBonusLvl, checker);
+			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.venom", Config.altarBonusLvl, checker);
 		}
 		
 		//Draconic Evolution
-		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchant("draconicevolution:enchant_reaper", 8, checker);
+		if (Loader.isModLoaded("draconicevolution")) SWORD.addModdedEnchantBonusLevel("draconicevolution:enchant_reaper", Config.altarBonusLvl, checker);
 		
 		//AbyssalCraft
-		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchant("abyssalcraft:light_pierce", 8, checker);
+		if (Loader.isModLoaded("abyssalcraft")) SWORD.addModdedEnchantBonusLevel("abyssalcraft:light_pierce", Config.altarBonusLvl, checker);
 		
 		//Soul Shards Respawn
-		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchant("soulshardsrespawn:soul_stealer", 8, checker);
+		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchantBonusLevel("soulshardsrespawn:soul_stealer", Config.altarBonusLvl, checker);
 		
 		//EvilCraft
-		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchant("evilcraft:life_stealing", 6, checker);
+		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checker);
 		
 	}
 	
@@ -106,6 +106,15 @@ public class ZorraAltarManager {
 	public void addEnchant(Enchantment enchant, int maxLvl) {
 		enchants.add(new EnchantmentData(enchant, maxLvl));
 	}
+
+	/**
+	 * Adds the given enchantment to the pool, with the given number of levels above its maximum
+	 * @param enchant enchantment to add
+	 * @param bonusLvl levels beyond the max the enchant can be applied
+	 */
+	public void addEnchantBonusLevel(Enchantment enchant, int bonusLvl) {
+		enchants.add(new EnchantmentData(enchant, enchant.getMaxLevel() + bonusLvl));
+	}
 	
 	/**
 	 * Attempts to add the given enchantment given its registry name
@@ -121,6 +130,21 @@ public class ZorraAltarManager {
 		if (enchant == null || !enchant.canApply(checker)) return false;
 		
 		addEnchant(enchant, maxLvl);
+		return true;
+	}
+	
+	/**
+	 * Attempts to add the given enchantment given its registry name
+	 * @param key registry name of the enchantment to add
+	 * @param bonusLvl levels beyond the max the enchant can be applied
+	 * @param checker ItemStack that should be enchantable with the target enchantment, used to check if the enchantment is disabled
+	 * @return true if the enchant was found, could be applied and has been added, false otherwise
+	 */
+	public boolean addModdedEnchantBonusLevel(String key, int bonusLvl, ItemStack checker) {
+		Enchantment enchant = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(key));
+		if (enchant == null || !enchant.canApply(checker)) return false;
+		
+		addEnchantBonusLevel(enchant, bonusLvl);
 		return true;
 	}
 	

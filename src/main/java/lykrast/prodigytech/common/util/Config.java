@@ -36,7 +36,7 @@ public class Config {
 	public static int extractorDelay, extractorMaxStack;
 	
 	//Zorra Altar
-	public static int altarDeviationMin;
+	public static int altarDeviationMin, altarBonusLvl;
 	public static float altarDeviationMult, altarCostMult, altarUnknownMult;
 	
 	public static void readConfig() {
@@ -164,6 +164,9 @@ public class Config {
 		altarDeviationMult = cfg.getFloat("altarDeviationMult", CATEGORY_ALTAR, 0.1F, 0.0F, 2.0F, 
 				"Maximum random level deviation for enchantment cost on the Zorra Altar, multiplied by the base cost\n"
 				+ "0.10 means that the cost can range from -10% to +10% (unless it's smaller than the min value)");
+		altarBonusLvl = cfg.getInt("altarBonusLvl", CATEGORY_ALTAR, 3, 0, 100, 
+				"How many levels beyond the normal maximum can the Zorra Altar apply enchantments\n"
+				+ "Some enchantments don't take account of this limit");
 	}
 
 }

@@ -33,7 +33,7 @@ public class ZorraAltarManager {
 		
 		BOW.addEnchantBonusLevel(Enchantments.POWER, Config.altarBonusLvl);
 		BOW.addEnchantBonusLevel(Enchantments.PUNCH, Config.altarBonusLvl);
-		BOW.addEnchantBonusLevel(Enchantments.FLAME, Config.altarBonusLvl);
+		BOW.addEnchant(Enchantments.FLAME, 1);
 		BOW.addEnchant(Enchantments.INFINITY, 1);
 
 		ItemStack checkerSword = new ItemStack(Items.IRON_SWORD);
@@ -42,7 +42,11 @@ public class ZorraAltarManager {
 		boolean hasSoulbound = false;
 
 		//EnderCore
-		if (Loader.isModLoaded("endercore")) SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerSword);
+		if (Loader.isModLoaded("endercore"))
+		{
+			SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerSword);
+			BOW.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerBow);
+		}
 		
 		//Ender IO
 		if (Loader.isModLoaded("enderio"))

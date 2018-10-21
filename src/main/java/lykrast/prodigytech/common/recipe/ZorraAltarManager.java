@@ -45,6 +45,7 @@ public class ZorraAltarManager {
 		if (Loader.isModLoaded("endercore"))
 		{
 			SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerSword);
+			//TODO: test
 			BOW.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerBow);
 		}
 		
@@ -52,7 +53,7 @@ public class ZorraAltarManager {
 		if (Loader.isModLoaded("enderio"))
 		{
 			SWORD.addModdedEnchant("enderio:witherweapon", 1, checkerSword);
-			//Untested
+			//TODO: test
 			BOW.addModdedEnchant("enderio:witherarrow", 1, checkerBow);
 			
 			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("enderio:soulbound"));
@@ -99,7 +100,7 @@ public class ZorraAltarManager {
 			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checkerSword);
 			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.lifeleech", Config.altarBonusLvl, checkerSword);
 			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.venom", Config.altarBonusLvl, checkerSword);
-			//Untested
+			//TODO: test
 			BOW.addModdedEnchant("cyclicmagic:enchantment.quickdraw", 1, checkerBow);
 			BOW.addModdedEnchant("cyclicmagic:enchantment.multishot", 1, checkerBow);
 		}
@@ -114,7 +115,15 @@ public class ZorraAltarManager {
 		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchantBonusLevel("soulshardsrespawn:soul_stealer", Config.altarBonusLvl, checkerSword);
 		
 		//EvilCraft
-		if (Loader.isModLoaded("evilcraft")) SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checkerSword);
+		if (Loader.isModLoaded("evilcraft"))
+		{
+			SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checkerSword);
+			//TODO: test
+			BOW.addModdedEnchantBonusLevel("evilcraft:poison_tip", Config.altarBonusLvl, checkerBow);
+		}
+		
+		//TODO: Selim's Enchants
+		//TODO: FlashFyre's Enchantments
 		
 	}
 	

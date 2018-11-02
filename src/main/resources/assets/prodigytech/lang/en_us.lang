@@ -38,6 +38,8 @@ tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern 
 #Circuits
 tile.prodigytech.magnetic_reassembler.name=Magnetic Reassembler
 tile.prodigytech.magnetic_reassembler.tooltip=Forces small particles together
+tile.prodigytech.ore_refinery.name=Ore Refinery
+tile.prodigytech.ore_refinery.tooltip=Processes ores quickly and efficiently
 tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
 tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
 tile.prodigytech.battery_replenisher.name=Battery Replenisher

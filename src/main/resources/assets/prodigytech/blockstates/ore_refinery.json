@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "active=false,facing=north": { "model": "prodigytech:ore_refinery" },
+        "active=false,facing=south": { "model": "prodigytech:ore_refinery", "y": 180 },
+        "active=false,facing=west":  { "model": "prodigytech:ore_refinery", "y": 270 },
+        "active=false,facing=east":  { "model": "prodigytech:ore_refinery", "y": 90 },
+        "active=true,facing=north": { "model": "prodigytech:ore_refinery_active" },
+        "active=true,facing=south": { "model": "prodigytech:ore_refinery_active", "y": 180 },
+        "active=true,facing=west":  { "model": "prodigytech:ore_refinery_active", "y": 270 },
+        "active=true,facing=east":  { "model": "prodigytech:ore_refinery_active", "y": 90 }
+    }
+}

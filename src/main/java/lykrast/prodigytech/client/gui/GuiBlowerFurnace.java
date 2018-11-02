@@ -8,7 +8,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class GuiBlowerFurnace extends GuiHotAirMachineSimple {
 	public GuiBlowerFurnace(InventoryPlayer playerInv, TileBlowerFurnace tile) {
-		super(playerInv, tile, new ContainerBlowerFurnace(playerInv, tile));
+		super(playerInv, tile, new ContainerBlowerFurnace(playerInv, tile), 80);
 	}
 
 	@Override

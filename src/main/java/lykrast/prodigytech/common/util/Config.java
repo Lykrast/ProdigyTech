@@ -16,7 +16,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
-		magneticReassemblerProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
+		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
 		batteryReplenisherSpeed,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance;
@@ -107,6 +107,9 @@ public class Config {
 		magneticReassemblerProcessTime = cfg.getInt("magneticReassemblerProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
 				"The base amount of time (in ticks) that the Magnetic Reassembler takes to process 1 item\n"
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
+		//Ore Refinery
+		oreRefineryProcessTime = cfg.getInt("oreRefineryProcessTime", CATEGORY_MACHINES, 100, 1, 3000, 
+				"The base amount of time (in ticks) that the Ore Refinery takes to process 1 item");
 		//Automatic Crystal Cutter
 		automaticCrystalCutterHarvestTime = cfg.getInt("automaticCrystalCutterHarvestTime", CATEGORY_MACHINES, 100, 1, 3000, 
 				"The base amount of time (in ticks) that the Automatic Crystal Cutter takes to harvest 1 stage");

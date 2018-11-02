@@ -67,8 +67,8 @@ public class ModBlocks {
 		//Hot air machines post-Solderer
 		magneticReassembler = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "magnetic_reassembler");
 		GameRegistry.registerTileEntity(TileMagneticReassembler.class, ProdigyTech.resource("magnetic_reassembler"));
-		oreRefinery = initBlock(new BlockMagneticReassembler(6.0F, 45.0F, 1), "ore_refinery");
-		//GameRegistry.registerTileEntity(TileMagneticReassembler.class, ProdigyTech.resource("ore_refinery"));
+		oreRefinery = initBlock(new BlockOreRefinery(6.0F, 45.0F, 1), "ore_refinery");
+		GameRegistry.registerTileEntity(TileOreRefinery.class, ProdigyTech.resource("ore_refinery"));
 		automaticCrystalCutter = initBlock(new BlockCrystalCutter(6.0F, 45.0F, 1), "automatic_crystal_cutter");
 		GameRegistry.registerTileEntity(TileCrystalCutter.class, ProdigyTech.resource("automatic_crystal_cutter"));
 		batteryReplenisher = initBlock(new BlockBatteryReplenisher(6.0F, 45.0F, 1), "battery_replenisher");

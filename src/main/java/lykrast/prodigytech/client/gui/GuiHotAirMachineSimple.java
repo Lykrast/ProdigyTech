@@ -14,6 +14,7 @@ import net.minecraft.util.math.MathHelper;
 
 public abstract class GuiHotAirMachineSimple extends GuiInventory {
 	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/hot_air_simple_machine.png");
+	private int workingTemperature;
 
 	protected abstract int getProcessLeftScaled(int pixels);
 
@@ -28,11 +29,12 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 		return GUI;
 	}
 
-	public GuiHotAirMachineSimple(InventoryPlayer playerInv, TileHotAirMachine tile, Container inventorySlotsIn) {
+	public GuiHotAirMachineSimple(InventoryPlayer playerInv, TileHotAirMachine tile, Container inventorySlotsIn, int workingTemperature) {
 		super(inventorySlotsIn);
 		
 		playerInventory = playerInv;
 		this.tile = tile;
+		this.workingTemperature = workingTemperature;
 		
 		this.xSize = 176;
 		this.ySize = 166;
@@ -51,10 +53,10 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 	        this.drawTexturedModalRect(guiLeft + 79, guiTop + 35, 176, 0, k, 17);
 	    }
 	
-	    int l = getTemperatureScaled(false, 17, 30, 80);
+	    int l = getTemperatureScaled(false, 17, 30, workingTemperature);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 	
-	    int m = getTemperatureScaled(true, 17, 30, 80);
+	    int m = getTemperatureScaled(true, 17, 30, workingTemperature);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 16 + (17 - m), 176, 17 + (17 - m), 18, m + 1);
 	}
 

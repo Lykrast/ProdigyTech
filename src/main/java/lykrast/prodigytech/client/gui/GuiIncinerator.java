@@ -8,7 +8,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class GuiIncinerator extends GuiHotAirMachineSimple {
 	public GuiIncinerator(InventoryPlayer playerInv, TileIncinerator tile) {
-		super(playerInv, tile, new ContainerIncinerator(playerInv, tile));
+		super(playerInv, tile, new ContainerIncinerator(playerInv, tile), 80);
 	}
 
 	@Override

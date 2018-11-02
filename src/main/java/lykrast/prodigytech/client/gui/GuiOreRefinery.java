@@ -1,18 +1,18 @@
 package lykrast.prodigytech.client.gui;
 
-import lykrast.prodigytech.common.gui.ContainerHeatSawmill;
-import lykrast.prodigytech.common.tileentity.TileHeatSawmill;
+import lykrast.prodigytech.common.gui.ContainerOreRefinery;
+import lykrast.prodigytech.common.tileentity.TileOreRefinery;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 
-public class GuiHeatSawmill extends GuiHotAirMachineSimple {
+public class GuiOreRefinery extends GuiHotAirMachineSimple {
 	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/hot_air_secondary_output.png");
 	
-	public GuiHeatSawmill(InventoryPlayer playerInv, TileHeatSawmill tile) {
-		super(playerInv, tile, new ContainerHeatSawmill(playerInv, tile), 80);
+	public GuiOreRefinery(InventoryPlayer playerInv, TileOreRefinery tile) {
+		super(playerInv, tile, new ContainerOreRefinery(playerInv, tile), 125);
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class GuiHeatSawmill extends GuiHotAirMachineSimple {
 
         if (i == 0)
         {
-            i = Config.heatSawmillProcessTime * 10;
+            i = Config.oreRefineryProcessTime * 10;
         }
         
         int j = MathHelper.clamp(i - tile.getField(0), 0, i);

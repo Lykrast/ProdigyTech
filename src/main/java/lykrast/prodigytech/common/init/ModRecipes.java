@@ -4,6 +4,7 @@ import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
+import lykrast.prodigytech.common.recipe.OreRefineryManager;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SoldererManager;
@@ -30,6 +31,7 @@ public class ModRecipes {
 		HeatSawmillManager.INSTANCE.init();
 		PrimordialisReactorManager.init();
 		AtomicReshaperManager.INSTANCE.init();
+		OreRefineryManager.INSTANCE.init();
 	}
 	
 	public static void initOreDict()

@@ -8,7 +8,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class GuiRotaryGrinder extends GuiHotAirMachineSimple {
 	public GuiRotaryGrinder(InventoryPlayer playerInv, TileRotaryGrinder tile) {
-		super(playerInv, tile, new ContainerRotaryGrinder(playerInv, tile));
+		super(playerInv, tile, new ContainerRotaryGrinder(playerInv, tile), 80);
 	}
 
 	@Override

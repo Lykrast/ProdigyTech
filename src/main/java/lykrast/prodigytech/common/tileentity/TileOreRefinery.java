@@ -1,10 +1,10 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.recipe.MagneticReassemblerManager;
+import lykrast.prodigytech.common.recipe.OreRefineryManager;
 
-public class TileMagneticReassembler extends TileHotAirMachineSimpleManaged {
-    public TileMagneticReassembler() {
-		super(MagneticReassemblerManager.INSTANCE, 0.75F);
+public class TileOreRefinery extends TileHotAirMachineSecondaryManaged {
+    public TileOreRefinery() {
+		super(OreRefineryManager.INSTANCE, 0.8F);
 	}
     
     @Override
@@ -14,7 +14,7 @@ public class TileMagneticReassembler extends TileHotAirMachineSimpleManaged {
 
 	@Override
 	public String getName() {
-		return super.getName() + "magnetic_reassembler";
+		return super.getName() + "ore_refinery";
 	}
 	
 	@Override

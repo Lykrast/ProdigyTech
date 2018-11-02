@@ -47,5 +47,11 @@ public class CategoryCircuits {
 		magneticReassembler.add(GuideUtil.recipePage("machine/magnetic_reassembler"));
 		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.magneticReassembler)), 
 				new Entry(magneticReassembler, GuideUtil.getName(ModBlocks.magneticReassembler)));
+		
+		List<IPage> oreRefinery = new ArrayList<>();
+		oreRefinery.add(GuideUtil.textPage(prefix("refinery.content")));
+		oreRefinery.add(GuideUtil.recipePage("machine/ore_refinery"));
+		ENTRIES.put(new ResourceLocation(GuideUtil.getName(ModBlocks.oreRefinery)), 
+				new Entry(oreRefinery, GuideUtil.getName(ModBlocks.oreRefinery)));
 	}
 }

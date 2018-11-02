@@ -34,6 +34,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		HeatSawmillCategory.registerRecipes(registry);
 		SoldererCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
+		OreRefineryCategory.registerRecipes(registry);
 		EnergionBatteryCategory.registerRecipes(registry);
 		BatteryReplenisherCategory.registerRecipes(registry);
 		PrimordialisReactorCategory.registerRecipes(registry);
@@ -47,6 +48,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.heatSawmill), HeatSawmillCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.oreRefinery), OreRefineryCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.batteryReplenisher), BatteryReplenisherCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.primordialisReactor), PrimordialisReactorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.atomicReshaper), AtomicReshaperCategory.UID);
@@ -66,6 +68,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiHeatSawmill.class, 79, 35, 24, 17, HeatSawmillCategory.UID);
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
+		registry.addRecipeClickArea(GuiOreRefinery.class, 79, 35, 24, 17, OreRefineryCategory.UID);
 		registry.addRecipeClickArea(GuiPrimordialisReactor.class, 77, 35, 62, 17, PrimordialisReactorCategory.UID);
 		registry.addRecipeClickArea(GuiAtomicReshaper.class, 67, 35, 48, 17, AtomicReshaperCategory.UID);
 		
@@ -86,6 +89,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new HeatSawmillCategory(guiHelper));
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
+		registry.addRecipeCategories(new OreRefineryCategory(guiHelper));
 		registry.addRecipeCategories(new EnergionBatteryCategory(guiHelper));
 		registry.addRecipeCategories(new BatteryReplenisherCategory(guiHelper));
 		registry.addRecipeCategories(new PrimordialisReactorCategory(guiHelper));

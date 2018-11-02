@@ -146,28 +146,18 @@ public abstract class TileHotAirMachineSecondaryManaged extends TileHotAirMachin
         ItemStack itemstack1 = cachedRecipe.getOutput();
         ItemStack itemstack2 = getStackInSlot(1);
 
-        if (itemstack2.isEmpty())
-        {
-        	setInventorySlotContents(1, itemstack1);
-        }
-        else if (itemstack2.getItem() == itemstack1.getItem())
-        {
-            itemstack2.grow(itemstack1.getCount());
-        }
+        if (itemstack2.isEmpty()) setInventorySlotContents(1, itemstack1);
+        else if (itemstack2.getItem() == itemstack1.getItem()) itemstack2.grow(itemstack1.getCount());
         
         //Secondary output
-        itemstack1 = cachedRecipe.getSecondaryOutput();
-        itemstack2 = getStackInSlot(2);
+        if (cachedRecipe.shouldSecondaryOutput(world.rand))
+        {
+            itemstack1 = cachedRecipe.getSecondaryOutput();
+            itemstack2 = getStackInSlot(2);
 
-        if (itemstack2.isEmpty())
-        {
-        	setInventorySlotContents(2, itemstack1);
+            if (itemstack2.isEmpty()) setInventorySlotContents(2, itemstack1);
+            else if (itemstack2.getItem() == itemstack1.getItem()) itemstack2.grow(itemstack1.getCount());
         }
-        else if (itemstack2.getItem() == itemstack1.getItem())
-        {
-            itemstack2.grow(itemstack1.getCount());
-        }
-        
         itemstack.shrink(1);
 	}
 

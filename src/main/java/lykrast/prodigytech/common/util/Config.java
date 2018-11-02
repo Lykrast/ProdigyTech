@@ -19,8 +19,8 @@ public class Config {
 		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
 		batteryReplenisherSpeed,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
-	public static float incineratorChance;
-	public static int rotaryGrinderOreMultiplier;
+	public static float incineratorChance, oreRefineryChance;
+	public static int rotaryGrinderOreMultiplier, oreRefineryOreMultiplier;
 	public static boolean autoOreRecipes;
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
 	public static boolean heatSawmillAutoPlankRecipes;
@@ -83,7 +83,7 @@ public class Config {
 		rotaryGrinderOreMultiplier = cfg.getInt("rotaryGrinderOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Rotary Grinder");
 		autoOreRecipes = cfg.getBoolean("autoOreRecipes", CATEGORY_MACHINES, true, 
-				"Automatically generate Rotary Grinder and Magnetic Reassembler recipes to process ores?\n"
+				"Automatically generate Rotary Grinder, Magnetic Reassembler and Ore Refinery recipes to process ores?\n"
 				+ "If false, only recipes for vanilla ores and Prodigy Tech ingots will be registered");
 		//HeatSawmill
 		heatSawmillProcessTime = cfg.getInt("heatSawmillProcessTime", CATEGORY_MACHINES, 200, 1, 3000, 
@@ -110,6 +110,10 @@ public class Config {
 		//Ore Refinery
 		oreRefineryProcessTime = cfg.getInt("oreRefineryProcessTime", CATEGORY_MACHINES, 100, 1, 3000, 
 				"The base amount of time (in ticks) that the Ore Refinery takes to process 1 item");
+		oreRefineryOreMultiplier = cfg.getInt("oreRefineryOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
+				"By how much ore outputs are multiplied by when passing them through the Ore Refinery");
+		oreRefineryChance = cfg.getFloat("oreRefineryChance", CATEGORY_MACHINES, 0.15F, 0, 1.0F, 
+				"The chance the Ore Refinery produces a secondary ore");
 		//Automatic Crystal Cutter
 		automaticCrystalCutterHarvestTime = cfg.getInt("automaticCrystalCutterHarvestTime", CATEGORY_MACHINES, 100, 1, 3000, 
 				"The base amount of time (in ticks) that the Automatic Crystal Cutter takes to harvest 1 stage");

@@ -1,0 +1,15 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"GRI",
+		"ICI",
+		"GRI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "ingotGold" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"C": { "item": "prodigytech:circuit_refined" }
+	},
+	"result": { "item": "prodigytech:ore_refinery" }
+}

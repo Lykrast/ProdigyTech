@@ -219,6 +219,7 @@ container.prodigytech.jei.ptgrinder=Rotary Grinder
 container.prodigytech.jei.ptsawmill=Heat Sawmill
 container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
+container.prodigytech.jei.ptrefinery=Ore Refinery
 container.prodigytech.jei.ptbattery=Energion Battery Usage
 container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
 container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
@@ -324,6 +325,8 @@ guide.prodigytech.entry.circuits.solderer.content2=To make a Circuit, the machin
 guide.prodigytech.entry.circuits.solderer.content3=The machine needs to melt inserted Gold Dust before being able to use it, which it will do once hot enough. All items will be automatically put in the correct slots when shift clicked or inserted through automation.\nItems can be inserted/extracted from any side except the top and bottom.
 
 guide.prodigytech.entry.circuits.reassembler.content=The Magnetic Reassembler uses strong magnets to force small particules together. This makes it act as a reverse Rotary Grinder, and is an essential component on getting started with Energion Crystal farming.\nItems can be inserted/extracted from any side except top and bottom.
+
+guide.prodigytech.entry.circuits.refinery.content=The Ore Refinery can process Ore into 2 Dusts, just like the Rotary Grinder, but does so at a much faster rate and will also occasionally extract a smaller amount of Dust of another ore.\nItems can be inserted/extracted from any side except top and bottom.
 
 #Energion
 guide.prodigytech.entry.energion.dust.content=Energion Dust is a mixture oozing with raw energy. Its main use is filling up Energion Batteries, which are required to progress further.

@@ -111,7 +111,7 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 		{
 			if (!RecipeUtil.oreExists(name)) continue;
 			
-			//ore -> Rotary Grinder processes into dust or gem
+			//ore -> Rotary Grinder and Ore Refinery process into dust or gem
 			if (name.startsWith("ore"))
 			{
 				String ore = name.substring("ore".length());
@@ -122,12 +122,16 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 					ItemStack output = RecipeUtil.getPreferredOreStack("dust" + ore);
 					output.setCount(Config.rotaryGrinderOreMultiplier);
 					addRecipe(name, output);
+					
+					OreRefineryManager.INSTANCE.addOreRecipe(ore, name, "dust" + ore);
 				}
 				else if (RecipeUtil.oreExists("gem" + ore))
 				{
 					ItemStack output = RecipeUtil.getPreferredOreStack("gem" + ore);
 					output.setCount(Config.rotaryGrinderOreMultiplier);
 					addRecipe(name, output);
+					
+					OreRefineryManager.INSTANCE.addOreRecipe(ore, name, "gem" + ore);
 				}
 			}
 			//gem -> Rotary Grinder processes into dust

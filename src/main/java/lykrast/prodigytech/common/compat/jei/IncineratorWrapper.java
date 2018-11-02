@@ -10,7 +10,6 @@ import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -28,7 +27,7 @@ public class IncineratorWrapper implements IRecipeWrapper {
 		
 		if (outChance < 1) chance = "< 1%";
 		else if (outChance >= 100) chance = "";
-		else chance = I18n.format("%d%%", outChance);
+		else chance = String.format("%d%%", outChance);
 	}
 
 	@Override

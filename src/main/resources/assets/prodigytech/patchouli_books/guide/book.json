@@ -1,0 +1,9 @@
+{
+	"name": "guide.prodigytech.title",
+	"landing_text": "guide.prodigytech.landing",
+	"version": 2,
+	"advancement_namespaces": [ "prodigytech" ],
+	"advancements_tab": "prodigytech",
+	"model": "prodigytech:guide",
+	"creative_tab": "prodigytech"
+}

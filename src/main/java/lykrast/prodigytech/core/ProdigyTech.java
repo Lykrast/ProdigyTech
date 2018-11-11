@@ -18,12 +18,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 	version = ProdigyTech.VERSION, 
 	acceptedMinecraftVersions = "[1.12, 1.13)",
 	dependencies = ProdigyTech.DEPENDENCIES)
-public class ProdigyTech
-{
+public class ProdigyTech {
     public static final String MODID = "prodigytech",
     		NAME = "Prodigy Tech",
     		VERSION = "@VERSION@",
-    		DEPENDENCIES = "required-after:guideapi;";
+    		DEPENDENCIES = "required-after:patchouli;";
     
 	@Instance
 	public static ProdigyTech instance;

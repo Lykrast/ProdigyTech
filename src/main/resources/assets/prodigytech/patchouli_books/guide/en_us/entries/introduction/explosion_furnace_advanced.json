@@ -1,0 +1,23 @@
+{
+    "name": "Explosion mechanics",
+    "icon": "prodigytech:explosion_furnace",
+    "category": "introduction",
+    "pages": [
+        {
+            "type": "text",
+            "text": "When given a redstone pulse, the $(l)Explosion Furnace$() will attempt to consume all $(l)Explosive$() and $(l)Reactant$() in its slots. If it succesfully did, it will produce an explosion and generate $(l)Explosive Power$() (or $(l)EP$()).$(br)The amount of $(l)EP$() generated is proportional to the amount of $(l)Explosive$() consumed and the $(l)Reactant$() used."
+        },
+        {
+            "type": "text",
+            "text": "At the same time, an efficiency multiplier will be calculated depending on how far from the ideal proportions the quantities of $(l)Explosive$() and $(l)Reactant$() are $(o)(for Gunpowder and Sand it's 5:4)$().$(br)Being further from the ideal proportions results in more items to be lost in the process, while ideal proportions will result in no loss."
+        },
+        {
+            "type": "text",
+            "text": "Then, inputs are run top to bottom. If there is enough $(l)EP$() to process one, it consumes the appropriate amount of $(l)EP$() and gets processed.$(br)If the recipe requires a $(l)Reagent$(), it will be consumed appropriately if present, and if not the input item will be lost.$(br2)$(l)Explosives$(), $(l)Reactants$(), inputs and $(l)Reagents$() can be inserted from any side by Hoppers and such, and outputs can be extracted from any side as well."
+        },
+        {
+            "type": "text",
+            "text": "If the output slots are full while processing items, the excess items will be thrown in front of the $(l)Explosion Furnace$()."
+        }
+    ]
+}

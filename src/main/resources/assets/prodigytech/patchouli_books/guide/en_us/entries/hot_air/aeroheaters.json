@@ -1,0 +1,21 @@
+{
+    "name": "Aeroheaters",
+    "icon": "minecraft:lava_bucket",
+    "category": "hot_air",
+	"priority": true,
+	"sortnum": -2,
+    "pages": [
+        {
+            "type": "text",
+            "text": "As said previously, $(l)Aeroheaters$() are what produce $(l)Hot Air$(). Most of them will take time to heat up and have residual heat once out of fuel. This is means it is more efficient to leave them running for a long time without stops.$(br2)For now you have two choices to power your machines, although more will unlock as you progress."
+        },
+        {
+            "type": "relations",
+			"title": "Available Aeroheaters",
+            "entries": [
+				"hot_air/magmatic_aeroheater",
+				"hot_air/solid_fuel_aeroheater"
+			]
+        }
+    ]
+}

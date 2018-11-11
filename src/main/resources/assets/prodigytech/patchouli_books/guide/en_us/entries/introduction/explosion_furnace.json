@@ -1,0 +1,21 @@
+{
+    "name": "Explosion Furnace",
+    "icon": "prodigytech:explosion_furnace",
+    "category": "introduction",
+	"priority": true,
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "text",
+            "text": "The $(l)Explosion Furnace$() is the first machine to make. Using an explosive reaction, it can be used to turn Iron and Clay into $(l)Ferramic$(), a strong heat resistant material, as well as crush large amounts of Stone.$(br2)Its GUI is split into 4 parts. On the left you have 2 vertical slots, the $(l)Explosive$() slot at the top and the $(l)Reactant$() on the bottom."
+        },
+        {
+            "type": "text",
+            "text": "On their right, 3 input slots, followed by the $(l)Reagent$() slot, and finally 3 output slots.$(br2)To simply make $(l)Ferramic Ingots$(), put 5 Gunpowder in the $(l)Explosive$() slot, 4 Sand in the $(l)Reactant$(), 16 Iron Ingots in the input and 4 Clay in the $(l)Reagent$() slot $(o)(shift clicking or automation will sort them automatically)$(), then stand back and give it a redstone pulse."
+        },
+        {
+            "type": "text",
+            "text": "You can double or triple the proportions as you want, and you can put too much Clay or Iron Ingots without consequences, but don't mess up the proportions on the explosive and reactant, otherwise items will be lost."
+        }
+    ]
+}

@@ -2,16 +2,17 @@
     "name": "Hot Air",
     "icon": "prodigytech:air_funnel",
     "category": "hot_air",
+	"advancement": "prodigytech:recipes/ferramic_ingot",
 	"priority": true,
-	"sortnum": -3,
+	"sortnum": -2,
     "pages": [
         {
             "type": "text",
-            "text": "Most machines in the mod will use $(l)Hot Air$() as their fuel. $(l)Hot Air$() can be produced with $(l)Aeroheaters$(), which will output their $(l)Hot Air$() to the block above them.$(br2)$(l)Hot Air$() always travels upwards and is lost when going through anything that does not let it pass."
+            "text": "Most machines in the mod will use $(thing)Hot Air$() as their fuel. $(thing)Hot Air$() can be produced with $(thing)Aeroheaters$(), which will output their $(thing)Hot Air$() to the block above them.$(br2)$(thing)Hot Air$() always travels upwards and is lost when going through anything that does not let it pass."
         },
         {
             "type": "text",
-            "text": "$(l)Hot Air machines$() will require $(l)Hot Air$() to be supplied to their bottom side at a certain temperature in order to work.$(br2)They will also transmit their $(l)Hot Air$() up, with a lowered temperature while working. This allows you to power several machines with the same $(l)Aeroheater$() by stacking them on top of eachother."
+            "text": "$(thing)Hot Air machines$() will require $(thing)Hot Air$() to be supplied to their bottom side at a certain temperature in order to work.$(br2)They will also transmit their $(thing)Hot Air$() up, with a lowered temperature while working. This allows you to power several machines with the same $(thing)Aeroheater$() by stacking them on top of eachother."
         },
         {
             "type": "text",
@@ -20,7 +21,7 @@
         {
             "type": "crafting",
             "recipe": "prodigytech:machine/air_funnel",
-			"text": "$(l)Air Funnels$() allows you to transfer $(l)Hot Air$() along longer distances without having to make expensive machines.$(br)In addition, they will stop transmitting $(l)Hot Air$() when supplied with a redstone signal."
+			"text": "$(item)Air Funnels$() allow you to transfer $(thing)Hot Air$() along longer distances without having to make expensive machines.$(br)In addition, they will stop transmitting $(thing)Hot Air$() when supplied with a redstone signal."
         }
     ]
 }

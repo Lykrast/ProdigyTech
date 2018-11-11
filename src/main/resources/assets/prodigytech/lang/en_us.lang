@@ -282,17 +282,7 @@ guide.prodigytech.category.primordium=Primordium
 guide.prodigytech.category.logistics=Logistics
 guide.prodigytech.category.equipment=Equipment
 
-#Hot Air
-guide.prodigytech.entry.hotair.machines.grinder.content=The Rotary Grinder works like a lot of well known machines: it crushes things. Most notably, it can crush an Ore into 2 Dusts, each being smeltable into an Ingot. It has a variety of other uses, and is required to progress the mod.\nItems can be inserted/extracted from any side except top and bottom.
-guide.prodigytech.entry.hotair.machines.furnace.content=The Blower Furnace is simply a Hot Air powered Furnace. While it is slower than a normal Furnace on low temperatures, it is much more fuel efficient and can be chained with other machines.\nItems can be inserted/extracted from any side except top and bottom.
-guide.prodigytech.entry.hotair.machines.sawmill.content=The Heat Sawmill can cut wood much more efficiently than hands can. This includes cutting Logs into Planks, and Planks into Sticks. This process will also produce Sawdust, which can be made into Particle Board.\nItems can be inserted/extracted from any side except top and bottom.
-guide.prodigytech.entry.hotair.machines.incinerator.content=The Incinerator is the simplest machine. It will take any item and turn it into Ash. This Ash has a variety of uses, including decoration and serving as a low power explosive for the Explosion Furnace.\nItems can be inserted/extracted from any side except top and bottom.
-
 #Circuits
-guide.prodigytech.entry.circuits.solderer.content1=The Solderer is a machine that can make various Circuits, which are needed for more advanced machines. It requires too much temperature for a mere Magmatic Aeroheater to fuel it.
-guide.prodigytech.entry.circuits.solderer.content2=To make a Circuit, the machine needs Circuit Plates, Gold Dust and an appropriate Circuit Pattern. The latter will tell which Circuit will be made. The time spent and the amount of Gold needed depends on the Circuit made, and some of them will need an additional item to be consumed.
-guide.prodigytech.entry.circuits.solderer.content3=The machine needs to melt inserted Gold Dust before being able to use it, which it will do once hot enough. All items will be automatically put in the correct slots when shift clicked or inserted through automation.\nItems can be inserted/extracted from any side except the top and bottom.
-
 guide.prodigytech.entry.circuits.reassembler.content=The Magnetic Reassembler uses strong magnets to force small particules together. This makes it act as a reverse Rotary Grinder, and is an essential component on getting started with Energion Crystal farming.\nItems can be inserted/extracted from any side except top and bottom.
 
 guide.prodigytech.entry.circuits.refinery.content=The Ore Refinery can process Ore into 2 Dusts, just like the Rotary Grinder, but does so at a much faster rate and will also occasionally extract a smaller amount of Dust of another ore.\nItems can be inserted/extracted from any side except top and bottom.
@@ -339,11 +329,6 @@ guide.prodigytech.entry.primordium.mystery_treat.content1=Mystery Treats are edi
 guide.prodigytech.entry.primordium.mystery_treat.content2=For 2 colors Treats, a color that appears on the 2 stripes will have a weaker effect than if it appeared on the rest of the Treat. A single colored Treat will always have a stronger effect.
 
 #Logistics
-guide.prodigytech.entry.logistics.linear.content=The Linear Extractor is the simplest of the Extractors. It will quickly pull items from an inventory in front of it and push them to an inventory on the opposite side, or keep it in its small internal inventory. It can be oriented in any direction and disabled with redstone.
-guide.prodigytech.entry.logistics.funnelling.content=The Funnelling Extractor is similar to the Linear one, but pulls from all 5 sides it is not pushing to. Items are pulled in a specific order, with the opposite side of the pushing one always being the first one.
 guide.prodigytech.entry.logistics.wormhole.content1=The Wormhole Funnel is the only way to transmit Hot Air horizontally. It can either be placed on top or below a block, and when linked with another Wormhole Funnel in the opposite position they will transmit Hot Air between eachother.
 guide.prodigytech.entry.logistics.wormhole.content2=Wormhole Funnels can be linked by using a Wormhole Linker. Right click a Funnel then the other to link them. Once linked you can right click any of the two Funnels with anything that's not a block or the Linker to show you where the other Funnel is.
 guide.prodigytech.entry.logistics.wormhole.content3=A Wormhole Funnel can only be linked to another Funnel in the same dimension and less than 8 blocks away on all axis. It also can only be linked to one other Funnel at a time.
-
-#Equipment
-guide.prodigytech.entry.equipment.handbow.content=The Ferramic Handbow is very similar to a simple wooden Bow. It lasts longer but most importantly will automatically fire once its shot is fully charged, making it much more suitable for medium range combat. It can receive all the same enchantments as the normal Bow.

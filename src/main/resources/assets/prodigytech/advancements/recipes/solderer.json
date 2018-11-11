@@ -1,0 +1,24 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:placeholder/pattern_circuit_crude_ini",
+      "prodigytech:placeholder/pattern_circuit_crude",
+      "prodigytech:placeholder/pattern_circuit_refined",
+      "prodigytech:placeholder/pattern_circuit_perfected",
+      "prodigytech:materials/circuit_plate"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:solderer"
+          }
+        ]
+      }
+    }
+  }
+}

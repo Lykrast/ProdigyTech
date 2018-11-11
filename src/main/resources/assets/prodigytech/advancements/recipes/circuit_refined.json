@@ -1,0 +1,21 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:machine/magnetic_reassembler",
+      "prodigytech:machine/ore_refinery"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:circuit_refined"
+          }
+        ]
+      }
+    }
+  }
+}

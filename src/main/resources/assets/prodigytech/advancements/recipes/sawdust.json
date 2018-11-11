@@ -1,0 +1,23 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:decorative/particle_board_clay",
+      "prodigytech:decorative/particle_board_slime",
+      "prodigytech:decorative/particle_board_planks",
+      "prodigytech:decorative/particle_board_cycle"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:sawdust"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:tools/crystal_cutter",
+      "prodigytech:machine/automatic_crystal_cutter"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:energion_crystal_seed"
+          }
+        ]
+      }
+    }
+  }
+}

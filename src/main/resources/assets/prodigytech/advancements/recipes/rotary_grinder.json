@@ -1,0 +1,31 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:materials/carbon_plate",
+      "prodigytech:materials/inferno_fuel",
+      "prodigytech:materials/energion_dust",
+      "prodigytech:storage/carbon_plate_block",
+      "prodigytech:storage/carbon_plate_block_uncraft",
+      "prodigytech:storage/iron_dust_tiny",
+      "prodigytech:storage/iron_dust_tiny_combine",
+      "prodigytech:storage/gold_dust_tiny",
+      "prodigytech:storage/gold_dust_tiny_combine",
+      "prodigytech:storage/ferramic_dust_tiny",
+      "prodigytech:storage/ferramic_dust_tiny_combine",
+      "prodigytech:machine/solderer"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:rotary_grinder"
+          }
+        ]
+      }
+    }
+  }
+}

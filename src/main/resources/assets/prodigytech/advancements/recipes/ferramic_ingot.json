@@ -1,0 +1,34 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:storage/ferramic_nugget",
+      "prodigytech:storage/ferramic_nugget_combine",
+      "prodigytech:storage/ferramic_block",
+      "prodigytech:storage/ferramic_block_uncraft",
+      "prodigytech:materials/ferramic_gear",
+      "prodigytech:machine/magmatic_aeroheater",
+      "prodigytech:machine/solid_fuel_aeroheater",
+      "prodigytech:machine/rotary_grinder",
+      "prodigytech:machine/blower_furnace",
+      "prodigytech:machine/incinerator",
+      "prodigytech:machine/heat_sawmill",
+      "prodigytech:machine/air_funnel",
+      "prodigytech:machine/linear_extractor",
+      "prodigytech:machine/funnelling_extractor",
+      "prodigytech:tools/ferramic_handbow"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:ferramic_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

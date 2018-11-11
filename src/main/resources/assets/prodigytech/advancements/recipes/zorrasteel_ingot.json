@@ -1,0 +1,25 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:storage/zorrasteel_block",
+      "prodigytech:storage/zorrasteel_block_uncraft",
+      "prodigytech:machine/tartaric_aeroheater",
+      "prodigytech:machine/zorra_altar",
+      "prodigytech:tools/zorrasteel_sword",
+      "prodigytech:tools/zorrasteel_handbow"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:zorrasteel_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

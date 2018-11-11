@@ -1,0 +1,30 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:machine/energion_aeroheater",
+      "prodigytech:machine/battery_replenisher",
+      "prodigytech:materials/energion_battery_empty",
+      "prodigytech:materials/energion_battery_double_empty",
+      "prodigytech:materials/energion_battery_double_empty_combine",
+      "prodigytech:materials/energion_battery_triple_empty",
+      "prodigytech:materials/energion_battery_triple_empty_combine1",
+      "prodigytech:materials/energion_battery_triple_empty_combine2",
+      "prodigytech:materials/energion_battery",
+      "prodigytech:materials/energion_battery_double",
+      "prodigytech:materials/energion_battery_triple"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:energion_dust"
+          }
+        ]
+      }
+    }
+  }
+}

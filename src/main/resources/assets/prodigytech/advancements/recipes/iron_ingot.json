@@ -2,7 +2,8 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:machine/explosion_furnace"
+      "prodigytech:machine/explosion_furnace",
+      "prodigytech:tools/guide"
     ]
   },
   "criteria": {

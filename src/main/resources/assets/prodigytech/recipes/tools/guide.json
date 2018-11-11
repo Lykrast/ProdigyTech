@@ -1,0 +1,8 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "minecraft:book" },
+		{ "type": "forge:ore_dict", "ore": "sand" }
+	],
+	"result": { "item": "patchouli:guide_book", "nbt": { "patchouli:book": "prodigytech:guide" } }
+}

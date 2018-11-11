@@ -15,7 +15,9 @@
 			"title": "Available Aeroheaters",
             "entries": [
 				"hot_air/magmatic_aeroheater",
-				"hot_air/solid_fuel_aeroheater"
+				"hot_air/solid_fuel_aeroheater",
+				"energion/energion_aeroheater",
+				"primordium/tartaric_aeroheater"
 			]
         }
     ]

@@ -1,0 +1,42 @@
+{
+    "name": "Energion Batteries",
+    "icon": "prodigytech:energion_battery",
+    "category": "energion",
+	"advancement": "prodigytech:main/energion_dust",
+	"priority": true,
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)Energion Batteries$() are simple way of exploiting $(item)Energion Dust$(). Empty batteries can be manually filled, making them ready to be used in the machines that uses them.$(br2)Batteries will eventually deplete with usage and will need to refilled again."
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_battery_empty",
+            "recipe2": "prodigytech:materials/energion_battery"
+        },
+        {
+            "type": "text",
+            "text": "Bigger $(thing)Batteries$() can be made, which last longer but requires more $(item)Energion Dust$() to be filled up again.$(br2)As their names imply, $(item)Double Energion Batteries$() require twice the $(item)Energion Dust$() and last twice as long, while $(item)Triple Energion Battery$() require 3 times as much $(item)Energion Dust$() and last 3 times as long when compared to simple $(item)Energion Batteries$()."
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_battery_double_empty",
+            "recipe2": "prodigytech:materials/energion_battery_triple_empty"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_battery_double",
+            "recipe2": "prodigytech:materials/energion_battery_triple"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_battery_double_empty_combine",
+            "recipe2": "prodigytech:materials/energion_battery_triple_empty_combine1"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_battery_triple_empty_combine2"
+        }
+    ]
+}

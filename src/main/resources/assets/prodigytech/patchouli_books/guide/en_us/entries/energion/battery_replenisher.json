@@ -1,0 +1,16 @@
+{
+    "name": "Battery Replenisher",
+    "icon": "prodigytech:battery_replenisher",
+    "category": "energion",
+	"advancement": "prodigytech:main/energion_dust",
+    "pages": [
+        {
+            "type": "text",
+            "text": "The $(item)Battery Replenisher$() is a simple machine that will fill empty or partially depleted $(item)Energion Batteries$() with $(item)Energion Dust$(). It needs to be provided with $(thing)Hot Air$() to work, and can only fill a single $(item)Energion Battery$() at a time.$(br2)$(item)Energion Batteries$() to fill and $(item)Energion Dust$() can be inserted and full $(item)Energion Batteries$() can be extracted from any side except the top and bottom."
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/battery_replenisher"
+        }
+    ]
+}

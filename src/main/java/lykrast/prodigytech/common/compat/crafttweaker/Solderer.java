@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.compat.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import lykrast.prodigytech.common.recipe.SoldererManager;
 import lykrast.prodigytech.common.recipe.SoldererManager.SoldererRecipe;
@@ -12,6 +13,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.prodigytech.solderer")
+@ZenRegister
 public class Solderer {
 	//Helpers
 	private static SoldererRecipe recipe(IItemStack pattern, IItemStack additive, IItemStack output, int gold, int time) {

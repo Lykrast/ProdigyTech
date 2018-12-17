@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.oredict.IOreDictEntry;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager;
@@ -15,6 +16,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.prodigytech.atomicreshaper")
+@ZenRegister
 public class AtomicReshaper {
 	//Helpers
 	private static AtomicReshaperRecipe recipe(IItemStack in, IItemStack out, int primordium, int time) {

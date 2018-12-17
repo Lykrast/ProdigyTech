@@ -5,7 +5,7 @@ import crafttweaker.IAction;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.oredict.IOreDictEntry;
-import lykrast.prodigytech.common.recipe.HeatSawmillManager;
+import lykrast.prodigytech.common.recipe.OreRefineryManager;
 import lykrast.prodigytech.common.recipe.SimpleRecipeSecondaryOutput;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.item.ItemStack;
@@ -13,21 +13,21 @@ import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
-@ZenClass("mods.prodigytech.heatsawmill")
+@ZenClass("mods.prodigytech.orerefinery")
 @ZenRegister
-public class HeatSawmill {
+public class OreRefinery {
 	//Helpers
 	private static SimpleRecipeSecondaryOutput recipe(IItemStack in, IItemStack out, int time) {
 		return new SimpleRecipeSecondaryOutput(CraftTweakerHelper.toItemStack(in), CraftTweakerHelper.toItemStack(out), time);
 	}
-	private static SimpleRecipeSecondaryOutput recipe(IItemStack in, IItemStack out, IItemStack sec, int time) {
-		return new SimpleRecipeSecondaryOutput(CraftTweakerHelper.toItemStack(in), CraftTweakerHelper.toItemStack(out), CraftTweakerHelper.toItemStack(sec), time);
+	private static SimpleRecipeSecondaryOutput recipe(IItemStack in, IItemStack out, IItemStack sec, float chance, int time) {
+		return new SimpleRecipeSecondaryOutput(CraftTweakerHelper.toItemStack(in), CraftTweakerHelper.toItemStack(out), CraftTweakerHelper.toItemStack(sec), time, chance);
 	}
 	private static SimpleRecipeSecondaryOutput recipe(IOreDictEntry in, IItemStack out, int time) {
 		return new SimpleRecipeSecondaryOutput(in.getName(), CraftTweakerHelper.toItemStack(out), time);
 	}
-	private static SimpleRecipeSecondaryOutput recipe(IOreDictEntry in, IItemStack out, IItemStack sec, int time) {
-		return new SimpleRecipeSecondaryOutput(in.getName(), CraftTweakerHelper.toItemStack(out), CraftTweakerHelper.toItemStack(sec), time);
+	private static SimpleRecipeSecondaryOutput recipe(IOreDictEntry in, IItemStack out, IItemStack sec, float chance, int time) {
+		return new SimpleRecipeSecondaryOutput(in.getName(), CraftTweakerHelper.toItemStack(out), CraftTweakerHelper.toItemStack(sec), time, chance);
 	}
 	
 	//Add
@@ -35,32 +35,36 @@ public class HeatSawmill {
 	public static void addRecipe(IItemStack in, IItemStack out, @Optional int time) {
 		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		if (out == null) throw new IllegalArgumentException("Output cannot be null");
-		if (time <= 0) time = Config.heatSawmillProcessTime;
+		if (time <= 0) time = Config.oreRefineryProcessTime;
 		CraftTweakerAPI.apply(new Add(recipe(in, out, time)));
 	}
 	
 	@ZenMethod
-	public static void addRecipe(IItemStack in, IItemStack out, IItemStack sec, @Optional int time) {
+	public static void addRecipe(IItemStack in, IItemStack out, IItemStack sec, @Optional float chance, @Optional int time) {
 		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		if (out == null) throw new IllegalArgumentException("Output cannot be null");
-		if (time <= 0) time = Config.heatSawmillProcessTime;
-		CraftTweakerAPI.apply(new Add(recipe(in, out, sec, time)));
+		if (chance <= 0) chance = Config.oreRefineryChance;
+		if (chance > 1) chance = 1;
+		if (time <= 0) time = Config.oreRefineryProcessTime;
+		CraftTweakerAPI.apply(new Add(recipe(in, out, sec, chance, time)));
 	}
 	
 	@ZenMethod
 	public static void addRecipe(IOreDictEntry in, IItemStack out, @Optional int time) {
 		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		if (out == null) throw new IllegalArgumentException("Output cannot be null");
-		if (time <= 0) time = Config.heatSawmillProcessTime;
+		if (time <= 0) time = Config.oreRefineryProcessTime;
 		CraftTweakerAPI.apply(new Add(recipe(in, out, time)));
 	}
 	
 	@ZenMethod
-	public static void addRecipe(IOreDictEntry in, IItemStack out, IItemStack sec, @Optional int time) {
+	public static void addRecipe(IOreDictEntry in, IItemStack out, IItemStack sec, @Optional float chance, @Optional int time) {
 		if (in == null) throw new IllegalArgumentException("Input cannot be null");
 		if (out == null) throw new IllegalArgumentException("Output cannot be null");
-		if (time <= 0) time = Config.heatSawmillProcessTime;
-		CraftTweakerAPI.apply(new Add(recipe(in, out, sec, time)));
+		if (chance <= 0) chance = Config.oreRefineryChance;
+		if (chance > 1) chance = 1;
+		if (time <= 0) time = Config.oreRefineryProcessTime;
+		CraftTweakerAPI.apply(new Add(recipe(in, out, sec, chance, time)));
 	}
 	
 	private static class Add implements IAction {
@@ -72,12 +76,12 @@ public class HeatSawmill {
 
 		@Override
 		public void apply() {
-			HeatSawmillManager.INSTANCE.addRecipe(recipe);
+			OreRefineryManager.INSTANCE.addRecipe(recipe);
 		}
 
 		@Override
 		public String describe() {
-			String message = "Adding Heat Sawmill recipe for " + recipe.getOutput().getDisplayName();
+			String message = "Adding Ore Refinery recipe for " + recipe.getOutput().getDisplayName();
 			if (recipe.hasSecondaryOutput()) message += " + " + recipe.getSecondaryOutput().getDisplayName();
 			
 			return message;
@@ -100,12 +104,12 @@ public class HeatSawmill {
 
 		@Override
 		public void apply() {
-			HeatSawmillManager.INSTANCE.removeRecipe(stack);
+			OreRefineryManager.INSTANCE.removeRecipe(stack);
 		}
 
 		@Override
 		public String describe() {
-			return "Removing Heat Sawmill recipe with input " + stack.getDisplayName();
+			return "Removing Ore Refinery recipe with input " + stack.getDisplayName();
 		}
 	}
 	
@@ -124,12 +128,12 @@ public class HeatSawmill {
 
 		@Override
 		public void apply() {
-			HeatSawmillManager.INSTANCE.removeOreRecipe(ore);
+			OreRefineryManager.INSTANCE.removeOreRecipe(ore);
 		}
 
 		@Override
 		public String describe() {
-			return "Removing Heat Sawmill recipe with input " + ore;
+			return "Removing Ore Refinery recipe with input " + ore;
 		}
 	}
 	
@@ -141,12 +145,12 @@ public class HeatSawmill {
 	private static class RemoveAll implements IAction {
 		@Override
 		public void apply() {
-			HeatSawmillManager.INSTANCE.removeAll();
+			OreRefineryManager.INSTANCE.removeAll();
 		}
 
 		@Override
 		public String describe() {
-			return "Removing all Heat Sawmill recipes";
+			return "Removing all Ore Refinery recipes";
 		}
 	}
 }

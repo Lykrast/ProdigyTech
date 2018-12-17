@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.compat.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.oredict.IOreDictEntry;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
@@ -10,6 +11,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.prodigytech.primordialisreactor")
+@ZenRegister
 public class PrimordialisReactor {
 	//Add
 	@ZenMethod

@@ -2,6 +2,7 @@ package lykrast.prodigytech.common.compat.crafttweaker;
 
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
+import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceRecipe;
@@ -10,6 +11,7 @@ import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 @ZenClass("mods.prodigytech.explosionfurnace.recipes")
+@ZenRegister
 public class ExplosionFurnace {
 	//Helpers
 	private static ExplosionFurnaceRecipe recipe(IItemStack in, IItemStack out, int ep) {

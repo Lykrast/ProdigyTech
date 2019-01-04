@@ -108,6 +108,10 @@ public class ExplosionFurnaceManager {
 		EXPLOSIVES.clear();
 	}
 	
+	public static void removeAllDampeners() {
+		DAMPENERS.clear();
+	}
+	
 	//Probably REALLY need to optimise those one day
 	public static boolean isValidInput(ItemStack check)
 	{

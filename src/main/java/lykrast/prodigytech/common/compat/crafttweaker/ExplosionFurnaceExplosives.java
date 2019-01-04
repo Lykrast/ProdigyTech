@@ -33,7 +33,7 @@ public class ExplosionFurnaceExplosives {
 
 		@Override
 		public void apply() {
-			ExplosionFurnaceManager.addExplosive(explosive, reactant, amount);
+			//ExplosionFurnaceManager.addExplosive(explosive, reactant, amount);
 		}
 
 		@Override
@@ -60,7 +60,7 @@ public class ExplosionFurnaceExplosives {
 
 		@Override
 		public void apply() {
-			ExplosionFurnaceManager.removeExplosive(explosive, reactant);
+			//ExplosionFurnaceManager.removeExplosive(explosive, reactant);
 		}
 
 		@Override
@@ -77,7 +77,7 @@ public class ExplosionFurnaceExplosives {
 	private static class RemoveAll implements IAction {
 		@Override
 		public void apply() {
-			ExplosionFurnaceManager.removeAllExplosives();
+			//ExplosionFurnaceManager.removeAllExplosives();
 		}
 
 		@Override

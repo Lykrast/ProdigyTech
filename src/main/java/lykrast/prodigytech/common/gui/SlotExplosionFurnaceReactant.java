@@ -16,7 +16,7 @@ public class SlotExplosionFurnaceReactant extends Slot {
      */
     public boolean isItemValid(ItemStack stack)
     {
-        return ExplosionFurnaceManager.isValidReactant(stack);
+        return ExplosionFurnaceManager.isValidDampener(stack);
     }
 
 }

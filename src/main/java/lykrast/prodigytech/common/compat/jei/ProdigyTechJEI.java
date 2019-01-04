@@ -29,6 +29,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		//Recipes
 		ExplosionFurnaceCategory.registerRecipes(registry);
 		ExplosionFurnaceExplosiveCategory.registerRecipes(registry);
+		ExplosionFurnaceDampenerCategory.registerRecipes(registry);
 		if (Config.incineratorChance > 0) IncineratorCategory.registerRecipes(registry);
 		RotaryGrinderCategory.registerRecipes(registry);
 		HeatSawmillCategory.registerRecipes(registry);
@@ -43,6 +44,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		//Catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceExplosiveCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.explosionFurnace), ExplosionFurnaceDampenerCategory.UID);
 		if (Config.incineratorChance > 0) registry.addRecipeCatalyst(new ItemStack(ModBlocks.incinerator), IncineratorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.rotaryGrinder), RotaryGrinderCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.heatSawmill), HeatSawmillCategory.UID);
@@ -62,7 +64,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterTartaric), VanillaRecipeCategoryUid.FUEL);
 		
 		//Clickable areas
-		registry.addRecipeClickArea(GuiExplosionFurnace.class, 79, 34, 42, 17, ExplosionFurnaceCategory.UID, ExplosionFurnaceExplosiveCategory.UID);
+		registry.addRecipeClickArea(GuiExplosionFurnace.class, 79, 34, 42, 17, ExplosionFurnaceCategory.UID, ExplosionFurnaceExplosiveCategory.UID, ExplosionFurnaceDampenerCategory.UID);
 		if (Config.incineratorChance > 0) registry.addRecipeClickArea(GuiIncinerator.class, 79, 35, 24, 17, IncineratorCategory.UID);
 		registry.addRecipeClickArea(GuiRotaryGrinder.class, 79, 35, 24, 17, RotaryGrinderCategory.UID);
 		registry.addRecipeClickArea(GuiHeatSawmill.class, 79, 35, 24, 17, HeatSawmillCategory.UID);
@@ -84,6 +86,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		final IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 		registry.addRecipeCategories(new ExplosionFurnaceCategory(guiHelper));
 		registry.addRecipeCategories(new ExplosionFurnaceExplosiveCategory(guiHelper));
+		registry.addRecipeCategories(new ExplosionFurnaceDampenerCategory(guiHelper));
 		if (Config.incineratorChance > 0) registry.addRecipeCategories(new IncineratorCategory(guiHelper));
 		registry.addRecipeCategories(new RotaryGrinderCategory(guiHelper));
 		registry.addRecipeCategories(new HeatSawmillCategory(guiHelper));

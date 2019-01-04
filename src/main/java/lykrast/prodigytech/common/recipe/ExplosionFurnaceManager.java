@@ -1,16 +1,20 @@
 package lykrast.prodigytech.common.recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import lykrast.prodigytech.common.init.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraftforge.oredict.OreIngredient;
 
 public class ExplosionFurnaceManager {
 	public static final List<ExplosionFurnaceRecipe> RECIPES = new ArrayList<>();
-	public static final List<ExplosionFurnaceExplosive> EXPLOSIVES = new ArrayList<>();
+	public static final ItemMap<Explosive> EXPLOSIVES = new ItemMap<>();
+	public static final ItemMap<Dampener> DAMPENERS = new ItemMap<>();
 	
 	public static ExplosionFurnaceRecipe addRecipe(ItemStack in, ItemStack out, int power)
 	{
@@ -44,32 +48,60 @@ public class ExplosionFurnaceManager {
 		return null;
 	}
 	
-	public static ExplosionFurnaceExplosive addExplosive(ItemStack explosive, ItemStack reactant, int amount)
-	{
-		ExplosionFurnaceExplosive recipe = new ExplosionFurnaceExplosive(explosive, reactant, amount);
-		
-		EXPLOSIVES.add(recipe);
-		return recipe;
-	}
-	
-	public static ExplosionFurnaceExplosive findExplosive(ItemStack explosive, ItemStack reactant)
-	{
-		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
-			if (recipe.isValidExplosive(explosive) && recipe.isValidReactant(reactant)) return recipe;
-		
-		return null;
-	}
-	
-	public static ExplosionFurnaceExplosive removeExplosive(ItemStack explosive, ItemStack reactant)
-	{
-		ExplosionFurnaceExplosive recipe = findExplosive(explosive, reactant);
-		if (recipe != null) EXPLOSIVES.remove(recipe);
-		
-		return recipe;
-	}
-	
 	public static void removeAllRecipes() {
 		RECIPES.clear();
+	}
+	
+	public static Explosive addExplosive(ItemStack item, int power){
+		Explosive explosive = new Explosive(item, power);
+		
+		EXPLOSIVES.add(item, explosive);
+		return explosive;
+	}
+	
+	public static Explosive addExplosive(String ore, int power){
+		Explosive explosive = new Explosive(ore, power);
+		
+		EXPLOSIVES.add(ore, explosive);
+		return explosive;
+	}
+	
+	public static Dampener addDampener(ItemStack item, int power){
+		Dampener dampener = new Dampener(item, power);
+		
+		DAMPENERS.add(item, dampener);
+		return dampener;
+	}
+	
+	public static Dampener addDampener(String ore, int power){
+		Dampener dampener = new Dampener(ore, power);
+		
+		DAMPENERS.add(ore, dampener);
+		return dampener;
+	}
+	
+	public static Explosive findExplosive(ItemStack explosive) {
+		return EXPLOSIVES.find(explosive);
+	}
+	
+	public static Explosive removeExplosive(ItemStack explosive) {
+		return EXPLOSIVES.remove(explosive);
+	}
+	
+	public static Explosive removeExplosive(String ore) {
+		return EXPLOSIVES.remove(ore);
+	}
+	
+	public static Dampener findDampener(ItemStack dampener) {
+		return DAMPENERS.find(dampener);
+	}
+	
+	public static Dampener removeDampener(ItemStack dampener) {
+		return DAMPENERS.remove(dampener);
+	}
+	
+	public static Dampener removeDampener(String ore) {
+		return DAMPENERS.remove(ore);
 	}
 	
 	public static void removeAllExplosives() {
@@ -93,20 +125,12 @@ public class ExplosionFurnaceManager {
 		return false;
 	}
 	
-	public static boolean isValidExplosive(ItemStack check)
-	{
-		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
-			if (recipe.isValidExplosive(check)) return true;
-		
-		return false;
+	public static boolean isValidExplosive(ItemStack check) {
+		return EXPLOSIVES.isValid(check);
 	}
 	
-	public static boolean isValidReactant(ItemStack check)
-	{
-		for (ExplosionFurnaceExplosive recipe : EXPLOSIVES)
-			if (recipe.isValidReactant(check)) return true;
-		
-		return false;
+	public static boolean isValidDampener(ItemStack check) {
+		return DAMPENERS.isValid(check);
 	}
 	
 	public static void init()
@@ -130,17 +154,14 @@ public class ExplosionFurnaceManager {
 		addRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND), 10);
 
 		//---------------------
-		//Explosives
+		//Explosives and dampeners
 		//---------------------
-		//TNT
-		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4), 1440);
-		addExplosive(new ItemStack(Items.GUNPOWDER, 5), new ItemStack(Blocks.SAND, 4, 1), 1440);
+		addExplosive("gunpowder", 288);
+		addExplosive("dustWood", 30);
+		addExplosive("dustEnergion", 1440);
 		
-		//End Crystal
-		addExplosive(new ItemStack(Items.ENDER_EYE, 1), new ItemStack(Items.GHAST_TEAR), 2160);
-		
-		//Dust
-		addExplosive(new ItemStack(ModItems.sawdust, 1), new ItemStack(ModItems.ash, 1), 15);
+		addDampener("sand", 360);
+		addDampener("dustAsh", 30);
 	}
 	
 	public static class ExplosionFurnaceRecipe {
@@ -207,56 +228,71 @@ public class ExplosionFurnaceManager {
 		}
 	}
 	
-	public static class ExplosionFurnaceExplosive {
-		private final ItemStack explosive;
-		private final ItemStack reactant;
+	public static class Explosive {
+		private final Ingredient ingredient;
 		private final int power;
 		
-		public ExplosionFurnaceExplosive(ItemStack explosive, ItemStack reactant, int power)
-		{
-			this.explosive = explosive;
-			this.reactant = reactant;
+		public Explosive(ItemStack explosive, int power) {
+			ingredient = Ingredient.fromStacks(explosive);
 			this.power = power;
 		}
 		
-		public ItemStack getExplosive()
-		{
-			return explosive.copy();
+		public Explosive(String oreExplosive, int power) {
+			ingredient = new OreIngredient(oreExplosive);
+			this.power = power;
 		}
 		
-		public ItemStack getReactant()
-		{
-			return reactant.copy();
+		public boolean matches(ItemStack stack) {
+			return !stack.isEmpty() && ingredient.apply(stack);
 		}
 		
-		public int getOptimalPower()
-		{
+		public int getPower() {
 			return power;
 		}
 		
-		public boolean isValidExplosive(ItemStack in)
-		{
-			return (!in.isEmpty() && in.isItemEqual(explosive));
+		public int getPower(ItemStack stack) {
+			return power * stack.getCount();
 		}
 		
-		public boolean isValidReactant(ItemStack in)
-		{
-			return (!in.isEmpty() && in.isItemEqual(reactant));
+		/**
+		 * For JEI.
+		 */
+		public List<ItemStack> getMatchingStacks() {
+			return Arrays.asList(ingredient.getMatchingStacks());
+		}
+	}
+	
+	public static class Dampener {
+		private final Ingredient ingredient;
+		private final int dampening;
+		
+		public Dampener(ItemStack explosive, int dampening) {
+			ingredient = Ingredient.fromStacks(explosive);
+			this.dampening = dampening;
 		}
 		
-		public float getEfficiency(ItemStack exp, ItemStack react)
-		{
-			float expAmount = exp.getCount() * reactant.getCount();
-			float reactAmount = react.getCount() * explosive.getCount();
-			
-			if (expAmount > reactAmount) return reactAmount / expAmount;
-			else return expAmount / reactAmount;
+		public Dampener(String oreExplosive, int dampening) {
+			ingredient = new OreIngredient(oreExplosive);
+			this.dampening = dampening;
 		}
 		
-		public int getPower(ItemStack exp)
-		{
-			float mult = (float)exp.getCount() / (float)explosive.getCount();
-			return (int) (power * mult);
+		public boolean matches(ItemStack stack) {
+			return !stack.isEmpty() && ingredient.apply(stack);
+		}
+		
+		public int getDampening() {
+			return dampening;
+		}
+		
+		public int getDampening(ItemStack stack) {
+			return dampening * stack.getCount();
+		}
+		
+		/**
+		 * For JEI.
+		 */
+		public List<ItemStack> getMatchingStacks() {
+			return Arrays.asList(ingredient.getMatchingStacks());
 		}
 	}
 

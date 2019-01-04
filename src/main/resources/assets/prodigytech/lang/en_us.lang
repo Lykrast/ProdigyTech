@@ -211,9 +211,11 @@ status.prodigytech.wormhole_linker.error.lost=§cOriginal Funnel cannot be found
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
-container.prodigytech.jei.ptexplosionfurnace.required=EP/item : %d
+container.prodigytech.jei.ptexplosionfurnace.required=EP/item: %d
 container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
-container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated : %d
+container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated: %d
+container.prodigytech.jei.ptexplosionfurnace_damp=Explosion Furnace Dampeners
+container.prodigytech.jei.ptexplosionfurnace_damp.dampened=EP dampened: %d
 container.prodigytech.jei.ptincinerator=Incinerator
 container.prodigytech.jei.ptgrinder=Rotary Grinder
 container.prodigytech.jei.ptsawmill=Heat Sawmill
@@ -221,8 +223,8 @@ container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptrefinery=Ore Refinery
 container.prodigytech.jei.ptbattery=Energion Battery Usage
-container.prodigytech.jei.ptbattery.lifetime=Lifetime : %d ticks
-container.prodigytech.jei.ptbattery.undefined=Lifetime : Undefined
+container.prodigytech.jei.ptbattery.lifetime=Lifetime: %d ticks
+container.prodigytech.jei.ptbattery.undefined=Lifetime: Undefined
 container.prodigytech.jei.ptreplenisher=Battery Replenisher
 container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper

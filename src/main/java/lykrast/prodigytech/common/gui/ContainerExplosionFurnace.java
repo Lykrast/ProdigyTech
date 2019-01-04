@@ -78,7 +78,7 @@ public class ContainerExplosionFurnace extends ContainerMachine<TileExplosionFur
                     }
                 }
             	//Explosive reactant
-            	else if (ExplosionFurnaceManager.isValidReactant(itemstack1))
+            	else if (ExplosionFurnaceManager.isValidDampener(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {

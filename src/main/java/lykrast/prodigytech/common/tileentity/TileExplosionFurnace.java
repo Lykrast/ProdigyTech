@@ -1,8 +1,9 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
-import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceExplosive;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.Dampener;
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.ExplosionFurnaceRecipe;
+import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.Explosive;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -28,16 +29,27 @@ public class TileExplosionFurnace extends TileMachineInventory {
 	public void process(EnumFacing facing)
 	{
 		ItemStack exp = getStackInSlot(0);
-		ItemStack react = getStackInSlot(1);
-		if (!exp.isEmpty() && !react.isEmpty())
+		ItemStack damp = getStackInSlot(1);
+		if (!exp.isEmpty())
 		{
-			//Find explosive
-			ExplosionFurnaceExplosive explosive = ExplosionFurnaceManager.findExplosive(exp, react);
+			//Find explosive and dampener
+			Explosive explosive = ExplosionFurnaceManager.findExplosive(exp);
+			Dampener dampener = ExplosionFurnaceManager.findDampener(damp);
 			if (explosive != null)
 			{
 				//Get EP and efficiency, remove explosives
 				int power = explosive.getPower(exp);
-				float efficiency = explosive.getEfficiency(exp, react);
+				int dampened = dampener != null ? dampener.getDampening(damp) : 0;
+				float efficiency = 1;
+				if (dampened < power) {
+					//EP was underdampened, reduce efficiency
+					efficiency = 1 - ((power - dampened)/(float)power);
+				}
+				else {
+					//EP was overdampened (or just enough), reduce EP by the excess dampening
+					power = Math.max(0, power*2-dampened);
+				}
+				
 				removeStackFromSlot(0);
 				removeStackFromSlot(1);
 				
@@ -135,7 +147,7 @@ public class TileExplosionFurnace extends TileMachineInventory {
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (index == 0) return ExplosionFurnaceManager.isValidExplosive(stack);
-		else if (index == 1) return ExplosionFurnaceManager.isValidReactant(stack);
+		else if (index == 1) return ExplosionFurnaceManager.isValidDampener(stack);
 		else if (index == 5) return ExplosionFurnaceManager.isValidReagent(stack);
 		else if (index >= 2 && index <= 4) return ExplosionFurnaceManager.isValidInput(stack);
 		else return false;

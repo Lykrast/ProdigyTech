@@ -10,6 +10,7 @@ import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -52,8 +53,8 @@ public class BatteryReplenisherWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {		
-		ingredients.setInputLists(ItemStack.class, in);
-		ingredients.setOutput(ItemStack.class, out);
+		ingredients.setInputLists(VanillaTypes.ITEM, in);
+		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 	
 	@Override

@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.Dampener;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -26,7 +27,7 @@ public class ExplosionFurnaceDampenerWrapper implements IRecipeWrapper {
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		List<List<ItemStack>> list = ImmutableList.of(dampener);
-		ingredients.setInputLists(ItemStack.class, list);
+		ingredients.setInputLists(VanillaTypes.ITEM, list);
 	}
 	
 	@Override

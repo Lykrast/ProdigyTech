@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -35,8 +36,8 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		List<ItemStack> list = ImmutableList.of(in, reag);
-		ingredients.setInputs(ItemStack.class, list);
-		ingredients.setOutput(ItemStack.class, out);
+		ingredients.setInputs(VanillaTypes.ITEM, list);
+		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 	
 	@Override

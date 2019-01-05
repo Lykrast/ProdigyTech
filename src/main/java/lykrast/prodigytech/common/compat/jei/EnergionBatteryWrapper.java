@@ -5,6 +5,7 @@ import java.awt.Color;
 import lykrast.prodigytech.common.item.IEnergionBattery;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -28,8 +29,8 @@ public class EnergionBatteryWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInput(ItemStack.class, in);
-		ingredients.setOutput(ItemStack.class, out);
+		ingredients.setInput(VanillaTypes.ITEM, in);
+		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 	
 	@Override

@@ -8,6 +8,7 @@ import lykrast.prodigytech.common.recipe.SimpleRecipe;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -37,8 +38,8 @@ public class SimpleRecipeWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInputLists(ItemStack.class, in);
-		ingredients.setOutput(ItemStack.class, out);
+		ingredients.setInputLists(VanillaTypes.ITEM, in);
+		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 	
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import lykrast.prodigytech.common.init.ModItems;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -28,8 +29,8 @@ public class PrimordialisReactorWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		ingredients.setInputLists(ItemStack.class, in);
-		ingredients.setOutput(ItemStack.class, out);
+		ingredients.setInputLists(VanillaTypes.ITEM, in);
+		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 
 }

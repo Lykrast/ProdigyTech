@@ -8,6 +8,7 @@ import java.util.List;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
@@ -38,8 +39,8 @@ public class IncineratorWrapper implements IRecipeWrapper {
 		{
 			items.add(new ItemStack(i, 1, OreDictionary.WILDCARD_VALUE));
 		}
-		ingredients.setInputLists(ItemStack.class, Collections.singletonList(items));
-		ingredients.setOutput(ItemStack.class, output);
+		ingredients.setInputLists(VanillaTypes.ITEM, Collections.singletonList(items));
+		ingredients.setOutput(VanillaTypes.ITEM, output);
 	}
 	
 	@Override

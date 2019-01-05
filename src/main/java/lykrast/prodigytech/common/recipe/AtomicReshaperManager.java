@@ -60,6 +60,14 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 				"oreOsmium", 6915,
 				"oreQuartzBlack", 5535
 				));
+		addRecipe("cobblestone", Config.atomicReshaperProcessTime, 4, createOreDictOutputs(
+				"stoneGranite", 1,
+				"stoneDiorite", 1,
+				"stoneAndesite", 1,
+				"stoneMarble", 1,
+				"stoneBasalt", 1,
+				"stoneLimestone", 1
+				));
 		
 		//Mystery Treats
 //		addRecipe(new AtomicReshaperRecipe(new ItemStack(Items.SUGAR), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.mysteryTreat)) {

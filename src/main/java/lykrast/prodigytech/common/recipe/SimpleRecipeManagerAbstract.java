@@ -1,27 +1,13 @@
 package lykrast.prodigytech.common.recipe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.apache.commons.lang3.tuple.Pair;
-
-import lykrast.prodigytech.common.util.RecipeUtil;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> {
-	/**
-	 * The map containing all recipes that check Item and metadata. Will have to be redone in 1.13.
-	 */
-	protected final HashMap<Pair<Item, Integer>, T> recipes = new HashMap<>();
-	/**
-	 * The map containing all recipes that check Ore Dictionary tags.
-	 */
-	protected final HashMap<String, T> recipesOre = new HashMap<>();
+	protected final ItemMap<T> recipes = new ItemMap<>();
 	
 	/**
 	 * Only a single Manager for each machine is supposed to exist at a given time.
@@ -33,11 +19,7 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @return a List of all registered recipes
 	 */
 	public List<T> getAllRecipes() {
-		List<T> list = new ArrayList<>();
-		list.addAll(recipes.values());
-		list.addAll(recipesOre.values());
-		
-		return list;
+		return recipes.getAllContent();
 	}
 	
 	/**
@@ -45,10 +27,9 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @param recipe recipe to register
 	 * @return registered recipe
 	 */
-	public T addRecipe(T recipe)
-	{
-		if (recipe.isOreRecipe()) recipesOre.put(recipe.getOreInput(), recipe);
-		else recipes.put(RecipeUtil.stackToPair(recipe.getInput()), recipe);
+	public T addRecipe(T recipe) {
+		if (recipe.isOreRecipe()) recipes.add(recipe.getOreInput(), recipe);
+		else recipes.add(recipe.getInput(), recipe);
 		return recipe;
 	}
 	
@@ -59,34 +40,8 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @return found recipe, or null if none is found
 	 */
 	@Nullable
-	public T findRecipe(ItemStack in)
-	{
-		if (in.isEmpty()) return null;
-		T recipe = recipes.get(RecipeUtil.stackToPair(in));
-		if (recipe != null) return recipe;
-		recipe = recipes.get(RecipeUtil.stackToWildcardPair(in));
-		if (recipe != null) return recipe;
-		
-		//Check for ore
-		int[] ores = OreDictionary.getOreIDs(in);
-		for (int i : ores)
-		{
-			recipe = findOreRecipe(OreDictionary.getOreName(i));
-			if (recipe != null) return recipe;
-		}
-		
-		return null;
-	}
-	
-	/**
-	 * Find a recipe whose input matches the given Ore Dictionary tag.
-	 * @param in Ore Dictionary tag to find a recipe for
-	 * @return found recipe, or null if none is found
-	 */
-	@Nullable
-	public T findOreRecipe(String in)
-	{
-		return recipesOre.get(in);
+	public T findRecipe(ItemStack in) {
+		return recipes.find(in);
 	}
 	
 	/**
@@ -95,12 +50,8 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @return found and removed recipe, or null if none is found
 	 */
 	@Nullable
-	public T removeRecipe(ItemStack in)
-	{
-		T removed = recipes.remove(RecipeUtil.stackToPair(in));
-		if (removed != null) return removed;
-		
-		return recipes.remove(RecipeUtil.stackToWildcardPair(in));
+	public T removeRecipe(ItemStack in) {
+		return recipes.remove(in);
 	}
 	
 	/**
@@ -109,9 +60,8 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @return found and removed recipe, or null if none is found
 	 */
 	@Nullable
-	public T removeOreRecipe(String in)
-	{
-		return recipesOre.remove(in);
+	public T removeOreRecipe(String in) {
+		return recipes.remove(in);
 	}
 	
 	/**
@@ -119,7 +69,6 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 */
 	public void removeAll() {
 		recipes.clear();
-		recipesOre.clear();
 	}
 	
 	/**
@@ -128,9 +77,8 @@ public abstract class SimpleRecipeManagerAbstract<T extends ISingleInputRecipe> 
 	 * @param check ItemStack to check
 	 * @return whether or not a recipe could be found
 	 */
-	public boolean isValidInput(ItemStack check)
-	{
-		return findRecipe(check) != null;
+	public boolean isValidInput(ItemStack check) {
+		return recipes.isValid(check);
 	}
 	
 	/**

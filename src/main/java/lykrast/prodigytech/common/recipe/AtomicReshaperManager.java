@@ -11,6 +11,7 @@ import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.recipe.AtomicReshaperManager.AtomicReshaperRecipe;
 import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.util.RecipeUtil;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,14 +32,31 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 	@Override
 	public void init() {
 		addRecipe("treeSapling", Config.atomicReshaperProcessTime, 50, new ItemStack(ModBlocks.zorraSapling));
-		addRecipe("stone", Config.atomicReshaperProcessTime * 3, 20, 
-				new ItemStack(Blocks.COAL_ORE), 64, 
-				new ItemStack(Blocks.IRON_ORE), 48, 
-				new ItemStack(Blocks.REDSTONE_ORE), 33, 
-				new ItemStack(Blocks.LAPIS_ORE), 22, 
-				new ItemStack(Blocks.GOLD_ORE), 20, 
-				new ItemStack(Blocks.DIAMOND_ORE), 14, 
-				new ItemStack(Blocks.EMERALD_ORE), 10);
+		//Using Botania's Orechid weights
+		addRecipe("stone", Config.atomicReshaperProcessTime, 20, createOreDictOutputs(
+				"oreAluminum", 3940,
+				"oreAmber", 2075,
+				"oreApatite", 1595,
+				"oreCertusQuartz", 3975,
+				"oreCinnabar",  2585,
+				"oreCoal", 46525,
+				"oreCopper", 8325,
+				"oreDiamond", 1265,
+				"oreEmerald", 780,
+				"oreGold", 2970,
+				"oreIron", 20665,
+				"oreLapis", 1285,
+				"oreLead", 7985,
+				"oreMithril", 8,
+				"oreNickel", 2275,
+				"orePlatinum", 365,
+				"oreRedstone", 6885,
+				"oreSilver", 6300,
+				"oreTin", 9450,
+				"oreUranium", 1337,
+				"oreOsmium", 6915,
+				"oreQuartzBlack", 5535
+				));
 		
 		//Mystery Treats
 //		addRecipe(new AtomicReshaperRecipe(new ItemStack(Items.SUGAR), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.mysteryTreat)) {
@@ -66,6 +84,21 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 		addRecipe("paper", Config.atomicReshaperProcessTime, 2, new ItemStack(ModItems.circuitPlate));
 		addRecipe("dustAsh", Config.atomicReshaperProcessTime, 2, new ItemStack(Items.GUNPOWDER));
 		addRecipe(new ItemStack(ModItems.infernoCrystal), Config.atomicReshaperProcessTime, 5, new ItemStack(ModItems.aeternusCrystal));
+	}
+	
+	private static Object[] createOreDictOutputs(Object... outputs) {
+		//Makes the output using oredicts, only adding those that are present
+		List<Object> processed = new ArrayList<>();
+		for (int i=0; i<outputs.length; i+=2)
+		{
+			String cast = (String)outputs[i];
+			if (!RecipeUtil.oreExists(cast)) continue;
+			Integer weight = (Integer)outputs[i+1];
+			processed.add(RecipeUtil.getPreferredOreStack(cast));
+			processed.add(weight);
+		}
+		
+		return processed.toArray();
 	}
 	
 	public static class AtomicReshaperRecipe implements ISingleInputRecipe, Comparable<AtomicReshaperRecipe> {

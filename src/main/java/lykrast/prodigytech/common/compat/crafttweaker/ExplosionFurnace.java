@@ -74,7 +74,7 @@ public class ExplosionFurnace {
 
 		@Override
 		public void apply() {
-			ExplosionFurnaceManager.removeRecipe(stack);
+			//ExplosionFurnaceManager.removeRecipe(stack);
 		}
 
 		@Override

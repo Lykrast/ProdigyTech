@@ -16,36 +16,61 @@ public class ExplosionFurnaceManager {
 	public static final ItemMap<Explosive> EXPLOSIVES = new ItemMap<>();
 	public static final ItemMap<Dampener> DAMPENERS = new ItemMap<>();
 	
-	public static ExplosionFurnaceRecipe addRecipe(ItemStack in, ItemStack out, int power)
-	{
-		return addRecipe(new ExplosionFurnaceRecipe(in, out, power));
+	//Normal input, no reagent
+	public static ExplosionFurnaceRecipe addRecipe(ItemStack input, ItemStack output, int power) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, output, power));
 	}
 	
-	public static ExplosionFurnaceRecipe addRecipe(ItemStack in, ItemStack out, int power, ItemStack reagent, int craftPerReagent)
-	{
-		return addRecipe(new ExplosionFurnaceRecipe(in, out, power, reagent, craftPerReagent));
+	//Oredict input, no reagent
+	public static ExplosionFurnaceRecipe addRecipe(String input, int inputCount, ItemStack output, int power) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, inputCount, output, power));
 	}
 	
-	public static ExplosionFurnaceRecipe addRecipe(ExplosionFurnaceRecipe recipe)
-	{
+	//Normal input, normal reagent
+	public static ExplosionFurnaceRecipe addRecipe(ItemStack input, ItemStack output, int power, ItemStack reagent, int craftPerReagent) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, output, power, reagent, craftPerReagent));
+	}
+	
+	//Oredict input, normal reagent
+	public static ExplosionFurnaceRecipe addRecipe(String input, int inputCount, ItemStack output, int power, ItemStack reagent, int craftPerReagent) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, inputCount, output, power, reagent, craftPerReagent));
+	}
+	
+	//Normal input, oredict reagent
+	public static ExplosionFurnaceRecipe addRecipe(ItemStack input, ItemStack output, int power, String reagent, int craftPerReagent) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, output, power, reagent, craftPerReagent));
+	}
+	
+	//Oredict input, oredict reagent
+	public static ExplosionFurnaceRecipe addRecipe(String input, int inputCount, ItemStack output, int power, String reagent, int craftPerReagent) {
+		return addRecipe(new ExplosionFurnaceRecipe(input, inputCount, output, power, reagent, craftPerReagent));
+	}
+	
+	public static ExplosionFurnaceRecipe addRecipe(ExplosionFurnaceRecipe recipe) {
 		RECIPES.add(recipe);
 		return recipe;
 	}
 	
-	public static ExplosionFurnaceRecipe removeRecipe(ItemStack in)
-	{
-		ExplosionFurnaceRecipe recipe = findRecipe(in);
-		if (recipe != null) RECIPES.remove(recipe);
-		
-		return recipe;
-	}
+//	public static ExplosionFurnaceRecipe removeRecipe(ItemStack in)
+//	{
+//		ExplosionFurnaceRecipe recipe = findRecipe(in);
+//		if (recipe != null) RECIPES.remove(recipe);
+//		
+//		return recipe;
+//	}
 	
-	public static ExplosionFurnaceRecipe findRecipe(ItemStack in)
+	public static ExplosionFurnaceRecipe findRecipe(ItemStack in, ItemStack reagent)
 	{
+		ExplosionFurnaceRecipe backup = null;
 		for (ExplosionFurnaceRecipe recipe : RECIPES)
-			if (recipe.isValidInput(in)) return recipe;
+			if (recipe.isValidInput(in)) {
+				//Valid reagent takes priority
+				if (recipe.isValidReagent(reagent)) return recipe;
+				//If no valid reagent is found but empty reagent exists, give it
+				else if (!recipe.needReagent()) backup = recipe;
+			}
 		
-		return null;
+		return backup;
 	}
 	
 	public static void removeAllRecipes() {
@@ -143,19 +168,19 @@ public class ExplosionFurnaceManager {
 		//Recipes
 		//---------------------
 		//Ferramic
-		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
-		//addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
-		addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
-		//addRecipe(new ItemStack(Items.IRON_NUGGET), new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
+		addRecipe("ingotIron", 1, new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Items.CLAY_BALL), 4);
+		addRecipe("ingotIron", 1, new ItemStack(ModItems.ferramicIngot), 90, new ItemStack(Blocks.CLAY), 16);
+		addRecipe("nuggetIron", 1, new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Items.CLAY_BALL), 36);
+		addRecipe("nuggetIron", 1, new ItemStack(ModItems.ferramicNugget), 10, new ItemStack(Blocks.CLAY), 144);
 		
 		//Zorrasteel
-		addRecipe(new ItemStack(ModItems.zorrasteelRaw), new ItemStack(ModItems.zorrasteelIngot), 360);
+		addRecipe("ingotRawZorrasteel", 1, new ItemStack(ModItems.zorrasteelIngot), 360, "dustCoal", 1);
 		
 		//Stone
 		//Those were tested by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed
-		addRecipe(new ItemStack(Blocks.STONE), new ItemStack(Blocks.COBBLESTONE), 45);
-		addRecipe(new ItemStack(Blocks.COBBLESTONE), new ItemStack(Blocks.GRAVEL), 45);
-		addRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.SAND), 10);
+		addRecipe("stone", 1, new ItemStack(Blocks.COBBLESTONE), 45);
+		addRecipe("cobblestone", 1, new ItemStack(Blocks.GRAVEL), 45);
+		addRecipe("gravel", 1, new ItemStack(Blocks.SAND), 10);
 
 		//---------------------
 		//Explosives and dampeners
@@ -169,66 +194,98 @@ public class ExplosionFurnaceManager {
 	}
 	
 	public static class ExplosionFurnaceRecipe {
-		private final ItemStack input;
+		private final Ingredient input, reagent;
 		private final ItemStack output;
-		private final ItemStack reagent;
-		private final int power;
-		private final int craftPerReagent;
+		private final int power, inputCount, craftPerReagent;
 		
-		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power)
-		{
+		//Normal input, no reagent
+		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power) {
 			this(input, output, power, ItemStack.EMPTY, 0);
 		}
 		
-		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power, ItemStack reagent, int craftPerReagent)
-		{
+		//Oredict input, no reagent
+		public ExplosionFurnaceRecipe(String input, int inputCount, ItemStack output, int power) {
+			this(input, inputCount, output, power, ItemStack.EMPTY, 0);
+		}
+		
+		//Normal input, normal reagent
+		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power, ItemStack reagent, int craftPerReagent) {
+			this(Ingredient.fromStacks(input), input.getCount(), output, power, Ingredient.fromStacks(reagent), craftPerReagent);
+		}
+		
+		//Oredict input, normal reagent
+		public ExplosionFurnaceRecipe(String input, int inputCount, ItemStack output, int power, ItemStack reagent, int craftPerReagent) {
+			this(new OreIngredient(input), inputCount, output, power, Ingredient.fromStacks(reagent), craftPerReagent);
+		}
+		
+		//Normal input, oredict reagent
+		public ExplosionFurnaceRecipe(ItemStack input, ItemStack output, int power, String reagent, int craftPerReagent) {
+			this(Ingredient.fromStacks(input), input.getCount(), output, power, new OreIngredient(reagent), craftPerReagent);
+		}
+		
+		//Oredict input, oredict reagent
+		public ExplosionFurnaceRecipe(String input, int inputCount, ItemStack output, int power, String reagent, int craftPerReagent) {
+			this(new OreIngredient(input), inputCount, output, power, new OreIngredient(reagent), craftPerReagent);
+		}
+		
+		private ExplosionFurnaceRecipe(Ingredient input, int inputCount, ItemStack output, int power, Ingredient reagent, int craftPerReagent) {
 			this.input = input;
+			this.inputCount = inputCount;
 			this.output = output;
 			this.power = power;
 			this.reagent = reagent;
-			this.reagent.setCount(1);
 			this.craftPerReagent = craftPerReagent;
 		}
 		
-		public ItemStack getInput()
-		{
-			return input.copy();
-		}
-		
-		public ItemStack getOutput()
-		{
+		public ItemStack getOutput() {
 			return output.copy();
 		}
 		
-		public int getRequiredPower()
-		{
+		public int getRequiredPower() {
 			return power;
 		}
 		
-		public boolean isValidInput(ItemStack in)
-		{
-			return (!in.isEmpty() && in.isItemEqual(input) && in.getCount() >= input.getCount());
+		public boolean needReagent() {
+			return reagent != Ingredient.EMPTY && craftPerReagent > 0;
 		}
 		
-		public ItemStack getReagent()
-		{
-			if (reagent.isEmpty()) return ItemStack.EMPTY;
-			return reagent.copy();
-		}
-		
-		public int getCraftPerReagent()
-		{
+		public int getCraftPerReagent() {
 			return craftPerReagent;
 		}
 		
-		public boolean needReagent()
-		{
-			return (!reagent.isEmpty() && craftPerReagent > 0);
+		public boolean isValidInput(ItemStack in) {
+			return !in.isEmpty() && input.apply(in) && in.getCount() >= inputCount;
 		}
 		
-		public boolean isValidReagent(ItemStack reag)
-		{
-			return reag.isItemEqual(reagent);
+		public boolean isValidReagent(ItemStack reag) {
+			return reagent.apply(reag);
+		}
+		
+		public int getInputCount() {
+			return inputCount;
+		}
+		
+		/**
+		 * For JEI.
+		 */
+		public List<ItemStack> getInputs() {
+			ItemStack[] array = input.getMatchingStacks();
+			List<ItemStack> list = new ArrayList<>();
+			int amount = needReagent() ? inputCount * craftPerReagent : inputCount;
+			for (int i = 0; i < array.length; i++) {
+				ItemStack stack = array[i].copy();
+				stack.setCount(amount);
+				list.add(stack);
+			}
+			
+			return list;
+		}
+
+		/**
+		 * For JEI.
+		 */
+		public List<ItemStack> getReagents() {
+			return Arrays.asList(reagent.getMatchingStacks());
 		}
 	}
 	

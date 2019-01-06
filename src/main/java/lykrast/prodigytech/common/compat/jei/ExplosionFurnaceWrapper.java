@@ -14,29 +14,22 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 
 public class ExplosionFurnaceWrapper implements IRecipeWrapper {
-	private ItemStack in, out, reag;
+	private List<ItemStack> in, reag;
+	private ItemStack out;
 	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.required";
 	private final String power;
 	
-	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe)
-	{
-		in = recipe.getInput();
+	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe) {
+		in = recipe.getInputs();
+		reag = recipe.getReagents();
+		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower() * recipe.getInputCount());
 		out = recipe.getOutput();
-		reag = recipe.getReagent();
-		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower());
-		
-		if (recipe.needReagent())
-		{
-			int craftPerReagent = recipe.getCraftPerReagent();
-			in.setCount(in.getCount() * craftPerReagent);
-			out.setCount(out.getCount() * craftPerReagent);
-		}
+		if (recipe.needReagent()) out.setCount(out.getCount() * recipe.getCraftPerReagent());
 	}
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		List<ItemStack> list = ImmutableList.of(in, reag);
-		ingredients.setInputs(VanillaTypes.ITEM, list);
+		ingredients.setInputLists(VanillaTypes.ITEM, ImmutableList.of(in, reag));
 		ingredients.setOutput(VanillaTypes.ITEM, out);
 	}
 	

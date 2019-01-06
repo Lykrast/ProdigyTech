@@ -56,56 +56,75 @@ public class TileExplosionFurnace extends TileMachineInventory {
 				//Make explosion
 				BlockPos origin = pos.offset(facing);
 				world.createExplosion(null, origin.getX() + 0.5, origin.getY() + 0.5, origin.getZ() + 0.5, Math.min(power / 720F, 2.0F), false);
-				
+
+				ItemStack reagent = getStackInSlot(5);
 				//For each input slot
 				for (int slot = 2; slot <= 4; slot++)
 				{
 					ItemStack stack = getStackInSlot(slot);
 					if (!stack.isEmpty())
 					{
-						//Check if possible recipe
-						ExplosionFurnaceRecipe recipe = ExplosionFurnaceManager.findRecipe(stack);
-						if (recipe != null && recipe.getRequiredPower() <= power)
+						//Used to check if we should try for another recipe with the same output if we run out of reagent
+						boolean shouldCraft = true;
+						while (shouldCraft)
 						{
-							ItemStack output = recipe.getOutput();
-							int inCount = recipe.getInput().getCount();
-							int outCount = output.getCount();
-							int cost = recipe.getRequiredPower();
-							output.setCount(0);
-							
-							boolean flag = recipe.needReagent();
-							int craftLeft = 0;
-							
-							//Convert stack
-							while (stack.getCount() >= inCount && power >= cost)
+							shouldCraft = false;
+							//Find recipe using the reagent (or no reagent)
+							ExplosionFurnaceRecipe recipe = ExplosionFurnaceManager.findRecipe(stack, reagent);
+							if (recipe != null && recipe.getRequiredPower() <= power)
 							{
-								stack.shrink(inCount);
-								power -= cost;
+								ItemStack output = recipe.getOutput();
+								int inCount = recipe.getInputCount();
+								int outCount = output.getCount();
+								int cost = recipe.getRequiredPower();
+								output.setCount(0);
 								
-								//Reagent check
-								if (flag)
+								boolean requireReagent = recipe.needReagent();
+								int craftLeft = 0;
+								
+								//Craft stacks until we run out of input, EP or reagent
+								while (!shouldCraft && stack.getCount() >= inCount && power >= cost)
 								{
-									if (craftLeft <= 0)
+									//Reagent check
+									if (requireReagent)
 									{
-										//Decrement reagent, waste output if no reagent left
-										ItemStack reagent = getStackInSlot(5);
-										if (recipe.isValidReagent(reagent) && reagent.getCount() > 0)
+										//No crafts left for current reagent
+										if (craftLeft <= 0)
 										{
-											reagent.shrink(1);
-											craftLeft += recipe.getCraftPerReagent() - 1;
-											if (reagent.getCount() <= 0) removeStackFromSlot(5);
+											//Decrement reagent if some is left
+											//findRecipe can only give something where reagent matches or isn't required
+											if (!reagent.isEmpty() && recipe.isValidReagent(reagent))
+											{
+												reagent.shrink(1);
+												craftLeft += recipe.getCraftPerReagent() - 1;
+												//Remove from inventory if it's empty
+												if (reagent.getCount() <= 0)
+												{
+													removeStackFromSlot(5);
+													reagent = getStackInSlot(5);
+												}
+											}
+											else
+											{
+												//No reagent left, for another craft, don't consume anything and get ready for another crafting loop
+												shouldCraft = true;
+												break;
+											}
 										}
-										else continue;
+										//Reagents has craft left, use some up
+										else craftLeft--;
 									}
-									else craftLeft--;
+
+									stack.shrink(inCount);
+									power -= cost;
+									output.grow(outCount);
 								}
+								//Generate output
+								if (stack.getCount() <= 0) removeStackFromSlot(slot);
 								
-								output.grow(outCount);
+								output.setCount((int)(output.getCount() * efficiency));
+								if (output.getCount() > 0) fillOutput(output, origin);
 							}
-							if (stack.getCount() <= 0) removeStackFromSlot(slot);
-							
-							output.setCount((int)(output.getCount() * efficiency));
-							if (output.getCount() > 0) fillOutput(output, origin);
 						}
 					}
 				}

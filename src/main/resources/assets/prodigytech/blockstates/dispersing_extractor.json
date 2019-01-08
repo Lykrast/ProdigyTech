@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=down":  { "model": "prodigytech:dispersing_extractor", "x": 180 },
+        "facing=up":    { "model": "prodigytech:dispersing_extractor" },
+        "facing=north": { "model": "prodigytech:dispersing_extractor", "x": 90 },
+        "facing=south": { "model": "prodigytech:dispersing_extractor", "x": 90, "y": 180 },
+        "facing=west":  { "model": "prodigytech:dispersing_extractor", "x": 90, "y": 270 },
+        "facing=east":  { "model": "prodigytech:dispersing_extractor", "x": 90, "y": 90 }
+    }
+}

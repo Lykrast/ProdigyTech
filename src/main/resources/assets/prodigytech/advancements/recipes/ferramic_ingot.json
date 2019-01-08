@@ -16,6 +16,7 @@
       "prodigytech:machine/air_funnel",
       "prodigytech:machine/linear_extractor",
       "prodigytech:machine/funnelling_extractor",
+      "prodigytech:machine/dispersing_extractor",
       "prodigytech:tools/ferramic_handbow"
     ]
   },

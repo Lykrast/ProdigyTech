@@ -43,10 +43,13 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 	
 	protected abstract void work(EnumFacing front);
 	
-	protected boolean push(EnumFacing facing)
-	{
+	protected boolean hasItem() {
+		return !getStackInSlot(0).isEmpty();
+	}
+	
+	protected boolean push(EnumFacing facing) {
 		//No items inside
-		if (getStackInSlot(0).isEmpty()) return false;
+		if (!hasItem()) return false;
 		
 		IItemHandler handler = getAdjacentTileCapability(facing);
 		//No inventory to push to
@@ -76,8 +79,7 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		}
 	}
 	
-	protected boolean pull(EnumFacing facing)
-	{
+	protected boolean pull(EnumFacing facing) {
 		IItemHandler handler = getAdjacentTileCapability(facing);
 		if (handler == null) return false;
 		
@@ -102,8 +104,7 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		return false;
 	}
 	
-	private IItemHandler getAdjacentTileCapability(EnumFacing facing)
-	{
+	private IItemHandler getAdjacentTileCapability(EnumFacing facing) {
 		TileEntity tile = world.getTileEntity(pos.offset(facing));
 		if (tile == null) return null;
 		else return tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing.getOpposite());

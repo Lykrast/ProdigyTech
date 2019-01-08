@@ -65,6 +65,8 @@ tile.prodigytech.linear_extractor.name=Linear Extractor
 tile.prodigytech.linear_extractor.tooltip=Pulls items from inventories in front\nand pushes them to the opposite side\nTurn off with redstone
 tile.prodigytech.funnelling_extractor.name=Funnelling Extractor
 tile.prodigytech.funnelling_extractor.tooltip=Pulls items from inventories on all sides\nand pushes them forward\nTurn off with redstone
+tile.prodigytech.dispersing_extractor.name=Dispersing Extractor
+tile.prodigytech.dispersing_extractor.tooltip=Pulls items from inventories in front\nand pushes them to all other sides in round-robin\nTurn off with redstone
 
 #Zorra
 tile.prodigytech.zorra_log.name=Zorra Wood
@@ -202,6 +204,7 @@ container.prodigytech.atomic_reshaper.primordium.empty=Empty
 
 container.prodigytech.linear_extractor=Linear Extractor
 container.prodigytech.funnelling_extractor=Funnelling Extractor
+container.prodigytech.dispersing_extractor=Dispersing Extractor
 
 #Status messages
 #Wormhole Linker

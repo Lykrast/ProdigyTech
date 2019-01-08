@@ -5,10 +5,6 @@ import net.minecraft.util.EnumFacing;
 
 public class TileFunnellingExtractor extends TileExtractor {
 
-	public TileFunnellingExtractor() {
-		super();
-	}
-
 	@Override
 	public String getName() {
 		return super.getName() + "funnelling_extractor";

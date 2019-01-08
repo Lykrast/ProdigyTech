@@ -1,0 +1,9 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:zorra_leaf" },
+		{ "type": "forge:ore_dict", "ore": "dustAsh" },
+		{ "type": "forge:ore_dict", "ore": "dustAsh" }
+	],
+	"result": { "item": "prodigytech:tartaric_stoker" }
+}

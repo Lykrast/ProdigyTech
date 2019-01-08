@@ -76,7 +76,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeClickArea(GuiAeroheaterSolid.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
-		registry.addRecipeClickArea(GuiAeroheaterTartaric.class, 79, 34, 18, 18, VanillaRecipeCategoryUid.FUEL);
+		registry.addRecipeClickArea(GuiAeroheaterTartaric.class, 70, 34, 36, 18, VanillaRecipeCategoryUid.FUEL);
 	}
 	
 	@Override

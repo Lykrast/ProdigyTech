@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.gui.ContainerAeroheaterTartaric;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
+import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -34,10 +35,15 @@ public class GuiAeroheaterTartaric extends GuiInventory {
 		this.mc.getTextureManager().bindTexture(GUI);
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
-        if (TileAeroheaterTartaric.isBurning(tile))
+        if (TileAeroheaterTartaric.isBurningFuel(tile))
         {
-            int k = getBurnLeftScaled(13);
-            this.drawTexturedModalRect(guiLeft + 81, guiTop + 37 + (13 - k), 176, (13 - k), 14, k + 1);
+            int k = getFuelBurnLeftScaled(13);
+            drawTexturedModalRect(guiLeft + 72, guiTop + 37 + (13 - k), 176, (13 - k), 14, k + 1);
+        }
+        if (TileAeroheaterTartaric.isBurningStoker(tile))
+        {
+            int k = getStokerBurnLeftScaled(13);
+            drawTexturedModalRect(guiLeft + 90, guiTop + 37 + (13 - k), 176, (13 - k), 14, k + 1);
         }
 
         int l = getTemperatureScaled(17, 30, 1000);
@@ -47,30 +53,26 @@ public class GuiAeroheaterTartaric extends GuiInventory {
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-    {
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String s = tile.getDisplayName().getUnformattedText();
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
     }
 
-    private int getTemperatureScaled(int pixels, int min, int max)
-    {
+    private int getTemperatureScaled(int pixels, int min, int max) {
         int temp = MathHelper.clamp(tile.getField(2), min, max) - min;
         int interval = max - min;
         return temp != 0 && interval != 0 ? temp * pixels / interval : 0;
     }
 
-    private int getBurnLeftScaled(int pixels)
-    {
+    private int getFuelBurnLeftScaled(int pixels) {
         int i = tile.getField(1);
-
-        if (i == 0)
-        {
-            i = 200;
-        }
-
+        if (i == 0) i = 200;
         return tile.getField(0) * pixels / i;
+    }
+
+    private int getStokerBurnLeftScaled(int pixels) {
+        return Math.min(tile.getField(3) * pixels / Config.tartaricStokerTime, pixels);
     }
 
 	@Override
@@ -79,8 +81,7 @@ public class GuiAeroheaterTartaric extends GuiInventory {
 		renderTemperatureToolTip(mouseX, mouseY);
 	}
 
-    private void renderTemperatureToolTip(int x, int y)
-    {
+    private void renderTemperatureToolTip(int x, int y) {
         if (x >= guiLeft + 79 && x <= guiLeft + 97 && y >= guiTop + 16 && y <= guiTop + 34)
         {
         	String tooltip = String.format(temperature, tile.getField(2));

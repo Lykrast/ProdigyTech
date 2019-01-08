@@ -37,7 +37,7 @@ public class ModItems {
 		crystalCutter, wormholeLinker,
 		ferramicHandbow,
 		primordium, aeternusCrystal, mysteryTreat,
-		zorraLeaf, zorrasteelRaw, zorrasteelIngot,
+		zorraLeaf, zorrasteelRaw, zorrasteelIngot, tartaricStoker,
 		zorrasteelSword, zorrasteelHandbow;
 	public static ToolMaterial materialZorrasteel;
 	private static List<Item> itemList = new ArrayList<>();
@@ -117,6 +117,7 @@ public class ModItems {
 		zorraLeaf = initItem(new Item(), "zorra_leaf");
 		zorrasteelRaw = initItem(new Item(), "zorrasteel_raw");
 		zorrasteelIngot = initItem(new Item(), "zorrasteel_ingot");
+		tartaricStoker = initItem(new ItemInfoShift(), "tartaric_stoker");
 		
 		//Tools
 		materialZorrasteel = EnumHelper.addToolMaterial("zorrasteel", 4, 0, 8, 3, 0);

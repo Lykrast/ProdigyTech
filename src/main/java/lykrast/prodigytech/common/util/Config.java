@@ -28,6 +28,7 @@ public class Config {
 	public static int batteryReplenisherMaxEnergion;
 	public static int primordialisReactorRequiredInput;
 	public static int atomicReshaperMaxPrimordium;
+	public static int tartaricStokerTime;
 	
 	//Energion
 	public static int energionBatteryDuration;
@@ -140,6 +141,10 @@ public class Config {
 				+ "Several recipes have shorter or longer processing time, which are all derived from this value");
 		atomicReshaperMaxPrimordium = cfg.getInt("atomicReshaperMaxPrimordium", CATEGORY_MACHINES, 4, 1, 64, 
 				"How many Primordium items can the Atomic Reshaper hold in its internal buffer");
+		
+		//Tartaric Aeroheater
+		tartaricStokerTime = cfg.getInt("tartaricStokerTime", CATEGORY_MACHINES, 1600, 1, Short.MAX_VALUE, 
+				"The base amount of time (in ticks) that 1 Tartaric Stoker lasts in the Tartaric Aeroheater");
 		
 		//-----------
 		//Energion

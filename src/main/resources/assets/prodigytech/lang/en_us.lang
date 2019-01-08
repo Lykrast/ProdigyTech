@@ -20,7 +20,7 @@ tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuel
 tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
 tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
 tile.prodigytech.tartaric_aeroheater.name=Tartaric Aeroheater
-tile.prodigytech.tartaric_aeroheater.tooltip=Makes very hot air out of Furnace fuels\nConsumes fuel faster as it heats up\nTurn off with redstone signal
+tile.prodigytech.tartaric_aeroheater.tooltip=Makes very hot air out of Furnace fuels and Tartaric Stoker\nConsumes materials faster as it heats up\nTurn off with redstone signal
 
 #Heat
 tile.prodigytech.incinerator.name=Incinerator
@@ -138,6 +138,8 @@ item.prodigytech.mystery_treat.name=Mystery Treat
 item.prodigytech.zorra_leaf.name=Zorra Leaf
 item.prodigytech.zorrasteel_raw.name=Raw Zorrasteel Ingot
 item.prodigytech.zorrasteel_ingot.name=Zorrasteel Ingot
+item.prodigytech.tartaric_stoker.name=Tartaric Stoker
+item.prodigytech.tartaric_stoker.tooltip=Secondary fuel for the Tartaric Aeroheater
 
 #Tools
 item.prodigytech.crystal_cutter.name=Crystal Cutter

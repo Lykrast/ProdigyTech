@@ -87,7 +87,7 @@ dependencies {
 	// at runtime, use the full JEI jar
 	runtime "mezz.jei:jei_${jei_mc_version}:${jei_version}"
 	// Patchouli
-	compile "vazkii.patchouli:Patchouli:1.0-6.+"
+	compile "vazkii.patchouli:Patchouli:${patchouli_version}"
 	// CraftTweaker
 	compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.+"
 }

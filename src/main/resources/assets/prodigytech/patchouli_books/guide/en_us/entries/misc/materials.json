@@ -21,9 +21,15 @@
         },
         {
             "type": "crafting",
+            "recipe": "prodigytech:materials/enriched_fuel",
+			"advancement": "prodigytech:main/rotary_grinder",
+			"text": "$(item)Enriched Fuel$() is a way to get more efficiency out of Coal, as the result burns more than the sum of its parts."
+        },
+        {
+            "type": "crafting",
             "recipe": "prodigytech:materials/inferno_fuel",
 			"advancement": "prodigytech:main/rotary_grinder",
-			"text": "$(item)Inferno Fuel$() is an efficient Furnace fuel, which can be refined by more advanced machines into $(item)Inferno Crystals$() then $(item)Aeternus Crystals$()."
+			"text": "$(item)Inferno Fuel$() is an even more efficient Furnace fuel, which can be further refined by more advanced machines into $(item)Inferno Crystals$() then $(item)Aeternus Crystals$()."
         }
     ]
 }

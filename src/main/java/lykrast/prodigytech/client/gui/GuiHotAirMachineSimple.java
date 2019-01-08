@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import lykrast.prodigytech.common.tileentity.TileHotAirMachine;
 import lykrast.prodigytech.common.tileentity.TileHotAirMachineSimple;
 import lykrast.prodigytech.core.ProdigyTech;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -44,6 +45,7 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(getGUI());
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	

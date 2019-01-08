@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import lykrast.prodigytech.common.gui.ContainerAeroheaterSolid;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterSolid;
 import lykrast.prodigytech.core.ProdigyTech;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -31,6 +32,7 @@ public class GuiAeroheaterSolid extends GuiInventory {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(GUI);
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 

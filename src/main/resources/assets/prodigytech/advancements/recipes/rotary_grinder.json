@@ -3,6 +3,7 @@
   "rewards": {
     "recipes": [
       "prodigytech:materials/carbon_plate",
+      "prodigytech:materials/enriched_fuel",
       "prodigytech:materials/inferno_fuel",
       "prodigytech:materials/energion_dust",
       "prodigytech:storage/carbon_plate_block",

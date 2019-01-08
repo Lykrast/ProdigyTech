@@ -28,7 +28,7 @@ public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
 		ash, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
-		carbonPlate, infernoFuel, infernoCrystal, sugarCube,
+		carbonPlate, enrichedFuel, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
 		patternCircuitCrude, patternCircuitRefined, patternCircuitPerfected,
 		energionCrystalSeed, energionDust, 
@@ -68,6 +68,7 @@ public class ModItems {
 		quartzDust = initItem(new Item(), "quartz_dust");
 		
 		carbonPlate = initItem(new Item(), "carbon_plate");
+		enrichedFuel = initItem(new ItemFuel(1600), "enriched_fuel");
 		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
 		
 		//Magnetic Reassembler

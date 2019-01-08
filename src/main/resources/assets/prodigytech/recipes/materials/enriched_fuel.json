@@ -1,0 +1,10 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "type": "forge:ore_dict", "ore": "dustCoal" },
+		{ "type": "forge:ore_dict", "ore": "dustWood" },
+		{ "type": "forge:ore_dict", "ore": "dustWood" },
+		{ "type": "forge:ore_dict", "ore": "dustWood" }
+	],
+	"result": { "item": "prodigytech:enriched_fuel", "count": 2 }
+}

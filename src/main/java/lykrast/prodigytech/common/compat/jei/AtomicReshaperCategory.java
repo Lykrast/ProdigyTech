@@ -30,6 +30,7 @@ public class AtomicReshaperCategory extends ProdigyCategory<AtomicReshaperWrappe
 		guiItemStacks.init(2, false, 120, 18);
 
 		guiItemStacks.set(ingredients);
+		guiItemStacks.addTooltipCallback(recipeWrapper);
 	}
 
 	public static void registerRecipes(IModRegistry registry)

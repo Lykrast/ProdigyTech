@@ -234,6 +234,8 @@ container.prodigytech.jei.ptbattery.undefined=Lifetime: Undefined
 container.prodigytech.jei.ptreplenisher=Battery Replenisher
 container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper
+container.prodigytech.jei.ptreshaper.chance=Chance: %d%%
+container.prodigytech.jei.ptreshaper.chance.low=Chance: < 1%%
 
 #----------------------------
 #Advancements

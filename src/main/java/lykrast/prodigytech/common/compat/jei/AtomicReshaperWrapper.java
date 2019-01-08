@@ -11,6 +11,7 @@ import lykrast.prodigytech.common.util.Config;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
+import mezz.jei.api.gui.ITooltipCallback;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -19,15 +20,18 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class AtomicReshaperWrapper implements IRecipeWrapper {
+public class AtomicReshaperWrapper implements IRecipeWrapper, ITooltipCallback<ItemStack> {
 	protected static final String AMOUNT_UNLOCALIZED = "container.prodigytech.atomic_reshaper.primordium.amount";
+	protected static final String CHANCE_UNLOCALIZED = "container.prodigytech.jei.ptreshaper.chance";
+	protected static final String CHANCE_LOW_UNLOCALIZED = "container.prodigytech.jei.ptreshaper.chance.low";
 	private final String amount;
 
 	private List<ItemStack> in;
 	private List<List<ItemStack>> out;
 	private final IDrawableAnimated arrow;
 	private final IDrawable primordiumGauge;
-	private int primordiumAmount, primordiumScale;
+	private int primordiumAmount, primordiumScale, totalWeight;
+	private int[] weights;
 	
 	public AtomicReshaperWrapper(AtomicReshaperRecipe recipe, IGuiHelper guiHelper)
 	{
@@ -43,6 +47,9 @@ public class AtomicReshaperWrapper implements IRecipeWrapper {
 		if (!recipe.isSingleOutput()) outputs = recipe.getOutputList();
 		else outputs = Collections.singletonList(recipe.getSingleOutput());
 		out = Collections.singletonList(outputs);
+		
+		weights = recipe.getWeights();
+		totalWeight = recipe.getTotalWeight();
 		
 		primordiumAmount = recipe.getPrimordiumAmount();
 		
@@ -83,6 +90,15 @@ public class AtomicReshaperWrapper implements IRecipeWrapper {
 			return list;
 		}
 		else return Collections.emptyList();
+	}
+
+	@Override
+	public void onTooltip(int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
+		if (slotIndex == 2 && weights.length > 1) {
+			int chance = (weights[out.get(0).indexOf(ingredient)] * 100) / totalWeight;
+			if (chance == 0) tooltip.add(I18n.format(CHANCE_LOW_UNLOCALIZED));
+			else tooltip.add(I18n.format(CHANCE_UNLOCALIZED, chance));
+		}
 	}
 
 }

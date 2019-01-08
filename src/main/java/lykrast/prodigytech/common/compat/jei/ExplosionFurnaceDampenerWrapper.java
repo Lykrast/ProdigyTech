@@ -1,9 +1,8 @@
 package lykrast.prodigytech.common.compat.jei;
 
 import java.awt.Color;
+import java.util.Collections;
 import java.util.List;
-
-import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.recipe.ExplosionFurnaceManager.Dampener;
 import mezz.jei.api.ingredients.IIngredients;
@@ -26,7 +25,7 @@ public class ExplosionFurnaceDampenerWrapper implements IRecipeWrapper {
 
 	@Override
 	public void getIngredients(IIngredients ingredients) {
-		List<List<ItemStack>> list = ImmutableList.of(dampener);
+		List<List<ItemStack>> list = Collections.singletonList(dampener);
 		ingredients.setInputLists(VanillaTypes.ITEM, list);
 	}
 	

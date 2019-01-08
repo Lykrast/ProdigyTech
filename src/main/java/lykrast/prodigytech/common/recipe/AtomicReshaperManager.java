@@ -203,6 +203,15 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			outputs.stream().forEach(p -> list.add(p.getLeft().copy()));
 			return list;
 		}
+
+		//Currently only used for JEI
+		public int[] getWeights() {
+			int[] array = new int[outputs.size()];
+			for (int i = 0; i < array.length; i++) {
+				array[i] = outputs.get(i).getRight();
+			}
+			return array;
+		}
 		
 		public int getTotalWeight() {
 			return totalWeight;

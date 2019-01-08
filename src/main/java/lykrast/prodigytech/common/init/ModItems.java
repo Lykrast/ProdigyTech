@@ -69,10 +69,10 @@ public class ModItems {
 		
 		carbonPlate = initItem(new Item(), "carbon_plate");
 		enrichedFuel = initItem(new ItemFuel(1600), "enriched_fuel");
-		infernoFuel = initItem(new ItemFuel(3200), "inferno_fuel");
+		infernoFuel = initItem(new ItemFuel(3600), "inferno_fuel");
 		
 		//Magnetic Reassembler
-		infernoCrystal = initItem(new ItemFuel(4800), "inferno_crystal");
+		infernoCrystal = initItem(new ItemFuel(5400), "inferno_crystal");
 		sugarCube = initItem(new ItemSugarCube(1, 0.2F), "sugar_cube");
 		
 		//Solderer

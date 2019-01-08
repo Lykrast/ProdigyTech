@@ -10,5 +10,5 @@
 		"C": { "item": "minecraft:clay_ball" },
 		"S": { "type": "forge:ore_dict", "ore": "dustWood" }
 	},
-	"result": { "item": "prodigytech:particle_board", "count": 2 }
+	"result": { "item": "prodigytech:particle_board", "count": 4 }
 }

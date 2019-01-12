@@ -2,7 +2,6 @@ package lykrast.prodigytech.common.recipe;
 
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
-import lykrast.prodigytech.common.util.RecipeUtil;
 import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.init.Blocks;
@@ -99,121 +98,6 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 //		addRecipe("blockEnergion", new ItemStack(ModItems.energionDust, 54), Config.rotaryGrinderProcessTime * 54);
 		
 		addRecipe(new ItemStack(ModItems.infernoCrystal), new ItemStack(ModItems.infernoFuel));
-	}
-	
-	public void registerOres() {
-		//NOTE: we also do Magnetic Reassembler stuff here to avoid iterating twice
-		if (!Config.autoOreRecipes) return;
-		
-		//Borrowed from Immersive Engineering
-		//https://github.com/BluSunrize/ImmersiveEngineering/blob/master/src/main/java/blusunrize/immersiveengineering/common/IERecipes.java
-		for (String name : OreDictionary.getOreNames())
-		{
-			if (!RecipeUtil.oreExists(name)) continue;
-			
-			//ore -> Rotary Grinder and Ore Refinery process into dust or gem
-			if (name.startsWith("ore"))
-			{
-				String ore = name.substring("ore".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-				
-				if (RecipeUtil.oreExists("dust" + ore))
-				{
-					ItemStack output = RecipeUtil.getPreferredOreStack("dust" + ore);
-					output.setCount(Config.rotaryGrinderOreMultiplier);
-					addRecipe(name, output);
-					
-					OreRefineryManager.INSTANCE.addOreRecipe(ore, name, "dust" + ore);
-				}
-				else if (RecipeUtil.oreExists("gem" + ore))
-				{
-					ItemStack output = RecipeUtil.getPreferredOreStack("gem" + ore);
-					output.setCount(Config.rotaryGrinderOreMultiplier);
-					addRecipe(name, output);
-					
-					OreRefineryManager.INSTANCE.addOreRecipe(ore, name, "gem" + ore);
-				}
-			}
-			//gem -> Rotary Grinder processes into dust
-			else if (name.startsWith("gem"))
-			{
-				String ore = name.substring("gem".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-
-				if (RecipeUtil.oreExists("dust" + ore))
-				{
-					addRecipe(name, RecipeUtil.getPreferredOreStack("dust" + ore));
-				}
-			}
-			//ingot -> Rotary Grinder processes into dust
-			else if (name.startsWith("ingot"))
-			{
-				String ore = name.substring("ingot".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-
-				if (RecipeUtil.oreExists("dust" + ore))
-				{
-					addRecipe(name, RecipeUtil.getPreferredOreStack("dust" + ore));
-				}
-			}
-			//nugget -> Rotary Grinder processes into dustTiny
-			else if (name.startsWith("nugget"))
-			{
-				String ore = name.substring("nugget".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-
-				if (RecipeUtil.oreExists("dustTiny" + ore))
-				{
-					addRecipe(name, RecipeUtil.getPreferredOreStack("dustTiny" + ore), Config.rotaryGrinderProcessTime / 9);
-				}
-			}
-			//block -> Rotary Grinder processes into 9 dust
-			else if (name.startsWith("block"))
-			{
-				String ore = name.substring("block".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-				
-				if (RecipeUtil.oreExists("dust" + ore))
-				{
-					ItemStack output = RecipeUtil.getPreferredOreStack("dust" + ore);
-					output.setCount(9);
-					addRecipe(name, output, Config.rotaryGrinderProcessTime * 9);
-				}
-				else if (RecipeUtil.oreExists("gem" + ore))
-				{
-					ItemStack output = RecipeUtil.getPreferredOreStack("gem" + ore);
-					output.setCount(9);
-					addRecipe(name, output, Config.rotaryGrinderProcessTime * 9);
-				}
-			}
-			//dustTiny -> Magnetic Reassembler processes into nugget
-			else if (name.startsWith("dustTiny"))
-			{
-				String ore = name.substring("dustTiny".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-
-				if (RecipeUtil.oreExists("nugget" + ore))
-				{
-					MagneticReassemblerManager.INSTANCE.addRecipe(name, 
-							RecipeUtil.getPreferredOreStack("nugget" + ore), Config.magneticReassemblerProcessTime / 9);
-				}
-			}
-			//dust -> Magnetic Reassembler processes into ingot or gem
-			else if (name.startsWith("dust"))
-			{
-				String ore = name.substring("dust".length());
-				if (RecipeUtil.isOreBlacklisted(ore)) continue;
-
-				if (RecipeUtil.oreExists("ingot" + ore))
-				{
-					MagneticReassemblerManager.INSTANCE.addRecipe(name, RecipeUtil.getPreferredOreStack("ingot" + ore));
-				}
-				else if (RecipeUtil.oreExists("gem" + ore))
-				{
-					MagneticReassemblerManager.INSTANCE.addRecipe(name, RecipeUtil.getPreferredOreStack("gem" + ore));
-				}
-			}
-		}
 	}
 
 }

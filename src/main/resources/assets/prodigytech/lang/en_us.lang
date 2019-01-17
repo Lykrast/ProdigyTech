@@ -217,7 +217,7 @@ status.prodigytech.wormhole_linker.error.lost=§cOriginal Funnel cannot be found
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
-container.prodigytech.jei.ptexplosionfurnace.required=EP/item: %d
+container.prodigytech.jei.ptexplosionfurnace.required=EP/craft: %d
 container.prodigytech.jei.ptexplosionfurnace_exp=Explosion Furnace Explosives
 container.prodigytech.jei.ptexplosionfurnace_exp.generated=EP generated: %d
 container.prodigytech.jei.ptexplosionfurnace_damp=Explosion Furnace Dampeners

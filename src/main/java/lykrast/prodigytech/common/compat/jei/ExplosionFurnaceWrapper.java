@@ -22,7 +22,7 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe) {
 		in = recipe.getInputs();
 		reag = recipe.getReagents();
-		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower() * recipe.getInputCount());
+		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower());
 		out = recipe.getOutput();
 		if (recipe.needReagent()) out.setCount(out.getCount() * recipe.getCraftPerReagent());
 	}

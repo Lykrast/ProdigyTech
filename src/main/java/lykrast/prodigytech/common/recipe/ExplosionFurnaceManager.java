@@ -51,16 +51,18 @@ public class ExplosionFurnaceManager {
 		return recipe;
 	}
 	
-//	public static ExplosionFurnaceRecipe removeRecipe(ItemStack in)
-//	{
-//		ExplosionFurnaceRecipe recipe = findRecipe(in);
-//		if (recipe != null) RECIPES.remove(recipe);
-//		
-//		return recipe;
-//	}
+	public static ExplosionFurnaceRecipe removeRecipeByOutput(ItemStack out) {
+		for (ExplosionFurnaceRecipe recipe : RECIPES) {
+			if (out.isItemEqual(recipe.getOutput())) {
+				RECIPES.remove(recipe);
+				return recipe;
+			}
+		}
+
+		return null;
+	}
 	
-	public static ExplosionFurnaceRecipe findRecipe(ItemStack in, ItemStack reagent)
-	{
+	public static ExplosionFurnaceRecipe findRecipe(ItemStack in, ItemStack reagent) {
 		ExplosionFurnaceRecipe backup = null;
 		for (ExplosionFurnaceRecipe recipe : RECIPES)
 			if (recipe.isValidInput(in)) {

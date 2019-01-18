@@ -111,9 +111,9 @@ public class ExplosionFurnace {
 	
 	//Remove
 	@ZenMethod
-	public static void removeRecipe(IItemStack in) {
-		if (in == null) throw new IllegalArgumentException("Input cannot be null");
-		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(in)));
+	public static void removeRecipeByOutput(IItemStack out) {
+		if (out == null) throw new IllegalArgumentException("Output cannot be null");
+		CraftTweakerAPI.apply(new Remove(CraftTweakerHelper.toItemStack(out)));
 	}
 	
 	private static class Remove implements IAction {
@@ -125,12 +125,12 @@ public class ExplosionFurnace {
 
 		@Override
 		public void apply() {
-			//ExplosionFurnaceManager.removeRecipe(stack);
+			ExplosionFurnaceManager.removeRecipeByOutput(stack);
 		}
 
 		@Override
 		public String describe() {
-			return "Removing Explosion Furnace recipe with input " + stack.getDisplayName();
+			return "Removing Explosion Furnace recipe for " + stack.getDisplayName();
 		}
 	}
 	

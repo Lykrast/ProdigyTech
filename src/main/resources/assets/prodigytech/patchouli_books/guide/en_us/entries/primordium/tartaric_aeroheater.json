@@ -2,7 +2,7 @@
     "name": "Tartaric Aeroheater",
     "icon": "prodigytech:tartaric_aeroheater",
     "category": "primordium",
-	"advancement": "prodigytech:recipes/zorrasteel_ingot",
+	"advancement": "prodigytech:main/zorra_leaf",
     "pages": [
         {
             "type": "text",

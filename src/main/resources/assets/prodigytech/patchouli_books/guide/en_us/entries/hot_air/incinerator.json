@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "text",
-            "text": "The $(item)Incinerator$() is the simplest machine. It will take any item and turn it into $(item)Ash$(). This $(item)Ash$() has a variety of uses, including decoration and serving as a low power $(thing)Explosive$() for the $(item)Explosion Furnace$().$(br2)Items can be inserted/extracted from any side except top and bottom."
+            "text": "The $(item)Incinerator$() is the simplest machine. It will take any item and turn it into $(item)Ash$(). This $(item)Ash$() has a variety of uses, including decoration and serving as a low power $(thing)Dampener$() for the $(item)Explosion Furnace$().$(br2)Items can be inserted/extracted from any side except top and bottom."
         },
         {
             "type": "crafting",

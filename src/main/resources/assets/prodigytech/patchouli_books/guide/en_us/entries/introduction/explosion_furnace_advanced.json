@@ -14,11 +14,11 @@
         },
         {
             "type": "text",
-            "text": "Then, inputs are run top to bottom. If there is enough $(thing)EP$() to process one, it consumes the appropriate amount of $(thing)EP$() and gets processed.$(br)If the recipe requires a $(thing)Reagent$(), it will be consumed appropriately if present, and if not the input item will be lost.$(br2)$(thing)Explosives$(), $(thing)Dampeners$(), inputs and $(thing)Reagents$() can be inserted from any side by Hoppers and such, and outputs can be extracted from any side as well."
+            "text": "Then, inputs are run top to bottom. If there is enough $(thing)EP$() to process one, it consumes the appropriate amount of $(thing)EP$() and gets processed.$(br)If the recipe requires a $(thing)Reagent$(), it will be consumed appropriately if present. If it's not present, then it will switch to the appropriate $(thing)Reagent$()-less recipe, or skip over the input if there's no matching recipe."
         },
         {
             "type": "text",
-            "text": "If the output slots are full while processing items, the excess items will be thrown in front of the $(item)Explosion Furnace$()."
+            "text": "$(thing)Explosives$(), $(thing)Dampeners$(), inputs and $(thing)Reagents$() can be inserted from any side by Hoppers and such, and outputs can be extracted from any side as well. If the output slots are full while processing items, the excess items will be thrown in front of the $(item)Explosion Furnace$()."
         }
     ]
 }

@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "text",
-            "text": "The $(item)Dispersing Extractor$() is similar to the $(item)Linear Extractor$(), but pushes to all 5 sides it is not pulling from.$(br2)Items are puhsed in a round-robin fashion stack by stack in a specific order, with the opposite side of the pulling one always being the first one."
+            "text": "The $(item)Dispersing Extractor$() is similar to the $(item)Linear Extractor$(), but pushes to all 5 sides it is not pulling from.$(br2)Items are pushed in a round-robin fashion stack by stack in a specific order, with the opposite side of the pulling one always being the first one."
         },
         {
             "type": "crafting",

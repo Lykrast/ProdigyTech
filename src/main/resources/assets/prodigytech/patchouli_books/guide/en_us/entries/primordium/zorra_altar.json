@@ -2,7 +2,7 @@
     "name": "Zorra Altar",
     "icon": "prodigytech:zorra_altar",
     "category": "primordium",
-	"advancement": "prodigytech:recipes/zorrasteel_ingot",
+	"advancement": "prodigytech:main/zorra_leaf",
     "pages": [
         {
             "type": "text",

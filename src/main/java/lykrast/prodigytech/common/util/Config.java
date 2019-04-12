@@ -29,7 +29,7 @@ public class Config {
 	public static int primordialisReactorRequiredInput;
 	public static int atomicReshaperMaxPrimordium;
 	public static int tartaricStokerTime;
-	public static boolean incineratorJEIIntegration;
+	public static boolean incineratorJEI;
 	
 	//Energion
 	public static int energionBatteryDuration;
@@ -75,8 +75,8 @@ public class Config {
 				"The base amount of time (in ticks) that the Incinerator takes to process 1 item");
 		incineratorChance = cfg.getFloat("incineratorChance", CATEGORY_MACHINES, 1.0F, 0, 1.0F, 
 				"The chance that an item burned in the Incinerator gives Ash");
-		incineratorJEIIntegration = cfg.getBoolean("incineratorJEIIntegration", CATEGORY_MACHINES, true, 
-				"Display the Incinerator recipe for every item to produce Ash in JEI?");
+		incineratorJEI = cfg.getBoolean("incineratorJEI", CATEGORY_MACHINES, true, 
+				"Show the Incinerator recipe for Ash in JEI");
 		//Blower Furnace
 		blowerFurnaceProcessTime = cfg.getInt("blowerFurnaceProcessTime", CATEGORY_MACHINES, 300, 1, 3000, 
 				"The base amount of time (in ticks) that the Blower Furnace takes to process 1 item");

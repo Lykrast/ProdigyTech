@@ -3,7 +3,6 @@ package lykrast.prodigytech.common.gui;
 import lykrast.prodigytech.client.gui.*;
 import lykrast.prodigytech.common.tileentity.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -11,8 +10,8 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class ProdigyTechGuiHandler implements IGuiHandler {
 	public static final int EXPLOSION_FURNACE = 0, AEROHEATER_SOLID = 1, INCINERATOR = 2, BLOWER_FURNACE = 3,
 			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, EXTRACTOR = 8,
-			HEAT_SAWMILL = 9, ATOMIC_RESHAPER = 10, ENERGION_TOOL = 11, PRIMORDIALIS_REACTOR = 12, AEROHEATER_TARTARIC = 13,
-			CRYSTAL_CUTTER = 14, BATTERY_REPLENISHER = 15, ZORRA_ALTAR = 16, ORE_REFINERY = 17;
+			HEAT_SAWMILL = 9, ATOMIC_RESHAPER = 10, PRIMORDIALIS_REACTOR = 12, AEROHEATER_TARTARIC = 13,
+			CRYSTAL_CUTTER = 14, ZORRA_ALTAR = 16, ORE_REFINERY = 17, UNUSED2 = 11, UNUSED = 15;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -39,18 +38,12 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerHeatSawmill(player.inventory, (TileHeatSawmill)world.getTileEntity(new BlockPos(x, y, z)));
 			case ATOMIC_RESHAPER:
 				return new ContainerAtomicReshaper(player.inventory, (TileAtomicReshaper)world.getTileEntity(new BlockPos(x, y, z)));
-			case ENERGION_TOOL:
-				return new ContainerEnergionTool(player.inventory, x == 0 ? 
-						player.getHeldItem(EnumHand.MAIN_HAND) : 
-						player.getHeldItem(EnumHand.OFF_HAND));
 			case PRIMORDIALIS_REACTOR:
 				return new ContainerPrimordialisReactor(player.inventory, (TilePrimordialisReactor)world.getTileEntity(new BlockPos(x, y, z)));
 			case AEROHEATER_TARTARIC:
 				return new ContainerAeroheaterTartaric(player.inventory, (TileAeroheaterTartaric)world.getTileEntity(new BlockPos(x, y, z)));
 			case CRYSTAL_CUTTER:
 				return new ContainerCrystalCutter(player.inventory, (TileCrystalCutter)world.getTileEntity(new BlockPos(x, y, z)));
-			case BATTERY_REPLENISHER:
-				return new ContainerBatteryReplenisher(player.inventory, (TileBatteryReplenisher)world.getTileEntity(new BlockPos(x, y, z)));
 			case ZORRA_ALTAR:
 				return new ContainerZorraAltar(player.inventory, world, new BlockPos(x, y, z));
 			case ORE_REFINERY:
@@ -84,18 +77,12 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiHeatSawmill(player.inventory, (TileHeatSawmill)world.getTileEntity(new BlockPos(x, y, z)));
 			case ATOMIC_RESHAPER:
 				return new GuiAtomicReshaper(player.inventory, (TileAtomicReshaper)world.getTileEntity(new BlockPos(x, y, z)));
-			case ENERGION_TOOL:
-				return new GuiEnergionTool(player.inventory, x == 0 ? 
-						player.getHeldItem(EnumHand.MAIN_HAND) : 
-						player.getHeldItem(EnumHand.OFF_HAND));
 			case PRIMORDIALIS_REACTOR:
 				return new GuiPrimordialisReactor(player.inventory, (TilePrimordialisReactor)world.getTileEntity(new BlockPos(x, y, z)));
 			case AEROHEATER_TARTARIC:
 				return new GuiAeroheaterTartaric(player.inventory, (TileAeroheaterTartaric)world.getTileEntity(new BlockPos(x, y, z)));
 			case CRYSTAL_CUTTER:
 				return new GuiCrystalCutter(player.inventory, (TileCrystalCutter)world.getTileEntity(new BlockPos(x, y, z)));
-			case BATTERY_REPLENISHER:
-				return new GuiBatteryReplenisher(player.inventory, (TileBatteryReplenisher)world.getTileEntity(new BlockPos(x, y, z)));
 			case ZORRA_ALTAR:
 				return new GuiZorraAltar(player.inventory, world);
 			case ORE_REFINERY:

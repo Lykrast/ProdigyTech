@@ -36,8 +36,6 @@ public class ProdigyTechJEI implements IModPlugin {
 		SoldererCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
 		OreRefineryCategory.registerRecipes(registry);
-		EnergionBatteryCategory.registerRecipes(registry);
-		BatteryReplenisherCategory.registerRecipes(registry);
 		PrimordialisReactorCategory.registerRecipes(registry);
 		AtomicReshaperCategory.registerRecipes(registry);
 
@@ -51,12 +49,8 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.oreRefinery), OreRefineryCategory.UID);
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.batteryReplenisher), BatteryReplenisherCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.primordialisReactor), PrimordialisReactorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.atomicReshaper), AtomicReshaperCategory.UID);
-		
-		//Battery usage
-		registry.addRecipeCatalyst(new ItemStack(ModBlocks.aeroheaterEnergion), EnergionBatteryCategory.UID);
 
 		//Vanilla catalysts
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.blowerFurnace), VanillaRecipeCategoryUid.SMELTING);
@@ -93,8 +87,6 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
 		registry.addRecipeCategories(new OreRefineryCategory(guiHelper));
-		registry.addRecipeCategories(new EnergionBatteryCategory(guiHelper));
-		registry.addRecipeCategories(new BatteryReplenisherCategory(guiHelper));
 		registry.addRecipeCategories(new PrimordialisReactorCategory(guiHelper));
 		registry.addRecipeCategories(new AtomicReshaperCategory(guiHelper));
 	}

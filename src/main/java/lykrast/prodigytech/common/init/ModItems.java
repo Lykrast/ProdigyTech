@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lykrast.prodigytech.common.item.*;
-import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.CreativeTabsProdigyTech;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -31,9 +30,7 @@ public class ModItems {
 		carbonPlate, enrichedFuel, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
 		patternCircuitCrude, patternCircuitRefined, patternCircuitPerfected,
-		energionCrystalSeed, energionDust, 
-		energionBatteryEmpty, energionBattery, energionBatteryDoubleEmpty, energionBatteryDouble, energionBatteryTripleEmpty, energionBatteryTriple,
-		energionBatteryCreative,
+		energionCrystalSeed, energionDust,
 		crystalCutter, wormholeLinker,
 		ferramicHandbow,
 		primordium, aeternusCrystal, mysteryTreat,
@@ -88,25 +85,10 @@ public class ModItems {
 		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");
 		energionDust = initItem(new Item(), "energion_dust");
 		
-		energionBatteryEmpty = initItem(new ItemEmptyBattery(), "energion_battery_empty");
-		energionBattery = initItem(new ItemEnergionBattery(Config.energionDuration, energionBatteryEmpty), "energion_battery");
-		((ItemEmptyBattery)energionBatteryEmpty).setFilledItem(energionBattery);
-		
-		energionBatteryDoubleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_double_empty");
-		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
-		((ItemEmptyBattery)energionBatteryDoubleEmpty).setFilledItem(energionBatteryDouble);
-		
-		energionBatteryTripleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_triple_empty");
-		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
-		((ItemEmptyBattery)energionBatteryTripleEmpty).setFilledItem(energionBatteryTriple);
-		
-		energionBatteryCreative = initItem(new ItemEnergionBatteryCreative(), "energion_battery_creative");
-		
 		//Tools
 		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
 		wormholeLinker = initItem(new ItemWormholeLinker(), "wormhole_linker");
 		ferramicHandbow = initItem(new ItemHandbow(864), "ferramic_handbow");
-		//toolTest = initItem(new ItemEnergionUser(), "tool_test");
 		
 		//Atomic Reshaper
 		primordium = initItem(new Item(), "primordium");

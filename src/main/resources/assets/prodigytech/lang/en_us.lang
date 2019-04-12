@@ -42,8 +42,6 @@ tile.prodigytech.ore_refinery.name=Ore Refinery
 tile.prodigytech.ore_refinery.tooltip=Processes ores quickly and efficiently
 tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
 tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
-tile.prodigytech.battery_replenisher.name=Battery Replenisher
-tile.prodigytech.battery_replenisher.tooltip=Fills Energion Batteries automatically
 
 #Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
@@ -125,13 +123,6 @@ item.prodigytech.pattern_circuit_perfected.name=Perfected Circuit Pattern
 item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
 item.prodigytech.energion_crystal_seed.tooltip=Can be planted and grown\nVery sensitive to breaking
 item.prodigytech.energion_dust.name=Energion Dust
-item.prodigytech.energion_battery_empty.name=Energion Battery (Empty)
-item.prodigytech.energion_battery.name=Energion Battery
-item.prodigytech.energion_battery_double_empty.name=Double Energion Battery (Empty)
-item.prodigytech.energion_battery_double.name=Double Energion Battery
-item.prodigytech.energion_battery_triple_empty.name=Triple Energion Battery (Empty)
-item.prodigytech.energion_battery_triple.name=Triple Energion Battery
-item.prodigytech.energion_battery_creative.name=Creative Energion Battery
 
 item.prodigytech.primordium.name=Primordium
 item.prodigytech.aeternus_crystal.name=Aeternus Crystal
@@ -181,10 +172,6 @@ container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 container.prodigytech.ore_refinery=Ore Refinery
 container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
 
-container.prodigytech.battery_replenisher=Battery Replenisher
-container.prodigytech.battery_replenisher.energion.amount=%s Energion units
-container.prodigytech.battery_replenisher.energion.empty=Empty
-
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
 container.prodigytech.zorra_altar=Zorra Altar
@@ -228,10 +215,6 @@ container.prodigytech.jei.ptsawmill=Heat Sawmill
 container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptrefinery=Ore Refinery
-container.prodigytech.jei.ptbattery=Energion Battery Usage
-container.prodigytech.jei.ptbattery.lifetime=Lifetime: %d ticks
-container.prodigytech.jei.ptbattery.undefined=Lifetime: Undefined
-container.prodigytech.jei.ptreplenisher=Battery Replenisher
 container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper
 container.prodigytech.jei.ptreshaper.chance=Chance: %d%%

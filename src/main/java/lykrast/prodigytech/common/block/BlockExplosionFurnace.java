@@ -119,7 +119,7 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
      */
     public IBlockState getStateFromMeta(int meta)
     {
-    	return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 7)).withProperty(TRIGGERED, Boolean.valueOf((meta & 8) > 0));
+    	return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 7)).withProperty(TRIGGERED, Boolean.valueOf((meta & 8) > 0));
     }
 
     /**

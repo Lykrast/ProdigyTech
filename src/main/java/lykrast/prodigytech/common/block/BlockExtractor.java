@@ -95,7 +95,7 @@ public abstract class BlockExtractor extends BlockGeneric implements ITileEntity
 
     public static EnumFacing getFacing(int meta)
     {
-        return EnumFacing.getFront(meta & 7);
+        return EnumFacing.byIndex(meta & 7);
     }
 
     /**

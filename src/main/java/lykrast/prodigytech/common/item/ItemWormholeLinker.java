@@ -106,7 +106,7 @@ public class ItemWormholeLinker extends Item {
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Pos")) tooltip.add(I18n.format(stack.getUnlocalizedName() + ".tooltip.linking"));
+		if (stack.hasTagCompound() && stack.getTagCompound().hasKey("Pos")) tooltip.add(I18n.format(stack.getTranslationKey() + ".tooltip.linking"));
 		if (TooltipUtil.addShiftTooltip(tooltip)) TooltipUtil.addTooltip(stack, tooltip);
 	}
 }

@@ -99,7 +99,7 @@ public class RecipeUtil {
 			ResourceLocation resource = Item.REGISTRY.getNameForObject(stack.getItem());
 			if (resource == null) continue;
 			
-			String modid = resource.getResourceDomain();
+			String modid = resource.getNamespace();
 			int curRank = modid == null || modid.isEmpty() ? -1 : MOD_PREFERENCE.indexOf(modid);
 			if (preferred.isEmpty() || (curRank >= 0 && (rank < 0 || curRank < rank)))
 			{

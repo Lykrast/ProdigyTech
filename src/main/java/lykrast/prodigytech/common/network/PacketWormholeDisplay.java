@@ -51,7 +51,7 @@ public class PacketWormholeDisplay implements IMessage {
 			BlockPos origin = message.origin;
 			BlockPos target = message.target;
 			Vec3d dir = new Vec3d(target.getX() - origin.getX(), target.getY() - origin.getY(), target.getZ() - origin.getZ());
-			int count = (int) (dir.lengthVector() * 4);
+			int count = (int) (dir.length() * 4);
 			dir = dir.normalize();
 			double dx = dir.x * 0.25, dy = dir.y * 0.25, dz = dir.z * 0.25;
 			double vx = dx * 0.1, vy = dy * 0.1, vz = dz * 0.1;

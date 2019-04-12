@@ -139,7 +139,7 @@ public class ModBlocks {
 	public static Block initBlock(Block block, String name, CreativeTabs tab)
 	{
 		block.setRegistryName(name);
-		block.setUnlocalizedName(ProdigyTech.MODID + "." + name);
+		block.setTranslationKey(ProdigyTech.MODID + "." + name);
 		if (tab != null) block.setCreativeTab(tab);
 		
 		blockList.add(block);

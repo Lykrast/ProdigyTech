@@ -15,7 +15,7 @@ public class CreativeTabsMysteryTreats extends CreativeTabs {
 	}
 
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return ItemMysteryTreat.createWithEffect(new PotionEffect(MobEffects.SPEED), new PotionEffect(MobEffects.RESISTANCE));
 	}
 

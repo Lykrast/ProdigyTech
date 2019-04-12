@@ -23,7 +23,7 @@ public class TooltipUtil {
 	@SideOnly(Side.CLIENT)
 	public static void addTooltip(ItemStack stack, List<String> tooltip)
 	{
-		String tip = I18n.format(stack.getUnlocalizedName() + ".tooltip");
+		String tip = I18n.format(stack.getTranslationKey() + ".tooltip");
 		String[] lines = tip.split("\n");
 		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
 	}

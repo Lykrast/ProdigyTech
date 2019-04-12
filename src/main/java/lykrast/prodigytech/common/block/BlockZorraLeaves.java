@@ -47,7 +47,7 @@ public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper,
 	}
 
 	@Override
-    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
+    public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
         if (entityIn.attackEntityFrom(DamageSource.CACTUS, 3.0F) && entityIn instanceof EntityLivingBase)
         {
         	if (((EntityLivingBase)entityIn).getHealth() <= 0) {
@@ -164,18 +164,20 @@ public class BlockZorraLeaves extends BlockLeaves implements ICustomStateMapper,
     
     @Override
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
+    public BlockRenderLayer getRenderLayer()
     {
-        return Blocks.LEAVES.getBlockLayer();
+        return Blocks.LEAVES.getRenderLayer();
     }
     
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public boolean isOpaqueCube(IBlockState state)
     {
         return Blocks.LEAVES.isOpaqueCube(state);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing side)
     {

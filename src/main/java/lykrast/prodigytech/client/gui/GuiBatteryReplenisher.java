@@ -56,7 +56,7 @@ public class GuiBatteryReplenisher extends GuiInventory {
 	    this.drawTexturedModalRect(guiLeft + 79, guiTop + 16 + (17 - l), 176, 17 - l, 18, l + 1);
 	
 	    //Energion
-	    l = getFieldScaled(2, 52, 0, Config.batteryReplenisherMaxEnergion * Config.energionBatteryDuration);
+	    l = getFieldScaled(2, 52, 0, Config.batteryReplenisherMaxEnergion * Config.energionDuration);
 	    this.drawTexturedModalRect(guiLeft + 73, guiTop + 17 + (52 - l), 176, 18 + (52 - l), 4, l);
 	}
 

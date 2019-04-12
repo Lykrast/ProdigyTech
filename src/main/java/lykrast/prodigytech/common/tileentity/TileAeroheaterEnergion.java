@@ -1,11 +1,12 @@
 package lykrast.prodigytech.common.tileentity;
 
-import lykrast.prodigytech.common.block.BlockMachineActiveable;
+import lykrast.prodigytech.common.block.BlockHotAirMachine;
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirAeroheater;
-import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
+import lykrast.prodigytech.common.init.ModItems;
+import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
-import lykrast.prodigytech.common.util.ProdigyInventoryHandlerEnergion;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -14,10 +15,14 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileAeroheaterEnergion extends TileMachineInventory implements ITickable {
-    private TileAeroheaterEnergion.HotAir hotAir;
+    /** The number of ticks that the furnace will keep burning */
+    private int furnaceBurnTime;
+    /** The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for */
+    private int currentItemBurnTime;
+    private HotAirAeroheater hotAir;
 
 	public TileAeroheaterEnergion() {
-		super(6);
+		super(1);
 		hotAir = new HotAir();
 	}
 
@@ -25,62 +30,66 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 	public String getName() {
 		return super.getName() + "energion_aeroheater";
 	}
+	
+    public boolean isBurning() {
+        return furnaceBurnTime > 0;
+    }
+
+    public static boolean isBurning(IInventory inventory) {
+        return inventory.getField(0) > 0;
+    }
 
 	@Override
 	public void update() {
-        boolean flag = world.getBlockState(pos).getValue(BlockMachineActiveable.ACTIVE);
-        boolean flag1 = false;
-        
-        if (!this.world.isRemote)
-        {
-        	int energy = 0;
-        	
-        	if (!world.isBlockPowered(pos))
-        	{
-            	for (int i=0;i<6;i++)
-            	{
-                	ItemStack battery = getStackInSlot(i);
-                	if (!battery.isEmpty() && EnergionBatteryManager.isBattery(battery))
-                	{
-                		energy += EnergionBatteryManager.extract(battery, 1);
-                		setInventorySlotContents(i, EnergionBatteryManager.checkDepleted(battery));
-                	}
-            	}
-        	}
-        	
-        	boolean active = energy > 0;
+        boolean wasBurning = isBurning();
+        boolean shouldDirty = false;
 
-            if (active) hotAir.raiseTemperature(energy);
+        if (isBurning()) --furnaceBurnTime;
+        
+        if (!world.isRemote) {
+        	ItemStack fuel = getStackInSlot(0);
+        	
+			if (!isBurning() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
+				furnaceBurnTime = Config.energionDuration;
+				currentItemBurnTime = furnaceBurnTime;
+
+				if (isBurning()) {
+					shouldDirty = true;
+					if (!fuel.isEmpty()) fuel.shrink(1);
+				}
+			}
+
+            if (isBurning()) hotAir.raiseTemperature();
             else hotAir.lowerTemperature();
         	
-            if (flag != active)
-            {
-                flag1 = true;
-                BlockMachineActiveable.setState(active, this.world, this.pos);
+            if (wasBurning != isBurning()) {
+                shouldDirty = true;
+                BlockHotAirMachine.setState(isBurning(), world, pos);
             }
         }
 
-        if (flag1)
-        {
-            this.markDirty();
-        }
+        if (shouldDirty) markDirty();
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index <= 5) return EnergionBatteryManager.isBattery(stack);
+		if (index == 0) return stack.getItem() == ModItems.energionDust;
 		else return false;
 	}
 
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
+        furnaceBurnTime = compound.getInteger("BurnTime");
+        currentItemBurnTime = compound.getInteger("MaxBurnTime");
         hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
+        compound.setInteger("BurnTime", furnaceBurnTime);
+        compound.setInteger("MaxBurnTime", currentItemBurnTime);
         compound.setTag("HotAir", hotAir.serializeNBT());
 
         return compound;
@@ -91,6 +100,10 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
         switch (id)
         {
             case 0:
+                return furnaceBurnTime;
+            case 1:
+                return currentItemBurnTime;
+            case 2:
                 return hotAir.getOutAirTemperature();
             default:
                 return 0;
@@ -102,14 +115,20 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
         switch (id)
         {
             case 0:
-                hotAir.setTemperature(value);
+                furnaceBurnTime = value;
+                break;
+            case 1:
+                currentItemBurnTime = value;
+                break;
+            case 2:
+            	hotAir.setTemperature(value);
                 break;
         }
     }
 
     public int getFieldCount()
     {
-        return 1;
+        return 3;
     }
 	
 	@Override
@@ -122,7 +141,7 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 		return super.hasCapability(capability, facing);
 	}
 	
-	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandlerEnergion(this, 6, 0, 6);
+	private ProdigyInventoryHandler invHandler = new ProdigyInventoryHandler(this, 1, 0, true, false);
 	
 	@Override
 	@SuppressWarnings("unchecked")
@@ -136,55 +155,35 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 	}
 	
 	private static class HotAir extends HotAirAeroheater {
-		private static final int[] MAX_TEMP = {0, 80, 100, 125, 160, 200, 250};
-		
 		public HotAir() {
 			super(250);
 		}
-		
-		public void raiseTemperature(int energy)
-		{
-			if (temperature == MAX_TEMP[energy]) return;
-			else if (temperature > MAX_TEMP[energy])
-			{
-				lowerTemperature();
-				return;
-			}
-			
-			if (temperatureClock > 1) temperatureClock--;
-			else
-			{
-				temperature++;
-				
-				//2.5 seconds to reach 80 °C
-				if (temperature < 80) temperatureClock = 1;
-				//5 more seconds to reach 100 °C with exactly 2 batteries
-				else if (temperature < 100) temperatureClock = 10 / energy;
-				//10 more seconds to reach 125 °C with exactly 3 batteries
-				else if (temperature < 125) temperatureClock = 24 / energy;
-				//21 more seconds to reach 160 °C with exactly 4 batteries
-				else if (temperature < 160) temperatureClock = 48 / energy;
-				//32 more seconds to reach 200 °C with exactly 5 batteries
-				else if (temperature < 200) temperatureClock = 80 / energy;
-				//60 more seconds to reach 250 °C
-				else temperatureClock = 24;
-			}
+
+		@Override
+		protected void resetRaiseClock() {
+			//3.5 seconds to reach 100 °C
+			if (temperature < 100) temperatureClock = 1;
+			//5 more seconds to reach 125 °C
+			else if (temperature < 125) temperatureClock = 4;
+			//14 more seconds to reach 160 °C
+			else if (temperature < 160) temperatureClock = 8;
+			//26 more seconds to reach 200 °C
+			else if (temperature < 200) temperatureClock = 13;
+			//60 more seconds to reach 250 °C
+			else temperatureClock = 24;
 		}
 
 		@Override
-		protected void resetRaiseClock() {}
-
-		@Override
 		protected void resetLowerClock() {
-			//Stays at 5+ furnaces (250-200) for 2.5 seconds
+			//Stays at 250-200 for 2.5 seconds
 			if (temperature > 200) temperatureClock = 1;
-			//Stays at 4+ furnaces (200-160) for 4 seconds
-			if (temperature > 160) temperatureClock = 2;
-			//Stays at 3+ furnaces (160-125) for 7 seconds
+			//Stays at 200-160 for 4 seconds
+			else if (temperature > 160) temperatureClock = 2;
+			//Stays at 160-125 for 7 seconds
 			else if (temperature > 125) temperatureClock = 4;
-			//Stays at 2+ furnaces (125-100) for 10 seconds
+			//Stays at 125-100 for 10 seconds
 			else if (temperature > 100) temperatureClock = 8;
-			//Stays at 1+ furnaces (100-80) for 12 seconds
+			//Stays at 100-80 for 12 seconds
 			else if (temperature > 80) temperatureClock = 12;
 			//Fully cools (80-30) in 35 seconds
 			else temperatureClock = 14;

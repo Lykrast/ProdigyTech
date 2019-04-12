@@ -55,8 +55,8 @@ public class TileBatteryReplenisher extends TileMachineInventory implements ITic
 	
 	private int canFillEnergion()
 	{
-		if (getStackInSlot(0).isEmpty() || energion > ((Config.batteryReplenisherMaxEnergion - 1) * Config.energionBatteryDuration)) return 0;
-		else return Config.energionBatteryDuration;
+		if (getStackInSlot(0).isEmpty() || energion > ((Config.batteryReplenisherMaxEnergion - 1) * Config.energionDuration)) return 0;
+		else return Config.energionDuration;
 	}
     
 	private boolean canProcess()

@@ -89,15 +89,15 @@ public class ModItems {
 		energionDust = initItem(new Item(), "energion_dust");
 		
 		energionBatteryEmpty = initItem(new ItemEmptyBattery(), "energion_battery_empty");
-		energionBattery = initItem(new ItemEnergionBattery(Config.energionBatteryDuration, energionBatteryEmpty), "energion_battery");
+		energionBattery = initItem(new ItemEnergionBattery(Config.energionDuration, energionBatteryEmpty), "energion_battery");
 		((ItemEmptyBattery)energionBatteryEmpty).setFilledItem(energionBattery);
 		
 		energionBatteryDoubleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_double_empty");
-		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
+		energionBatteryDouble = initItem(new ItemEnergionBattery(Config.energionDuration*2, energionBatteryDoubleEmpty), "energion_battery_double");
 		((ItemEmptyBattery)energionBatteryDoubleEmpty).setFilledItem(energionBatteryDouble);
 		
 		energionBatteryTripleEmpty = initItem(new ItemEmptyBattery(), "energion_battery_triple_empty");
-		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionBatteryDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
+		energionBatteryTriple = initItem(new ItemEnergionBattery(Config.energionDuration*3, energionBatteryTripleEmpty), "energion_battery_triple");
 		((ItemEmptyBattery)energionBatteryTripleEmpty).setFilledItem(energionBatteryTriple);
 		
 		energionBatteryCreative = initItem(new ItemEnergionBatteryCreative(), "energion_battery_creative");

@@ -32,7 +32,7 @@ public class BatteryReplenisherWrapper implements IRecipeWrapper {
 		
 		energionAmount = ((IEnergionBattery)out.getItem()).getTotalLifetime(out);
 		
-		int count = (int) Math.ceil(energionAmount / (double)Config.energionBatteryDuration);
+		int count = (int) Math.ceil(energionAmount / (double)Config.energionDuration);
 		List<ItemStack> dust = new ArrayList<>();
 		List<ItemStack> ores = OreDictionary.getOres("dustEnergion", false);
 		for (ItemStack i : ores) {
@@ -45,7 +45,7 @@ public class BatteryReplenisherWrapper implements IRecipeWrapper {
 		this.in.add(dust);
 		this.in.add(Collections.singletonList(in));
 		
-		energionScale = Math.min(52, energionAmount * 52 / (Config.batteryReplenisherMaxEnergion * Config.energionBatteryDuration));
+		energionScale = Math.min(52, energionAmount * 52 / (Config.batteryReplenisherMaxEnergion * Config.energionDuration));
 		energionGauge = guiHelper.createDrawable(GuiBatteryReplenisher.GUI, 176, 18 + (52 - energionScale), 4, energionScale);
 		
 		amount = I18n.format(AMOUNT_UNLOCALIZED, "%d");

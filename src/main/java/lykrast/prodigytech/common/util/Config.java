@@ -32,7 +32,7 @@ public class Config {
 	public static boolean incineratorJEI;
 	
 	//Energion
-	public static int energionBatteryDuration;
+	public static int energionDuration;
 	
 	//Automation
 	public static int extractorDelay, extractorMaxStack;
@@ -152,8 +152,8 @@ public class Config {
 		//-----------
 		//Energion
 		//-----------
-		energionBatteryDuration = cfg.getInt("energionBatteryDuration", CATEGORY_ENERGION, 12000, 20, 1728000, 
-				"The time (in ticks) a simple Energion Battery will last, other values are derived from this one");
+		energionDuration = cfg.getInt("energionDuration", CATEGORY_ENERGION, 2000, 20, 1728000, 
+				"The time (in ticks) one Energion Dust lasts in the Energion Aeroheater");
 		
 		//-----------
 		//Automation

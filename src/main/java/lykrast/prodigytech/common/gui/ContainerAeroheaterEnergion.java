@@ -1,6 +1,5 @@
 package lykrast.prodigytech.common.gui;
 
-import lykrast.prodigytech.common.recipe.EnergionBatteryManager;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterEnergion;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -12,23 +11,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheaterEnergion> {
     private int temperature;
+    private int furnaceBurnTime;
+    private int currentItemBurnTime;
     
 	public ContainerAeroheaterEnergion(InventoryPlayer userInv, TileAeroheaterEnergion tile) {
 		super(tile);
 		
 		//Slot IDs
-		//Tile - Battery 0-5				: 0-5
-		//Player - Inventory 9-35			: 6-32
-		//Player - Hotbar 0-8				: 33-41
+		//Tile - Fuel 0						: 0
+		//Player - Inventory 9-35			: 1-27
+		//Player - Hotbar 0-8				: 28-36
 		
-		//Battery slots
-		for (int i=0;i<2;i++)
-		{
-			for (int j=0;j<3;j++)
-			{
-		    	this.addSlotToContainer(new SlotEnergionBattery(tile, i*3 + j, 60 + j * 20, 33 + i * 20));
-			}
-		}
+		//Fuel slot
+    	this.addSlotToContainer(new Slot(tile, 0, 80, 53) {
+            public boolean isItemValid(ItemStack stack) {
+                return tile.isItemValidForSlot(0, stack);
+            }
+    	});
 
 		//Player slots
 		addPlayerSlotsDefault(userInv);
@@ -51,13 +50,25 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
         {
             IContainerListener icontainerlistener = this.listeners.get(i);
 
-            if (temperature != tile.getField(0))
+            if (temperature != tile.getField(2))
+            {
+                icontainerlistener.sendWindowProperty(this, 2, tile.getField(2));
+            }
+
+            if (furnaceBurnTime != tile.getField(0))
             {
                 icontainerlistener.sendWindowProperty(this, 0, tile.getField(0));
             }
+
+            if (currentItemBurnTime != tile.getField(1))
+            {
+                icontainerlistener.sendWindowProperty(this, 1, tile.getField(1));
+            }
         }
 
-        temperature = tile.getField(0);
+        temperature = tile.getField(2);
+        furnaceBurnTime = tile.getField(0);
+        currentItemBurnTime = tile.getField(1);
     }
 
     @SideOnly(Side.CLIENT)
@@ -81,9 +92,9 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
             itemstack = itemstack1.copy();
 
             //Fuel slot
-            if (index < 6)
+            if (index == 0)
             {
-                if (!this.mergeItemStack(itemstack1, 6, 42, true))
+                if (!this.mergeItemStack(itemstack1, 1, 37, true))
                 {
                     return ItemStack.EMPTY;
                 }
@@ -94,22 +105,22 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
             else
             {
             	//Fuel
-            	if (EnergionBatteryManager.isBattery(itemstack1))
+            	if (tile.isItemValidForSlot(0, itemstack1))
                 {
-                    if (!this.mergeItemStack(itemstack1, 0, 6, false))
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
             	//Player inventory
-                else if (index >= 6 && index < 33)
+                else if (index >= 1 && index < 28)
                 {
-                    if (!this.mergeItemStack(itemstack1, 33, 42, false))
+                    if (!this.mergeItemStack(itemstack1, 28, 37, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (index >= 33 && index < 42 && !this.mergeItemStack(itemstack1, 6, 33, false))
+                else if (index >= 28 && index < 37 && !this.mergeItemStack(itemstack1, 1, 28, false))
                 {
                     return ItemStack.EMPTY;
                 }

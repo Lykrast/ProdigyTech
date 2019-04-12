@@ -5,15 +5,12 @@ import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirAeroheater;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class TileAeroheaterSolid extends TileMachineInventory implements ITickable {
@@ -33,64 +30,49 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 		return super.getName() + "solid_fuel_aeroheater";
 	}
 	
-    public boolean isBurning()
-    {
-        return this.furnaceBurnTime > 0;
+    public boolean isBurning() {
+        return furnaceBurnTime > 0;
     }
 
-    @SideOnly(Side.CLIENT)
-    public static boolean isBurning(IInventory inventory)
-    {
+    public static boolean isBurning(IInventory inventory) {
         return inventory.getField(0) > 0;
     }
 
 	@Override
 	public void update() {
-        boolean flag = this.isBurning();
-        boolean flag1 = false;
+        boolean wasBurning = isBurning();
+        boolean shouldDirty = false;
 
-        if (this.isBurning())
-        {
-            --this.furnaceBurnTime;
-        }
+        if (isBurning()) --furnaceBurnTime;
         
-        if (!this.world.isRemote)
-        {
+        if (!world.isRemote) {
         	ItemStack fuel = getStackInSlot(0);
         	
-			if (!this.isBurning() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
-				this.furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
-				this.currentItemBurnTime = this.furnaceBurnTime;
+			if (!isBurning() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
+				furnaceBurnTime = TileEntityFurnace.getItemBurnTime(fuel);
+				currentItemBurnTime = furnaceBurnTime;
 
-				if (this.isBurning()) {
-					flag1 = true;
+				if (isBurning()) {
+					shouldDirty = true;
 
 					if (!fuel.isEmpty()) {
-						Item item = fuel.getItem();
 						fuel.shrink(1);
 
-						if (fuel.isEmpty()) {
-							ItemStack item1 = item.getContainerItem(fuel);
-							this.setInventorySlotContents(0, item1);
-						}
+						if (fuel.isEmpty()) setInventorySlotContents(0, fuel.getItem().getContainerItem(fuel));
 					}
 				}
 			}
 
-            if (this.isBurning()) hotAir.raiseTemperature();
+            if (isBurning()) hotAir.raiseTemperature();
             else hotAir.lowerTemperature();
         	
-            if (flag != this.isBurning())
-            {
-                flag1 = true;
-                BlockHotAirMachine.setState(this.isBurning(), this.world, this.pos);
+            if (wasBurning != isBurning()) {
+                shouldDirty = true;
+                BlockHotAirMachine.setState(isBurning(), world, pos);
             }
         }
 
-        if (flag1)
-        {
-            this.markDirty();
-        }
+        if (shouldDirty) markDirty();
 	}
 
 	@Override

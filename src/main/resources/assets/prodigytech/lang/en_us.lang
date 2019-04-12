@@ -18,7 +18,7 @@ tile.prodigytech.magmatic_aeroheater.tooltip=Makes constant hot air when above L
 tile.prodigytech.solid_fuel_aeroheater.name=Solid Fuel Aeroheater
 tile.prodigytech.solid_fuel_aeroheater.tooltip=Makes hot air out of Furnace fuels\nTurn off with redstone signal
 tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
-tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Batteries\nMax temperature scales with number of batteries\nTurn off with redstone signal
+tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Dust\nTurn off with redstone signal
 tile.prodigytech.tartaric_aeroheater.name=Tartaric Aeroheater
 tile.prodigytech.tartaric_aeroheater.tooltip=Makes very hot air out of Furnace fuels and Tartaric Stoker\nConsumes materials faster as it heats up\nTurn off with redstone signal
 

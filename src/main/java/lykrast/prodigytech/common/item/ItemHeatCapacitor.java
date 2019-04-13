@@ -57,6 +57,16 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 	}
 	
 	@Override
+    public boolean isEnchantable(ItemStack stack) {
+		return false;
+	}
+	
+	@Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+		return false;
+	}
+	
+	@Override
 	public boolean showDurabilityBar(ItemStack stack) {
 		return true;
 	}

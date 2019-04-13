@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "prodigytech:energion_battery"
+            "item": "prodigytech:energion_aeroheater"
         },
         "title": {
             "translate": "advancements.prodigytech.main.energion_aeroheater.title"

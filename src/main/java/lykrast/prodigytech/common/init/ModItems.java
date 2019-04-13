@@ -30,6 +30,7 @@ public class ModItems {
 		carbonPlate, enrichedFuel, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
 		patternCircuitCrude, patternCircuitRefined, patternCircuitPerfected,
+		heatCapacitor125, heatCapacitor250, heatCapacitor500, heatCapacitor1000,
 		energionCrystalSeed, energionDust,
 		crystalCutter, wormholeLinker,
 		ferramicHandbow,
@@ -80,6 +81,12 @@ public class ModItems {
 		patternCircuitCrude = initItem(new Item().setMaxStackSize(1), "pattern_circuit_crude");
 		patternCircuitRefined = initItem(new Item().setMaxStackSize(1), "pattern_circuit_refined");
 		patternCircuitPerfected = initItem(new Item().setMaxStackSize(1), "pattern_circuit_perfected");
+		
+		//Heat Capacitors
+		heatCapacitor125 = initItem(new ItemHeatCapacitor(125), "heat_capacitor_0");
+		heatCapacitor250 = initItem(new ItemHeatCapacitor(250), "heat_capacitor_1");
+		heatCapacitor500 = initItem(new ItemHeatCapacitor(500), "heat_capacitor_2");
+		heatCapacitor1000 = initItem(new ItemHeatCapacitor(1000), "heat_capacitor_3");
 
 		//Energion
 		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");

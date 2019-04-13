@@ -7,7 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 public class Config {
 	//private static final String CATEGORY_GENERAL = "General";
 	private static final String CATEGORY_MACHINES = "Machines";
-	private static final String CATEGORY_ENERGION = "Energion";
+	private static final String CATEGORY_POWER = "Power";
 	private static final String CATEGORY_AUTOMATION = "Automation";
 	private static final String CATEGORY_ALTAR = "Zorra Altar";
 	
@@ -17,7 +17,6 @@ public class Config {
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
 		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
-		batteryReplenisherSpeed,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance, oreRefineryChance;
 	public static int rotaryGrinderOreMultiplier, oreRefineryOreMultiplier;
@@ -25,14 +24,13 @@ public class Config {
 	public static float heatSawmillPlankMultiplier, heatSawmillStickMultiplier;
 	public static boolean heatSawmillAutoPlankRecipes;
 	public static int soldererMaxGold;
-	public static int batteryReplenisherMaxEnergion;
 	public static int primordialisReactorRequiredInput;
 	public static int atomicReshaperMaxPrimordium;
 	public static int tartaricStokerTime;
 	public static boolean incineratorJEI;
 	
-	//Energion
-	public static int energionDuration;
+	//Power gen
+	public static int energionDuration, heatCapacitorDuration;
 	
 	//Automation
 	public static int extractorDelay, extractorMaxStack;
@@ -58,7 +56,7 @@ public class Config {
 	private static void initGeneralConfig(Configuration cfg) {
 		//cfg.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
 		cfg.addCustomCategoryComment(CATEGORY_MACHINES, "Machines configuration");
-		cfg.addCustomCategoryComment(CATEGORY_ENERGION, "Energion configuration");
+		cfg.addCustomCategoryComment(CATEGORY_POWER, "Power generation configuration");
 		cfg.addCustomCategoryComment(CATEGORY_AUTOMATION, "Automation configuration");
 		cfg.addCustomCategoryComment(CATEGORY_ALTAR, "Zorra Altar configuration");
 
@@ -125,11 +123,6 @@ public class Config {
 				"The time (in ticks) between 2 checks of the Automatic Crystal Cutter\n"
 				+ "1 means every tick, 20 means once every second and so on\n"
 				+ "Lower value will make them more reactive to crystal growing, but will make them sligtly laggier when idle");
-		//Battery Replenisher
-		batteryReplenisherSpeed = cfg.getInt("batteryReplenisherSpeed", CATEGORY_MACHINES, 10, 1, 1000000, 
-				"How much energion ticks can the Battery Replenisher fill per tick");
-		batteryReplenisherMaxEnergion = cfg.getInt("batteryReplenisherMaxEnergion", CATEGORY_MACHINES, 3, 1, 64, 
-				"How many Energion Dust equivalent can the Battery Replenisher hold in its internal buffer");
 		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 
@@ -150,10 +143,12 @@ public class Config {
 				"The base amount of time (in ticks) that 1 Tartaric Stoker lasts in the Tartaric Aeroheater");
 		
 		//-----------
-		//Energion
+		//Power gen
 		//-----------
-		energionDuration = cfg.getInt("energionDuration", CATEGORY_ENERGION, 2000, 20, 1728000, 
+		energionDuration = cfg.getInt("energionDuration", CATEGORY_POWER, 2000, 20, 1728000, 
 				"The time (in ticks) one Energion Dust lasts in the Energion Aeroheater");
+		heatCapacitorDuration = cfg.getInt("heatCapacitorDuration", CATEGORY_POWER, 10*60*20, 20, 1728000, 
+				"The time (in ticks) a fully charged Heat Capacitor lasts");
 		
 		//-----------
 		//Automation

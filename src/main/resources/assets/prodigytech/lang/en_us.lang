@@ -120,6 +120,13 @@ item.prodigytech.pattern_circuit_crude.name=Crude Circuit Pattern
 item.prodigytech.pattern_circuit_refined.name=Refined Circuit Pattern
 item.prodigytech.pattern_circuit_perfected.name=Perfected Circuit Pattern
 
+item.prodigytech.heat_capacitor_0.name=125°C Heat Capacitor
+item.prodigytech.heat_capacitor_1.name=250°C Heat Capacitor
+item.prodigytech.heat_capacitor_2.name=500°C Heat Capacitor
+item.prodigytech.heat_capacitor_3.name=1000°C Heat Capacitor
+item.prodigytech.heat_capacitor.tooltip=Stores heat from Hot Air for later use
+item.prodigytech.heat_capacitor.tooltip.charge=§6Charge remaining:§f %d%%§r
+
 item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
 item.prodigytech.energion_crystal_seed.tooltip=Can be planted and grown\nVery sensitive to breaking
 item.prodigytech.energion_dust.name=Energion Dust
@@ -152,9 +159,6 @@ tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
 tooltip.prodigytech.temperature.max=§6Maximum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.min=§6Minimum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.transfer=§6Heat transmitted:§f %d%%§r
-tooltip.prodigytech.energion.required.single=§bBatteries required:§f %d§r
-tooltip.prodigytech.energion.required.interval=§bBatteries required:§f %d-%d§r
-tooltip.prodigytech.energion.consumption=§bEnergy consumption:§f %dx§r
 
 container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater

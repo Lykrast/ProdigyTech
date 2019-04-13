@@ -51,7 +51,7 @@ public class ModBlocks {
 		aeroheaterTartaric = initBlock(new BlockAeroheaterTartaric(6.0F, 45.0F, 1), "tartaric_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterTartaric.class, ProdigyTech.resource("tartaric_aeroheater"));
 		aeroheaterCapacitor = initBlock(new BlockAeroheaterCapacitor(6.0F, 45.0F, 1), "capacitor_aeroheater");
-		//GameRegistry.registerTileEntity(TileAeroheaterSolid.class, ProdigyTech.resource("capacitor_aeroheater"));
+		GameRegistry.registerTileEntity(TileAeroheaterCapacitor.class, ProdigyTech.resource("capacitor_aeroheater"));
 		
 		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");

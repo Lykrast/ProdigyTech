@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"RCR",
+		"III"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"C": { "item": "prodigytech:circuit_refined" }
+	},
+	"result": { "item": "prodigytech:capacitor_aeroheater" }
+}

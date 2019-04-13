@@ -1,0 +1,13 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"FFF",
+		"F F",
+		"FIF"
+	],
+	"key": {
+		"F": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"I": { "type": "forge:ore_dict", "ore": "blockIron" }
+	},
+	"result": { "item": "prodigytech:capacitor_charger" }
+}

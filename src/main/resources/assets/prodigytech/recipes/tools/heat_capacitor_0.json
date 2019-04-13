@@ -1,0 +1,14 @@
+{
+	"type": "prodigytech:damaged_shaped",
+	"pattern": [
+		" F ",
+		"FRF",
+		"N N"
+	],
+	"key": {
+		"F": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"N": { "type": "forge:ore_dict", "ore": "nuggetIron" }
+	},
+	"result": { "item": "prodigytech:heat_capacitor_0" }
+}

@@ -26,7 +26,7 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (isInCreativeTab(tab)) {
-			items.add(new ItemStack(this, 1, getMaxDamage()));
+			items.add(new ItemStack(this, 1, getMaxDamage() + 1));
 			items.add(new ItemStack(this, 1, 0));
 		}
 	}
@@ -76,7 +76,7 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 		String[] lines = tip.split("\n");
 		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
 		TooltipUtil.addAeroheaterInfo(stack, tooltip, temperature);
-		tooltip.add(I18n.format(TOOLTIP_CHARGE, (int)(100 * (1 - (stack.getItemDamage() / (double)(stack.getMaxDamage() + 1))))));
+		tooltip.add(I18n.format(TOOLTIP_CHARGE, 100 - (100 * stack.getItemDamage() / (stack.getMaxDamage() + 1))));
 	}
 
 }

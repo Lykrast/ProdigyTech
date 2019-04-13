@@ -1,0 +1,14 @@
+{
+	"type": "prodigytech:damaged_shaped",
+	"pattern": [
+		" C ",
+		"SMS",
+		" C "
+	],
+	"key": {
+		"C": { "item": "prodigytech:heat_capacitor_0", "data": 32767 },
+		"S": { "type": "forge:ore_dict", "ore": "plateCarbon" },
+		"M": { "type": "forge:ore_dict", "ore": "ingotGold" }
+	},
+	"result": { "item": "prodigytech:heat_capacitor_1" }
+}

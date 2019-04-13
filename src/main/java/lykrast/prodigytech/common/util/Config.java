@@ -16,7 +16,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
-		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime,
+		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime, capacitorChargerChargeTime,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance, oreRefineryChance;
 	public static int rotaryGrinderOreMultiplier, oreRefineryOreMultiplier;
@@ -123,6 +123,9 @@ public class Config {
 				"The time (in ticks) between 2 checks of the Automatic Crystal Cutter\n"
 				+ "1 means every tick, 20 means once every second and so on\n"
 				+ "Lower value will make them more reactive to crystal growing, but will make them sligtly laggier when idle");
+		//Heat Accumulator
+		capacitorChargerChargeTime = cfg.getInt("capacitorChargerChargeTime", CATEGORY_MACHINES, 30, 20, 200, 
+				"The base amount of time (in ticks) that the Heat Accumulator takes to charge 20 ticks of an Heat Capacitor");
 		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 

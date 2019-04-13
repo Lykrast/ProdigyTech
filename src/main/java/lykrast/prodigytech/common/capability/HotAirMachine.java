@@ -51,7 +51,7 @@ public class HotAirMachine extends HotAirChangeable {
 	@Override
 	public void deserializeNBT(NBTTagCompound nbt) {
 		super.deserializeNBT(nbt);
-		temperatureOut = nbt.getInteger("temperatureOut");
+		temperatureOut = nbt.getInteger("TemperatureOut");
 	}
 
 }

@@ -44,6 +44,8 @@ tile.prodigytech.ore_refinery.name=Ore Refinery
 tile.prodigytech.ore_refinery.tooltip=Processes ores quickly and efficiently
 tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
 tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
+tile.prodigytech.capacitor_charger.name=Heat Accumulator
+tile.prodigytech.capacitor_charger.tooltip=Charges Heat Capacitors
 
 #Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
@@ -57,7 +59,6 @@ tile.prodigytech.zorra_altar.tooltip=Applies or upgrades enchantments\non Zorras
 #Funnels
 tile.prodigytech.air_funnel.name=Air Funnel
 tile.prodigytech.air_funnel.tooltip=Transmits hot air\nTurn off with redstone signal
-#Funnels
 tile.prodigytech.wormhole_funnel.name=Wormhole Funnel
 tile.prodigytech.wormhole_funnel.tooltip=Transmits hot air to another Wormhole Funnel\nLink with a Wormhole Linker\nRight click to see the linked Funnel
 #Extractors
@@ -161,6 +162,7 @@ tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
 tooltip.prodigytech.temperature.max=§6Maximum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.max.variable=§6Maximum temperature:§f variable§r
 tooltip.prodigytech.temperature.min=§6Minimum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.min.variable=§6Minimum temperature:§f variable§r
 tooltip.prodigytech.temperature.transfer=§6Heat transmitted:§f %d%%§r
 
 container.prodigytech.explosion_furnace=Explosion Furnace
@@ -179,6 +181,7 @@ container.prodigytech.solderer=Solderer
 container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 container.prodigytech.ore_refinery=Ore Refinery
 container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
+container.prodigytech.capacitor_charger=Heat Accumulator
 
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper

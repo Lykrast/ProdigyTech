@@ -49,15 +49,18 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 		this.mc.getTextureManager().bindTexture(getGUI());
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 	
+		//Progress
 	    if (TileHotAirMachineSimple.isProcessing(tile))
 	    {
 	        int k = getProcessLeftScaled(24);
 	        this.drawTexturedModalRect(guiLeft + 79, guiTop + 35, 176, 0, k, 17);
 	    }
 	
+	    //Input temperature
 	    int l = getTemperatureScaled(false, 17, 30, workingTemperature);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 52 + (17 - l), 176, 17 + (17 - l), 18, l + 1);
 	
+	    //Output temperature
 	    int m = getTemperatureScaled(true, 17, 30, workingTemperature);
 	    this.drawTexturedModalRect(guiLeft + 55, guiTop + 16 + (17 - m), 176, 17 + (17 - m), 18, m + 1);
 	}

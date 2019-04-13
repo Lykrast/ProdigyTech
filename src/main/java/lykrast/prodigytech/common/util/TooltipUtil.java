@@ -52,6 +52,7 @@ public class TooltipUtil {
 	
 	
 	public static final String AEROHEATER_HEAT_MAXIMUM = "tooltip.prodigytech.temperature.max";
+	public static final String AEROHEATER_HEAT_MAXIMUM_VARIABLE = "tooltip.prodigytech.temperature.max.variable";
 	
 	@SideOnly(Side.CLIENT)
 	public static void addAeroheaterInfo(ItemStack stack, List<String> tooltip, int maxHeat)
@@ -60,6 +61,7 @@ public class TooltipUtil {
 	}
 	
 	public static final String HEAT_MINIMUM = "tooltip.prodigytech.temperature.min";
+	public static final String HEAT_MINIMUM_VARIABLE = "tooltip.prodigytech.temperature.min.variable";
 	public static final String HEAT_TRANSFER = "tooltip.prodigytech.temperature.transfer";
 	
 	@SideOnly(Side.CLIENT)

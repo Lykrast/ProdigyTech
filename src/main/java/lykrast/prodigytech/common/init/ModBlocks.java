@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber
 public class ModBlocks {
-	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion, aeroheaterTartaric,
+	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion, aeroheaterTartaric, aeroheaterCapacitor,
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
 		magneticReassembler, oreRefinery, energionCrystal, automaticCrystalCutter, 
 		primordialisReactor, atomicReshaper, zorraAltar,
@@ -50,6 +50,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileAeroheaterEnergion.class, ProdigyTech.resource("energion_aeroheater"));
 		aeroheaterTartaric = initBlock(new BlockAeroheaterTartaric(6.0F, 45.0F, 1), "tartaric_aeroheater");
 		GameRegistry.registerTileEntity(TileAeroheaterTartaric.class, ProdigyTech.resource("tartaric_aeroheater"));
+		aeroheaterCapacitor = initBlock(new BlockAeroheaterCapacitor(6.0F, 45.0F, 1), "capacitor_aeroheater");
+		//GameRegistry.registerTileEntity(TileAeroheaterSolid.class, ProdigyTech.resource("capacitor_aeroheater"));
 		
 		//Hot air machines pre-Solderer
 		incinerator = initBlock(new BlockIncinerator(6.0F, 45.0F, 1), "incinerator");

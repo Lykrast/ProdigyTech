@@ -21,6 +21,8 @@ tile.prodigytech.energion_aeroheater.name=Energion Aeroheater
 tile.prodigytech.energion_aeroheater.tooltip=Makes hot air out of Energion Dust\nTurn off with redstone signal
 tile.prodigytech.tartaric_aeroheater.name=Tartaric Aeroheater
 tile.prodigytech.tartaric_aeroheater.tooltip=Makes very hot air out of Furnace fuels and Tartaric Stoker\nConsumes materials faster as it heats up\nTurn off with redstone signal
+tile.prodigytech.capacitor_aeroheater.name=Capacitor Aeroheater
+tile.prodigytech.capacitor_aeroheater.tooltip=Releases hot air from Heat Capacitors\nVery fast heat up and cool down\nTurn off with redstone signal
 
 #Heat
 tile.prodigytech.incinerator.name=Incinerator
@@ -124,7 +126,7 @@ item.prodigytech.heat_capacitor_0.name=125°C Heat Capacitor
 item.prodigytech.heat_capacitor_1.name=250°C Heat Capacitor
 item.prodigytech.heat_capacitor_2.name=500°C Heat Capacitor
 item.prodigytech.heat_capacitor_3.name=1000°C Heat Capacitor
-item.prodigytech.heat_capacitor.tooltip=Stores heat from Hot Air for later use
+item.prodigytech.heat_capacitor.tooltip=Stores heat from hot air for later use
 item.prodigytech.heat_capacitor.tooltip.charge=§6Charge remaining:§f %d%%§r
 
 item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
@@ -157,6 +159,7 @@ item.prodigytech.zorrasteel_handbow.name=Zorrasteel Handbow
 #----------------------------
 tooltip.prodigytech.shift=§7Hold §fSHIFT§7 for info§r
 tooltip.prodigytech.temperature.max=§6Maximum temperature:§f %d°C§r
+tooltip.prodigytech.temperature.max.variable=§6Maximum temperature:§f variable§r
 tooltip.prodigytech.temperature.min=§6Minimum temperature:§f %d°C§r
 tooltip.prodigytech.temperature.transfer=§6Heat transmitted:§f %d%%§r
 
@@ -164,6 +167,7 @@ container.prodigytech.explosion_furnace=Explosion Furnace
 container.prodigytech.solid_fuel_aeroheater=Solid Fuel Aeroheater
 container.prodigytech.energion_aeroheater=Energion Aeroheater
 container.prodigytech.tartaric_aeroheater=Tartaric Aeroheater
+container.prodigytech.capacitor_aeroheater=Capacitor Aeroheater
 
 container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace

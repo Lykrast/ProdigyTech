@@ -68,16 +68,4 @@ public class TooltipUtil {
 		tooltip.add(I18n.format(HEAT_MINIMUM, minHeat));
 		if (transfer > 0) tooltip.add(I18n.format(HEAT_TRANSFER, transfer));
 	}
-	
-	public static final String ENERGION_BATTERIES_REQUIRED_SINGLE = "tooltip.prodigytech.energion.required.single";
-	public static final String ENERGION_BATTERIES_REQUIRED_INTERVAL = "tooltip.prodigytech.energion.required.interval";
-	public static final String ENERGION_ENERGY_CONSUMPTION = "tooltip.prodigytech.energion.consumption";
-	
-	@SideOnly(Side.CLIENT)
-	public static void addEnergionInfo(ItemStack stack, List<String> tooltip, int minBatteries, int maxBatteries, int consumption)
-	{
-		if (maxBatteries > minBatteries) tooltip.add(I18n.format(ENERGION_BATTERIES_REQUIRED_INTERVAL, minBatteries, maxBatteries));
-		else tooltip.add(I18n.format(ENERGION_BATTERIES_REQUIRED_SINGLE, minBatteries));
-		tooltip.add(I18n.format(ENERGION_ENERGY_CONSUMPTION, consumption));
-	}
 }

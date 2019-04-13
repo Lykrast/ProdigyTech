@@ -45,10 +45,14 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 	public ItemStack getStackInSlot(int slot) {
 		return inventory.getInventory().get(slot+offset);
 	}
+	
+	public boolean canInsert(int slot) {
+		return insert[slot];
+	}
 
 	@Override
 	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (!insert[slot] || stack.isEmpty()) return stack;
+        if (stack.isEmpty() || !canInsert(slot)) return stack;
 		stack = stack.copy();
 
 		if(!inventory.isItemValidForSlot(slot+offset, stack)) return stack;
@@ -118,10 +122,14 @@ public class ProdigyInventoryHandler implements IItemHandlerModifiable {
 			}
 		}
 	}
+	
+	public boolean canExtract(int slot) {
+		return extract[slot];
+	}
 
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        if (!extract[slot] || amount == 0) return ItemStack.EMPTY;
+        if (amount == 0 || !canExtract(slot)) return ItemStack.EMPTY;
         
 		int realSlot = slot+offset;
 		ItemStack stack = inventory.getInventory().get(realSlot);

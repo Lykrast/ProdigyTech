@@ -9,7 +9,7 @@
         "description": {
             "translate": "advancements.prodigytech.main.root.description"
         },
-        "background": "prodigytech:textures/blocks/ash_bricks.png",
+        "background": "prodigytech:textures/blocks/particle_board_planks.png",
         "show_toast": false,
         "announce_to_chat": false
     },

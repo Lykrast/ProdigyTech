@@ -2,17 +2,16 @@
     "name": "Energion Aeroheater",
     "icon": "prodigytech:energion_aeroheater",
     "category": "energion",
-	"advancement": "prodigytech:main/energion_dust",
+	"advancement": "prodigytech:main/solderer",
 	"priority": true,
     "pages": [
         {
             "type": "text",
-            "text": "The $(item)Energion Aeroheater$() will be your main use of $(item)Energion Batteries$(). Up to 6 $(item)Energion Batteries$() can be inserted, all being used at the same rate.$(br2)It can reach a maximum temperature of 80, 100, 125, 160, 200 and 250 C with 1, 2, 3, 4, 5 and 6 active $(item)Energion Batteries$(), respectively."
+            "text": "The $(item)Energion Aeroheater$() will be your main use of $(item)Energion Dust$(). Simply insert the dust and it will slowly heat up until it reaches its target temperature of 250°C, allowing it to power the most advanced machines.$(br2)$(item)Energion Dust$() can be automatically inserted from any side but the top."
         },
         {
             "type": "crafting",
-            "recipe": "prodigytech:machine/energion_aeroheater",
-            "text": "$(item)Energion Batteries$() can be inserted and empty $(item)Energion Batteries$() can be extracted from any side except the top."
+            "recipe": "prodigytech:machine/energion_aeroheater"
         }
     ]
 }

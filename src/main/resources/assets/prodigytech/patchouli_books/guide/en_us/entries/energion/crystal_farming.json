@@ -2,7 +2,7 @@
     "name": "Crystal Farming",
     "icon": "prodigytech:energion_crystal_seed",
     "category": "energion",
-	"advancement": "prodigytech:main/energion_dust",
+	"advancement": "prodigytech:main/solderer",
     "pages": [
         {
             "type": "text",

@@ -2,7 +2,7 @@
     "name": "Automatic Crystal Cutter",
     "icon": "prodigytech:automatic_crystal_cutter",
     "category": "energion",
-	"advancement": "prodigytech:main/energion_dust",
+	"advancement": "prodigytech:main/solderer",
     "pages": [
         {
             "type": "text",

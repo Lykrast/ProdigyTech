@@ -4,11 +4,11 @@
     "category": "energion",
 	"advancement": "prodigytech:main/solderer",
 	"priority": true,
-	"sortnum": -2,
+	"sortnum": -1,
     "pages": [
         {
             "type": "text",
-            "text": "$(item)Energion Dust$() is a mixture oozing with raw energy. Its main use is filling up $(item)Energion Batteries$(), which are required to progress further.$(br2)While it is expensive to craft raw $(item)Energion Dust$(), it is possible to aquire more at a much lower price once the first batch is made."
+            "text": "$(item)Energion Dust$() is a mixture oozing with raw energy. Its main use is powering the $(item)Energion Aeroheater$(), which is required to progress further.$(br2)While it is expensive to craft raw $(item)Energion Dust$(), it is possible to aquire more at a much lower price once the first batch is made."
         },
         {
             "type": "crafting",

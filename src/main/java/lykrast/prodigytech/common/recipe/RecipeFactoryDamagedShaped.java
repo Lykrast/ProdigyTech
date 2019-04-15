@@ -80,7 +80,7 @@ public class RecipeFactoryDamagedShaped implements IRecipeFactory {
 
 		ItemStack result = CraftingHelper.getItemStack(JsonUtils.getJsonObject(json, "result"), context);
 		//Except for that line
-		result.setItemDamage(result.getMaxDamage() + 1);
+		result.setItemDamage(result.getMaxDamage());
 		return new ShapedRecipes(group, pattern[0].length(), pattern.length, input, result);
 	}
 

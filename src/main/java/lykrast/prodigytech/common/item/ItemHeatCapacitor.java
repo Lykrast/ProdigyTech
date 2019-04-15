@@ -19,14 +19,14 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 	public ItemHeatCapacitor(int temperature) {
 		this.temperature = temperature;
 		setMaxStackSize(1);
-        setMaxDamage(Config.heatCapacitorDuration - 1);
+        setMaxDamage(Config.heatCapacitorDuration);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 		if (isInCreativeTab(tab)) {
-			items.add(new ItemStack(this, 1, getMaxDamage() + 1));
+			items.add(new ItemStack(this, 1, getMaxDamage()));
 			items.add(new ItemStack(this, 1, 0));
 		}
 	}
@@ -38,7 +38,7 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 
 	@Override
 	public boolean isDepleted(ItemStack stack) {
-		return stack.getItemDamage() > stack.getMaxDamage();
+		return stack.getItemDamage() >= stack.getMaxDamage();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 
 	@Override
 	public void discharge(ItemStack stack, int ticks) {
-		stack.setItemDamage(Math.min(stack.getMaxDamage() + 1, stack.getItemDamage() + ticks));
+		stack.setItemDamage(Math.min(stack.getMaxDamage(), stack.getItemDamage() + ticks));
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 		String[] lines = tip.split("\n");
 		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
 		TooltipUtil.addAeroheaterInfo(stack, tooltip, temperature);
-		tooltip.add(I18n.format(TOOLTIP_CHARGE, 100 - (100 * stack.getItemDamage() / (stack.getMaxDamage() + 1))));
+		tooltip.add(I18n.format(TOOLTIP_CHARGE, 100 - (100 * stack.getItemDamage() / stack.getMaxDamage())));
 	}
 
 }

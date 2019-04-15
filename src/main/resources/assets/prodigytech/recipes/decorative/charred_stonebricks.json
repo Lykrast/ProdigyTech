@@ -1,0 +1,11 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"SS",
+		"SS"
+	],
+	"key": {
+		"S": { "type": "forge:ore_dict", "ore": "stoneCharred" }
+	},
+	"result": { "item": "prodigytech:charred_stonebricks", "count": 4 }
+}

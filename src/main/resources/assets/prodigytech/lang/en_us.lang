@@ -81,6 +81,9 @@ tile.prodigytech.ferramic_block.name=Block of Ferramic
 tile.prodigytech.carbon_plate_block.name=Block of Carbon Plates
 tile.prodigytech.zorrasteel_block.name=Block of Zorrasteel
 
+tile.prodigytech.charred_cobblestone.name=Charred Cobblestone
+tile.prodigytech.charred_stone.name=Charred Stone
+tile.prodigytech.charred_stonebricks.name=Charred Stone Bricks
 tile.prodigytech.ash_bricks.name=Ash Bricks
 tile.prodigytech.particle_board.name=Particle Board
 tile.prodigytech.particle_board_planks.name=Particle Board Planks

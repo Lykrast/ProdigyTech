@@ -153,8 +153,7 @@ public class ModRecipes {
 		}
 	}
 	
-	public static void initOreDict()
-	{
+	public static void initOreDict() {
 		//Ferramic
 		OreDictionary.registerOre("blockFerramic", ModBlocks.ferramicBlock);
 		OreDictionary.registerOre("ingotFerramic", ModItems.ferramicIngot);
@@ -196,10 +195,13 @@ public class ModRecipes {
 		OreDictionary.registerOre("plankWood", ModBlocks.zorraPlanks);
 		OreDictionary.registerOre("treeLeaves", ModBlocks.zorraLeaves);
 		OreDictionary.registerOre("treeSapling", ModBlocks.zorraSapling);
+		OreDictionary.registerOre("cobblestoneCharred", ModBlocks.charredCobblestone);
+		OreDictionary.registerOre("stoneCharred", ModBlocks.charredStone);
 	}
 	
-	public static void initSmelting()
-	{
+	public static void initSmelting() {
+		GameRegistry.addSmelting(ModBlocks.charredCobblestone, new ItemStack(ModBlocks.charredStone), 0.1F);
+		
 		GameRegistry.addSmelting(ModItems.flour, new ItemStack(Items.BREAD), 0.35F);
 		GameRegistry.addSmelting(ModItems.meatGround, new ItemStack(ModItems.meatPatty), 0.35F);
 		

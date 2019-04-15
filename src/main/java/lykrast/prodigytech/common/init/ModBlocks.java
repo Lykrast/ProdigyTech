@@ -32,7 +32,7 @@ public class ModBlocks {
 		airFunnel, wormholeFunnel, linearExtractor, funnellingExtractor, dispersingExtractor,
 		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
 		ferramicBlock, carbonPlateBlock, zorrasteelBlock,
-		ashBricks, particleBoard, particleBoardPlanks;
+		charredCobblestone, charredStone, charredStoneBricks, ashBricks, particleBoard, particleBoardPlanks;
 	private static List<Block> blockList = new ArrayList<>();
 	
 	static
@@ -112,6 +112,9 @@ public class ModBlocks {
 		zorrasteelBlock = initBlock(new BlockGeneric(Material.IRON, SoundType.METAL, 6.0F, 180.0F, "pickaxe", 3), "zorrasteel_block");
 		
 		//Decoration
+		charredCobblestone = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 10.0F, "pickaxe", 0), "charred_cobblestone");
+		charredStone = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 1.5F, 10.0F, "pickaxe", 0), "charred_stone");
+		charredStoneBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 1.5F, 10.0F, "pickaxe", 0), "charred_stonebricks");
 		ashBricks = initBlock(new BlockGeneric(Material.ROCK, SoundType.STONE, 2.0F, 30.0F, "pickaxe", 0), "ash_bricks");
 		particleBoard = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "particle_board");
 		particleBoardPlanks = initBlock(new BlockGeneric(Material.WOOD, SoundType.WOOD, 2.0F, 15.0F, "axe", 0), "particle_board_planks");

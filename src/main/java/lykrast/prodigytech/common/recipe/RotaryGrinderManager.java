@@ -1,8 +1,10 @@
 package lykrast.prodigytech.common.recipe;
 
+import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.block.BlockPrismarine;
+import net.minecraft.block.BlockStoneBrick;
 import net.minecraft.block.BlockStoneSlab;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -26,10 +28,16 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 	{
 		addRecipe("logWood", new ItemStack(ModItems.sawdust, 4));
 		addRecipe("plankWood", new ItemStack(ModItems.sawdust));
-		
+
+		addRecipe(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.DEFAULT_META), new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.CRACKED_META));
+		addRecipe(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.CHISELED_META), new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.CRACKED_META));
+		addRecipe(new ItemStack(Blocks.STONEBRICK, 1, BlockStoneBrick.CRACKED_META), new ItemStack(Blocks.COBBLESTONE));
 		addRecipe("stone", new ItemStack(Blocks.COBBLESTONE));
 		addRecipe("cobblestone", new ItemStack(Blocks.GRAVEL));
 		addRecipe("gravel", new ItemStack(Blocks.SAND));
+		addRecipe(new ItemStack(ModBlocks.charredStoneBricks), new ItemStack(ModBlocks.charredCobblestone));
+		addRecipe("stoneCharred", new ItemStack(ModBlocks.charredCobblestone));
+		addRecipe("cobblestoneCharred", new ItemStack(Blocks.GRAVEL));
 		addRecipe(new ItemStack(Blocks.SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2));
 		addRecipe(new ItemStack(Blocks.RED_SANDSTONE, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.SAND, 2, 1));
 		addRecipe(new ItemStack(Blocks.GLOWSTONE), new ItemStack(Items.GLOWSTONE_DUST, 4));

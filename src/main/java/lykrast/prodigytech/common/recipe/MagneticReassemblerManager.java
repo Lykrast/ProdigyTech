@@ -1,5 +1,6 @@
 package lykrast.prodigytech.common.recipe;
 
+import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.init.Blocks;
@@ -24,6 +25,7 @@ public class MagneticReassemblerManager extends SimpleRecipeManager {
 		addRecipe("cobblestone", new ItemStack(Blocks.STONE));
 		addRecipe("gravel", new ItemStack(Blocks.COBBLESTONE));
 		addRecipe("sand", new ItemStack(Blocks.GRAVEL));
+		addRecipe("cobblestoneCharred", new ItemStack(ModBlocks.charredStone));
 		
 		addRecipe("dustCoal", new ItemStack(Items.COAL));
 		if (!Config.autoOreRecipes)

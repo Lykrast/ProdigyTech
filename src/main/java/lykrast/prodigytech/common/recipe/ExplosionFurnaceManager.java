@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import lykrast.prodigytech.common.init.ModBlocks;
 import lykrast.prodigytech.common.init.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -179,10 +180,12 @@ public class ExplosionFurnaceManager {
 		addRecipe("ingotRawZorrasteel", 1, new ItemStack(ModItems.zorrasteelIngot), 360, "dustCoal", 1);
 		
 		//Stone
-		//Those were tested by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed
-		addRecipe("stone", 1, new ItemStack(Blocks.COBBLESTONE), 45);
+		//Those were initially found by blowing up TNT in a 11x11x11 block and counting how many blocks were destroyed
+		addRecipe("stone", 1, new ItemStack(ModBlocks.charredCobblestone), 45);
 		addRecipe("cobblestone", 1, new ItemStack(Blocks.GRAVEL), 45);
-		addRecipe("gravel", 1, new ItemStack(Blocks.SAND), 10);
+		addRecipe("stoneCharred", 1, new ItemStack(ModBlocks.charredCobblestone), 45);
+		addRecipe("cobblestoneCharred", 1, new ItemStack(Blocks.GRAVEL), 45);
+		//addRecipe("gravel", 1, new ItemStack(Blocks.SAND), 10);
 
 		//---------------------
 		//Explosives and dampeners

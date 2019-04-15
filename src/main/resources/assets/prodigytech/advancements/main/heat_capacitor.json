@@ -1,0 +1,64 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:heat_capacitor_2"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.heat_capacitor.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.heat_capacitor.description"
+        }
+    },
+    "parent": "prodigytech:main/solderer",
+    "criteria": {
+        "0": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:heat_capacitor_0"
+                    }
+                ]
+            }
+        },
+        "1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:heat_capacitor_1"
+                    }
+                ]
+            }
+        },
+        "2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:heat_capacitor_2"
+                    }
+                ]
+            }
+        },
+        "3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:heat_capacitor_3"
+                    }
+                ]
+            }
+        }
+    },
+	"requirements": [
+		[
+			"0",
+			"1",
+			"2",
+			"3"
+		]
+	]
+}

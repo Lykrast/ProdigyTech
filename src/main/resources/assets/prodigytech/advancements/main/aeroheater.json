@@ -42,6 +42,16 @@
                 ]
             }
         },
+        "capacitor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:capacitor_aeroheater"
+                    }
+                ]
+            }
+        },
         "tartaric": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -58,6 +68,7 @@
 			"solid_fuel",
 			"magmatic",
 			"energion",
+			"capacitor",
 			"tartaric"
 		]
 	]

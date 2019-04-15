@@ -3,7 +3,11 @@
   "rewards": {
     "recipes": [
       "prodigytech:machine/magnetic_reassembler",
-      "prodigytech:machine/ore_refinery"
+      "prodigytech:machine/ore_refinery",
+      "prodigytech:machine/capacitor_aeroheater",
+      "prodigytech:machine/capacitor_charger",
+      "prodigytech:tools/heat_capacitor_0",
+      "prodigytech:tools/heat_capacitor_1"
     ]
   },
   "criteria": {

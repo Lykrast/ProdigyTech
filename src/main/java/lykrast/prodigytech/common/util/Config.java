@@ -165,7 +165,7 @@ public class Config {
 		//-----------
 		//Zorra Altar
 		//-----------
-		altarCostMult = cfg.getFloat("altarCostMult", CATEGORY_ALTAR, 1.0F, 0.0F, 10.0F, 
+		altarCostMult = cfg.getFloat("altarCostMult", CATEGORY_ALTAR, 0.6F, 0.0F, 10.0F, 
 				"A multiplier applied to all enchantment costs on the Zorra Altar\n"
 				+ "For example 1.5 means that everything costs 50% more than the base amount");
 		altarUnknownMult = cfg.getFloat("altarUnknownMult", CATEGORY_ALTAR, 0.5F, 0.0F, 10.0F, 

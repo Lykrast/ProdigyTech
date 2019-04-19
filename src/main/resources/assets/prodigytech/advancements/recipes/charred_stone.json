@@ -2,7 +2,7 @@
   "parent": "prodigytech:recipes/root",
   "rewards": {
     "recipes": [
-      "prodigytech:decorative/charred_stone"
+      "prodigytech:decorative/charred_stonebricks"
     ]
   },
   "criteria": {

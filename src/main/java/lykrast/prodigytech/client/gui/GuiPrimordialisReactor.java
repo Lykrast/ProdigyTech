@@ -82,14 +82,14 @@ public class GuiPrimordialisReactor extends GuiInventory {
 	}
 
 	private void renderTemperatureToolTip(int x, int y) {
-		if (x >= guiLeft + 92 && x <= guiLeft + 110)
+		if (x >= guiLeft + 92 && x < guiLeft + 110)
 		{
-	        if (y >= guiTop + 52 && y <= guiTop + 70)
+	        if (y >= guiTop + 52 && y < guiTop + 70)
 	        {
 	        	String tooltip = String.format(temperature, tile.getField(2));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
-	        else if (y >= guiTop + 16 && y <= guiTop + 34)
+	        else if (y >= guiTop + 16 && y < guiTop + 34)
 	        {
 	        	String tooltip = String.format(temperatureOut, tile.getField(3));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);

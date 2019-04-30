@@ -84,7 +84,7 @@ public class GuiAeroheaterTartaric extends GuiInventory {
 	}
 
     private void renderTemperatureToolTip(int x, int y) {
-        if (x >= guiLeft + 79 && x <= guiLeft + 97 && y >= guiTop + 16 && y <= guiTop + 34)
+        if (x >= guiLeft + 79 && x < guiLeft + 97 && y >= guiTop + 16 && y < guiTop + 34)
         {
         	String tooltip = String.format(temperature, tile.getField(2));
             this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);

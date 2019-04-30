@@ -65,7 +65,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
 		registry.addRecipeClickArea(GuiOreRefinery.class, 79, 35, 24, 17, OreRefineryCategory.UID);
-		registry.addRecipeClickArea(GuiPrimordialisReactor.class, 77, 35, 62, 17, PrimordialisReactorCategory.UID);
+		registry.addRecipeClickArea(GuiPrimordialisReactor.class, 77, 35, 62, 16, PrimordialisReactorCategory.UID);
 		registry.addRecipeClickArea(GuiAtomicReshaper.class, 67, 35, 48, 17, AtomicReshaperCategory.UID);
 		
 		registry.addRecipeClickArea(GuiBlowerFurnace.class, 79, 35, 24, 17, VanillaRecipeCategoryUid.SMELTING);

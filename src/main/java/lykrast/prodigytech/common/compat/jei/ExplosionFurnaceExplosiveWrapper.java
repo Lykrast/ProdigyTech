@@ -15,12 +15,12 @@ import net.minecraft.item.ItemStack;
 public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
 	private final List<ItemStack> explosive;
 	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace_exp.generated";
-	private final String power;
+	private final int power;
 	
 	public ExplosionFurnaceExplosiveWrapper(Explosive recipe)
 	{
 		explosive = recipe.getMatchingStacks();
-		power = I18n.format(POWER_DISPLAY, recipe.getPower());
+		power = recipe.getPower();
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ExplosionFurnaceExplosiveWrapper implements IRecipeWrapper {
 	
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString(power, 24, 9 - (minecraft.fontRenderer.FONT_HEIGHT / 2), Color.gray.getRGB());
+		minecraft.fontRenderer.drawString(I18n.format(POWER_DISPLAY, power), 24, 9 - (minecraft.fontRenderer.FONT_HEIGHT / 2), Color.gray.getRGB());
 	}
 
 }

@@ -6,6 +6,7 @@ import lykrast.prodigytech.common.gui.ContainerCapacitorCharger;
 import lykrast.prodigytech.common.tileentity.TileCapacitorCharger;
 import lykrast.prodigytech.common.tileentity.TileHotAirMachineSimple;
 import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -18,8 +19,6 @@ public class GuiCapacitorCharger extends GuiInventory {
 	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/capacitor_charger.png");
     private final IInventory playerInventory;
     private final TileCapacitorCharger tile;
-	private static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
-    private final String temperature;
 
 	public GuiCapacitorCharger(InventoryPlayer playerInv, TileCapacitorCharger tile) {
 		super(new ContainerCapacitorCharger(playerInv, tile));
@@ -29,7 +28,6 @@ public class GuiCapacitorCharger extends GuiInventory {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -83,7 +81,7 @@ public class GuiCapacitorCharger extends GuiInventory {
     {
         if (x >= guiLeft + 79 && x < guiLeft + 97 && y >= guiTop + 52 && y < guiTop + 70)
         {
-        	String tooltip = String.format(temperature, tile.getField(2));
+        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE, tile.getField(2));
             this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
         }
     }

@@ -20,10 +20,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class SoldererWrapper implements IRecipeWrapper {
-	private static final String BLOCKS_UNLOCALIZED = "container.prodigytech.solderer.gold.blocks";
-	private static final String INGOTS_UNLOCALIZED = "container.prodigytech.solderer.gold.ingots";
-	private static final String NUGGETS_UNLOCALIZED = "container.prodigytech.solderer.gold.nuggets";
-	private final String blocks, ingots, nuggets;
+	private static final String BLOCKS = "container.prodigytech.solderer.gold.blocks";
+	private static final String INGOTS = "container.prodigytech.solderer.gold.ingots";
+	private static final String NUGGETS = "container.prodigytech.solderer.gold.nuggets";
 	
 	private ItemStack pattern, additive, output;
 	private final IDrawableAnimated arrow;
@@ -41,10 +40,6 @@ public class SoldererWrapper implements IRecipeWrapper {
 		
 		goldScale = goldAmount * 52 / Config.soldererMaxGold;
 		goldGauge = guiHelper.createDrawable(GuiSolderer.GUI, 176, 35 + (52 - goldScale), 4, goldScale);
-		
-		blocks = I18n.format(BLOCKS_UNLOCALIZED, "%d");
-		ingots = I18n.format(INGOTS_UNLOCALIZED, "%d");
-		nuggets = I18n.format(NUGGETS_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -86,20 +81,20 @@ public class SoldererWrapper implements IRecipeWrapper {
 			int blocks = tmp / 81;
 			if (blocks > 0)
 			{
-				list.add(String.format(this.blocks, blocks));
+				list.add(I18n.format(BLOCKS, blocks));
 				tmp %= 81;
 			}
 			
 			int ingots = tmp / 9;
 			if (ingots > 0)
 			{
-				list.add(String.format(this.ingots, ingots));
+				list.add(I18n.format(INGOTS, ingots));
 				tmp %= 9;
 			}
 			
 			if (tmp > 0)
 			{
-				list.add(String.format(nuggets, tmp));
+				list.add(I18n.format(NUGGETS, tmp));
 			}
 			
 			return list;

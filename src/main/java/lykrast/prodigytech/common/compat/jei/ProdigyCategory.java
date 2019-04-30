@@ -9,14 +9,12 @@ import net.minecraft.client.resources.I18n;
 
 public abstract class ProdigyCategory<T extends IRecipeWrapper> implements IRecipeCategory<T> {
 	private final IDrawable background;
-	private final String localizedName;
 	private final String id;
 
 	public ProdigyCategory(IGuiHelper guiHelper, IDrawable gui, String id)
 	{
 		this.id = id;
 		background = gui;
-		localizedName = I18n.format("container." + ProdigyTech.MODID + ".jei." + id);
 	}
 
 	@Override
@@ -26,7 +24,7 @@ public abstract class ProdigyCategory<T extends IRecipeWrapper> implements IReci
 
 	@Override
 	public String getTitle() {
-		return localizedName;
+		return I18n.format("container." + ProdigyTech.MODID + ".jei." + id);
 	}
 
 	@Override

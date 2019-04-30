@@ -191,16 +191,16 @@ container.prodigytech.atomic_reshaper=Atomic Reshaper
 container.prodigytech.zorra_altar=Zorra Altar
 container.prodigytech.zorra_altar.unknown=???
 container.prodigytech.zorra_altar.leaves.one=1 Zorra Leaf
-container.prodigytech.zorra_altar.leaves.many=%s Zorra Leaves
+container.prodigytech.zorra_altar.leaves.many=%d Zorra Leaves
 
-container.prodigytech.temperature=Air Temperature : %s°C
-container.prodigytech.temperature.output=Output Air Temperature : %s°C
-container.prodigytech.solderer.gold.blocks=%s Blocks
-container.prodigytech.solderer.gold.ingots=%s Ingots
-container.prodigytech.solderer.gold.nuggets=%s Nuggets
+container.prodigytech.temperature=Air Temperature: %d°C
+container.prodigytech.temperature.output=Output Air Temperature: %d°C
+container.prodigytech.solderer.gold.blocks=%d Blocks
+container.prodigytech.solderer.gold.ingots=%d Ingots
+container.prodigytech.solderer.gold.nuggets=%d Nuggets
 container.prodigytech.solderer.gold.empty=Empty
 
-container.prodigytech.atomic_reshaper.primordium.amount=%s Primordium units
+container.prodigytech.atomic_reshaper.primordium.amount=%d Primordium units
 container.prodigytech.atomic_reshaper.primordium.empty=Empty
 
 container.prodigytech.linear_extractor=Linear Extractor

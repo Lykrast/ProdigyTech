@@ -12,6 +12,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TooltipUtil {
 	private TooltipUtil() {}
+	
+	public static final String TEMPERATURE = "container.prodigytech.temperature";
+	public static final String TEMPERATURE_OUT = "container.prodigytech.temperature.output";
 
 	/**
 	 * Adds the item's tooltip to the itemstack, following localization.

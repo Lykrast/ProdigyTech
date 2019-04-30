@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import lykrast.prodigytech.common.gui.ContainerAeroheaterTartaric;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
 import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -17,8 +18,6 @@ public class GuiAeroheaterTartaric extends GuiInventory {
 	public static final ResourceLocation GUI = ProdigyTech.resource("textures/gui/tartaric_aeroheater.png");
     private final IInventory playerInventory;
     private final TileAeroheaterTartaric tile;
-    private static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
-    private final String temperature;
 
 	public GuiAeroheaterTartaric(InventoryPlayer playerInv, TileAeroheaterTartaric tile) {
 		super(new ContainerAeroheaterTartaric(playerInv, tile));
@@ -28,7 +27,6 @@ public class GuiAeroheaterTartaric extends GuiInventory {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		temperature = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -86,7 +84,7 @@ public class GuiAeroheaterTartaric extends GuiInventory {
     private void renderTemperatureToolTip(int x, int y) {
         if (x >= guiLeft + 79 && x < guiLeft + 97 && y >= guiTop + 16 && y < guiTop + 34)
         {
-        	String tooltip = String.format(temperature, tile.getField(2));
+        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE_OUT, tile.getField(2));
             this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
         }
     }

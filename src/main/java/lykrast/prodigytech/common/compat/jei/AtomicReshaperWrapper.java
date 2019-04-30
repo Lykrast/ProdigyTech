@@ -21,10 +21,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class AtomicReshaperWrapper implements IRecipeWrapper, ITooltipCallback<ItemStack> {
-	protected static final String AMOUNT_UNLOCALIZED = "container.prodigytech.atomic_reshaper.primordium.amount";
-	protected static final String CHANCE_UNLOCALIZED = "container.prodigytech.jei.ptreshaper.chance";
-	protected static final String CHANCE_LOW_UNLOCALIZED = "container.prodigytech.jei.ptreshaper.chance.low";
-	private final String amount;
+	protected static final String AMOUNT = "container.prodigytech.atomic_reshaper.primordium.amount";
+	protected static final String CHANCE = "container.prodigytech.jei.ptreshaper.chance";
+	protected static final String CHANCE_LOW = "container.prodigytech.jei.ptreshaper.chance.low";
 
 	private List<ItemStack> in;
 	private List<List<ItemStack>> out;
@@ -57,8 +56,6 @@ public class AtomicReshaperWrapper implements IRecipeWrapper, ITooltipCallback<I
 		
 		primordiumScale = primordiumAmount * 52 / (Config.atomicReshaperMaxPrimordium * 100);
 		primordiumGauge = guiHelper.createDrawable(GuiAtomicReshaper.GUI, 176, 35 + (52 - primordiumScale), 4, primordiumScale);
-		
-		amount = I18n.format(AMOUNT_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -86,7 +83,7 @@ public class AtomicReshaperWrapper implements IRecipeWrapper, ITooltipCallback<I
 		if (mouseX >= 30 && mouseX <= 34)
 		{
 			List<String> list = new ArrayList<>();
-			list.add(String.format(amount, primordiumAmount));
+			list.add(I18n.format(AMOUNT, primordiumAmount));
 			return list;
 		}
 		else return Collections.emptyList();
@@ -96,8 +93,8 @@ public class AtomicReshaperWrapper implements IRecipeWrapper, ITooltipCallback<I
 	public void onTooltip(int slotIndex, boolean input, ItemStack ingredient, List<String> tooltip) {
 		if (slotIndex == 2 && weights.length > 1) {
 			int chance = (weights[out.get(0).indexOf(ingredient)] * 100) / totalWeight;
-			if (chance == 0) tooltip.add(I18n.format(CHANCE_LOW_UNLOCALIZED));
-			else tooltip.add(I18n.format(CHANCE_UNLOCALIZED, chance));
+			if (chance == 0) tooltip.add(I18n.format(CHANCE_LOW));
+			else tooltip.add(I18n.format(CHANCE, chance));
 		}
 	}
 

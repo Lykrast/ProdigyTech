@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 
 import lykrast.prodigytech.common.tileentity.TileHotAirMachine;
 import lykrast.prodigytech.common.tileentity.TileHotAirMachineSimple;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -21,10 +22,6 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 
 	protected final IInventory playerInventory;
 	protected final TileHotAirMachine tile;
-	protected static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
-	protected static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
-	protected final String temperature;
-	protected final String temperatureOut;
 	
 	protected ResourceLocation getGUI() {
 		return GUI;
@@ -39,8 +36,6 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
-		temperatureOut = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -94,12 +89,12 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 		{
 	        if (y >= guiTop + 52 && y < guiTop + 70)
 	        {
-	        	String tooltip = String.format(temperature, tile.getField(2));
+	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE, tile.getField(2));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
 	        else if (y >= guiTop + 16 && y < guiTop + 34)
 	        {
-	        	String tooltip = String.format(temperatureOut, tile.getField(3));
+	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE_OUT, tile.getField(3));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
 		}

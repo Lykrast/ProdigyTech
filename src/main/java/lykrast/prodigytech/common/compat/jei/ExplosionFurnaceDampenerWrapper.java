@@ -15,12 +15,12 @@ import net.minecraft.item.ItemStack;
 public class ExplosionFurnaceDampenerWrapper implements IRecipeWrapper {
 	private final List<ItemStack> dampener;
 	private static final String DAMPENING_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace_damp.dampened";
-	private final String dampened;
+	private final int dampened;
 	
 	public ExplosionFurnaceDampenerWrapper(Dampener recipe)
 	{
 		dampener = recipe.getMatchingStacks();
-		dampened = I18n.format(DAMPENING_DISPLAY, recipe.getDampening());
+		dampened = recipe.getDampening();
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ExplosionFurnaceDampenerWrapper implements IRecipeWrapper {
 	
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString(dampened, 24, 9 - (minecraft.fontRenderer.FONT_HEIGHT / 2), Color.gray.getRGB());
+		minecraft.fontRenderer.drawString(I18n.format(DAMPENING_DISPLAY, dampened), 24, 9 - (minecraft.fontRenderer.FONT_HEIGHT / 2), Color.gray.getRGB());
 	}
 
 }

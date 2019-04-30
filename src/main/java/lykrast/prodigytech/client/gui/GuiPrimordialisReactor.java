@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import lykrast.prodigytech.common.gui.ContainerPrimordialisReactor;
 import lykrast.prodigytech.common.tileentity.TilePrimordialisReactor;
 import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
@@ -19,9 +20,6 @@ public class GuiPrimordialisReactor extends GuiInventory {
 
 	protected final IInventory playerInventory;
 	protected final TilePrimordialisReactor tile;
-	protected static final String TEMPERATURE_UNLOCALIZED = "container.prodigytech.temperature";
-	protected static final String TEMPERATURE_OUT_UNLOCALIZED = "container.prodigytech.temperature.output";
-	protected final String temperature, temperatureOut;
 
 	public GuiPrimordialisReactor(InventoryPlayer playerInv, TilePrimordialisReactor tile) {
 		super(new ContainerPrimordialisReactor(playerInv, tile));
@@ -31,8 +29,6 @@ public class GuiPrimordialisReactor extends GuiInventory {
 		
 		this.xSize = 176;
 		this.ySize = 166;
-		temperature = I18n.format(TEMPERATURE_UNLOCALIZED, "%d");
-		temperatureOut = I18n.format(TEMPERATURE_OUT_UNLOCALIZED, "%d");
 	}
 
 	@Override
@@ -86,12 +82,12 @@ public class GuiPrimordialisReactor extends GuiInventory {
 		{
 	        if (y >= guiTop + 52 && y < guiTop + 70)
 	        {
-	        	String tooltip = String.format(temperature, tile.getField(2));
+	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE, tile.getField(2));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
 	        else if (y >= guiTop + 16 && y < guiTop + 34)
 	        {
-	        	String tooltip = String.format(temperatureOut, tile.getField(3));
+	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE_OUT, tile.getField(3));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
 		}

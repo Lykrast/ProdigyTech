@@ -17,12 +17,12 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	private List<ItemStack> in, reag;
 	private ItemStack out;
 	private static final String POWER_DISPLAY = "container.prodigytech.jei.ptexplosionfurnace.required";
-	private final String power;
+	private final int power;
 	
 	public ExplosionFurnaceWrapper(ExplosionFurnaceManager.ExplosionFurnaceRecipe recipe) {
 		in = recipe.getInputs();
 		reag = recipe.getReagents();
-		power = I18n.format(POWER_DISPLAY, recipe.getRequiredPower());
+		power = recipe.needReagent() ? recipe.getRequiredPower() * recipe.getCraftPerReagent() : recipe.getRequiredPower();
 		out = recipe.getOutput();
 		if (recipe.needReagent()) out.setCount(out.getCount() * recipe.getCraftPerReagent());
 	}
@@ -35,8 +35,9 @@ public class ExplosionFurnaceWrapper implements IRecipeWrapper {
 	
 	@Override
 	public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
-		int width = minecraft.fontRenderer.getStringWidth(power);
-		minecraft.fontRenderer.drawString(power, (recipeWidth - width)/2, 45, Color.gray.getRGB());
+		String s = I18n.format(POWER_DISPLAY, power);
+		int width = minecraft.fontRenderer.getStringWidth(s);
+		minecraft.fontRenderer.drawString(s, (recipeWidth - width)/2, 45, Color.gray.getRGB());
 	}
 
 }

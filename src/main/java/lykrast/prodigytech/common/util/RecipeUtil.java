@@ -12,6 +12,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeUtil {
@@ -67,6 +68,22 @@ public class RecipeUtil {
 	
 	public static boolean oreExists(String name) {
 		return OreDictionary.doesOreNameExist(name) && !OreDictionary.getOres(name, false).isEmpty();
+	}
+	
+	public static boolean itemExists(String name) {
+		return itemExists(new ResourceLocation(name));
+	}
+	
+	public static boolean itemExists(ResourceLocation location) {
+		return ForgeRegistries.ITEMS.containsKey(location);
+	}
+	
+	public static Item getExteriorItem(String name) {
+		return getExteriorItem(new ResourceLocation(name));
+	}
+	
+	public static Item getExteriorItem(ResourceLocation location) {
+		return ForgeRegistries.ITEMS.getValue(location);
 	}
 	
 	public static boolean isOreBlacklisted(String reducedName) {

@@ -3,6 +3,7 @@ package lykrast.prodigytech.common.compat;
 import java.util.function.Function;
 
 import lykrast.prodigytech.common.tileentity.IProcessing;
+import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
 import lykrast.prodigytech.core.ProdigyTech;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;
@@ -32,10 +33,23 @@ public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 		@Override
 		public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
 			TileEntity te = world.getTileEntity(data.getPos());
-			if (te instanceof IProcessing) {
+			//Tartaric gets special treatment
+			if (te instanceof TileAeroheaterTartaric) {
+				TileAeroheaterTartaric tartaric = (TileAeroheaterTartaric)te;
+				if (tartaric.isBurningSomething()) {
+					probeInfo.progress(tartaric.getBurnLeft(), tartaric.getBurnMax(), probeInfo.defaultProgressStyle().height(6).showText(false).filledColor(0xFFE19900).alternateFilledColor(0xFFE19900));
+					probeInfo.progress(tartaric.getStokerLeft(), tartaric.getStokerMax(), probeInfo.defaultProgressStyle().height(6).showText(false).filledColor(0xFF78ACC8).alternateFilledColor(0xFF78ACC8));
+				}
+			}
+			else if (te instanceof IProcessing) {
 				IProcessing casted = (IProcessing)te;
-				if (casted.isProcessing()) probeInfo.progress(100*(casted.getMaxProgress() - casted.getProgressLeft()) / casted.getMaxProgress(), 100,
-						probeInfo.defaultProgressStyle().suffix("%"));
+				if (casted.isProcessing()) {
+					int amount = casted.invertDisplay()
+							? 100*casted.getProgressLeft() / casted.getMaxProgress()
+							: 100*(casted.getMaxProgress() - casted.getProgressLeft()) / casted.getMaxProgress();
+					probeInfo.progress(amount, 100,
+							probeInfo.defaultProgressStyle().height(12).suffix("%"));
+				}
 			}
 		}
 		

@@ -14,7 +14,7 @@ import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAeroheaterEnergion extends TileMachineInventory implements ITickable {
+public class TileAeroheaterEnergion extends TileMachineInventory implements ITickable, IProcessing {
     /** The number of ticks that the furnace will keep burning */
     private int furnaceBurnTime;
     /** The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for */
@@ -30,10 +30,6 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 	public String getName() {
 		return super.getName() + "energion_aeroheater";
 	}
-	
-    public boolean isBurning() {
-        return furnaceBurnTime > 0;
-    }
 
     public static boolean isBurning(IInventory inventory) {
         return inventory.getField(0) > 0;
@@ -41,30 +37,30 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 
 	@Override
 	public void update() {
-        boolean wasBurning = isBurning();
+        boolean wasBurning = isProcessing();
         boolean shouldDirty = false;
 
-        if (isBurning()) --furnaceBurnTime;
+        if (isProcessing()) --furnaceBurnTime;
         
         if (!world.isRemote) {
         	ItemStack fuel = getStackInSlot(0);
         	
-			if (!isBurning() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
+			if (!isProcessing() && !fuel.isEmpty() && !world.isBlockPowered(pos)) {
 				furnaceBurnTime = Config.energionDuration;
 				currentItemBurnTime = furnaceBurnTime;
 
-				if (isBurning()) {
+				if (isProcessing()) {
 					shouldDirty = true;
 					if (!fuel.isEmpty()) fuel.shrink(1);
 				}
 			}
 
-            if (isBurning()) hotAir.raiseTemperature();
+            if (isProcessing()) hotAir.raiseTemperature();
             else hotAir.lowerTemperature();
         	
-            if (wasBurning != isBurning()) {
+            if (wasBurning != isProcessing()) {
                 shouldDirty = true;
-                BlockHotAirMachine.setState(isBurning(), world, pos);
+                BlockHotAirMachine.setState(isProcessing(), world, pos);
             }
         }
 
@@ -75,6 +71,26 @@ public class TileAeroheaterEnergion extends TileMachineInventory implements ITic
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (index == 0) return stack.getItem() == ModItems.energionDust;
 		else return false;
+	}
+
+	@Override
+	public boolean isProcessing() {
+		return furnaceBurnTime > 0;
+	}
+
+	@Override
+	public int getProgressLeft() {
+		return furnaceBurnTime;
+	}
+
+	@Override
+	public int getMaxProgress() {
+		return currentItemBurnTime;
+	}
+	
+	@Override
+	public boolean invertDisplay() {
+		return true;
 	}
 
     public void readFromNBT(NBTTagCompound compound)

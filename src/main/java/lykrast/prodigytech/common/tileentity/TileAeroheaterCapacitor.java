@@ -13,7 +13,7 @@ import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-public class TileAeroheaterCapacitor extends TileMachineInventory implements ITickable {
+public class TileAeroheaterCapacitor extends TileMachineInventory implements ITickable, IProcessing {
     private int targetTemperature;
     private boolean active;
     private TileAeroheaterCapacitor.HotAir hotAir;
@@ -68,6 +68,28 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (index == 0) return stack.getItem() instanceof IHeatCapacitor;
 		else return false;
+	}
+
+	@Override
+	public boolean isProcessing() {
+		return active;
+	}
+	
+	@Override
+	public int getProgressLeft() {
+		ItemStack stack = getStackInSlot(0);
+		return stack.isEmpty() ? 0 : ((IHeatCapacitor)stack.getItem()).getChargeLeft(stack);
+	}
+	
+	@Override
+	public int getMaxProgress() {
+		ItemStack stack = getStackInSlot(0);
+		return stack.isEmpty() ? 0 : ((IHeatCapacitor)stack.getItem()).getMaxCharge(stack);
+	}
+	
+	@Override
+	public boolean invertDisplay() {
+		return true;
 	}
 
     public void readFromNBT(NBTTagCompound compound)

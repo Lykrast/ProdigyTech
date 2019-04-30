@@ -122,6 +122,26 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
 		else if (index == 1) return stack.getItem() == ModItems.tartaricStoker;
 		else return false;
 	}
+	
+	public boolean isBurningSomething() {
+        return furnaceBurnTime > 0 || stokerBurnTime > 0;
+	}
+	
+	public int getBurnLeft() {
+		return furnaceBurnTime;
+	}
+	
+	public int getBurnMax() {
+		return currentItemBurnTime;
+	}
+	
+	public int getStokerLeft() {
+		return stokerBurnTime;
+	}
+	
+	public int getStokerMax() {
+		return Config.tartaricStokerTime;
+	}
 
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);

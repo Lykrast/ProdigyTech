@@ -66,7 +66,8 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 				"stoneAndesite", 1,
 				"stoneMarble", 1,
 				"stoneBasalt", 1,
-				"stoneLimestone", 1
+				"stoneLimestone", 1,
+				"slate", 1
 				));
 		
 		//Mystery Treats

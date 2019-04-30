@@ -88,5 +88,14 @@ public class PrimordialisReactorManager {
 		addInput(Blocks.PUMPKIN);
 		addInput(Items.PUMPKIN_SEEDS);
 		addInput(new ItemStack(Items.DYE, 1, EnumDyeColor.BROWN.getDyeDamage()));
+		
+		//Pam's Harvestcraft + what is compatible with it
+		//This will make duplicate JEI entries because it registers vanilla stuff too
+		addInput("listAllfruit");
+		addInput("listAllveggie");
+		addInput("listAllseed");
+		
+		//BWM and BWA
+		addInput("seed");
 	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import lykrast.prodigytech.client.gui.GuiPrimordialisReactor;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.util.Config;
+import lykrast.prodigytech.common.util.RecipeUtil;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.gui.IDrawableAnimated;
@@ -46,7 +47,7 @@ public class PrimordialisReactorCategory extends ProdigyCategory<PrimordialisRea
 	{
 		List<PrimordialisReactorWrapper> list = new ArrayList<>();
 
-		for (String ore : PrimordialisReactorManager.getAllOreEntries()) list.add(new PrimordialisReactorWrapper(ore));
+		for (String ore : PrimordialisReactorManager.getAllOreEntries()) if (RecipeUtil.oreExists(ore)) list.add(new PrimordialisReactorWrapper(ore));
 		for (ItemStack stack : PrimordialisReactorManager.getAllEntries()) list.add(new PrimordialisReactorWrapper(stack));
 		
 		registry.addRecipes(list, UID);

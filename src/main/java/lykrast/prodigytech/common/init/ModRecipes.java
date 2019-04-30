@@ -150,6 +150,9 @@ public class ModRecipes {
 					MagneticReassemblerManager.INSTANCE.addRecipe(name, RecipeUtil.getPreferredOreStack("gem" + ore));
 				}
 			}
+			//Primordialis Reactor
+			//Just using the PHC things is easier, even though this is a neat solution
+			//else if (name.startsWith("crop") || name.startsWith("seed")) PrimordialisReactorManager.addInput(name);
 		}
 	}
 	

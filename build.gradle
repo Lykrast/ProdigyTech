@@ -54,6 +54,12 @@ repositories {
         name 'jared maven'
         url "http://maven.blamejared.com/"
     }
+	
+	// The One Probe
+	maven {
+		name 'tterrag maven'
+		url "http://maven.tterrag.com/"
+	}
 }
 
 dependencies {
@@ -89,7 +95,9 @@ dependencies {
 	// Patchouli
 	compile "vazkii.patchouli:Patchouli:${patchouli_version}"
 	// CraftTweaker
-	compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.+"
+	compileOnly "CraftTweaker2:CraftTweaker2-MC1120-Main:${crafttweaker_version}"
+	// The One Probe
+	deobfCompile "mcjty.theoneprobe:TheOneProbe-1.12:${top_version}"
 }
 
 processResources {

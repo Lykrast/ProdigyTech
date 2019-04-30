@@ -95,6 +95,20 @@ public class TileCapacitorCharger extends TileMachineInventory implements ITicka
 	public boolean isProcessing() {
 		return progressCycle > 0;
 	}
+	
+	@Override
+	public int getProgressLeft() {
+		ItemStack stack = getStackInSlot(0);
+		if (stack.isEmpty()) return 0;
+		IHeatCapacitor capacitor = ((IHeatCapacitor)stack.getItem());
+		return capacitor.getMaxCharge(stack) - capacitor.getChargeLeft(stack);
+	}
+	
+	@Override
+	public int getMaxProgress() {
+		ItemStack stack = getStackInSlot(0);
+		return stack.isEmpty() ? 0 : ((IHeatCapacitor)stack.getItem()).getMaxCharge(stack);
+	}
 
     @SideOnly(Side.CLIENT)
 	public static boolean isProcessing(IInventory inventory) {

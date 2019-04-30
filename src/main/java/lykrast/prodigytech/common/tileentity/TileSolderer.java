@@ -188,10 +188,19 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 	}
 
 	@Override
-	public boolean isProcessing()
-    {
+	public boolean isProcessing() {
         return processTime > 0;
     }
+	
+	@Override
+	public int getProgressLeft() {
+		return processTime;
+	}
+	
+	@Override
+	public int getMaxProgress() {
+		return processTimeMax;
+	}
 
     @SideOnly(Side.CLIENT)
     public static boolean isProcessing(IInventory inventory)

@@ -143,20 +143,27 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
         progressPrimordium = 0;
 	}
 	
-	private int getProcessSpeed()
-	{
+	private int getProcessSpeed() {
 		return hotAir.getInAirTemperature() / 25;
 	}
 
 	@Override
-	public boolean isProcessing()
-    {
+	public boolean isProcessing() {
         return progressCycle > 0;
     }
+	
+	@Override
+	public int getProgressLeft() {
+		return Config.primordialisReactorRequiredInput - progressPrimordium;
+	}
+	
+	@Override
+	public int getMaxProgress() {
+		return Config.primordialisReactorRequiredInput;
+	}
 
     @SideOnly(Side.CLIENT)
-    public static boolean isProcessing(IInventory inventory)
-    {
+    public static boolean isProcessing(IInventory inventory) {
         return inventory.getField(0) > 0;
     }
 	

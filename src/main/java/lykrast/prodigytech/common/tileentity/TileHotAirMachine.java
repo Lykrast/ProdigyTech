@@ -37,20 +37,27 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 	protected abstract boolean canProcess();
 
 	@Override
-	public boolean isProcessing()
-    {
+	public boolean isProcessing() {
         return processTime > 0;
     }
+	
+	@Override
+	public int getProgressLeft() {
+		return processTime;
+	}
+	
+	@Override
+	public int getMaxProgress() {
+		return processTimeMax;
+	}
 
     @SideOnly(Side.CLIENT)
-    public static boolean isProcessing(IInventory inventory)
-    {
+    public static boolean isProcessing(IInventory inventory) {
         return inventory.getField(0) > 0;
     }
 	
 	protected void process() {
-		if (isProcessing())
-		{
+		if (isProcessing()) {
 			if (canProcess()) processTime -= getProcessSpeed();
 			else processTime = processTimeMax;
 		}

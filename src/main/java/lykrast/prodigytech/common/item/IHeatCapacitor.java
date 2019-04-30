@@ -17,4 +17,6 @@ public interface IHeatCapacitor {
 	void discharge(ItemStack stack, int ticks);
 	int getTargetTemperature(ItemStack stack);
 
+	int getChargeLeft(ItemStack stack);
+	int getMaxCharge(ItemStack stack);
 }

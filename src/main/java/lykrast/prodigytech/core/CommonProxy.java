@@ -3,12 +3,15 @@ package lykrast.prodigytech.core;
 import java.io.File;
 
 import lykrast.prodigytech.common.capability.CapabilityHotAir;
+import lykrast.prodigytech.common.compat.ProdigyTechTOP;
 import lykrast.prodigytech.common.gui.ProdigyTechGuiHandler;
 import lykrast.prodigytech.common.recipe.HeatSawmillManager;
 import lykrast.prodigytech.common.recipe.ZorraAltarManager;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -29,6 +32,8 @@ public class CommonProxy {
         
         NetworkRegistry.INSTANCE.registerGuiHandler(ProdigyTech.instance, new ProdigyTechGuiHandler());
         CapabilityHotAir.register();
+        
+        if (Loader.isModLoaded("theoneprobe")) FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", ProdigyTechTOP.class.getName());
 	}
 
 	public void init(FMLInitializationEvent e) {

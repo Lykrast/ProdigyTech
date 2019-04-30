@@ -55,6 +55,16 @@ public class ItemHeatCapacitor extends ItemInfoShift implements IHeatCapacitor {
 	public int getTargetTemperature(ItemStack stack) {
 		return temperature;
 	}
+
+	@Override
+	public int getChargeLeft(ItemStack stack) {
+		return stack.getMaxDamage() - stack.getItemDamage();
+	}
+
+	@Override
+	public int getMaxCharge(ItemStack stack) {
+		return stack.getMaxDamage();
+	}
 	
 	@Override
     public boolean isEnchantable(ItemStack stack) {

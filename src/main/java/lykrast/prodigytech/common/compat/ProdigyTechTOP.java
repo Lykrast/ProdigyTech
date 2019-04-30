@@ -2,9 +2,16 @@ package lykrast.prodigytech.common.compat;
 
 import java.util.function.Function;
 
+import io.netty.buffer.ByteBuf;
+import lykrast.prodigytech.client.gui.TheOneProbeRenderer;
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
+import lykrast.prodigytech.common.capability.HotAirMachine;
+import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.tileentity.IProcessing;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
+import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
+import mcjty.theoneprobe.api.IElement;
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;
 import mcjty.theoneprobe.api.IProbeInfoProvider;
@@ -16,11 +23,37 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
+	private static int elementid;
 
 	@Override
 	public Void apply(ITheOneProbe probe) {
+		elementid = probe.registerElementFactory(TextFormatInt::new);
+		probe.registerProvider(new HotAirInfoProvider());
 		probe.registerProvider(new ProgressInfoProvider());
 		return null;
+	}
+	
+	public static class HotAirInfoProvider implements IProbeInfoProvider {
+
+		@Override
+		public String getID() {
+			return ProdigyTech.MODID + ":hotair";
+		}
+
+		@Override
+		public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
+			TileEntity te = world.getTileEntity(data.getPos());
+			if (te != null && te.hasCapability(CapabilityHotAir.HOT_AIR, null)) {
+				IHotAir hotair = te.getCapability(CapabilityHotAir.HOT_AIR, null);
+				//Check if machine for input
+				if (hotair instanceof HotAirMachine) {
+					HotAirMachine casted = (HotAirMachine)hotair;
+					if (casted.getInAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE, casted.getInAirTemperature()));
+				}
+				if (hotair.getOutAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_OUT, hotair.getOutAirTemperature()));
+			}
+		}
+		
 	}
 	
 	public static class ProgressInfoProvider implements IProbeInfoProvider {
@@ -54,5 +87,73 @@ public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 		}
 		
 	}
+	
+	public static class TextFormatInt implements IElement {
+		private String text;
+		private int value;
+		
+		public TextFormatInt(String text, int value) {
+	        this.text = text;
+	        this.value = value;
+	    }
+
+	    public TextFormatInt(ByteBuf buf) {
+	    	value = buf.readInt();
+	        text = readStringUTF8(buf);
+	    }
+
+		@Override
+		public void render(int x, int y) {
+			TheOneProbeRenderer.renderTextFormatted(text, value, x, y);
+		}
+
+		@Override
+		public int getWidth() {
+			return TheOneProbeRenderer.getWidthFormatted(text, value);
+		}
+
+		@Override
+		public int getHeight() {
+			return 10;
+		}
+
+		@Override
+		public void toBytes(ByteBuf buf) {
+			buf.writeInt(value);
+			writeStringUTF8(buf, text);
+		}
+
+		@Override
+		public int getID() {
+			return elementid;
+		}
+	}
+	
+	//From TOP internals
+	//https://github.com/McJtyMods/TheOneProbe/blob/1.12/src/main/java/mcjty/theoneprobe/network/NetworkTools.java
+	public static String readStringUTF8(ByteBuf dataIn) {
+        int s = dataIn.readInt();
+        if (s == -1) {
+            return null;
+        }
+        if (s == 0) {
+            return "";
+        }
+        byte[] dst = new byte[s];
+        dataIn.readBytes(dst);
+        return new String(dst, java.nio.charset.StandardCharsets.UTF_8);
+    }
+
+    public static void writeStringUTF8(ByteBuf dataOut, String str) {
+        if (str == null) {
+            dataOut.writeInt(-1);
+            return;
+        }
+        byte[] bytes = str.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        dataOut.writeInt(bytes.length);
+        if (bytes.length > 0) {
+            dataOut.writeBytes(bytes);
+        }
+    }
 
 }

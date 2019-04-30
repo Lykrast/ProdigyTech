@@ -134,7 +134,7 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !down)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null) && !down)
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -143,7 +143,7 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP && !down)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null) && !down)
 			return (T)this;
 		return super.getCapability(capability, facing);
 	}

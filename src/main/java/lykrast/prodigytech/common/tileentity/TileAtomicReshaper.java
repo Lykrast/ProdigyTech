@@ -269,7 +269,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return true;
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -283,7 +283,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP && facing != EnumFacing.DOWN)
 			return (T)invHandler;
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}

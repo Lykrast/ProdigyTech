@@ -86,7 +86,7 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable {
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -95,7 +95,7 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable {
 	@SuppressWarnings("unchecked")
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)
 	{
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}

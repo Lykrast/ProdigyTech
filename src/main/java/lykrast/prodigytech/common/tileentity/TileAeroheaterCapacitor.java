@@ -151,7 +151,7 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
 	{
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return true;
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return true;
 		return super.hasCapability(capability, facing);
 	}
@@ -171,7 +171,7 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
 	{
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.UP)
 			return (T)invHandler;
-		if(capability==CapabilityHotAir.HOT_AIR && facing == EnumFacing.UP)
+		if(capability==CapabilityHotAir.HOT_AIR && (facing == EnumFacing.UP || facing == null))
 			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}

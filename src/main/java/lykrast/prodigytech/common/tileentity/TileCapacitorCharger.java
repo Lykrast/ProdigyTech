@@ -1,6 +1,7 @@
 package lykrast.prodigytech.common.tileentity;
 
 import lykrast.prodigytech.common.block.BlockMachineActiveable;
+import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.item.IHeatCapacitor;
 import lykrast.prodigytech.common.util.Config;
@@ -22,7 +23,12 @@ public class TileCapacitorCharger extends TileMachineInventory implements ITicka
 	
 	public TileCapacitorCharger() {
 		super(1);
-		hotAir = new HotAirMachine(this, 0);
+		hotAir = new HotAirMachine(this, 0) {
+			@Override
+			public int getOutAirTemperature() {
+				return 0;
+			}
+		};
 	}
 
 	@Override
@@ -159,6 +165,8 @@ public class TileCapacitorCharger extends TileMachineInventory implements ITicka
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.DOWN)
 			return true;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == null)
+			return true;
 		return super.hasCapability(capability, facing);
 	}
 
@@ -176,6 +184,8 @@ public class TileCapacitorCharger extends TileMachineInventory implements ITicka
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing != EnumFacing.DOWN)
 			return (T)invHandler;
+		if(capability==CapabilityHotAir.HOT_AIR && facing == null)
+			return (T)hotAir;
 		return super.getCapability(capability, facing);
 	}
 

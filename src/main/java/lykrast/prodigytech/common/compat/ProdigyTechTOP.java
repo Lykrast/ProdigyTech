@@ -25,6 +25,9 @@ import net.minecraft.world.World;
 
 public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 	private static int elementid;
+	public static final String
+			WORMHOLE_LINKED = "status.prodigytech.wormhole_linker.linked",
+			WORMHOLE_UNLINKED = "status.prodigytech.wormhole_linker.unlinked";
 
 	@Override
 	public Void apply(ITheOneProbe probe) {
@@ -47,6 +50,9 @@ public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 			//Special case Wormhole Funnels to show input temp
 			if (te instanceof TileWormholeFunnel) {
 				TileWormholeFunnel funnel = (TileWormholeFunnel)te;
+				//Do linking info while we're at it, even though another provider would make more sense
+				probeInfo.text(IProbeInfo.STARTLOC + (funnel.isLinked() ? WORMHOLE_LINKED : WORMHOLE_UNLINKED) + IProbeInfo.ENDLOC);	
+				
 				if (funnel.isInput()) {
 					//For input funnels this is actually their input temp
 					if (funnel.getOutAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_INPUT, funnel.getOutAirTemperature()));

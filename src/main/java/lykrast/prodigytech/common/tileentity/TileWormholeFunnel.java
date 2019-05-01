@@ -153,14 +153,14 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 
 	@Override
 	public int getOutAirTemperature() {
-		if (!isActive() || hasLooped) return 30;
+		if (hasLooped) return 30;
 		hasLooped = true;
 		
 		int temp;
 		//Input, only called by output funnels and TOP
 		if (down) temp = TemperatureHelper.getBlockTemp(world, pos.down());
 		//Output
-		else temp = linkedTile.getOutAirTemperature();
+		else temp = isActive() ? linkedTile.getOutAirTemperature() : 30;
 		
 		hasLooped = false;
 		return temp;
@@ -180,10 +180,7 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
     {
         super.readFromNBT(compound);
         down = compound.getBoolean("Down");
-        if (compound.hasKey("Linked"))
-        {
-        	linkedPos = NBTUtil.getPosFromTag(compound.getCompoundTag("Linked"));
-        }
+        if (compound.hasKey("Linked")) linkedPos = NBTUtil.getPosFromTag(compound.getCompoundTag("Linked"));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)

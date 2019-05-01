@@ -216,6 +216,10 @@ status.prodigytech.wormhole_linker.error.distance=§cFunnels are too far apart.
 status.prodigytech.wormhole_linker.error.incompatible=§cFunnels are not in compatible positions.
 status.prodigytech.wormhole_linker.error.lost=§cOriginal Funnel cannot be found.
 
+#TOP
+status.prodigytech.wormhole_linker.linked=§aLinked
+status.prodigytech.wormhole_linker.unlinked=§cUnlinked
+
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=Explosion Furnace
 container.prodigytech.jei.ptexplosionfurnace.required=EP/craft: %d

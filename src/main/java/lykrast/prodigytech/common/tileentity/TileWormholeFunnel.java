@@ -147,14 +147,23 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 			return (T)this;
 		return super.getCapability(capability, facing);
 	}
+	
+	//Prevent infinite loops
+	private boolean hasLooped = false;
 
 	@Override
 	public int getOutAirTemperature() {
-		if (!isActive()) return 30;
+		if (!isActive() || hasLooped) return 30;
+		hasLooped = true;
+		
+		int temp;
 		//Input, only called by output funnels
-		if (down) return TemperatureHelper.getBlockTemp(world, pos.down());
+		if (down) temp = TemperatureHelper.getBlockTemp(world, pos.down());
 		//Output
-		else return linkedTile.getOutAirTemperature();
+		else temp = linkedTile.getOutAirTemperature();
+		
+		hasLooped = false;
+		return temp;
 	}
 	
 	@Override

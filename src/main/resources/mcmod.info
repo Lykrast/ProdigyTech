@@ -2,13 +2,13 @@
 {
   "modid": "prodigytech",
   "name": "Prodigy Tech",
-  "description": "A tech mod that goes through various concepts.",
+  "description": "A tech mod centered around Hot Air powered machines and unusual materials.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Lykrast"],
-  "credits": "RotaryCraft, IndustrialCraft 2 and Avartia for inspiration.",
+  "credits": "RotaryCraft, IndustrialCraft 2 and Mekanism for inspiration.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -48,7 +48,7 @@ public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 				//Check if machine for input
 				if (hotair instanceof HotAirMachine) {
 					HotAirMachine casted = (HotAirMachine)hotair;
-					if (casted.getInAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE, casted.getInAirTemperature()));
+					if (casted.getInAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_INPUT, casted.getInAirTemperature()));
 				}
 				if (hotair.getOutAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_OUT, hotair.getOutAirTemperature()));
 			}

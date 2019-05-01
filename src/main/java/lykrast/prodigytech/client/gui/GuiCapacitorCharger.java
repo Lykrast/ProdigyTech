@@ -81,7 +81,7 @@ public class GuiCapacitorCharger extends GuiInventory {
     {
         if (x >= guiLeft + 79 && x < guiLeft + 97 && y >= guiTop + 52 && y < guiTop + 70)
         {
-        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE, tile.getField(2));
+        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE_INPUT, tile.getField(2));
             this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
         }
     }

@@ -193,8 +193,8 @@ container.prodigytech.zorra_altar.unknown=???
 container.prodigytech.zorra_altar.leaves.one=1 Zorra Leaf
 container.prodigytech.zorra_altar.leaves.many=%d Zorra Leaves
 
-container.prodigytech.temperature=Air Temperature: %d°C
-container.prodigytech.temperature.output=Output Air Temperature: %d°C
+container.prodigytech.temperature.input=§6Input Air Temperature:§r %d°C
+container.prodigytech.temperature.output=§6Output Air Temperature:§r %d°C
 container.prodigytech.solderer.gold.blocks=%d Blocks
 container.prodigytech.solderer.gold.ingots=%d Ingots
 container.prodigytech.solderer.gold.nuggets=%d Nuggets

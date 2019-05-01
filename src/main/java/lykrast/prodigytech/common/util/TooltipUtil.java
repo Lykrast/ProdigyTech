@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TooltipUtil {
 	private TooltipUtil() {}
 	
-	public static final String TEMPERATURE = "container.prodigytech.temperature";
+	public static final String TEMPERATURE_INPUT = "container.prodigytech.temperature.input";
 	public static final String TEMPERATURE_OUT = "container.prodigytech.temperature.output";
 
 	/**

@@ -89,7 +89,7 @@ public abstract class GuiHotAirMachineSimple extends GuiInventory {
 		{
 	        if (y >= guiTop + 52 && y < guiTop + 70)
 	        {
-	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE, tile.getField(2));
+	        	String tooltip = I18n.format(TooltipUtil.TEMPERATURE_INPUT, tile.getField(2));
 	            this.drawHoveringText(ImmutableList.of(tooltip), x, y, fontRenderer);
 	        }
 	        else if (y >= guiTop + 16 && y < guiTop + 34)

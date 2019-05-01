@@ -9,6 +9,7 @@ import lykrast.prodigytech.common.capability.HotAirMachine;
 import lykrast.prodigytech.common.capability.IHotAir;
 import lykrast.prodigytech.common.tileentity.IProcessing;
 import lykrast.prodigytech.common.tileentity.TileAeroheaterTartaric;
+import lykrast.prodigytech.common.tileentity.TileWormholeFunnel;
 import lykrast.prodigytech.common.util.TooltipUtil;
 import lykrast.prodigytech.core.ProdigyTech;
 import mcjty.theoneprobe.api.IElement;
@@ -43,7 +44,18 @@ public class ProdigyTechTOP implements Function<ITheOneProbe, Void> {
 		@Override
 		public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, EntityPlayer player, World world, IBlockState blockState, IProbeHitData data) {
 			TileEntity te = world.getTileEntity(data.getPos());
-			if (te != null && te.hasCapability(CapabilityHotAir.HOT_AIR, null)) {
+			//Special case Wormhole Funnels to show input temp
+			if (te instanceof TileWormholeFunnel) {
+				TileWormholeFunnel funnel = (TileWormholeFunnel)te;
+				if (funnel.isInput()) {
+					//For input funnels this is actually their input temp
+					if (funnel.getOutAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_INPUT, funnel.getOutAirTemperature()));
+				}
+				else {
+					if (funnel.getOutAirTemperature() > 0) probeInfo.element(new TextFormatInt(TooltipUtil.TEMPERATURE_OUT, funnel.getOutAirTemperature()));
+				}
+			}
+			else if (te != null && te.hasCapability(CapabilityHotAir.HOT_AIR, null)) {
 				IHotAir hotair = te.getCapability(CapabilityHotAir.HOT_AIR, null);
 				//Check if machine for input
 				if (hotair instanceof HotAirMachine) {

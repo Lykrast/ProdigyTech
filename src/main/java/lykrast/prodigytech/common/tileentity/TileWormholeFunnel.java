@@ -157,7 +157,7 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
 		hasLooped = true;
 		
 		int temp;
-		//Input, only called by output funnels
+		//Input, only called by output funnels and TOP
 		if (down) temp = TemperatureHelper.getBlockTemp(world, pos.down());
 		//Output
 		else temp = linkedTile.getOutAirTemperature();

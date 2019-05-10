@@ -222,6 +222,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 		}
 	}
 
+	@Override
 	public int getField(int id) {
 	    switch (id)
 	    {
@@ -240,6 +241,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	    }
 	}
 
+	@Override
 	public void setField(int id, int value) {
 	    switch (id)
 	    {
@@ -261,6 +263,7 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	    }
 	}
 
+	@Override
 	public int getFieldCount() {
 	    return 5;
 	}
@@ -288,7 +291,8 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 		return super.getCapability(capability, facing);
 	}
 	
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         processTime = compound.getInteger("ProcessTime");
@@ -297,7 +301,8 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
         primordium = compound.getInteger("Primordium");
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);

@@ -66,7 +66,8 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable {
         return (oldState.getBlock() != newState.getBlock());
     }
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         active = compound.getBoolean("Active");
@@ -74,7 +75,8 @@ public class TileAeroheaterMagmatic extends TileEntity implements ITickable {
         checkNextTick = true;
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setBoolean("Active", active);

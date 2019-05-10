@@ -39,14 +39,17 @@ public class SimpleRecipe implements ISingleInputRecipe, Comparable<SimpleRecipe
 	 * Say if this recipe has an Ore Dictionary input.
 	 * @return if this recipe has an Ore Dictionary input
 	 */
+	@Override
 	public boolean isOreRecipe() {
 		return oreInput != null && input.isEmpty();
 	}
 
+	@Override
 	public ItemStack getInput() {
 		return input.copy();
 	}
 
+	@Override
 	public String getOreInput() {
 		return oreInput;
 	}
@@ -63,6 +66,7 @@ public class SimpleRecipe implements ISingleInputRecipe, Comparable<SimpleRecipe
 		return time * 10;
 	}
 
+	@Override
 	public boolean isValidInput(ItemStack in) {
 		if (in.isEmpty())
 			return false;

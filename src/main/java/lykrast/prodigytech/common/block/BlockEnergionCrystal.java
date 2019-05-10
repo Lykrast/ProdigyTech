@@ -56,7 +56,8 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
 	}
 
 	//Just like wheat
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    @Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         super.updateTick(worldIn, pos, state, rand);
         
@@ -150,7 +151,8 @@ public class BlockEnergionCrystal extends BlockGeneric implements ICustomStateMa
     }
 
     @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
+    @Override
+    public BlockRenderLayer getRenderLayer()
     {
         return BlockRenderLayer.CUTOUT;
     }

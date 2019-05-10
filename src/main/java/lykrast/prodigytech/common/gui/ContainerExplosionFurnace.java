@@ -46,7 +46,8 @@ public class ContainerExplosionFurnace extends ContainerMachine<TileExplosionFur
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

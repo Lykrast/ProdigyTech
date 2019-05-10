@@ -22,6 +22,7 @@ public class MagneticReassemblerManager extends SimpleRecipeManager {
 		return addRecipe(inOre, out, Config.magneticReassemblerProcessTime);
 	}
 	
+	@Override
 	public void init()
 	{		
 		addRecipe("cobblestone", new ItemStack(Blocks.STONE));

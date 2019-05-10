@@ -40,19 +40,22 @@ public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider,
     /**
      * Called when the given entity walks on this Block
      */
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    @Override
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 
         super.onEntityWalk(worldIn, pos, entityIn);
     }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    @Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return AABB;
     }
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+	public boolean isFullCube(IBlockState state)
     {
         return false;
     }
@@ -60,7 +63,8 @@ public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider,
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+	public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
@@ -74,7 +78,8 @@ public class BlockAirFunnel extends BlockGeneric implements ITileEntityProvider,
      * 
      * @return an approximation of the form of the given face
      */
-    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    @Override
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
     {
     	if (face == EnumFacing.DOWN || face == EnumFacing.UP) return BlockFaceShape.SOLID;
     	else return BlockFaceShape.UNDEFINED;

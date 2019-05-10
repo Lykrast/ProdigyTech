@@ -176,14 +176,16 @@ public class TileWormholeFunnel extends TileEntity implements IHotAir {
     	else if (world.isBlockLoaded(linkedPos)) destroyLink(false);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         down = compound.getBoolean("Down");
         if (compound.hasKey("Linked")) linkedPos = NBTUtil.getPosFromTag(compound.getCompoundTag("Linked"));
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setBoolean("Down", down);

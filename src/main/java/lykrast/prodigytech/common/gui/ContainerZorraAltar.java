@@ -59,7 +59,8 @@ public class ContainerZorraAltar extends Container {
             /**
              * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended.
              */
-            public int getInventoryStackLimit()
+            @Override
+			public int getInventoryStackLimit()
             {
                 return 64;
             }
@@ -67,7 +68,8 @@ public class ContainerZorraAltar extends Container {
              * For tile entities, ensures the chunk containing the tile entity is saved to disk later - the game won't
              * think it hasn't changed and skip it.
              */
-            public void markDirty()
+            @Override
+			public void markDirty()
             {
                 super.markDirty();
                 ContainerZorraAltar.this.onCraftMatrixChanged(this);
@@ -85,7 +87,8 @@ public class ContainerZorraAltar extends Container {
             /**
              * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
              */
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 return true;
             }
@@ -93,7 +96,8 @@ public class ContainerZorraAltar extends Container {
              * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1 in
              * the case of armor slots)
              */
-            public int getSlotStackLimit()
+            @Override
+			public int getSlotStackLimit()
             {
                 return 1;
             }
@@ -104,7 +108,8 @@ public class ContainerZorraAltar extends Container {
             /**
              * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
              */
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 for (ItemStack ore : ores)
                     if (net.minecraftforge.oredict.OreDictionary.itemMatches(ore, stack, false)) return true;
@@ -140,7 +145,8 @@ public class ContainerZorraAltar extends Container {
         crafting.sendWindowProperty(this, 9, this.enchantLvl[2]);
     }
 
-    public void addListener(IContainerListener listener)
+    @Override
+	public void addListener(IContainerListener listener)
     {
         super.addListener(listener);
         this.broadcastData(listener);
@@ -149,7 +155,8 @@ public class ContainerZorraAltar extends Container {
     /**
      * Looks for changes made in the container, sends them to every listener.
      */
-    public void detectAndSendChanges()
+    @Override
+	public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
 
@@ -160,7 +167,8 @@ public class ContainerZorraAltar extends Container {
         }
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         if (id >= 0 && id <= 2)
@@ -188,7 +196,8 @@ public class ContainerZorraAltar extends Container {
     /**
      * Callback for when the crafting matrix is changed.
      */
-    public void onCraftMatrixChanged(IInventory inventoryIn)
+    @Override
+	public void onCraftMatrixChanged(IInventory inventoryIn)
     {
         if (inventoryIn == tableInventory)
         {
@@ -238,7 +247,8 @@ public class ContainerZorraAltar extends Container {
     /**
      * Handles the given Button-click on the server, currently only used by enchanting. Name is for legacy.
      */
-    public boolean enchantItem(EntityPlayer playerIn, int id)
+    @Override
+	public boolean enchantItem(EntityPlayer playerIn, int id)
     {
         ItemStack target = this.tableInventory.getStackInSlot(0);
         ItemStack leaves = this.tableInventory.getStackInSlot(1);
@@ -308,7 +318,8 @@ public class ContainerZorraAltar extends Container {
     /**
      * Called when the container is closed.
      */
-    public void onContainerClosed(EntityPlayer playerIn)
+    @Override
+	public void onContainerClosed(EntityPlayer playerIn)
     {
         super.onContainerClosed(playerIn);
 
@@ -321,7 +332,8 @@ public class ContainerZorraAltar extends Container {
     /**
      * Determines whether supplied player can use this container
      */
-    public boolean canInteractWith(EntityPlayer playerIn)
+    @Override
+	public boolean canInteractWith(EntityPlayer playerIn)
     {
         if (this.worldPointer.getBlockState(this.position).getBlock() != ModBlocks.zorraAltar)
         {
@@ -337,7 +349,8 @@ public class ContainerZorraAltar extends Container {
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

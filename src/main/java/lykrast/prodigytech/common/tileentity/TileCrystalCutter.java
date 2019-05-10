@@ -137,7 +137,8 @@ public class TileCrystalCutter extends TileHotAirMachine {
 		return new ProdigyInventoryHandler(this, 1, 0, false, true);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         processTimeMax = Config.automaticCrystalCutterHarvestTime * 10;
@@ -145,7 +146,8 @@ public class TileCrystalCutter extends TileHotAirMachine {
         processing = compound.getBoolean("Processing");
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setShort("ClockTime", clockTime);

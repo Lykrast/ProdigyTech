@@ -63,6 +63,7 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 		}
 	}
 
+	@Override
 	public int getField(int id) {
 	    switch (id)
 	    {
@@ -79,6 +80,7 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 	    }
 	}
 
+	@Override
 	public void setField(int id, int value) {
 	    switch (id)
 	    {
@@ -97,6 +99,7 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 	    }
 	}
 
+	@Override
 	public int getFieldCount() {
 	    return 4;
 	}
@@ -124,7 +127,8 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
 		return super.getCapability(capability, facing);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         processTime = compound.getInteger("ProcessTime");
@@ -132,7 +136,8 @@ public abstract class TileHotAirMachine extends TileMachineInventory implements 
         hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);

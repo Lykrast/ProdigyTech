@@ -45,6 +45,7 @@ public class BlockAeroheaterMagmatic extends BlockGeneric implements ITileEntity
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(ACTIVE, Boolean.valueOf((meta & 1) > 0));
 	}
@@ -52,11 +53,13 @@ public class BlockAeroheaterMagmatic extends BlockGeneric implements ITileEntity
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
+	@Override
 	public int getMetaFromState(IBlockState state) {
 	    if (((Boolean)state.getValue(ACTIVE)).booleanValue()) return 1;
 	    else return 0;
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 	    return new BlockStateContainer(this, ACTIVE);
 	}
@@ -64,7 +67,8 @@ public class BlockAeroheaterMagmatic extends BlockGeneric implements ITileEntity
     /**
      * Called when the given entity walks on this Block
      */
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    @Override
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 

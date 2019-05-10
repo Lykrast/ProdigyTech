@@ -92,7 +92,8 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
 		return true;
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         active = compound.getBoolean("Active");
@@ -100,7 +101,8 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
         hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setBoolean("Active", active);
@@ -110,7 +112,8 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
         return compound;
     }
 
-    public int getField(int id)
+    @Override
+	public int getField(int id)
     {
         switch (id)
         {
@@ -125,7 +128,8 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
         }
     }
 
-    public void setField(int id, int value)
+    @Override
+	public void setField(int id, int value)
     {
         switch (id)
         {
@@ -141,7 +145,8 @@ public class TileAeroheaterCapacitor extends TileMachineInventory implements ITi
         }
     }
 
-    public int getFieldCount()
+    @Override
+	public int getFieldCount()
     {
         return 3;
     }

@@ -47,7 +47,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     /**
      * Called when the block is right clicked by a player.
      */
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    @Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         if (worldIn.isRemote)
         {
@@ -70,7 +71,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     /**
      * How many world ticks before ticking
      */
-    public int tickRate(World worldIn)
+    @Override
+	public int tickRate(World worldIn)
     {
         return 4;
     }
@@ -80,7 +82,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
      * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
      * block, etc.
      */
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    @Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
     {
         boolean flag = worldIn.isBlockPowered(pos) || worldIn.isBlockPowered(pos.up());
         boolean flag1 = ((Boolean)state.getValue(TRIGGERED)).booleanValue();
@@ -96,7 +99,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
         }
     }
 
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    @Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         if (!worldIn.isRemote)
         {
@@ -109,7 +113,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
      * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
      * IBlockstate
      */
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
+    @Override
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(TRIGGERED, Boolean.valueOf(false));
     }
@@ -117,7 +122,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     /**
      * Convert the given metadata into a BlockState for this Block
      */
-    public IBlockState getStateFromMeta(int meta)
+    @Override
+	public IBlockState getStateFromMeta(int meta)
     {
     	return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 7)).withProperty(TRIGGERED, Boolean.valueOf((meta & 8) > 0));
     }
@@ -125,7 +131,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
     /**
      * Convert the BlockState into the correct metadata value
      */
-    public int getMetaFromState(IBlockState state)
+    @Override
+	public int getMetaFromState(IBlockState state)
     {
         int i = 0;
         i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
@@ -138,7 +145,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
         return i;
     }
 
-    protected BlockStateContainer createBlockState()
+    @Override
+	protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, FACING, TRIGGERED);
     }
@@ -146,7 +154,8 @@ public class BlockExplosionFurnace extends BlockMachine<TileExplosionFurnace> im
 	/**
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
      */
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
         TileExplosionFurnace tile = getTileEntity(worldIn, pos);
 

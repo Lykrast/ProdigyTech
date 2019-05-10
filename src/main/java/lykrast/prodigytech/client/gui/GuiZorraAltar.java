@@ -62,7 +62,8 @@ public class GuiZorraAltar extends GuiContainer {
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    @Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         this.fontRenderer.drawString(new TextComponentTranslation("container." + ProdigyTech.MODID + ".zorra_altar").getUnformattedText(), 12, 5, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
@@ -71,7 +72,8 @@ public class GuiZorraAltar extends GuiContainer {
     /**
      * Called from the main game loop to update the screen.
      */
-    public void updateScreen()
+    @Override
+	public void updateScreen()
     {
         super.updateScreen();
         this.tickBook();
@@ -80,7 +82,8 @@ public class GuiZorraAltar extends GuiContainer {
     /**
      * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
      */
-    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
+    @Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
         super.mouseClicked(mouseX, mouseY, mouseButton);
         int i = (this.width - this.xSize) / 2;
@@ -101,7 +104,8 @@ public class GuiZorraAltar extends GuiContainer {
     /**
      * Draws the background layer of this container (behind the items).
      */
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    @Override
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(ENCHANTMENT_TABLE_GUI_TEXTURE);
@@ -235,7 +239,8 @@ public class GuiZorraAltar extends GuiContainer {
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int mouseX, int mouseY, float partialTicks)
+    @Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         partialTicks = this.mc.getTickLength();
         this.drawDefaultBackground();

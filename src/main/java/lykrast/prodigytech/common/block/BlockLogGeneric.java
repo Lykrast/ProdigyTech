@@ -13,7 +13,8 @@ public class BlockLogGeneric extends BlockLog {
         setDefaultState(blockState.getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
 	}
 
-    protected BlockStateContainer createBlockState()
+    @Override
+	protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, LOG_AXIS);
     }
@@ -21,7 +22,8 @@ public class BlockLogGeneric extends BlockLog {
     /**
      * Convert the given metadata into a BlockState for this Block
      */
-    public IBlockState getStateFromMeta(int meta)
+    @Override
+	public IBlockState getStateFromMeta(int meta)
     {
         IBlockState iblockstate = getDefaultState();
 
@@ -46,7 +48,8 @@ public class BlockLogGeneric extends BlockLog {
     /**
      * Convert the BlockState into the correct metadata value
      */
-    @SuppressWarnings("incomplete-switch")
+    @Override
+	@SuppressWarnings("incomplete-switch")
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;

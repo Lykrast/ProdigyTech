@@ -25,6 +25,7 @@ public class RotaryGrinderManager extends SimpleRecipeManager {
 		return addRecipe(inOre, out, Config.rotaryGrinderProcessTime);
 	}
 	
+	@Override
 	public void init()
 	{
 		addRecipe("logWood", new ItemStack(ModItems.sawdust, 4));

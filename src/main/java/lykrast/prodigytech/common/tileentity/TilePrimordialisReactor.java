@@ -175,6 +175,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 		}
 	}
 
+	@Override
 	public int getField(int id) {
 	    switch (id)
 	    {
@@ -191,6 +192,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 	    }
 	}
 
+	@Override
 	public void setField(int id, int value) {
 	    switch (id)
 	    {
@@ -209,6 +211,7 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 	    }
 	}
 
+	@Override
 	public int getFieldCount() {
 	    return 4;
 	}
@@ -236,7 +239,8 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
 		return super.getCapability(capability, facing);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         progressCycle = compound.getInteger("ProgressCycle");
@@ -244,7 +248,8 @@ public class TilePrimordialisReactor extends TileMachineInventory implements ITi
         hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setInteger("ProgressCycle", progressCycle);

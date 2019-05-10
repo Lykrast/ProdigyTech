@@ -35,6 +35,7 @@ public abstract class BlockMachineActiveable<T extends TileEntity> extends Block
 	 * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
 	 * IBlockstate
 	 */
+	@Override
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite()).withProperty(ACTIVE, Boolean.valueOf(false));
 	}
@@ -42,6 +43,7 @@ public abstract class BlockMachineActiveable<T extends TileEntity> extends Block
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 7)).withProperty(ACTIVE, Boolean.valueOf((meta & 8) > 0));
 	}
@@ -49,6 +51,7 @@ public abstract class BlockMachineActiveable<T extends TileEntity> extends Block
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
+	@Override
 	public int getMetaFromState(IBlockState state) {
 	    int i = 0;
 	    i = i | ((EnumFacing)state.getValue(FACING)).getHorizontalIndex();
@@ -61,6 +64,7 @@ public abstract class BlockMachineActiveable<T extends TileEntity> extends Block
 	    return i;
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 	    return new BlockStateContainer(this, FACING, ACTIVE);
 	}

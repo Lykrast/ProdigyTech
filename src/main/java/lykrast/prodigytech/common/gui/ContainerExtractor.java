@@ -24,7 +24,8 @@ public class ContainerExtractor extends ContainerMachine<TileExtractor> {
     	addPlayerSlotsHopper(userInv);
 	}
 
-    public void addListener(IContainerListener listener)
+    @Override
+	public void addListener(IContainerListener listener)
     {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tile);
@@ -34,7 +35,8 @@ public class ContainerExtractor extends ContainerMachine<TileExtractor> {
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

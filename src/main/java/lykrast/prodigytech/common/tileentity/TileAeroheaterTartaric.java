@@ -143,7 +143,8 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
 		return Config.tartaricStokerTime;
 	}
 
-    public void readFromNBT(NBTTagCompound compound) {
+    @Override
+	public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         furnaceBurnTime = compound.getInteger("BurnTime");
         currentItemBurnTime = compound.getInteger("MaxBurnTime");
@@ -151,7 +152,8 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
         hotAir.deserializeNBT(compound.getCompoundTag("HotAir"));
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("BurnTime", furnaceBurnTime);
         compound.setInteger("MaxBurnTime", currentItemBurnTime);
@@ -161,7 +163,8 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
         return compound;
     }
 
-    public int getField(int id) {
+    @Override
+	public int getField(int id) {
         switch (id)
         {
             case 0:
@@ -177,7 +180,8 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
         }
     }
 
-    public void setField(int id, int value) {
+    @Override
+	public void setField(int id, int value) {
         switch (id)
         {
             case 0:
@@ -195,7 +199,8 @@ public class TileAeroheaterTartaric extends TileMachineInventory implements ITic
         }
     }
 
-    public int getFieldCount() {
+    @Override
+	public int getFieldCount() {
         return 4;
     }
 	

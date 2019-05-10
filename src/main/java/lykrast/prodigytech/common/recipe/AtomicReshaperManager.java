@@ -166,14 +166,17 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			}
 		}
 		
+		@Override
 		public boolean isOreRecipe() {
 			return oreInput != null && input.isEmpty();
 		}
 
+		@Override
 		public ItemStack getInput() {
 			return input.copy();
 		}
 
+		@Override
 		public String getOreInput() {
 			return oreInput;
 		}
@@ -231,6 +234,7 @@ public class AtomicReshaperManager extends SimpleRecipeManagerAbstract<AtomicRes
 			return ItemStack.EMPTY;
 		}
 
+		@Override
 		public boolean isValidInput(ItemStack in) {
 			if (in.isEmpty())
 				return false;

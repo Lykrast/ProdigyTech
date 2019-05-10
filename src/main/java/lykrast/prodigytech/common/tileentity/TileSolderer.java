@@ -216,6 +216,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 		}
 	}
 
+	@Override
 	public int getField(int id) {
 	    switch (id)
 	    {
@@ -234,6 +235,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 	    }
 	}
 
+	@Override
 	public void setField(int id, int value) {
 	    switch (id)
 	    {
@@ -255,6 +257,7 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 	    }
 	}
 
+	@Override
 	public int getFieldCount() {
 	    return 5;
 	}
@@ -282,7 +285,8 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 		return super.getCapability(capability, facing);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         processTime = compound.getInteger("ProcessTime");
@@ -291,7 +295,8 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
         gold = compound.getInteger("Gold");
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setInteger("ProcessTime", processTime);

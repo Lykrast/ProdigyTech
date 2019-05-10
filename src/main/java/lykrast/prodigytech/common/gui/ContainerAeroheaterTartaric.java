@@ -30,7 +30,8 @@ public class ContainerAeroheaterTartaric extends ContainerMachine<TileAeroheater
 		//Fuel slot
     	this.addSlotToContainer(new SlotFurnaceFuel(tile, 0, 71, 53));
     	this.addSlotToContainer(new Slot(tile, 1, 89, 53) {
-            public boolean isItemValid(ItemStack stack) {
+            @Override
+			public boolean isItemValid(ItemStack stack) {
             	return stack.getItem() == ModItems.tartaricStoker;
             }
     	});
@@ -39,7 +40,8 @@ public class ContainerAeroheaterTartaric extends ContainerMachine<TileAeroheater
 		addPlayerSlotsDefault(userInv);
 	}
 
-    public void addListener(IContainerListener listener) {
+    @Override
+	public void addListener(IContainerListener listener) {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tile);
     }
@@ -47,7 +49,8 @@ public class ContainerAeroheaterTartaric extends ContainerMachine<TileAeroheater
     /**
      * Looks for changes made in the container, sends them to every listener.
      */
-    public void detectAndSendChanges() {
+    @Override
+	public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
         for (int i = 0; i < this.listeners.size(); ++i)
@@ -66,7 +69,8 @@ public class ContainerAeroheaterTartaric extends ContainerMachine<TileAeroheater
         stokerBurnTime = tile.getField(3);
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data) {
         tile.setField(id, data);
     }
@@ -75,7 +79,8 @@ public class ContainerAeroheaterTartaric extends ContainerMachine<TileAeroheater
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
         

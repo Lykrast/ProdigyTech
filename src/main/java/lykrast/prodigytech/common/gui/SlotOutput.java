@@ -18,7 +18,8 @@ public class SlotOutput extends Slot {
     /**
      * Check if the stack is allowed to be placed in this slot, used for armor slots as well as furnace fuel.
      */
-    public boolean isItemValid(ItemStack stack)
+    @Override
+	public boolean isItemValid(ItemStack stack)
     {
         return false;
     }
@@ -27,7 +28,8 @@ public class SlotOutput extends Slot {
      * Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new
      * stack.
      */
-    public ItemStack decrStackSize(int amount)
+    @Override
+	public ItemStack decrStackSize(int amount)
     {
         if (this.getHasStack())
         {
@@ -37,7 +39,8 @@ public class SlotOutput extends Slot {
         return super.decrStackSize(amount);
     }
 
-    public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
+    @Override
+	public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack)
     {
         this.onCrafting(stack);
         super.onTake(thePlayer, stack);
@@ -48,7 +51,8 @@ public class SlotOutput extends Slot {
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood. Typically increases an
      * internal count then calls onCrafting(item).
      */
-    protected void onCrafting(ItemStack stack, int amount)
+    @Override
+	protected void onCrafting(ItemStack stack, int amount)
     {
         this.removeCount += amount;
         this.onCrafting(stack);
@@ -57,7 +61,8 @@ public class SlotOutput extends Slot {
     /**
      * the itemStack passed in is the output - ie, iron ingots, and pickaxes, not ore and wood.
      */
-    protected void onCrafting(ItemStack stack)
+    @Override
+	protected void onCrafting(ItemStack stack)
     {
         stack.onCrafting(this.player.world, this.player, this.removeCount);
         this.removeCount = 0;

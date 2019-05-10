@@ -30,7 +30,8 @@ public class ContainerCrystalCutter extends ContainerMachine<TileCrystalCutter> 
     	addPlayerSlotsDefault(userInv);
 	}
 
-    public void addListener(IContainerListener listener)
+    @Override
+	public void addListener(IContainerListener listener)
     {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tile);
@@ -72,7 +73,8 @@ public class ContainerCrystalCutter extends ContainerMachine<TileCrystalCutter> 
         processTimeMax = tile.getField(1);
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         tile.setField(id, data);
@@ -82,7 +84,8 @@ public class ContainerCrystalCutter extends ContainerMachine<TileCrystalCutter> 
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

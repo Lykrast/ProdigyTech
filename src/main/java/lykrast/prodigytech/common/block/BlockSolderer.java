@@ -50,7 +50,8 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 	/**
      * Called when the given entity walks on this Block
      */
-    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    @Override
+	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
         TemperatureHelper.hotAirDamage(entityIn, getTileEntity(worldIn, pos).getCapability(CapabilityHotAir.HOT_AIR, EnumFacing.UP));
 
@@ -60,7 +61,8 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
     /**
      * Called when the block is right clicked by a player.
      */
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    @Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         if (worldIn.isRemote)
         {
@@ -83,7 +85,8 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
     /**
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
      */
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
     	TileSolderer tile = getTileEntity(worldIn, pos);
 
@@ -108,6 +111,7 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 	/**
 	 * Convert the given metadata into a BlockState for this Block
 	 */
+	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		return this.getDefaultState().withProperty(ACTIVE, Boolean.valueOf((meta & 1) > 0));
 	}
@@ -115,16 +119,19 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
 	/**
 	 * Convert the BlockState into the correct metadata value
 	 */
+	@Override
 	public int getMetaFromState(IBlockState state) {
 	    if (((Boolean)state.getValue(ACTIVE)).booleanValue()) return 1;
 	    else return 0;
 	}
 
+	@Override
 	protected BlockStateContainer createBlockState() {
 	    return new BlockStateContainer(this, ACTIVE);
 	}
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+	public boolean isFullCube(IBlockState state)
     {
         return false;
     }
@@ -132,7 +139,8 @@ public class BlockSolderer extends BlockGeneric implements ITileEntityProvider, 
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+	public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }

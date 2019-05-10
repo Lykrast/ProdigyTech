@@ -110,6 +110,7 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		else return tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing.getOpposite());
 	}
 
+	@Override
 	public int getField(int id) {
 	    switch (id)
 	    {
@@ -120,6 +121,7 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 	    }
 	}
 
+	@Override
 	public void setField(int id, int value) {
 	    switch (id)
 	    {
@@ -129,6 +131,7 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 	    }
 	}
 
+	@Override
 	public int getFieldCount() {
 	    return 1;
 	}
@@ -150,13 +153,15 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		return super.getCapability(capability, facing);
 	}
 
-    public void readFromNBT(NBTTagCompound compound)
+    @Override
+	public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         this.clockTime = compound.getShort("ClockTime");
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
         compound.setShort("ClockTime", clockTime);

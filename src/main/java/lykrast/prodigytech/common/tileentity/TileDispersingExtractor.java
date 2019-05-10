@@ -35,7 +35,8 @@ public class TileDispersingExtractor extends TileExtractor {
         nextRobin = compound.getByte("NextRobin");
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+    @Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setByte("NextRobin", (byte) nextRobin);
 

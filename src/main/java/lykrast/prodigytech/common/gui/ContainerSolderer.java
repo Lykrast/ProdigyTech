@@ -30,28 +30,32 @@ public class ContainerSolderer extends ContainerMachine<TileSolderer> {
 		
 		//Pattern
     	this.addSlotToContainer(new Slot(tile, 0, 20, 17) {
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 return SoldererManager.isValidPattern(stack);
             }
     	});
 		//Gold
     	this.addSlotToContainer(new Slot(tile, 1, 20, 53) {
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 return SoldererManager.getGoldAmount(stack) > 0;
             }
     	});
 		//Additive
     	this.addSlotToContainer(new Slot(tile, 2, 56, 17) {
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 return SoldererManager.isValidAdditive(stack);
             }
     	});
 		//Plates
     	this.addSlotToContainer(new Slot(tile, 3, 56, 53) {
-            public boolean isItemValid(ItemStack stack)
+            @Override
+			public boolean isItemValid(ItemStack stack)
             {
                 return SoldererManager.isPlate(stack);
             }
@@ -63,7 +67,8 @@ public class ContainerSolderer extends ContainerMachine<TileSolderer> {
     	addPlayerSlotsDefault(userInv);
 	}
 
-    public void addListener(IContainerListener listener)
+    @Override
+	public void addListener(IContainerListener listener)
     {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tile);
@@ -72,7 +77,8 @@ public class ContainerSolderer extends ContainerMachine<TileSolderer> {
     /**
      * Looks for changes made in the container, sends them to every listener.
      */
-    public void detectAndSendChanges()
+    @Override
+	public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
 
@@ -113,7 +119,8 @@ public class ContainerSolderer extends ContainerMachine<TileSolderer> {
         processTimeMax = tile.getField(1);
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         tile.setField(id, data);
@@ -123,7 +130,8 @@ public class ContainerSolderer extends ContainerMachine<TileSolderer> {
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

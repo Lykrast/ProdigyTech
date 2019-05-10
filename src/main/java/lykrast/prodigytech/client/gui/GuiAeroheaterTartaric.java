@@ -53,7 +53,8 @@ public class GuiAeroheaterTartaric extends GuiInventory {
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+    @Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String s = tile.getDisplayName().getUnformattedText();
         this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);

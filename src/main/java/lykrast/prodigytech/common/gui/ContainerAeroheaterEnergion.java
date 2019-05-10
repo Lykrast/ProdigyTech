@@ -24,7 +24,8 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
 		
 		//Fuel slot
     	this.addSlotToContainer(new Slot(tile, 0, 80, 53) {
-            public boolean isItemValid(ItemStack stack) {
+            @Override
+			public boolean isItemValid(ItemStack stack) {
                 return tile.isItemValidForSlot(0, stack);
             }
     	});
@@ -33,7 +34,8 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
 		addPlayerSlotsDefault(userInv);
 	}
 
-    public void addListener(IContainerListener listener)
+    @Override
+	public void addListener(IContainerListener listener)
     {
         super.addListener(listener);
         listener.sendAllWindowProperties(this, tile);
@@ -42,7 +44,8 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
     /**
      * Looks for changes made in the container, sends them to every listener.
      */
-    public void detectAndSendChanges()
+    @Override
+	public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
 
@@ -71,7 +74,8 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
         currentItemBurnTime = tile.getField(1);
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         tile.setField(id, data);
@@ -81,7 +85,8 @@ public class ContainerAeroheaterEnergion extends ContainerMachine<TileAeroheater
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    @Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);

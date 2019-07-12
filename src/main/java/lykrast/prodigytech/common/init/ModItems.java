@@ -31,6 +31,7 @@ public class ModItems {
 		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
 		patternCircuitCrude, patternCircuitRefined, patternCircuitPerfected,
 		heatCapacitor125, heatCapacitor250, heatCapacitor500, heatCapacitor1000,
+		fuelPellet1, fuelPellet4, fuelPellet16, fuelPellet64,
 		energionCrystalSeed, energionDust,
 		crystalCutter, wormholeLinker,
 		ferramicHandbow,
@@ -87,6 +88,12 @@ public class ModItems {
 		heatCapacitor250 = initItem(new ItemHeatCapacitor(250), "heat_capacitor_1");
 		heatCapacitor500 = initItem(new ItemHeatCapacitor(500), "heat_capacitor_2");
 		heatCapacitor1000 = initItem(new ItemHeatCapacitor(1000), "heat_capacitor_3");
+		
+		//Fuel Pellets
+		fuelPellet1 = initItem(new ItemFuel(200), "fuel_pellet_1");
+		fuelPellet4 = initItem(new ItemFuel(800), "fuel_pellet_4");
+		fuelPellet16 = initItem(new ItemFuel(3200), "fuel_pellet_16");
+		fuelPellet64 = initItem(new ItemFuel(12800), "fuel_pellet_64");
 
 		//Energion
 		energionCrystalSeed = initItem(new ItemEnergionCrystalSeed(), "energion_crystal_seed");

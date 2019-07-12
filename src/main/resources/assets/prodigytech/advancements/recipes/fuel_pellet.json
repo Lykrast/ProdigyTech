@@ -1,0 +1,25 @@
+{
+  "parent": "prodigytech:recipes/root",
+  "rewards": {
+    "recipes": [
+      "prodigytech:storage/fuel_pellet_4",
+      "prodigytech:storage/fuel_pellet_4_uncraft",
+      "prodigytech:storage/fuel_pellet_16",
+      "prodigytech:storage/fuel_pellet_16_uncraft",
+      "prodigytech:storage/fuel_pellet_64",
+      "prodigytech:storage/fuel_pellet_64_uncraft"
+    ]
+  },
+  "criteria": {
+    "has_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "prodigytech:fuel_pellet_1"
+          }
+        ]
+      }
+    }
+  }
+}

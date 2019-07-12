@@ -1,0 +1,7 @@
+{
+	"type": "forge:ore_shapeless",
+	"ingredients": [
+		{ "item": "prodigytech:fuel_pellet_64" }
+	],
+	"result": { "item": "prodigytech:fuel_pellet_16", "count": 4 }
+}

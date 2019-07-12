@@ -1,0 +1,11 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"PP",
+		"PP"
+	],
+	"key": {
+		"P": { "item": "prodigytech:fuel_pellet_1" }
+	},
+	"result": { "item": "prodigytech:fuel_pellet_4" }
+}

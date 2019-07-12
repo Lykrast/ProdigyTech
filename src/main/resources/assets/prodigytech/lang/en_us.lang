@@ -133,6 +133,11 @@ item.prodigytech.heat_capacitor_3.name=1000°C Heat Capacitor
 item.prodigytech.heat_capacitor.tooltip=Stores heat from hot air for later use
 item.prodigytech.heat_capacitor.tooltip.charge=§6Charge remaining:§f %d%%§r
 
+item.prodigytech.fuel_pellet_1.name=Fuel Pellet
+item.prodigytech.fuel_pellet_4.name=Fuel Pellet x4
+item.prodigytech.fuel_pellet_16.name=Fuel Pellet x16
+item.prodigytech.fuel_pellet_64.name=Fuel Pellet x64
+
 item.prodigytech.energion_crystal_seed.name=Energion Crystal Seed
 item.prodigytech.energion_crystal_seed.tooltip=Can be planted and grown\nVery sensitive to breaking
 item.prodigytech.energion_dust.name=Energion Dust

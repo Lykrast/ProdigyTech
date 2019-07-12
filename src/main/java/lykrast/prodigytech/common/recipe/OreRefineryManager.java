@@ -56,14 +56,16 @@ public class OreRefineryManager extends SimpleRecipeManagerSecondaryOutput {
 		secondaryOres.put("Platinum", new String[] {"dustIridium", "dustNickel"});
 		secondaryOres.put("Iridium", new String[] {"dustPlatinum"});
 		
-		addRecipe("oreCoal", new ItemStack(ModItems.coalDust, Config.oreRefineryOreMultiplier));
+		ItemStack sulfur = RecipeUtil.oreExists("dustSulfur") ? RecipeUtil.getPreferredOreStack("dustSulfur") : ItemStack.EMPTY;
+		
+		addRecipe("oreCoal", new ItemStack(ModItems.coalDust, Config.oreRefineryOreMultiplier), sulfur, Config.oreRefineryChance);
 		if (!Config.autoOreRecipes) addRecipe("oreIron", new ItemStack(ModItems.ironDust, Config.oreRefineryOreMultiplier), new ItemStack(ModItems.goldDust), Config.oreRefineryChance);
 		if (!Config.autoOreRecipes) addRecipe("oreGold", new ItemStack(ModItems.goldDust, Config.oreRefineryOreMultiplier));
-		addRecipe("oreLapis", new ItemStack(Items.DYE, 6 * Config.oreRefineryOreMultiplier, 4));
+		addRecipe("oreLapis", new ItemStack(Items.DYE, 6 * Config.oreRefineryOreMultiplier, 4), sulfur, Config.oreRefineryChance);
 		addRecipe("oreRedstone", new ItemStack(Items.REDSTONE, (int)(4.5 * Config.oreRefineryOreMultiplier)));
 		if (!Config.autoOreRecipes) addRecipe("oreDiamond", new ItemStack(ModItems.diamondDust, Config.oreRefineryOreMultiplier));
 		if (!Config.autoOreRecipes) addRecipe("oreEmerald", new ItemStack(ModItems.emeraldDust, Config.oreRefineryOreMultiplier));
-		addRecipe("oreQuartz", new ItemStack(ModItems.quartzDust, Config.oreRefineryOreMultiplier));
+		addRecipe("oreQuartz", new ItemStack(ModItems.quartzDust, Config.oreRefineryOreMultiplier), sulfur, Config.oreRefineryChance);
 	}
 	
 	public void addOreRecipe(String ore, String input, String output) {

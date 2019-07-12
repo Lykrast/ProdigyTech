@@ -46,6 +46,8 @@ tile.prodigytech.automatic_crystal_cutter.name=Automatic Crystal Cutter
 tile.prodigytech.automatic_crystal_cutter.tooltip=Harvests Energion Crystals in front of it
 tile.prodigytech.capacitor_charger.name=Heat Accumulator
 tile.prodigytech.capacitor_charger.tooltip=Charges Heat Capacitors
+tile.prodigytech.fuel_processor.name=Fuel Processor
+tile.prodigytech.fuel_processor.tooltip=Breaks down Furnace fuels into Fuel Pellets
 
 #Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
@@ -190,6 +192,7 @@ container.prodigytech.magnetic_reassembler=Magnetic Reassembler
 container.prodigytech.ore_refinery=Ore Refinery
 container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
 container.prodigytech.capacitor_charger=Heat Accumulator
+container.prodigytech.fuel_processor=Fuel Processor
 
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper
@@ -238,6 +241,7 @@ container.prodigytech.jei.ptsawmill=Heat Sawmill
 container.prodigytech.jei.ptsolderer=Solderer
 container.prodigytech.jei.ptreassembler=Magnetic Reassembler
 container.prodigytech.jei.ptrefinery=Ore Refinery
+container.prodigytech.jei.ptfuelprocessor=Fuel Processor
 container.prodigytech.jei.ptprimordialis=Primordialis Reactor
 container.prodigytech.jei.ptreshaper=Atomic Reshaper
 container.prodigytech.jei.ptreshaper.chance=Chance: %d%%

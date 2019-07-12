@@ -15,12 +15,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class SimpleRecipeWrapper implements IRecipeWrapper {
+	//Used for 1 input -> 1 output recipes, like most Simple Recipes and a few others like the Fuel Processor
 	private ItemStack out;
 	private List<List<ItemStack>> in;
 	private final IDrawableAnimated arrow;
 	
-	public SimpleRecipeWrapper(SimpleRecipe recipe, IGuiHelper guiHelper)
-	{
+	public SimpleRecipeWrapper(ItemStack input, ItemStack output, int ticks, IGuiHelper guiHelper) {
+		in = Collections.singletonList(Collections.singletonList(input));
+		out = output;
+		arrow = guiHelper.createAnimatedDrawable(ProdigyTechJEI.getDefaultProcessArrow(guiHelper), ticks, IDrawableAnimated.StartDirection.LEFT, false);
+	}
+	
+	public SimpleRecipeWrapper(SimpleRecipe recipe, IGuiHelper guiHelper) {
 		List<ItemStack> inputs = new ArrayList<>();
 		
 		if (recipe.isOreRecipe())

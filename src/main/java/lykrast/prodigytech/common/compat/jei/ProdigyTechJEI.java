@@ -36,6 +36,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		SoldererCategory.registerRecipes(registry);
 		MagneticReassemblerCategory.registerRecipes(registry);
 		OreRefineryCategory.registerRecipes(registry);
+		FuelProcessorCategory.registerRecipes(registry);
 		PrimordialisReactorCategory.registerRecipes(registry);
 		AtomicReshaperCategory.registerRecipes(registry);
 
@@ -49,6 +50,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.solderer), SoldererCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.magneticReassembler), MagneticReassemblerCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.oreRefinery), OreRefineryCategory.UID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.fuelProcessor), FuelProcessorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.primordialisReactor), PrimordialisReactorCategory.UID);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.atomicReshaper), AtomicReshaperCategory.UID);
 
@@ -65,6 +67,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeClickArea(GuiSolderer.class, 79, 35, 24, 17, SoldererCategory.UID);
 		registry.addRecipeClickArea(GuiMagneticReassembler.class, 79, 35, 24, 17, MagneticReassemblerCategory.UID);
 		registry.addRecipeClickArea(GuiOreRefinery.class, 79, 35, 24, 17, OreRefineryCategory.UID);
+		registry.addRecipeClickArea(GuiFuelProcessor.class, 79, 35, 24, 17, FuelProcessorCategory.UID);
 		registry.addRecipeClickArea(GuiPrimordialisReactor.class, 77, 35, 62, 16, PrimordialisReactorCategory.UID);
 		registry.addRecipeClickArea(GuiAtomicReshaper.class, 67, 35, 48, 17, AtomicReshaperCategory.UID);
 		
@@ -87,6 +90,7 @@ public class ProdigyTechJEI implements IModPlugin {
 		registry.addRecipeCategories(new SoldererCategory(guiHelper));
 		registry.addRecipeCategories(new MagneticReassemblerCategory(guiHelper));
 		registry.addRecipeCategories(new OreRefineryCategory(guiHelper));
+		registry.addRecipeCategories(new FuelProcessorCategory(guiHelper));
 		registry.addRecipeCategories(new PrimordialisReactorCategory(guiHelper));
 		registry.addRecipeCategories(new AtomicReshaperCategory(guiHelper));
 	}

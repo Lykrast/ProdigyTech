@@ -16,7 +16,7 @@ public class Config {
 	//Machines
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
 		soldererProcessTime, 
-		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime, capacitorChargerChargeTime,
+		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime, capacitorChargerChargeTime, fuelProcessorBaseTime,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance, oreRefineryChance;
 	public static int rotaryGrinderOreMultiplier, oreRefineryOreMultiplier;
@@ -126,6 +126,10 @@ public class Config {
 		//Heat Accumulator
 		capacitorChargerChargeTime = cfg.getInt("capacitorChargerChargeTime", CATEGORY_MACHINES, 30, 20, 200, 
 				"The base amount of time (in ticks) that the Heat Accumulator takes to charge 20 ticks of an Heat Capacitor");
+		//Fuel Processor
+		fuelProcessorBaseTime = cfg.getInt("fuelProcessorBaseTime", CATEGORY_MACHINES, 60, 1, 3000, 
+				"The base amount of time (in ticks) that the Fuel Processor takes to process a fuel that yields 1 Fuel Pellet\n"
+				+ "Time for longer lasting fuels is derived from this value");
 		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 

@@ -3,7 +3,8 @@
   "rewards": {
     "recipes": [
       "prodigytech:tools/wormhole_linker",
-      "prodigytech:machine/wormhole_funnel"
+      "prodigytech:machine/wormhole_funnel",
+      "prodigytech:machine/fuel_processor"
     ]
   },
   "criteria": {

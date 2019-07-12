@@ -8,6 +8,7 @@ import lykrast.prodigytech.common.recipe.OreRefineryManager;
 import lykrast.prodigytech.common.recipe.PrimordialisReactorManager;
 import lykrast.prodigytech.common.recipe.RotaryGrinderManager;
 import lykrast.prodigytech.common.recipe.SoldererManager;
+import lykrast.prodigytech.common.tileentity.TileFuelProcessor;
 import lykrast.prodigytech.common.util.Config;
 import lykrast.prodigytech.common.util.RecipeUtil;
 import net.minecraft.init.Items;
@@ -34,6 +35,7 @@ public class ModRecipes {
 		PrimordialisReactorManager.init();
 		AtomicReshaperManager.INSTANCE.init();
 		OreRefineryManager.INSTANCE.init();
+		TileFuelProcessor.initBlacklist();
 		
 		makeOreRecipes();
 	}

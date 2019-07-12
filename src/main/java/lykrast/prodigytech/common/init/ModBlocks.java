@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion, aeroheaterTartaric, aeroheaterCapacitor,
 		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
-		magneticReassembler, oreRefinery, energionCrystal, automaticCrystalCutter, capacitorCharger, 
+		magneticReassembler, oreRefinery, energionCrystal, automaticCrystalCutter, capacitorCharger, fuelProcessor, 
 		primordialisReactor, atomicReshaper, zorraAltar,
 		airFunnel, wormholeFunnel, linearExtractor, funnellingExtractor, dispersingExtractor,
 		zorraLog, zorraPlanks, zorraLeaves, zorraSapling,
@@ -75,6 +75,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileCrystalCutter.class, ProdigyTech.resource("automatic_crystal_cutter"));
 		capacitorCharger = initBlock(new BlockCapacitorCharger(6.0F, 45.0F, 1), "capacitor_charger");
 		GameRegistry.registerTileEntity(TileCapacitorCharger.class, ProdigyTech.resource("capacitor_charger"));
+		fuelProcessor = initBlock(new BlockFuelProcessor(6.0F, 45.0F, 1), "fuel_processor");
+		GameRegistry.registerTileEntity(TileFuelProcessor.class, ProdigyTech.resource("fuel_processor"));
 		
 		//Hot air machines post-Energion
 		primordialisReactor = initBlock(new BlockPrimordialisReactor(6.0F, 45.0F, 1), "primordialis_reactor");

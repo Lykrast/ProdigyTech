@@ -1,0 +1,26 @@
+{
+    "display": {
+        "icon": {
+            "item": "prodigytech:fuel_pellet_64"
+        },
+        "title": {
+            "translate": "advancements.prodigytech.main.fuel_pellet_64.title"
+        },
+        "description": {
+            "translate": "advancements.prodigytech.main.fuel_pellet_64.description"
+        }
+    },
+    "parent": "prodigytech:main/solderer",
+    "criteria": {
+        "iron": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "prodigytech:fuel_pellet_64"
+                    }
+                ]
+            }
+        }
+    }
+}

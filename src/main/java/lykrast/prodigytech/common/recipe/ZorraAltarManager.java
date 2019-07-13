@@ -42,15 +42,13 @@ public class ZorraAltarManager {
 		boolean hasSoulbound = false;
 
 		//EnderCore
-		if (Loader.isModLoaded("endercore"))
-		{
+		if (Loader.isModLoaded("endercore")) {
 			SWORD.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerSword);
 			BOW.addModdedEnchantBonusLevel("endercore:xpboost", Config.altarBonusLvl, checkerBow);
 		}
 		
 		//Ender IO
-		if (Loader.isModLoaded("enderio"))
-		{
+		if (Loader.isModLoaded("enderio")) {
 			SWORD.addModdedEnchant("enderio:witherweapon", 1, checkerSword);
 			BOW.addModdedEnchant("enderio:witherarrow", 1, checkerBow);
 			
@@ -63,8 +61,7 @@ public class ZorraAltarManager {
 		}
 		
 		//CoFH Core
-		if (Loader.isModLoaded("cofhcore"))
-		{
+		if (Loader.isModLoaded("cofhcore")) {
 			//CoFH Core makes enchants unapplicable and useless instead of not registering them when disabled individually
 			//So we use this dummy ItemStack to check if it's applicable
 			SWORD.addModdedEnchantBonusLevel("cofhcore:insight", Config.altarBonusLvl, checkerSword);
@@ -75,17 +72,14 @@ public class ZorraAltarManager {
 			//BOW.addModdedEnchantBonusLevel("cofhcore:multishot", 0, checkerBow);
 
 			Enchantment soulbound = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation("cofhcore:soulbound"));
-			if (!hasSoulbound && soulbound != null && (soulbound.canApply(checkerSword) || soulbound.canApply(checkerBow)))
-			{
+			if (!hasSoulbound && soulbound != null && (soulbound.canApply(checkerSword) || soulbound.canApply(checkerBow))) {
 				hasSoulbound = true;
 				//Check if it was configured to be permanent
-				if (soulbound.getMaxLevel() == 1)
-				{
+				if (soulbound.getMaxLevel() == 1) {
 					SWORD.addEnchant(soulbound, 1);
 					BOW.addEnchant(soulbound, 1);
 				}
-				else
-				{
+				else {
 					SWORD.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
 					BOW.addEnchantBonusLevel(soulbound, Config.altarBonusLvl);
 				}
@@ -93,8 +87,7 @@ public class ZorraAltarManager {
 		}
 		
 		//Cyclic
-		if (Loader.isModLoaded("cyclicmagic"))
-		{
+		if (Loader.isModLoaded("cyclicmagic")) {
 			SWORD.addModdedEnchant("cyclicmagic:enchantment.beheading", 1, checkerSword);
 			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.lifeleech", Config.altarBonusLvl, checkerSword);
 			SWORD.addModdedEnchantBonusLevel("cyclicmagic:enchantment.venom", Config.altarBonusLvl, checkerSword);
@@ -113,11 +106,13 @@ public class ZorraAltarManager {
 		if (Loader.isModLoaded("soulshardsrespawn")) SWORD.addModdedEnchantBonusLevel("soulshardsrespawn:soul_stealer", Config.altarBonusLvl, checkerSword);
 		
 		//EvilCraft
-		if (Loader.isModLoaded("evilcraft"))
-		{
+		if (Loader.isModLoaded("evilcraft")) {
 			SWORD.addModdedEnchantBonusLevel("evilcraft:life_stealing", Config.altarBonusLvl, checkerSword);
 			BOW.addModdedEnchantBonusLevel("evilcraft:poison_tip", Config.altarBonusLvl, checkerBow);
 		}
+		
+		//Woot
+		if (Loader.isModLoaded("woot")) SWORD.addModdedEnchantBonusLevel("woot:headhunter", 0, checkerSword);
 		
 		//TODO: Selim's Enchants
 		//TODO: FlashFyre's Enchantments

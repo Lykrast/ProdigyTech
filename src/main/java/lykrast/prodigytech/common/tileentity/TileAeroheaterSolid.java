@@ -5,6 +5,7 @@ import lykrast.prodigytech.common.capability.CapabilityHotAir;
 import lykrast.prodigytech.common.capability.HotAirAeroheater;
 import lykrast.prodigytech.common.util.ProdigyInventoryHandler;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -52,9 +53,10 @@ public class TileAeroheaterSolid extends TileMachineInventory implements ITickab
 					shouldDirty = true;
 
 					if (!fuel.isEmpty()) {
+						Item item = fuel.getItem();
 						fuel.shrink(1);
 
-						if (fuel.isEmpty()) setInventorySlotContents(0, fuel.getItem().getContainerItem(fuel));
+						if (fuel.isEmpty()) setInventorySlotContents(0, item.getContainerItem(fuel));
 					}
 				}
 			}

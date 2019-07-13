@@ -4,7 +4,7 @@ import lykrast.prodigytech.common.recipe.OreRefineryManager;
 
 public class TileOreRefinery extends TileHotAirMachineSecondaryManaged {
     public TileOreRefinery() {
-		super(OreRefineryManager.INSTANCE, 0.8F);
+		super(OreRefineryManager.INSTANCE, 0.75F);
 	}
     
     @Override

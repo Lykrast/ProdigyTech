@@ -12,7 +12,7 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, EXTRACTOR = 8,
 			HEAT_SAWMILL = 9, ATOMIC_RESHAPER = 10, PRIMORDIALIS_REACTOR = 12, AEROHEATER_TARTARIC = 13,
 			CRYSTAL_CUTTER = 14, ZORRA_ALTAR = 16, ORE_REFINERY = 17, AEROHEATER_CAPACITOR = 11, CAPACITOR_CHARGER = 15,
-			FUEL_PROCESSOR = 18, FOOD_PURIFIER = 19;
+			FUEL_PROCESSOR = 18, FOOD_PURIFIER = 19, FOOD_ENRICHER = 20;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -57,6 +57,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerFuelProcessor(player.inventory, (TileFuelProcessor)world.getTileEntity(new BlockPos(x, y, z)));
 			case FOOD_PURIFIER:
 				return new ContainerFoodPurifier(player.inventory, (TileFoodPurifier)world.getTileEntity(new BlockPos(x, y, z)));
+			case FOOD_ENRICHER:
+				return new ContainerFoodEnricher(player.inventory, (TileFoodEnricher)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -104,6 +106,8 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiFuelProcessor(player.inventory, (TileFuelProcessor)world.getTileEntity(new BlockPos(x, y, z)));
 			case FOOD_PURIFIER:
 				return new GuiFoodPurifier(player.inventory, (TileFoodPurifier)world.getTileEntity(new BlockPos(x, y, z)));
+			case FOOD_ENRICHER:
+				return new GuiFoodEnricher(player.inventory, (TileFoodEnricher)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

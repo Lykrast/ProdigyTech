@@ -1,0 +1,17 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"IRI",
+		"GCI",
+		"EAI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "ingotGold" },
+		"R": { "type": "forge:ore_dict", "ore": "dustRedstone" },
+		"C": { "item": "prodigytech:circuit_refined" },
+		"E": { "type": "forge:ore_dict", "ore": "gearFerramic" },
+		"A": { "type": "forge:ore_dict", "ore": "plateCarbon" }
+	},
+	"result": { "item": "prodigytech:food_enricher" }
+}

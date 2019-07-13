@@ -17,6 +17,7 @@ public class Config {
 	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime, foodPurifierBaseTime,
 		soldererProcessTime, 
 		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime, capacitorChargerChargeTime, fuelProcessorBaseTime,
+		foodEnricherBaseTime,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
 	public static float incineratorChance, oreRefineryChance;
 	public static int rotaryGrinderOreMultiplier, oreRefineryOreMultiplier;
@@ -28,6 +29,8 @@ public class Config {
 	public static int atomicReshaperMaxPrimordium;
 	public static int tartaricStokerTime;
 	public static boolean incineratorJEI;
+	public static int foodEnricherFoodIncrease, foodEnricherFoodCap;
+	public static float foodEnricherSaturationIncrease, foodEnricherSaturationCap;
 	
 	//Power gen
 	public static int energionDuration, heatCapacitorDuration;
@@ -134,6 +137,19 @@ public class Config {
 		fuelProcessorBaseTime = cfg.getInt("fuelProcessorBaseTime", CATEGORY_MACHINES, 60, 1, 3000, 
 				"The base amount of time (in ticks) that the Fuel Processor takes to process a fuel that yields 1 Fuel Pellet\n"
 				+ "Time for longer lasting fuels is derived from this value");
+		//Food Enricher
+		foodEnricherBaseTime = cfg.getInt("foodEnricherBaseTime", CATEGORY_MACHINES, 20, 1, 50, 
+				"A multiplier to the amount of time the Food Enricher takes to process an item\n"
+				+ "Actual time varies heavily depending on the enriched food and how much it enriches\n"
+				+ "but is always much higher than this value");
+		foodEnricherFoodIncrease = cfg.getInt("foodEnricherFoodIncrease", CATEGORY_MACHINES, 2, 1, 20, 
+				"How much does one Food Enricher operation increases the food value (in half shanks)");
+		foodEnricherFoodCap = cfg.getInt("foodEnricherFoodCap", CATEGORY_MACHINES, 20, 1, 20, 
+				"The Food Enricher will not increase a food's food value beyond this amount (in half shanks)");
+		foodEnricherSaturationIncrease = cfg.getFloat("foodEnricherSaturationIncrease", CATEGORY_MACHINES, 0.1F, 0, 2.0F, 
+				"How much does one Food Enricher operation increases the saturation ratio");
+		foodEnricherSaturationCap = cfg.getFloat("foodEnricherSaturationCap", CATEGORY_MACHINES, 1.2F, 0, 10, 
+				"The Food Enricher will not increase a food's saturation ratio beyond this amount");
 		
 		//Primordialis Reactor
 		primordialisReactorCycleTime = cfg.getInt("primordialisReactorCycleTime", CATEGORY_MACHINES, 60, 1, 3000, 

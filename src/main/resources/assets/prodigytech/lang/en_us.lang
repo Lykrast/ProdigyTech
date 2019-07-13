@@ -50,6 +50,8 @@ tile.prodigytech.capacitor_charger.name=Heat Accumulator
 tile.prodigytech.capacitor_charger.tooltip=Charges Heat Capacitors
 tile.prodigytech.fuel_processor.name=Fuel Processor
 tile.prodigytech.fuel_processor.tooltip=Breaks down Furnace fuels into Fuel Pellets
+tile.prodigytech.food_enricher.name=Food Enricher
+tile.prodigytech.food_enricher.tooltip=Makes Purified Food more nutritious
 
 #Energion
 tile.prodigytech.primordialis_reactor.name=Primordialis Reactor
@@ -198,6 +200,7 @@ container.prodigytech.ore_refinery=Ore Refinery
 container.prodigytech.automatic_crystal_cutter=Automatic Crystal Cutter
 container.prodigytech.capacitor_charger=Heat Accumulator
 container.prodigytech.fuel_processor=Fuel Processor
+container.prodigytech.food_enricher=Food Enricher
 
 container.prodigytech.primordialis_reactor=Primordialis Reactor
 container.prodigytech.atomic_reshaper=Atomic Reshaper

@@ -14,7 +14,8 @@
       "prodigytech:storage/gold_dust_tiny_combine",
       "prodigytech:storage/ferramic_dust_tiny",
       "prodigytech:storage/ferramic_dust_tiny_combine",
-      "prodigytech:machine/solderer"
+      "prodigytech:machine/solderer",
+      "prodigytech:machine/food_purifier"
     ]
   },
   "criteria": {

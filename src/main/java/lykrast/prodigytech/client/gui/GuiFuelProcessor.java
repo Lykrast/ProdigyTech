@@ -16,10 +16,7 @@ public class GuiFuelProcessor extends GuiHotAirMachineSimple {
     {
         int i = tile.getField(1);
 
-        if (i == 0)
-        {
-            i = Config.fuelProcessorBaseTime * 10;
-        }
+        if (i == 0) i = Config.fuelProcessorBaseTime * 10;
         
         int j = MathHelper.clamp(i - tile.getField(0), 0, i);
 

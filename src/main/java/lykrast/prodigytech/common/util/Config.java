@@ -14,7 +14,7 @@ public class Config {
 	//General
 	
 	//Machines
-	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime,
+	public static int incineratorProcessTime, blowerFurnaceProcessTime, rotaryGrinderProcessTime, heatSawmillProcessTime, foodPurifierBaseTime,
 		soldererProcessTime, 
 		magneticReassemblerProcessTime, oreRefineryProcessTime, automaticCrystalCutterHarvestTime, automaticCrystalCutterIdleTime, capacitorChargerChargeTime, fuelProcessorBaseTime,
 		primordialisReactorCycleTime, atomicReshaperProcessTime;
@@ -97,6 +97,10 @@ public class Config {
 		heatSawmillAutoPlankRecipes = cfg.getBoolean("heatSawmillAutoPlankRecipes", CATEGORY_MACHINES, true, 
 				"Automatically generate Heat Sawmill recipes to cut wood into planks\n"
 				+ "If false, only recipes for vanilla logs and zorra will be registered");
+		//Food Purifier
+		foodPurifierBaseTime = cfg.getInt("foodPurifierBaseTime", CATEGORY_MACHINES, 10, 1, 300, 
+				"The base amount of time (in ticks) that the Food Purifier takes to process an item, most will take much longer\n"
+				+ "For reference, Beetroots take 2.2x that time, Rotten Flesh takes 4.8x and Steaks 20.8x");
 		
 		//Solderer
 		soldererProcessTime = cfg.getInt("soldererProcessTime", CATEGORY_MACHINES, 400, 1, 3000, 

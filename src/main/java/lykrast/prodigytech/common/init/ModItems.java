@@ -25,7 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class ModItems {
 	public static Item ferramicIngot, ferramicNugget, ferramicGear,
-		ash, flour, sawdust, meatGround, meatPatty,
+		ash, purifiedFood, flour, sawdust, meatGround, meatPatty,
 		coalDust, ferramicDust, ferramicDustTiny, ironDust, ironDustTiny, goldDust, goldDustTiny, diamondDust, emeraldDust, quartzDust,
 		carbonPlate, enrichedFuel, infernoFuel, infernoCrystal, sugarCube,
 		circuitPlate, circuitCrude, circuitRefined, circuitPerfected, 
@@ -49,6 +49,8 @@ public class ModItems {
 		ferramicNugget = initItem(new Item(), "ferramic_nugget");
 		ferramicGear = initItem(new Item(), "ferramic_gear");
 		ash = initItem(new Item(), "ash");
+		//ItemFood sets the creative tab in constructor so have to override here
+		purifiedFood = initItem(new ItemFoodPurified(), "purified_food", null).setCreativeTab(null);
 
 		//Grinder
 		flour = initItem(new Item(), "flour");

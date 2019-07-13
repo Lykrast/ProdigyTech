@@ -12,7 +12,7 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 			ROTARY_GRINDER = 4, SOLDERER = 5, MAGNETIC_REASSEMBLER = 6, AEROHEATER_ENERGION = 7, EXTRACTOR = 8,
 			HEAT_SAWMILL = 9, ATOMIC_RESHAPER = 10, PRIMORDIALIS_REACTOR = 12, AEROHEATER_TARTARIC = 13,
 			CRYSTAL_CUTTER = 14, ZORRA_ALTAR = 16, ORE_REFINERY = 17, AEROHEATER_CAPACITOR = 11, CAPACITOR_CHARGER = 15,
-			FUEL_PROCSESOR = 18;
+			FUEL_PROCESSOR = 18, FOOD_PURIFIER = 19;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -53,8 +53,10 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new ContainerAeroheaterCapacitor(player.inventory, (TileAeroheaterCapacitor)world.getTileEntity(new BlockPos(x, y, z)));
 			case CAPACITOR_CHARGER:
 				return new ContainerCapacitorCharger(player.inventory, (TileCapacitorCharger)world.getTileEntity(new BlockPos(x, y, z)));
-			case FUEL_PROCSESOR:
+			case FUEL_PROCESSOR:
 				return new ContainerFuelProcessor(player.inventory, (TileFuelProcessor)world.getTileEntity(new BlockPos(x, y, z)));
+			case FOOD_PURIFIER:
+				return new ContainerFoodPurifier(player.inventory, (TileFoodPurifier)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}
@@ -98,8 +100,10 @@ public class ProdigyTechGuiHandler implements IGuiHandler {
 				return new GuiAeroheaterCapacitor(player.inventory, (TileAeroheaterCapacitor)world.getTileEntity(new BlockPos(x, y, z)));
 			case CAPACITOR_CHARGER:
 				return new GuiCapacitorCharger(player.inventory, (TileCapacitorCharger)world.getTileEntity(new BlockPos(x, y, z)));
-			case FUEL_PROCSESOR:
+			case FUEL_PROCESSOR:
 				return new GuiFuelProcessor(player.inventory, (TileFuelProcessor)world.getTileEntity(new BlockPos(x, y, z)));
+			case FOOD_PURIFIER:
+				return new GuiFoodPurifier(player.inventory, (TileFoodPurifier)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

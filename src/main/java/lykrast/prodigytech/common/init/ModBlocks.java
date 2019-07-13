@@ -26,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @Mod.EventBusSubscriber
 public class ModBlocks {
 	public static Block explosionFurnace, aeroheaterMagmatic, aeroheaterSolid, aeroheaterEnergion, aeroheaterTartaric, aeroheaterCapacitor,
-		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, solderer,
+		incinerator, blowerFurnace, rotaryGrinder, heatSawmill, foodPurifier, solderer,
 		magneticReassembler, oreRefinery, energionCrystal, automaticCrystalCutter, capacitorCharger, fuelProcessor, 
 		primordialisReactor, atomicReshaper, zorraAltar,
 		airFunnel, wormholeFunnel, linearExtractor, funnellingExtractor, dispersingExtractor,
@@ -62,6 +62,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TileRotaryGrinder.class, ProdigyTech.resource("rotary_grinder"));
 		heatSawmill = initBlock(new BlockHeatSawmill(6.0F, 45.0F, 1), "heat_sawmill");
 		GameRegistry.registerTileEntity(TileHeatSawmill.class, ProdigyTech.resource("heat_sawmill"));
+		foodPurifier = initBlock(new BlockFoodPurifier(6.0F, 45.0F, 1), "food_purifier");
+		GameRegistry.registerTileEntity(TileFoodPurifier.class, ProdigyTech.resource("food_purifier"));
 		
 		solderer = initBlock(new BlockSolderer(6.0F, 45.0F, 1), "solderer");
 		GameRegistry.registerTileEntity(TileSolderer.class, ProdigyTech.resource("solderer"));

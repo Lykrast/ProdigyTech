@@ -33,6 +33,8 @@ tile.prodigytech.rotary_grinder.name=Rotary Grinder
 tile.prodigytech.rotary_grinder.tooltip=Crushes things
 tile.prodigytech.heat_sawmill.name=Heat Sawmill
 tile.prodigytech.heat_sawmill.tooltip=Cuts wood more efficiently than by hand
+tile.prodigytech.food_purifier.name=Food Purifier
+tile.prodigytech.food_purifier.tooltip=Removes side effects from food
 
 tile.prodigytech.solderer.name=Solderer
 tile.prodigytech.solderer.tooltip=Uses Gold Dust, Circuit Plates\nand a Pattern to make Circuits
@@ -99,6 +101,8 @@ item.prodigytech.ferramic_ingot.name=Ferramic Ingot
 item.prodigytech.ferramic_nugget.name=Ferramic Nugget
 item.prodigytech.ferramic_gear.name=Ferramic Gear
 item.prodigytech.ash.name=Ash
+item.prodigytech.purified_food.name=Purified Food
+item.prodigytech.purified_food.tooltip=Food amount: %d\nSaturation ratio: %.2f
 item.prodigytech.coal_dust.name=Coal Dust
 item.prodigytech.ferramic_dust.name=Ferramic Dust
 item.prodigytech.ferramic_dust_tiny.name=Tiny Pile of Ferramic Dust
@@ -185,6 +189,7 @@ container.prodigytech.incinerator=Incinerator
 container.prodigytech.blower_furnace=Blower Furnace
 container.prodigytech.rotary_grinder=Rotary Grinder
 container.prodigytech.heat_sawmill=Heat Sawmill
+container.prodigytech.food_purifier=Food Purifier
 
 container.prodigytech.solderer=Solderer
 

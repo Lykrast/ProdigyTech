@@ -1,0 +1,14 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		"I I",
+		"IGI",
+		"ICI"
+	],
+	"key": {
+		"I": { "type": "forge:ore_dict", "ore": "ingotFerramic" },
+		"G": { "type": "forge:ore_dict", "ore": "gearFerramic" },
+		"C": { "type": "forge:ore_dict", "ore": "plateCarbon" }
+	},
+	"result": { "item": "prodigytech:food_purifier" }
+}

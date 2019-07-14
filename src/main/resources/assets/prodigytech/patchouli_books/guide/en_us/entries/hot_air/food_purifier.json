@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "text",
-            "text": "The $(item)Food Purifier$() can transform any food item into $(item)Purified Food$(). It retains all of its nutritional value and is stripped of any side effect, positive or negative. $(br2)Items can be inserted/extracted from any side except top and bottom."
+            "text": "The $(item)Food Purifier$() can transform any food item into $(item)Purified Food$(). It retains all of its nutritional value but is stripped of any side effect, positive or negative. Remember though that it considers $(item)Bowls$() as being part of the food. $(br2)Items can be inserted/extracted from any side except top and bottom."
         },
         {
             "type": "crafting",

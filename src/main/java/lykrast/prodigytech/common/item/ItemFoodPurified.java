@@ -83,7 +83,7 @@ public class ItemFoodPurified extends ItemFood {
 		float saturation = stack.getTagCompound().getFloat(NBT_SATURATION);
 		
 		//Outside of the ranges, no gradient
-		if (saturation >= 1.2F) return 0x8CF4E2;
+		if (saturation >= 2.0F) return 0x8CF4E2;
 		else if (saturation <= 0.1F) return 0x636D1E;
 		else {
 			//Find the corresponding range

@@ -66,8 +66,12 @@ public class ItemCrystalCutter extends ItemProdigyTool {
     {
         ItemStack itemstack = player.getHeldItem(hand);
         IBlockState state = worldIn.getBlockState(pos);
-        if (state.getBlock() == ModBlocks.energionCrystal && player.canPlayerEdit(pos, facing, itemstack))
-        {
+        if (state.getBlock() == ModBlocks.energionCrystal && player.canPlayerEdit(pos, facing, itemstack)) {
+        	if (worldIn.isRemote) {
+                itemstack.damageItem(1, player);
+        		return EnumActionResult.SUCCESS;
+        	}
+        	
         	int age = BlockEnergionCrystal.getAge(state);
         	if (age > 0)
         	{
@@ -77,13 +81,12 @@ public class ItemCrystalCutter extends ItemProdigyTool {
                 Block.spawnAsEntity(worldIn, pos, new ItemStack(ModItems.energionCrystalSeed));
                 
                 int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, itemstack);
-                if (fortune > 0) for (int j = 0; j < fortune; j++)
-                {
+                if (fortune > 0) for (int j = 0; j < fortune; j++) {
                 	if (worldIn.rand.nextInt(2) == 0) Block.spawnAsEntity(worldIn, pos, new ItemStack(ModItems.energionCrystalSeed));
                 }
         	}
         	else worldIn.destroyBlock(pos, true);
-        	
+
             itemstack.damageItem(1, player);
             return EnumActionResult.SUCCESS;
         }

@@ -48,11 +48,31 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
 		return super.getName() + "fuel_processor";
 	}
     
+	private ItemStack lastInput  = ItemStack.EMPTY;
+	private void updateCachedResult() {
+		ItemStack input = getStackInSlot(0);
+		//No input
+		if (input.isEmpty()) {
+			lastInput = ItemStack.EMPTY;
+		}
+		//No cached input, let it slide
+		else if (lastInput.isEmpty()) {
+			lastInput = input;
+		}
+		//Input changed
+		else if (input != lastInput) {
+			lastInput = input;
+			processTimeMax = 0;
+			processTime = 0;
+		}
+	}
+    
     @SuppressWarnings("deprecation")
 	@Override
 	protected boolean canProcess() {
     	if (getStackInSlot(0).isEmpty() || hotAir.getInAirTemperature() < 80) return false;
-    	
+
+    	updateCachedResult();
     	//Assume that if something was inserted it is valid input
     	//And that whatever is in the output slot is a Fuel Pellet if there's something
 	    ItemStack curOutput = getStackInSlot(1);
@@ -97,6 +117,7 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
             	}
         	}
         	else if (processTime >= processTimeMax) {
+            	updateCachedResult();
     			processTimeMax = 0;
     			processTime = 0;
     		}
@@ -123,6 +144,7 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
         else curOutput.grow(amount);
 
         input.shrink(1);
+    	updateCachedResult();
 	}
 
 	@Override

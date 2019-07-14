@@ -25,7 +25,12 @@ public abstract class TileHotAirMachineSimpleManaged extends TileHotAirMachineSi
 	private SimpleRecipe cachedRecipe;
     private void updateCachedRecipe() {
     	if (cachedRecipe == null) cachedRecipe = manager.findRecipe(getStackInSlot(0));
-    	else if (!cachedRecipe.isValidInput(getStackInSlot(0))) cachedRecipe = manager.findRecipe(getStackInSlot(0));
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(0))) {
+    		cachedRecipe = manager.findRecipe(getStackInSlot(0));
+    		//Recipe became invalid, restart the process
+			processTimeMax = 0;
+			processTime = 0;
+    	}
     }
     
     @Override

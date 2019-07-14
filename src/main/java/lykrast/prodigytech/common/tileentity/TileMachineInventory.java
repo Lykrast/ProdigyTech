@@ -26,7 +26,7 @@ public abstract class TileMachineInventory extends TileEntity implements IProdig
 
 	@Override
 	public ITextComponent getDisplayName() {
-		return new TextComponentTranslation(this.getName(), new Object[0]);
+		return new TextComponentTranslation(getName());
 	}
 
 	@Override

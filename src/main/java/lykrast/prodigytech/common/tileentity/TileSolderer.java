@@ -63,7 +63,12 @@ public class TileSolderer extends TileMachineInventory implements ITickable, IPr
 	private SoldererRecipe cachedRecipe;
     private void updateCachedRecipe() {
     	if (cachedRecipe == null) cachedRecipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
-    	else if (!cachedRecipe.isValidInput(getStackInSlot(0), getStackInSlot(2), gold)) cachedRecipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(0), getStackInSlot(2), gold)) {
+    		cachedRecipe = SoldererManager.findRecipe(getStackInSlot(0), getStackInSlot(2), gold);
+    		//Recipe became invalid, restart the process
+			processTimeMax = 0;
+			processTime = 0;
+    	}
     }
     
 	private boolean canProcess()

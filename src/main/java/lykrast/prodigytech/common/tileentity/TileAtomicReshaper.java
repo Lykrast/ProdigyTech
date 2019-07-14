@@ -57,7 +57,12 @@ public class TileAtomicReshaper extends TileMachineInventory implements ITickabl
 	private AtomicReshaperRecipe cachedRecipe;
     private void updateCachedRecipe() {
     	if (cachedRecipe == null) cachedRecipe = AtomicReshaperManager.INSTANCE.findRecipe(getStackInSlot(1));
-    	else if (!cachedRecipe.isValidInput(getStackInSlot(1))) cachedRecipe = AtomicReshaperManager.INSTANCE.findRecipe(getStackInSlot(1));
+    	else if (!cachedRecipe.isValidInput(getStackInSlot(1))) {
+    		cachedRecipe = AtomicReshaperManager.INSTANCE.findRecipe(getStackInSlot(1));
+    		//Recipe became invalid, restart the process
+			processTimeMax = 0;
+			processTime = 0;
+    	}
     }
     
 	private boolean canProcess()

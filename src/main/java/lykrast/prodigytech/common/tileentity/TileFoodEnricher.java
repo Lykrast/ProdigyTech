@@ -50,10 +50,27 @@ public class TileFoodEnricher extends TileHotAirMachineSimple {
 		return super.getName() + "food_enricher";
 	}
     
-	private ItemStack cachedResult;
+	private ItemStack cachedResult, lastInput  = ItemStack.EMPTY;
 	private void updateCachedResult() {
 		ItemStack input = getStackInSlot(0);
-		if (input.isEmpty()) cachedResult = null;
+		//No input
+		if (input.isEmpty()) {
+			cachedResult = null;
+			lastInput = ItemStack.EMPTY;
+		}
+		//No cached input, let it slide
+		else if (lastInput.isEmpty()) {
+			lastInput = input;
+			cachedResult = enrich(input);
+		}
+		//Input changed
+		else if (input != lastInput) {
+			lastInput = input;
+			cachedResult = enrich(input);
+			processTimeMax = 0;
+			processTime = 0;
+		}
+		//Missing the cache
 		else if (cachedResult == null) cachedResult = enrich(input);
 	}
 	

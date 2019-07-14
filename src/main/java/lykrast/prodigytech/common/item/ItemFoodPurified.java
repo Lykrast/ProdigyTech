@@ -70,25 +70,31 @@ public class ItemFoodPurified extends ItemFood {
 		for (String s : lines) tooltip.add(TextFormatting.GRAY + s);
 	}
 	
-	//In ascending order of saturation: 0,1, 0.3, 0.8, 1.2
+	//In ascending order of saturation: 0,1, 0.3, 0.8, 1.2, 2.0
 	private static final double[][] COLORS = {
 			{0x63 / 255.0F, 0x6D / 255.0F, 0x1E / 255.0F},
 			{0xFF / 255.0F, 0x77 / 255.0F, 0x77 / 255.0F},
 			{0x94 / 255.0F, 0x59 / 255.0F, 0x41 / 255.0F},
-			{0xFF / 255.0F, 0xFF / 255.0F, 0x00 / 255.0F}
+			{0xFF / 255.0F, 0xFF / 255.0F, 0x00 / 255.0F},
+			{0x8C / 255.0F, 0xF4 / 255.0F, 0xE2 / 255.0F}
 	};
 	public static int getColor(ItemStack stack, int tintIndex) {
 		if (tintIndex != 0 || !stack.hasTagCompound()) return -1;
 		float saturation = stack.getTagCompound().getFloat(NBT_SATURATION);
 		
 		//Outside of the ranges, no gradient
-		if (saturation >= 1.2F) return 0xFFFF00;
+		if (saturation >= 1.2F) return 0x8CF4E2;
 		else if (saturation <= 0.1F) return 0x636D1E;
 		else {
 			//Find the corresponding range
 			int index;
 			double up, down;
-			if (saturation >= 0.8) {
+			if (saturation >= 1.2) {
+				index = 3;
+				up = 2;
+				down = 1.2;
+			}
+			else if (saturation >= 0.8) {
 				index = 2;
 				up = 1.2;
 				down = 0.8;

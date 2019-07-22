@@ -198,7 +198,7 @@ public class ZorraAltarManager {
 	 * @return the cost randomly deviated
 	 */
 	public int deviate(int cost, Random rand) {
-		int deviation = Math.max(Config.altarDeviationMin, (int)(cost * Config.altarDeviationMult));
+		int deviation = Math.max(2, (int)(cost * 0.1));
 		return Math.max(1, cost - deviation + rand.nextInt(deviation * 2 + 1));
 	}
 	

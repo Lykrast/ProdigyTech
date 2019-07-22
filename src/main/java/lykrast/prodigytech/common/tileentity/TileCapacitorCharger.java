@@ -92,9 +92,7 @@ public class TileCapacitorCharger extends TileMachineInventory implements ITicka
 	
 	private int getProcessSpeed() {
 		if (targetTemperature <= 30) return 10;
-		//Prevent capacitors being charged faster than they can last
-		int cap = Config.capacitorChargerChargeTime / 2;
-		return Math.min(cap, 10 + ((hotAir.getInAirTemperature() - targetTemperature) * 2) / targetTemperature);
+		return 10 * hotAir.getInAirTemperature() / targetTemperature;
 	}
 
 	@Override

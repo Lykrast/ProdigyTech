@@ -31,6 +31,7 @@ public class Config {
 	public static boolean incineratorJEI;
 	public static int foodEnricherFoodIncrease, foodEnricherFoodCap;
 	public static float foodEnricherSaturationIncrease, foodEnricherSaturationCap;
+	public static float energionGrowthSpeed;
 	
 	//Power gen
 	public static int energionDuration, heatCapacitorDuration;
@@ -172,6 +173,9 @@ public class Config {
 		//-----------
 		//Power gen
 		//-----------
+		energionGrowthSpeed = cfg.getFloat("energionGrowthSpeed", CATEGORY_POWER, 4, 0.1F, 25, 
+				"A modifier to how fast Energion Crystals grow\n"
+				+ "2 is about the growth of a single wheat on dry farmland, 4 is about single wheat on wet farmland");
 		energionDuration = cfg.getInt("energionDuration", CATEGORY_POWER, 2000, 20, 1728000, 
 				"The time (in ticks) one Energion Dust lasts in the Energion Aeroheater");
 		heatCapacitorDuration = cfg.getInt("heatCapacitorDuration", CATEGORY_POWER, 10*60*20, 20, 1728000, 

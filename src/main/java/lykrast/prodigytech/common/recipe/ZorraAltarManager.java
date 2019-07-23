@@ -114,8 +114,15 @@ public class ZorraAltarManager {
 		//Woot
 		if (Loader.isModLoaded("woot")) SWORD.addModdedEnchantBonusLevel("woot:headhunter", 0, checkerSword);
 		
-		//TODO: Selim's Enchants
-		//TODO: FlashFyre's Enchantments
+		//Apotheosis
+		if (Loader.isModLoaded("apotheosis")) {
+			SWORD.addModdedEnchantBonusLevel("apotheosis:hell_infusion", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("apotheosis:mounted_strike", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("apotheosis:scavenger", Config.altarBonusLvl, checkerSword);
+			SWORD.addModdedEnchantBonusLevel("apotheosis:capturing", Config.altarBonusLvl, checkerSword);
+			//Better than Infinity so takes priority
+			if (BOW.addModdedEnchantBonusLevel("apotheosis:true_infinity", 0, checkerBow)) BOW.removeEnchant(Enchantments.INFINITY);
+		}
 		
 	}
 	
@@ -177,6 +184,21 @@ public class ZorraAltarManager {
 		
 		addEnchantBonusLevel(enchant, bonusLvl);
 		return true;
+	}
+	
+	/**
+	 * Attempts to remove the given enchantment to the pool
+	 * @param enchant enchantment to remove
+	 * @return true if the enchantment was found and removed, false if it wasn't in the pool
+	 */
+	public boolean removeEnchant(Enchantment enchant) {
+		for (int i = 0; i < enchants.size(); i++) {
+			if (enchants.get(i).enchantment == enchant) {
+				enchants.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**

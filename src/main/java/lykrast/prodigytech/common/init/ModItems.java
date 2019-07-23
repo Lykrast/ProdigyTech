@@ -102,7 +102,7 @@ public class ModItems {
 		energionDust = initItem(new Item(), "energion_dust");
 		
 		//Tools
-		crystalCutter = initItem(new ItemCrystalCutter(0, 50, 2.0F, 1), "crystal_cutter");
+		crystalCutter = initItem(new ItemCrystalCutter(0, 191, 2.0F, 1), "crystal_cutter");
 		wormholeLinker = initItem(new ItemWormholeLinker(), "wormhole_linker");
 		ferramicHandbow = initItem(new ItemHandbow(864), "ferramic_handbow");
 		

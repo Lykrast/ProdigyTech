@@ -1,4 +1,4 @@
-# Prodigy Tech [![Curseforge](http://cf.way2muchnoise.eu/prodigy-tech.svg)](https://minecraft.curseforge.com/projects/prodigy-tech) [![Curseforge](http://cf.way2muchnoise.eu/versions/prodigy-tech.svg)](https://minecraft.curseforge.com/projects/prodigy-tech) [![Curseforge](http://cf.way2muchnoise.eu/packs/prodigy-tech.svg)](https://minecraft.curseforge.com/projects/prodigy-tech)
+# Prodigy Tech [![Curseforge](http://cf.way2muchnoise.eu/prodigy-tech.svg)](https://www.curseforge.com/minecraft/mc-mods/prodigy-tech) [![Curseforge](http://cf.way2muchnoise.eu/versions/prodigy-tech.svg)](https://www.curseforge.com/minecraft/mc-mods/prodigy-tech) [![Curseforge](http://cf.way2muchnoise.eu/packs/prodigy-tech.svg)](https://www.curseforge.com/minecraft/mc-mods/prodigy-tech)
 
 Minecraft tech mod inspired by RotaryCraft and IndustrialCraft 2. Machines run on Hot Air instead of traditional RF.
 

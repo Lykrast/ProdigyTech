@@ -104,7 +104,7 @@ item.prodigytech.ferramic_nugget.name=瓷铁粒
 item.prodigytech.ferramic_gear.name=瓷铁齿轮
 item.prodigytech.ash.name=灰
 item.prodigytech.purified_food.name=净化的食物
-item.prodigytech.purified_food.tooltip=饱食度： %d\n营养值： %.2f
+item.prodigytech.purified_food.tooltip=饱食度：%d\n营养值：%.2f
 item.prodigytech.coal_dust.name=煤粉
 item.prodigytech.ferramic_dust.name=瓷铁粉
 item.prodigytech.ferramic_dust_tiny.name=小撮瓷铁粉
@@ -176,9 +176,9 @@ item.prodigytech.zorrasteel_handbow.name=佐拉钢手弓
 #----------------------------
 tooltip.prodigytech.shift=§7按下 §fSHIFT§7 查看信息§r
 tooltip.prodigytech.temperature.max=§6最高温度：§f %d°C§r
-tooltip.prodigytech.temperature.max.variable=§6最高温度：§f variable§r
+tooltip.prodigytech.temperature.max.variable=§6最高温度：§f可变的§r
 tooltip.prodigytech.temperature.min=§6最低温度：§f %d°C§r
-tooltip.prodigytech.temperature.min.variable=§6最低温度：§f variable§r
+tooltip.prodigytech.temperature.min.variable=§6最低温度：§f可变的§r
 tooltip.prodigytech.temperature.transfer=§6传输热量：§f %d%%§r
 
 container.prodigytech.explosion_furnace=爆炸熔炉
@@ -211,12 +211,12 @@ container.prodigytech.zorra_altar.leaves.many=%d 佐拉树树叶
 
 container.prodigytech.temperature.input=§6输入的空气温度：§r %d°C
 container.prodigytech.temperature.output=§6输出的空气温度：§r %d°C
-container.prodigytech.solderer.gold.blocks=%d 块
-container.prodigytech.solderer.gold.ingots=%d 锭
-container.prodigytech.solderer.gold.nuggets=%d 粒
+container.prodigytech.solderer.gold.blocks=%d块
+container.prodigytech.solderer.gold.ingots=%d锭
+container.prodigytech.solderer.gold.nuggets=%d粒
 container.prodigytech.solderer.gold.empty=空的
 
-container.prodigytech.atomic_reshaper.primordium.amount=%d 原基
+container.prodigytech.atomic_reshaper.primordium.amount=%d单位原基
 container.prodigytech.atomic_reshaper.primordium.empty=空的
 
 container.prodigytech.linear_extractor=线性提取器
@@ -238,11 +238,11 @@ status.prodigytech.wormhole_linker.unlinked=§c未连接
 
 #JEI
 container.prodigytech.jei.ptexplosionfurnace=爆炸熔炉
-container.prodigytech.jei.ptexplosionfurnace.required=EP/需求： %d
-container.prodigytech.jei.ptexplosionfurnace_exp=爆炸熔炉爆炸反应
-container.prodigytech.jei.ptexplosionfurnace_exp.generated=生成EP： %d
-container.prodigytech.jei.ptexplosionfurnace_damp=爆炸熔炉爆炸吸收
-container.prodigytech.jei.ptexplosionfurnace_damp.dampened=吸收EP： %d
+container.prodigytech.jei.ptexplosionfurnace.required=EP/需求：%d
+container.prodigytech.jei.ptexplosionfurnace_exp=爆炸反应
+container.prodigytech.jei.ptexplosionfurnace_exp.generated=生成EP：%d
+container.prodigytech.jei.ptexplosionfurnace_damp=爆炸吸收
+container.prodigytech.jei.ptexplosionfurnace_damp.dampened=吸收EP：%d
 container.prodigytech.jei.ptincinerator=焚化炉
 container.prodigytech.jei.ptgrinder=旋转粉碎机
 container.prodigytech.jei.ptsawmill=热力锯木机
@@ -252,8 +252,8 @@ container.prodigytech.jei.ptrefinery=矿石精炼机
 container.prodigytech.jei.ptfuelprocessor=燃料加工机
 container.prodigytech.jei.ptprimordialis=原基反应器
 container.prodigytech.jei.ptreshaper=原子重塑机
-container.prodigytech.jei.ptreshaper.chance=概率： %d%%
-container.prodigytech.jei.ptreshaper.chance.low=概率： < 1%%
+container.prodigytech.jei.ptreshaper.chance=概率：%d%%
+container.prodigytech.jei.ptreshaper.chance.low=概率：< 1%%
 
 #----------------------------
 #Advancements

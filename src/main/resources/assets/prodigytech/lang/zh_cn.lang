@@ -58,7 +58,7 @@ tile.prodigytech.primordialis_reactor.name=原基反应器
 tile.prodigytech.primordialis_reactor.tooltip=把种植的作物转化成原基\n混合使用多种作物来增加效率
 tile.prodigytech.atomic_reshaper.name=原子重塑机
 tile.prodigytech.atomic_reshaper.tooltip=通过使用原基\n来把一个物质转化成另一个物质
-tile.prodigytech.zorra_altar.name=Zorra祭坛
+tile.prodigytech.zorra_altar.name=佐拉祭坛
 tile.prodigytech.zorra_altar.tooltip=为佐拉钢的装备\n应用或者升级附魔
 
 #Logistics

@@ -59,21 +59,18 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		int initialCount = inside.getCount();
 		ItemStack toPush = inside.splitStack(Config.extractorMaxStack);
 		//Attempt to insert the stack in all slots
-		for (int i=0; i < handler.getSlots(); i++)
-		{
+		for (int i=0; i < handler.getSlots(); i++) {
 			toPush = handler.insertItem(i, toPush, false);
 			//Whole stack has been inserted
 			if (toPush.isEmpty()) return true;
 		}
 		//Whole inventory was attempted to be pushed
-		if (inside.isEmpty())
-		{
+		if (inside.isEmpty()) {
 			setInventorySlotContents(0, toPush);
 			return toPush.getCount() < initialCount;
 		}
 		//Only part of the inventory was attempted to be pushed
-		else
-		{
+		else {
 			inside.grow(toPush.getCount());
 			return inside.getCount() < initialCount;
 		}
@@ -83,16 +80,13 @@ public abstract class TileExtractor extends TileMachineInventory implements ITic
 		IItemHandler handler = getAdjacentTileCapability(facing);
 		if (handler == null) return false;
 		
-		for (int i=0; i < handler.getSlots(); i++)
-		{
+		for (int i=0; i < handler.getSlots(); i++) {
 			ItemStack extracted = handler.extractItem(i, Config.extractorMaxStack, true);
-			if (!extracted.isEmpty())
-			{
+			if (!extracted.isEmpty()) {
 				ItemStack remainder = invHandler.insertItem(0, extracted, true);
-				//Insertion successfull
-				if (!ItemStack.areItemStacksEqual(extracted, remainder))
-				{
-					int amount = Config.extractorMaxStack;
+				//Insertion successful
+				if (!ItemStack.areItemStacksEqual(extracted, remainder)) {
+					int amount = extracted.getCount();
 					if (!remainder.isEmpty()) amount -= remainder.getCount();
 					
 					invHandler.insertItem(0, handler.extractItem(i, amount, false), false);

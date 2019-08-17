@@ -1,0 +1,6 @@
+{
+	"name": "能量晶体",
+	"description": "$(item)能量晶体$()泄漏出来的能量，能让最强大的机器运作，处理他的时候小心点。",
+	"icon": "prodigytech:energion_crystal_seed",
+	"sortnum": 3
+}

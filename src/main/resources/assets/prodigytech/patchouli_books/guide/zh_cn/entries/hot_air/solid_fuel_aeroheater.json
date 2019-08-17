@@ -1,0 +1,16 @@
+{
+    "name": "固体燃料气热炉",
+    "icon": "prodigytech:solid_fuel_aeroheater",
+    "category": "hot_air",
+	"advancement": "prodigytech:recipes/ferramic_ingot",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)固体燃料气热炉$()能把熔炉能燃烧的燃料烧成$(thing)热空气$()。这气热炉能生成比$(item)熔岩气热炉$()高得多的温度，但他需要持续的燃料供应来维持工作。$(br2)燃料能从机器除了顶部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/solid_fuel_aeroheater"
+        }
+    ]
+}

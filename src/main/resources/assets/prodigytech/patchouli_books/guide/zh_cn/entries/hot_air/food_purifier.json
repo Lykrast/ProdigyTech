@@ -1,0 +1,16 @@
+{
+    "name": "食物净化机",
+    "icon": "prodigytech:food_purifier",
+    "category": "hot_air",
+	"advancement": "prodigytech:main/rotary_grinder",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)食物净化机$()能把任意食物转换成$(item)净化的食物$()。他会保留食物原有的营养，但是会移除掉所有正面的或者是负面的效果。 请记住它考虑到了$(item)木碗$()也是作为食物的一部分。$(br2)物品能从机器除了顶部和底部以外的各个面输入/输出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/food_purifier"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "name": "食物富集",
+    "icon": "prodigytech:food_enricher",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)食物富集机$()能让$(item)净化的食物$() (由$(l:hot_air/food_purifier)$(item)食物净化机$()制作)更有营养。越有营养的食物处理的时间会越长，以及这个增加量不能超过一定限度， 但是这个过程是可被重复多次的. $(br2)物品能从机器除了顶部和底部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/food_enricher"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "name": "能量晶体种植",
+    "icon": "prodigytech:energion_crystal_seed",
+    "category": "energion",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)能量粉$()能通过$(item)磁力重构机$()转换成$(item)能量晶体种子$()。这些种子能被种植在地上然后缓慢得随时间生长，生成更多的$(item)能量晶体种子$()。$(br2)然后你也可以接着拿去种植或者是拿去磨粉机磨成$(item)能量粉$()."
+        },
+        {
+            "type": "text",
+            "text": "这些晶体一旦开始生长后是$(l)高 度 危 险 的$()，以及$(l)永 远$()不要尝试不使用$(item)晶体切割器$()来收割晶体。$(br2)你能用它来右击晶体来收获他的当前阶段的晶体，或者是直接一次性全部拆掉。$(br2)给切割器附上幸运来收获更多的晶体。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:tools/crystal_cutter"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "name": "焊机",
+    "icon": "prodigytech:solderer",
+    "category": "circuits",
+	"advancement": "prodigytech:main/rotary_grinder",
+	"priority": true,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)焊机$()是一个能做各种$(thing)电路$()的机器，当你需要做进阶的高级机器的时候，他就派上用场了。他需求的温度实在是太高了，以至于$(item)熔岩气热炉$()仅仅只够最低限度的驱动$(br2)要想做出一个$(thing)电路$()，需要用到$(item)电路板$(), $(item)金粉$()以及选用适当的$(thing)电路模板$()。后面会讲到各个模板会做出哪种$(thing)电路$()。"
+        },
+        {
+            "type": "text",
+            "text": "时间的花费以及需要消耗的$(thing)金粉$()取决于你做的是哪种$(thing)电路$()，以及有的可能需要消耗一些额外的材料。$(br2)如果温度足够的话，焊机会在使用前热熔一些输入的$(item)金粉$()。"
+        },
+        {
+            "type": "text",
+            "text": "所有物品通过shift+左击和自动输入的，都会被自动放到它对应的槽中。$(br2)物品能从机器除了顶部和底部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/solderer",
+            "recipe2": "prodigytech:materials/circuit_plate"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:placeholder/pattern_circuit_crude_ini",
+            "recipe2": "prodigytech:placeholder/pattern_circuit_refined"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:placeholder/pattern_circuit_perfected",
+            "recipe2": "prodigytech:placeholder/pattern_circuit_crude"
+        }
+    ]
+}

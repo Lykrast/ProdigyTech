@@ -1,0 +1,35 @@
+{
+    "name": "热容器",
+    "icon": "prodigytech:heat_capacitor_2",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)热容器$()是一个储存$(thing)热空气$()的方式，以及一个使用起来更加方便的形式。不同等级的热容器提供不同目标的温度，能从刚好够用来驱动高级机器，再到能和$(item)冥界气热炉$()一样满功率驱动。"
+        },
+        {
+            "type": "text",
+            "text": "在使用前，必须要在$(item)蓄热器$()中充能。这台机器需要的$(thing)热空气$()温度至少要到这个热容器能够提供的温度，以及不像别的机器一样会传输机器内的 $(thing)热空气$()。热容器能被除了底面之外的任意一面输入，以及会在完全充满后自动弹射出去。"
+        },
+        {
+            "type": "text",
+            "text": "在充能过后，热容器就能被放入$(item)热容器气热炉$()然后就能提供他对应的目标温度了。$(item)热容器$()充能时间要比他可持续时间长，意味着还是需要其他的$(thing)气热炉$()。然而，其他的气热炉要达到最大温度需要用上几分钟，而$(item)热容器$()则可以在数秒内达到。 热容器能被除了顶部之外的任意一面输入，且会在完全耗尽之后自动弹出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/capacitor_charger",
+            "recipe2": "prodigytech:machine/capacitor_aeroheater"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:tools/heat_capacitor_0",
+            "recipe2": "prodigytech:tools/heat_capacitor_1"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:tools/heat_capacitor_2",
+            "recipe2": "prodigytech:tools/heat_capacitor_3"
+        }
+    ]
+}

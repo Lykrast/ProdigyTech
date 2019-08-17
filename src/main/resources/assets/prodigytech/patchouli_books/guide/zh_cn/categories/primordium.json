@@ -1,0 +1,6 @@
+{
+	"name": "原基",
+	"description": "$(item)原基$()是一个原始的物质，用来把物品变异成别的有趣的形式",
+	"icon": "prodigytech:primordium",
+	"sortnum": 4
+}

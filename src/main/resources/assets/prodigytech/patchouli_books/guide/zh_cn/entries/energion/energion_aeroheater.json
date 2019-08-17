@@ -1,0 +1,17 @@
+{
+    "name": "能源气热炉",
+    "icon": "prodigytech:energion_aeroheater",
+    "category": "energion",
+	"advancement": "prodigytech:main/solderer",
+	"priority": true,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)能源气热炉$()是你主要使用$(item)能量粉$()的地方。以常规方式给机器输入能量粉，他就会缓缓地开始加热，直到达到目标温度250°C，这温度足以驱动大多数的高级机器。$(br2)$(item)能量粉$()能从除了顶部的位置自动输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/energion_aeroheater"
+        }
+    ]
+}

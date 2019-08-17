@@ -1,0 +1,17 @@
+{
+    "name": "冥界气热炉",
+    "icon": "prodigytech:tartaric_aeroheater",
+    "category": "primordium",
+	"advancement": "prodigytech:main/zorra_leaf",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)冥界气热炉$()是最强的$(thing)气热炉$()没有之一，前提是你得跑得动它。$(item)冥燃粉$()会和熔炉可燃燃料一并燃烧，冥燃粉的燃烧时间和燃烧1个煤炭的时间相同。燃料会在加热的时候消耗的更快，同时加热速度也会更快，最高比正常速度要快25倍。$(br2)燃料能从机器除了顶部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/tartaric_aeroheater",
+            "recipe2": "prodigytech:materials/tartaric_stoker"
+        }
+    ]
+}

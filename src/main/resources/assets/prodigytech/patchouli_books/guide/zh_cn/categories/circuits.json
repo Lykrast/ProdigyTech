@@ -1,0 +1,6 @@
+{
+	"name": "电路",
+	"description": "$(thing)电路$() 是由 $(item)焊机$()制作的关键部件。 它开启了通向更强大的机器的大门",
+	"icon": "prodigytech:circuit_refined",
+	"sortnum": 2
+}

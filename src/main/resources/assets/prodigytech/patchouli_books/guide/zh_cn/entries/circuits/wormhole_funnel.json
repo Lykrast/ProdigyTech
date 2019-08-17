@@ -1,0 +1,21 @@
+{
+    "name": "虫洞管道",
+    "icon": "prodigytech:wormhole_funnel",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)虫洞管道$()是唯一的水平传送$(thing)热空气$()的办法。他能放置在方块的顶部或者底部, 当$(item)虫洞管道$()互相连接的时候，在另一面就可以开始互相传输$(thing)热空气$()了。$(br2)$(item)虫洞管道$()可以用过$(item)虫洞连接器$()来连接。"
+        },
+        {
+            "type": "text",
+            "text": "右击$(item)虫洞管道$()然后点击另一个来完成连接。$(br)一旦建立完连接之后，只要手上不是拿着$(item)虫洞连接器$()或者是方块右击$(item)虫洞管道$()都能够告诉你另一个$(item)虫洞管道$()在哪。$(br2)$(item)虫洞管道$()只能在同一个纬度和在任意方向上相距不能超过8格的时候连接另一个$(item)虫洞管道$()。同时他也只能同时连接一个$(item)虫洞管道$()。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/wormhole_funnel",
+            "recipe2": "prodigytech:tools/wormhole_linker"
+        }
+    ]
+}

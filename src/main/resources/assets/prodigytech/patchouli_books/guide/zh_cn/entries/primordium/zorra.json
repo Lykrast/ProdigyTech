@@ -1,0 +1,18 @@
+{
+    "name": "佐拉树",
+    "icon": "prodigytech:zorra_sapling",
+    "category": "primordium",
+	"advancement": "prodigytech:main/primordium",
+	"priority": true,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(thing)佐拉树$()是一种人工培育的树，获得方式是通过把树苗放入$(item)原子重塑机$()来获得。他的树叶如刀锋一样锋利，以及能采集下来制作$(item)佐拉钢$()。$(br2)同时$(item)佐拉树树苗$()也是相当的昂贵，以及一棵树也没多少佐拉树树叶。所以任意只要是从树苗长成的$(item)佐拉树树叶$()都可以通过让树叶杀死生物，吸收它们的血以扩充树叶。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/zorrasteel_raw",
+            "text": "$(item)生的佐拉钢锭$()需要使用$(item)爆炸熔炉$()处理成可使用的$(item)佐拉钢锭$()。"
+        }
+    ]
+}

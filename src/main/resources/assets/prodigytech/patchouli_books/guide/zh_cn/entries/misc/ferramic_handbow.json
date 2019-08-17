@@ -1,0 +1,16 @@
+{
+    "name": "瓷铁手弓",
+    "icon": "prodigytech:ferramic_handbow",
+    "category": "misc",
+	"advancement": "prodigytech:main/rotary_grinder",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)瓷铁手弓$()和普通的弓差不多，他耐久度更高，但是最重要的是它会在完全蓄力后自动射出，这使得他更加适合中程作战。$(br2)他能附上和普通弓一样的附魔。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:tools/ferramic_handbow"
+        }
+    ]
+}

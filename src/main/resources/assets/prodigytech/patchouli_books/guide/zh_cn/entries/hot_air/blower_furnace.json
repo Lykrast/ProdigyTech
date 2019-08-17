@@ -1,0 +1,16 @@
+{
+    "name": "烘烤炉",
+    "icon": "prodigytech:blower_furnace",
+    "category": "hot_air",
+	"advancement": "prodigytech:main/aeroheater",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)烘烤炉$()是一个简单的由$(thing)热空气$()驱动的熔炉。当他在处于低温度的时候，他的工作速度甚至不如普通的熔炉，但是他的能耗比还是相当高的，以及能够连接别的机器$(br2)物品能从机器除了顶部和底部以外的各个面输入/输出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/blower_furnace"
+        }
+    ]
+}

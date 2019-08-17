@@ -1,0 +1,16 @@
+{
+    "name": "熔岩气热炉",
+    "icon": "prodigytech:magmatic_aeroheater",
+    "category": "hot_air",
+	"advancement": "prodigytech:recipes/ferramic_ingot",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)熔岩气热炉$()当他放置在岩浆上时会持续生成低温度的$(thing)热空气$()$(o)(流动的或者是静态的岩浆都可以)$()。$(br2)而它从不需要重新装填燃料，但是他产生的温度也不足以让他连接更多的机器，或者是推动更加高级的机器。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/magmatic_aeroheater"
+        }
+    ]
+}

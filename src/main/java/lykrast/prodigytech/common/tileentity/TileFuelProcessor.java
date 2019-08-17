@@ -22,10 +22,16 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
 		BLACKLIST.add(ModItems.fuelPellet64);
 	}
 	
+	//If a fuel burns more than those values move the fuel pellet one category higher
+	private static final int TRESHOLD_4 = 64*200;
+	private static final int TRESHOLD_16 = 64*4*200;
+	private static final int TRESHOLD_64 = 64*16*200;
+	private static final int CAP = 64*64*200;
+	
 	public static boolean isValidInput(ItemStack stack) {
 		//Item must be fuel, burn for at least 1 item, not burn for more than 64 items, not have a container (no buckets) and must not be a Fuel Pellet
 		int burn = TileEntityFurnace.getItemBurnTime(stack);
-		return burn >= 200 && burn <= 12800 && stack.getItem().getContainerItem(stack).isEmpty() && !BLACKLIST.contains(stack.getItem());
+		return burn >= 200 && burn <= CAP && stack.getItem().getContainerItem(stack).isEmpty() && !BLACKLIST.contains(stack.getItem());
 	}
 	
 	public static int getProcessTime(ItemStack stack) {
@@ -35,7 +41,20 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
 	
 	public static int getPelletsAmount(ItemStack stack) {
 		//Assumes it is a valid input
-		return TileEntityFurnace.getItemBurnTime(stack) / 200;
+		int burn = TileEntityFurnace.getItemBurnTime(stack);
+		if (burn <= TRESHOLD_4) return burn / 200;
+		else if (burn <= TRESHOLD_16) return burn / (4*200);
+		else if (burn <= TRESHOLD_64) return burn / (16*200);
+		else return burn / (64*200);
+	}
+	
+	public static Item getResultingPellet(ItemStack stack) {
+		//Assumes it is a valid input
+		int burn = TileEntityFurnace.getItemBurnTime(stack);
+		if (burn <= TRESHOLD_4) return ModItems.fuelPellet1;
+		else if (burn <= TRESHOLD_16) return ModItems.fuelPellet4;
+		else if (burn <= TRESHOLD_64) return ModItems.fuelPellet16;
+		else return ModItems.fuelPellet64;
 	}
 	
 	//Tile stuff
@@ -67,7 +86,6 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
 		}
 	}
     
-    @SuppressWarnings("deprecation")
 	@Override
 	protected boolean canProcess() {
     	if (getStackInSlot(0).isEmpty() || hotAir.getInAirTemperature() < 80) return false;
@@ -77,9 +95,11 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
     	//And that whatever is in the output slot is a Fuel Pellet if there's something
 	    ItemStack curOutput = getStackInSlot(1);
         if (curOutput.isEmpty()) return true;
+	    ItemStack input = getStackInSlot(0);
+        if (curOutput.getItem() != getResultingPellet(input)) return false;
         
-	    int amount = getPelletsAmount(getStackInSlot(0));
-	    return curOutput.getCount() + amount <= getInventoryStackLimit() && curOutput.getCount() + amount <= ModItems.fuelPellet1.getItemStackLimit();
+	    int amount = getPelletsAmount(input);
+	    return curOutput.getCount() + amount <= getInventoryStackLimit() && curOutput.getCount() + amount <= 64;
     }
 	
 	@Override
@@ -138,9 +158,9 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
         ItemStack curOutput = getStackInSlot(1);
         int amount = getPelletsAmount(input);
         
-        //Assume that whatever was in the output slot is a Fuel Pellet and that there was enough room
+        //Assume that whatever was in the output slot is the correct output and that there was enough room
 
-        if (curOutput.isEmpty()) setInventorySlotContents(1, new ItemStack(ModItems.fuelPellet1, amount));
+        if (curOutput.isEmpty()) setInventorySlotContents(1, new ItemStack(getResultingPellet(input), amount));
         else curOutput.grow(amount);
 
         input.shrink(1);

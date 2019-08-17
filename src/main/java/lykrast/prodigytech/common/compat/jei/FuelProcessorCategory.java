@@ -3,7 +3,6 @@ package lykrast.prodigytech.common.compat.jei;
 import java.util.ArrayList;
 import java.util.List;
 
-import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.tileentity.TileFuelProcessor;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IModRegistry;
@@ -40,7 +39,7 @@ public class FuelProcessorCategory extends ProdigyCategory<SimpleRecipeWrapper> 
 	}
 	
 	private static SimpleRecipeWrapper wrap(ItemStack fuel, IGuiHelper guiHelper) {
-		return new SimpleRecipeWrapper(fuel.copy(), new ItemStack(ModItems.fuelPellet1, TileFuelProcessor.getPelletsAmount(fuel)), TileFuelProcessor.getProcessTime(fuel), guiHelper);
+		return new SimpleRecipeWrapper(fuel.copy(), new ItemStack(TileFuelProcessor.getResultingPellet(fuel), TileFuelProcessor.getPelletsAmount(fuel)), TileFuelProcessor.getProcessTime(fuel), guiHelper);
 	}
 
 }

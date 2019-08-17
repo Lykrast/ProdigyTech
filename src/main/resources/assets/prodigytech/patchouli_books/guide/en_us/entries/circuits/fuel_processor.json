@@ -6,7 +6,7 @@
     "pages": [
         {
             "type": "text",
-            "text": "The $(item)Fuel Processor$() breaks down Furnace fuels into $(item)Fuel Pellets$(), each burning for a single item in a Furnace. They can also be combined into groups of 4, 16 or 64 for convenience.$(br2)The output amount is rounded down if needed. Fuels that burn for more than 64 items or have a container (like $(item)Lava Buckets$()) can't be processed."
+            "text": "The $(item)Fuel Processor$() breaks down Furnace fuels into $(item)Fuel Pellets$(), each burning for a single item in a Furnace. They can also be combined into groups of 4, 16 or 64 for convenience.$(br2)The output amount is rounded down if needed. Fuels that burn for more than 4096 items or have a container (like $(item)Lava Buckets$()) can't be processed."
         },
         {
             "type": "crafting",

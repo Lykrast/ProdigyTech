@@ -122,7 +122,7 @@ public class Config {
 				"The base amount of time (in ticks) that the Ore Refinery takes to process 1 item");
 		oreRefineryOreMultiplier = cfg.getInt("oreRefineryOreMultiplier", CATEGORY_MACHINES, 2, 1, 10, 
 				"By how much ore outputs are multiplied by when passing them through the Ore Refinery");
-		oreRefineryChance = cfg.getFloat("oreRefineryChance", CATEGORY_MACHINES, 0.15F, 0, 1.0F, 
+		oreRefineryChance = cfg.getFloat("oreRefineryChance", CATEGORY_MACHINES, 0.25F, 0, 1.0F, 
 				"The chance the Ore Refinery produces a secondary ore");
 		//Automatic Crystal Cutter
 		automaticCrystalCutterHarvestTime = cfg.getInt("automaticCrystalCutterHarvestTime", CATEGORY_MACHINES, 100, 1, 3000, 

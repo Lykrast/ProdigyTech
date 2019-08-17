@@ -1,0 +1,17 @@
+{
+    "name": "旋转磨粉机",
+    "icon": "prodigytech:rotary_grinder",
+    "category": "hot_air",
+	"advancement": "prodigytech:main/aeroheater",
+	"priority": true,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)旋转磨粉机$()工作方式就和其他有名的Mod的同名机器一样：粉碎物品。最主要的是他能把一个$(thing)矿石$()粉碎成两份$(thing)粉$()，每个都能烧成一个$(thing)锭$()。$(br)他还有其他的多种用法，以及这个mod整个流程都需要用到这个机器。$(br2)物品能从机器除了顶部和底部以外的各个面输入/输出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/rotary_grinder"
+        }
+    ]
+}

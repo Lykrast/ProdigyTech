@@ -1,0 +1,16 @@
+{
+    "name": "磁力重构机",
+    "icon": "prodigytech:magnetic_reassembler",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)磁力重构机$()使用超强的磁力使粒子重新组合在一起。他干的活正好和$(item)旋转粉碎机$()相反, 而且这也是个在$(thing)能量水晶$()的种植上必要的一个机器。$(br2)物品能从机器除了顶部和底部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/magnetic_reassembler"
+        }
+    ]
+}

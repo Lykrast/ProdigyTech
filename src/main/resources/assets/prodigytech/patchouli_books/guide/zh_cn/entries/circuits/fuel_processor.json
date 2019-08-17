@@ -1,0 +1,32 @@
+{
+    "name": "燃料加工机",
+    "icon": "prodigytech:fuel_processor",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)燃料加工机$()把熔炉燃料打碎压缩成 $(item)燃料丸$()，每一个都能在熔炉中燃烧一个物品。为了方便，还能把他们合成4,16或者64个一份。$(br2)如果有需要的话，输出的数量将会被向下取整。 被加工的燃料如果是能烧超过64个物品或者是有容器的(像是$(item)岩浆桶$())就不能被处理成燃料丸。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/fuel_processor",
+            "text": "物品能从机器除了顶部和底部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:storage/fuel_pellet_4",
+            "recipe2": "prodigytech:storage/fuel_pellet_4_uncraft"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:storage/fuel_pellet_16",
+            "recipe2": "prodigytech:storage/fuel_pellet_16_uncraft"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:storage/fuel_pellet_64",
+            "recipe2": "prodigytech:storage/fuel_pellet_64_uncraft"
+        }
+    ]
+}

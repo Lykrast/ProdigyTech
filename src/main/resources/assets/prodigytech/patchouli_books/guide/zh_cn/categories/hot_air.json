@@ -1,0 +1,6 @@
+{
+	"name": "热空气",
+	"description": "$(thing)热空气$() 是这Mod中几乎所有机器的能量源。从这里开始 $(item)瓷铁$() 变得有用了起来。",
+	"icon": "prodigytech:solid_fuel_aeroheater",
+	"sortnum": 1
+}

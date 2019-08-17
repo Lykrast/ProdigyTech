@@ -1,0 +1,17 @@
+{
+    "name": "佐拉钢工具",
+    "icon": "prodigytech:zorrasteel_sword",
+    "category": "primordium",
+	"advancement": "prodigytech:main/zorra_leaf",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)佐拉钢$()能够用来制作一些工具。这些工具性能上和钻石镐一样但是是不毁的。$(br2)它们不能通过一般的方式来附魔，所以你需要一个$(item)佐拉祭坛$()。因为它，所以，能让这些工具能获得比那些平凡的工具更多更好的附魔。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:tools/zorrasteel_sword",
+            "recipe2": "prodigytech:tools/zorrasteel_handbow"
+        }
+    ]
+}

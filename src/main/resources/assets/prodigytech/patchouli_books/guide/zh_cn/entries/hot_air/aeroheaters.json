@@ -1,0 +1,25 @@
+{
+    "name": "气热炉",
+    "icon": "minecraft:lava_bucket",
+    "category": "hot_air",
+	"advancement": "prodigytech:recipes/ferramic_ingot",
+	"priority": true,
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "text",
+            "text": "正如之前所说的一样，$(thing)气热炉$()是一个生成$(thing)热空气$()的机器。大多数气热炉都会花上一点时间来加热，以及在把燃料燃烧殆尽后依然会留存一些热量。 这样意味着只要让气热炉一直保持工作状态，就能让这个燃烧的过程变得更加高效率。$(br2)现在你有了两个能够驱动机器的选择，尽管还有更多的机器需要你在探索的路上去解锁。"
+        },
+        {
+            "type": "relations",
+			"title": "Available Aeroheaters",
+            "entries": [
+				"hot_air/magmatic_aeroheater",
+				"hot_air/solid_fuel_aeroheater",
+				"circuits/heat_capacitor",
+				"energion/energion_aeroheater",
+				"primordium/tartaric_aeroheater"
+			]
+        }
+    ]
+}

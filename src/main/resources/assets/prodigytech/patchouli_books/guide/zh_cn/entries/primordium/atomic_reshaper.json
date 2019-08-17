@@ -1,0 +1,18 @@
+{
+    "name": "原子重塑机",
+    "icon": "prodigytech:atomic_reshaper",
+    "category": "primordium",
+	"advancement": "prodigytech:main/energion_aeroheater",
+	"priority": true,
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)原子重塑机$()能通过使用不同量的$(item)原基$()来把一样物品转换成别的。最值得注意的是，他能把石头转换成各种原矿。$(item)原子重塑机$()作为最高级的机器，要驱动它最低都需要使用$(item)能源气热炉$()。$(br)就像是$(item)原基反应器$()也需要$(item)能源气热炉$()来作为他的供热源一样。$(br2)物品能从机器除了顶部和底部以外的各个面输入/输出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/atomic_reshaper"
+        }
+    ]
+}

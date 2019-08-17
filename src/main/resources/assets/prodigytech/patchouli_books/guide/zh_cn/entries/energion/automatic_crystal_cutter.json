@@ -1,0 +1,17 @@
+{
+    "name": "晶体自动切割机",
+    "icon": "prodigytech:automatic_crystal_cutter",
+    "category": "energion",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)晶体自动切割机$()是个能自动帮你完成$(thing)能量晶体种植$()的机器。一般地供给$(thing)热空气$()以及在机器前面种上晶体。当水晶完成长成后，$(item)晶体自动切割机$()会自动收获晶体，只到晶体回到最初始的阶段。$(br2)收获的晶体可以从机器除了顶部和底部以外的各个面输出。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/automatic_crystal_cutter",
+			"text": "因为每个像是$(item)晶体自动切割机$()的机器都会从闲置状态到激活状态花更多的时间, 所以能够有更多的时间去准备被大量地减少了最低需求的$(thing)热空气$()。"
+        }
+    ]
+}

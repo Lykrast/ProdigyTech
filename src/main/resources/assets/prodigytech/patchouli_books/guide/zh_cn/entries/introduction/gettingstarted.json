@@ -1,0 +1,17 @@
+{
+    "name": "从0开始",
+    "icon": "minecraft:gunpowder",
+    "category": "introduction",
+	"priority": true,
+	"sortnum": -2,
+    "pages": [
+        {
+            "type": "text",
+            "text": "为了能够正确进行奇才妙械的流程，你需要用一个$(item)爆炸熔炉$()来制作$(item)瓷铁$()。$(br2)首先你需要准备足够以下物品：铁（铁锭，铁粒都可以），沙子和粘土。$(br)一旦你准备充足了，你就能着手合成一个$(item)爆炸熔炉$()然后你就能去看下一个条目了。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/explosion_furnace"
+        }
+    ]
+}

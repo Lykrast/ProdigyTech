@@ -1,0 +1,16 @@
+{
+    "name": "矿石精炼机",
+    "icon": "prodigytech:ore_refinery",
+    "category": "circuits",
+	"advancement": "prodigytech:main/solderer",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)矿石精炼机$()能把$(thing)矿石$()处理成2份 $(thing)粉$()，就像$(item)旋转粉碎机$()一样，但是处理的速度更加快，以及会偶尔产出少量的其他矿物的$(thing)粉$()$(br2)物品能从机器除了顶部和底部以外的各个面输入。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/ore_refinery"
+        }
+    ]
+}

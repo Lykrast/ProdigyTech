@@ -1,0 +1,18 @@
+{
+    "name": "能量粉",
+    "icon": "prodigytech:energion_dust",
+    "category": "energion",
+	"advancement": "prodigytech:main/solderer",
+	"priority": true,
+	"sortnum": -1,
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)能量粉$()是一个泄露着野生能源的混合物。他主要用在驱动$(item)能源气热炉$()中，当然了他也是需要进一步加工的。$(br2)在第一次手搓出$(item)能量粉$()的时候，合成方式上还是比较昂贵的，所以就需要一个能够生产更多但是更便宜的方案。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/energion_dust"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "name": "线性提取器",
+    "icon": "prodigytech:linear_extractor",
+    "category": "misc",
+	"advancement": "prodigytech:recipes/ferramic_ingot",
+    "pages": [
+        {
+            "type": "text",
+            "text": "$(item)线性提取器$()是一个最普通的$(thing)提取器$()。他会快速地从正面的容器中抽取物品然后输出到相对的面的容器中，或者暂时存储在他小小的内部存储中。$(br2)他能够面向任意方向，以及通过红石信号关闭。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:machine/linear_extractor"
+        }
+    ]
+}

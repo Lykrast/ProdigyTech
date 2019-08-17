@@ -1,0 +1,35 @@
+{
+    "name": "原料",
+    "icon": "prodigytech:ferramic_gear",
+    "category": "misc",
+    "pages": [
+        {
+            "type": "text",
+            "text": "各种各样会在Mod进程中用到的原料，会在你游玩的过程中解锁更多部分。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/ferramic_gear",
+			"advancement": "prodigytech:recipes/ferramic_ingot",
+			"text": "$(item)瓷铁齿轮$()是一个由$(item)瓷铁$()简单制作的，用在各种机器的合成中或者是其他需要以某种方式磨其他物品的工具。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/carbon_plate",
+			"advancement": "prodigytech:main/rotary_grinder",
+			"text": "$(item)碳板$()是由碳做成的板，正如其名。较多的高级机器和装置需要用上少许的碳板。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/enriched_fuel",
+			"advancement": "prodigytech:main/rotary_grinder",
+			"text": "$(item)富集燃料$()是一个让煤炭变得更高效的方法，所以结果就是能够烧的物品比他之前还多。"
+        },
+        {
+            "type": "crafting",
+            "recipe": "prodigytech:materials/inferno_fuel",
+			"advancement": "prodigytech:main/rotary_grinder",
+			"text": "$(item)低于燃料$()是一个在富集燃料之上更加高效的熔炉燃料，然后还能被更多的高级机器加工成$(item)地狱晶体$()然后再加工成$(item)永恒晶体$()。"
+        }
+    ]
+}

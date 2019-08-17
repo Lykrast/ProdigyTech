@@ -69,6 +69,7 @@ public class TileFuelProcessor extends TileHotAirMachineSimple {
     
 	private ItemStack lastInput  = ItemStack.EMPTY;
 	private void updateCachedResult() {
+		if (world.isRemote) return;
 		ItemStack input = getStackInSlot(0);
 		//No input
 		if (input.isEmpty()) {

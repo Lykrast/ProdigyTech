@@ -67,8 +67,10 @@ public class TileFoodEnricher extends TileHotAirMachineSimple {
 		else if (input != lastInput) {
 			lastInput = input;
 			cachedResult = enrich(input);
-			processTimeMax = 0;
-			processTime = 0;
+			if (!world.isRemote) {
+				processTimeMax = 0;
+				processTime = 0;
+			}
 		}
 		//Missing the cache
 		else if (cachedResult == null) cachedResult = enrich(input);

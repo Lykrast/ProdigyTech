@@ -49,8 +49,10 @@ public class TileFoodPurifier extends TileHotAirMachineSimple {
 		else if (input != lastInput) {
 			lastInput = input;
 			cachedResult = ItemFoodPurified.make(input);
-			processTimeMax = 0;
-			processTime = 0;
+			if (!world.isRemote) {
+				processTimeMax = 0;
+				processTime = 0;
+			}
 		}
 		//Missing the cache
 		else if (cachedResult == null) cachedResult = ItemFoodPurified.make(input);

@@ -4,9 +4,8 @@ import lykrast.prodigytech.common.block.BlockMachineActiveable;
 import lykrast.prodigytech.common.init.ModItems;
 import lykrast.prodigytech.common.util.Config;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ITickable;
 
-public class TileIncinerator extends TileHotAirMachineSimple implements ITickable {
+public class TileIncinerator extends TileHotAirMachineSimple {
     public TileIncinerator() {
 		super(0.8F);
 	}

@@ -24,7 +24,7 @@ public class ContainerCrystalCutter extends ContainerMachine<TileCrystalCutter> 
 		//Player - Hotbar 0-8				: 28-36
 		
 		//Fuel slot
-    	this.addSlotToContainer(new Slot(tile, 0, 96, 35));
+    	this.addSlotToContainer(new SlotOutput(userInv.player, tile, 0, 96, 35));
 
 		//Player slots
     	addPlayerSlotsDefault(userInv);
